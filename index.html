@@ -240,9 +240,9 @@
         <section id="about" class="py-32 md:py-48 px-6 md:px-8 bg-white">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <!-- Loading container -->
-                    <div id="about-image-container" class="rounded-2xl w-full h-full object-cover border-8 border-gray-100 shadow-xl bg-gray-200 animate-pulse min-h-[600px] flex items-center justify-center">
-                        <img id="about-image" src="" alt="Abstract generative art" class="rounded-lg w-full h-full object-cover hidden">
+                    <!-- MODIFIED: Static Image -->
+                    <div class="rounded-2xl w-full h-full object-cover border-8 border-gray-100 shadow-xl">
+                        <img id="about-image" src="images/about.png" alt="Awais Tariq" class="rounded-lg w-full h-full object-cover">
                     </div>
                 </div>
                 <div class="reveal">
@@ -256,7 +256,7 @@
                     <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-10">
                         My expertise lies in the modern JavaScript ecosystem, including HTML, CSS, Javascript, Bootstrap, and Tailwind. I'm passionate about building beautiful, functional, and accessible digital experiences.
                     </p>
-                    <a href="#" class="inline-block bg-blue-600 text-white font-medium py-4 px-8 rounded-full text-lg magnetic-link hover:bg-blue-700 transition-colors">
+                    <a href="cv.html" class="inline-block bg-blue-600 text-white font-medium py-4 px-8 rounded-full text-lg magnetic-link hover:bg-blue-700 transition-colors">
                         Download My CV
                     </a>
                 </div>
@@ -309,17 +309,20 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    
                     <!-- Project Card 1: Code Maze -->
+                    <!-- MODIFIED: data-image now points to static path -->
                     <div class="project-card magnetic-link cursor-hover reveal" 
                          data-title="Code Maze - Mobile Learning App"
-                         data-image=""
+                         data-image="images/project-codemaze.png"
                          data-tags="Flutter,Dart,Firebase,AI API"
                          data-description="An interactive mobile app for learning to code, built with Flutter. Features lessons, quizzes, puzzles, and games. Also includes an integrated AI assistant and compiler using REST APIs.">
                         
-                        <div id="project-loader-1" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
-                            <img id="project-image-1" src="" 
+                        <!-- MODIFIED: Removed loader div, added static image -->
+                        <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-1" src="images/project-codemaze.png" 
                                  alt="Code Maze Mobile App" 
-                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                                 class="w-full h-full object-cover transition-transform duration-500">
                             
                             <!-- NEW Smooth Filter -->
                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
@@ -339,14 +342,14 @@
                     <!-- Project Card 2: News Blog Website -->
                     <div class="project-card magnetic-link cursor-hover reveal"
                          data-title="News Blog Website"
-                         data-image=""
+                         data-image="images/project-news.png"
                          data-tags="React,Node.js,Express,MongoDB"
                          data-description="A full-stack news and blog website. Users can read articles, search, and filter by category. Built as a key project during MERN stack training, focusing on frontend engineering and API integration.">
                         
-                        <div id="project-loader-2" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
-                            <img id="project-image-2" src="" 
+                        <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-2" src="images/project-news.png" 
                                  alt="News Blog Website" 
-                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                                 class="w-full h-full object-cover transition-transform duration-500">
                             
                             <!-- NEW Smooth Filter -->
                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
@@ -366,14 +369,14 @@
                     <!-- Project Card 3: Dartar.ai -->
                     <div class="project-card magnetic-link cursor-hover reveal"
                          data-title="Dartar.ai Tech Website"
-                         data-image=""
+                         data-image="images/project-dartarai.png"
                          data-tags="HTML,Tailwind CSS,JavaScript,Tech"
                          data-description="A modern and cutting-edge website for the tech startup Dartar.ai. This project was built using Tailwind CSS to create a fully responsive, pixel-perfect design that reflects their innovative brand.">
                         
-                        <div id="project-loader-3" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
-                            <img id="project-image-3" src="" 
+                        <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-3" src="images/project-dartarai.png" 
                                  alt="Dartar.ai Website" 
-                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                                 class="w-full h-full object-cover transition-transform duration-500">
                             
                             <!-- NEW Smooth Filter -->
                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
@@ -393,14 +396,14 @@
                     <!-- Project Card 4: Clean Africa (NGO) -->
                     <div class="project-card magnetic-link cursor-hover reveal"
                          data-title="Clean Africa (NGO) Landing Page"
-                         data-image=""
+                         data-image="images/project-cleanafrica.png"
                          data-tags="HTML,CSS,JavaScript,NGO"
                          data-description="A professional landing page built for the Clean Africa NGO. The project focuses on clear communication, user engagement, and responsive design to support their mission and outreach.">
                         
-                        <div id="project-loader-4" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
-                            <img id="project-image-4" src="" 
+                        <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-4" src="images/project-cleanafrica.png" 
                                  alt="Clean Africa (NGO) Landing Page" 
-                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                                 class="w-full h-full object-cover transition-transform duration-500">
                             
                             <!-- NEW Smooth Filter -->
                             <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
@@ -644,9 +647,12 @@
                         const textElements = entry.target.querySelectorAll('.reveal-text');
                         textElements.forEach(textEl => {
                             if (textEl.children.length === 0) {
-                                const originalText = textEl.innerText;
-                                const words = originalText.split(' ');
-                                textEl.innerHTML = words.map((word, i) => `<span style="--i: ${i}; margin-left: ${i > 0 ? '0.2em' : '0'};">${word}</span>`).join('');
+                                // Check if we should split by word or just reveal
+                                if (textEl.parentElement.classList.contains('reveal-text')) {
+                                    const originalText = textEl.innerText;
+                                    const words = originalText.split(' ');
+                                    textEl.innerHTML = words.map((word, i) => `<span style="--i: ${i}; margin-left: ${i > 0 ? '0.2em' : '0'};">${word}</span>`).join('');
+                                }
                             }
                         });
                     }
@@ -654,6 +660,13 @@
             }, { threshold: 0.1 });
 
             revealElements.forEach(el => {
+                // Special handling for hero text to split words on all screen sizes
+                const heroTexts = el.querySelectorAll('.hero-section-text');
+                heroTexts.forEach(textEl => {
+                     const originalText = textEl.innerText;
+                     const words = originalText.split(' ');
+                     textEl.innerHTML = words.map((word, i) => `<span style="--i: ${i}; margin-left: ${i > 0 ? '0.2em' : '0'};">${word}</span>`).join('');
+                });
                 revealObserver.observe(el);
             });
 
@@ -670,13 +683,12 @@
             projectCards.forEach(card => {
                 card.addEventListener('click', () => {
                     const title = card.dataset.title;
-                    // Use the generated image src for the detail panel
-                    const imageSrc = card.querySelector('img').src;
+                    // MODIFIED: Get the static image path from data-image
+                    const imageSrc = card.dataset.image; 
                     const tags = card.dataset.tags.split(',');
                     const description = card.dataset.description;
 
-                    // Use generated image if available, otherwise data-image (fallback)
-                    detailImage.src = imageSrc || card.dataset.image;
+                    detailImage.src = imageSrc; 
                     detailTitle.textContent = title;
                     detailDescription.textContent = description;
                     
@@ -691,9 +703,15 @@
                     panel.classList.add('open');
                     body.classList.add('panel-open');
                 });
-            }); // <-- ADDED THIS CLOSING BRACKET AND PARENTHESIS
+            });
             
-            // --- NEW: Mobile Menu Logic ---
+            closeButton.addEventListener('click', (e) => {
+                e.stopPropagation(); // <-- FIX: This stops the click from "falling through"
+                panel.classList.remove('open');
+                body.classList.remove('panel-open');
+            });
+            
+            // --- 7. Mobile Menu Logic ---
             const menuToggleBtn = document.getElementById('menu-toggle-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -716,162 +734,10 @@
                 link.addEventListener('click', closeMenu);
             });
 
-
-            /**
-             * Fetches data with exponential backoff.
-             */
-            async function exponentialBackoffFetch(url, options, maxRetries = 5, baseDelay = 1000) {
-                let attempt = 0;
-                while (attempt < maxRetries) {
-                    try {
-                        const response = await fetch(url, options);
-                        if (response.ok) {
-                            return response;
-                        }
-                        if (response.status >= 400 && response.status < 500) {
-                            console.error("Client-side error, not retrying:", response.status);
-                            throw new Error(`Client error: ${response.status}`);
-                        }
-                    } catch (error) {
-                        if (attempt + 1 >= maxRetries) {
-                            console.error("Max retries reached. Fetch failed.", error);
-                            throw error;
-                        }
-                    }
-                    const delay = baseDelay * Math.pow(2, attempt) + Math.random() * 1000;
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    attempt++;
-                }
-                throw new Error("Fetch failed after max retries.");
-            }
-
-            /**
-             * Generates an image and places it in the DOM.
-             * @param {string} loaderId - The ID of the loading container.
-             * @param {string} imageId - The ID of the img element.
-             * @param {string} prompt - The prompt for the image generation.
-             * @param {string} fallbackText - Text for the placeholder if generation fails.
-             */
-            async function generateAndPlaceImage(loaderId, imageId, prompt, fallbackText = "Image") {
-                const imageContainer = document.getElementById(loaderId);
-                const imageEl = document.getElementById(imageId);
-                
-                if (!imageContainer || !imageEl) {
-                    console.error(`Could not find elements: ${loaderId} or ${imageId}`);
-                    return;
-                }
-
-                const payload = {
-                    instances: { prompt: prompt },
-                    parameters: { "sampleCount": 1 }
-                };
-                const apiKey = ""; // Leave empty
-                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
-
-                try {
-                    const response = await exponentialBackoffFetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    const result = await response.json();
-                    
-                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
-                        const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
-                        imageEl.src = imageUrl;
-                        // Also update the data-image attribute for the modal
-                        const projectCard = imageContainer.closest('.project-card');
-                        if (projectCard) {
-                            projectCard.dataset.image = imageUrl;
-                        }
-                        
-                        imageEl.onload = () => {
-                            imageContainer.classList.remove('animate-pulse', 'bg-gray-200');
-                            if (loaderId === 'about-image-container') {
-                                imageContainer.classList.remove('min-h-[600px]', 'flex', 'items-center', 'justify-center');
-                            }
-                            imageEl.classList.remove('hidden');
-                        };
-                    } else {
-                        console.error("Failed to generate image or parse response:", result);
-                        const fallbackUrl = `https://placehold.co/800x600/E5E7EB/1F2937?text=${encodeURIComponent(fallbackText)}+Failed`;
-                        imageEl.src = fallbackUrl;
-                        const projectCard = imageContainer.closest('.project-card');
-                        if (projectCard) {
-                            projectCard.dataset.image = fallbackUrl;
-                        }
-                        imageContainer.classList.remove('animate-pulse', 'bg-gray-200');
-                        if (loaderId === 'about-image-container') {
-                            imageContainer.classList.remove('min-h-[600px]', 'flex', 'items-center', 'justify-center');
-                        }
-                        imageEl.classList.remove('hidden');
-                    }
-                } catch (error) {
-                    console.error("Error generating image:", error);
-                    const fallbackUrl = `https://placehold.co/800x600/E5E7EB/1F2937?text=Error`;
-                    imageEl.src = fallbackUrl;
-                    const projectCard = imageContainer.closest('.project-card');
-                    if (projectCard) {
-                            projectCard.dataset.image = fallbackUrl;
-                    }
-                    imageContainer.classList.remove('animate-pulse', 'bg-gray-200');
-                    if (loaderId === 'about-image-container') {
-                        imageContainer.classList.remove('min-h-[600px]', 'flex', 'items-center', 'justify-center');
-                    }
-                    imageEl.classList.remove('hidden');
-                }
-            }
-
-            // --- 8. Generate All Images on Load ---
-            function generateAboutImage() {
-                const prompt = "A minimalist, abstract, geometric wireframe bust, 3d render, professional portfolio, blue and gray, studio lighting, clean white background, high-resolution";
-                generateAndPlaceImage('about-image-container', 'about-image', prompt, 'About+Me');
-            }
-
-            function generateProjectImages() {
-                const projectPrompts = [
-                    { 
-                        loaderId: 'project-loader-1', 
-                        imageId: 'project-image-1', 
-                        prompt: "A vibrant, abstract representation of a mobile app for learning code. Geometric shapes, binary code, puzzle pieces, dark mode, purple and blue glowing elements, 3d render, professional.", 
-                        fallback: "Code+Maze" 
-                    },
-                    { 
-                        loaderId: 'project-loader-2', 
-                        imageId: 'project-image-2', 
-                        prompt: "A clean, minimalist, abstract design of a news website. Lines of text, data visualization, global map, pink and white, professional, high-resolution.", 
-                        fallback: "News+Blog" 
-                    },
-                    { 
-                        loaderId: 'project-loader-3', 
-                        imageId: 'project-image-3', 
-                        prompt: "A high-tech, futuristic, abstract image for an AI startup. Neural network, glowing circuits, dark background, blue and white, 3d render, professional, minimalist.", 
-                        fallback: "Dartar.ai" 
-                    },
-                    { 
-                        loaderId: 'project-loader-4', 
-                        imageId: 'project-image-4', 
-                        prompt: "A hopeful, abstract image for an NGO in Africa. Stylized map of Africa, green and white, themes of nature and community, clean, minimalist, professional, high-resolution.", 
-                        fallback: "Clean+Africa" 
-                    }
-                ];
-
-                projectPrompts.forEach(p => {
-                    generateAndPlaceImage(p.loaderId, p.imageId, p.prompt, p.fallback);
-                });
-            }
-            
-            generateAboutImage();
-            generateProjectImages();
+            // --- 8. REMOVED ALL IMAGE GENERATION JAVASCRIPT ---
 
         });
     </script>
 
 </body>
 </html>
-
-
-
-
-
