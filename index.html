@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awais Tariq - Software Engineer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Google Font (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #FFFFFF;    /* Main background */
+            --bg-secondary: #F3F4F6; /* Light gray for cards */
+            --text-dark: #1F2937;  /* Main text */
+            --text-secondary: #6B7280; /* Gray text */
+            --accent: #2563EB;      /* Bright Blue */
+        }
+
+        /* Hide default cursor */
+        * {
+            cursor: none;
+            overscroll-behavior: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* --- 1. Custom Cursor --- */
+        .cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+            background-color: var(--accent);
+            opacity: 0.7;
+        }
+        .cursor-grow {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+        }
+        .cursor-hide {
+            width: 0;
+            height: 0;
+        }
+
+        /* --- 2. Preloader --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-light);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #preloader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .loader-text {
+            display: flex;
+            font-size: 2rem;
+            font-weight: 700;
+            overflow: hidden;
+            color: var(--text-dark);
+        }
+        .loader-text span {
+            display: inline-block;
+            transform: translateY(100%);
+            animation: loader-reveal 1.5s ease-out forwards;
+            animation-delay: calc(0.1s * var(--i));
+        }
+        @keyframes loader-reveal {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        /* --- 3. Hero 3D Canvas --- */
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.7;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F3F4F6 100%);
+        }
+
+        /* --- 4. Staggered Text Reveal --- */
+        .reveal-text {
+            overflow: hidden;
+        }
+        .reveal-text > * {
+            display: inline-block;
+            transform: translateY(110%);
+            transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition-delay: calc(0.05s * var(--i));
+        }
+        .reveal-visible .reveal-text > * {
+            transform: translateY(0);
+        }
+        
+        /* --- 5. Project Detail Panel (NEW) --- */
+        #project-detail-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-light);
+            z-index: 6000;
+            transform: translateX(100%);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow-y: auto;
+            padding: 2rem;
+        }
+        #project-detail-panel.open {
+            transform: translateX(0);
+        }
+        body.panel-open {
+            overflow: hidden;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D1D5DB;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9CA3AF;
+        }
+    </style>
+</head>
+<body class="">
+
+    <!-- 1. Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- 2. Preloader -->
+    <div id="preloader">
+        <div class="loader-text">
+            <span style="--i: 0;">A</span>
+            <span style="--i: 1;">w</span>
+            <span style="--i: 2;">a</span>
+            <span style="--i: 3;">i</span>
+            <span style="--i: 4;">s</span>
+            <span style="--i: 5; margin-left: 0.5ch;">T</span>
+            <span style="--i: 6;">a</span>
+            <span style="--i: 7;">r</span>
+            <span style="--i: 8;">i</span>
+            <span style="--i: 9;">q</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 p-6 md:p-8">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <a href="#home" class="text-2xl font-bold magnetic-link text-gray-900">Awais<span class="text-blue-600">Tariq</span>.</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="magnetic-link text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors">About</a>
+                <a href="#services" class="magnetic-link text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors">Services</a>
+                <a href="#projects" class="magnetic-link text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors">Projects</a>
+                <a href="#contact" class="magnetic-link text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:block bg-blue-600 text-white font-medium py-3 px-6 rounded-full magnetic-link hover:bg-blue-700 transition-colors">
+                Get In Touch
+            </a>
+            <div class="md:hidden text-lg font-medium magnetic-link" id="menu-toggle-btn">
+                Menu
+            </div>
+        </nav>
+    </header>
+
+    <!-- NEW: Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-screen bg-white z-[9000] flex flex-col justify-center items-center opacity-0 invisible transition-opacity duration-300">
+        <button id="close-menu-btn" class="absolute top-8 right-8 text-3xl text-gray-700 magnetic-link">&times;</button>
+        <div class="flex flex-col text-center space-y-8">
+            <a href="#about" class="mobile-menu-link text-4xl font-bold text-gray-900">About</a>
+            <a href="#services" class="mobile-menu-link text-4xl font-bold text-gray-900">Services</a>
+            <a href="#projects" class="mobile-menu-link text-4xl font-bold text-gray-900">Projects</a>
+            <a href="#contact" class="mobile-menu-link text-4xl font-bold text-gray-900">Contact</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="h-screen w-full relative flex flex-col justify-center items-center text-center p-4">
+            <!-- 3. 3D Canvas -->
+            <canvas id="hero-canvas"></canvas>
+            
+            <div class="relative z-10 max-w-4xl">
+                <!-- 4. Staggered Text Reveal -->
+                <h1 class="text-5xl md:text-7xl font-black uppercase reveal-text text-gray-900">
+                    Software Engineer
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-700 mt-8 max-w-2xl mx-auto reveal-text">
+                    Creative Frontend Engineer
+                </p>
+                <!-- NEW Typing Effect -->
+                <p class="text-2xl md:text-3xl text-gray-600 mt-4 max-w-2xl mx-auto">
+                    <span class="text-gray-700">Specializing in </span>
+                    <span id="typing-effect" class="text-blue-600 font-bold whitespace-nowrap"></span>
+                    <span class="typing-cursor text-blue-600 animate-pulse text-3xl font-light">|</span>
+                </p>
+            </div>
+            
+            <!-- Scroll Down Hint -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-gray-500 text-sm animate-pulse">
+                Scroll Down
+            </div>
+        </section>
+
+        <!-- About Section (Redesigned) -->
+        <section id="about" class="py-32 md:py-48 px-6 md:px-8 bg-white">
+            <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <!-- Loading container -->
+                    <div id="about-image-container" class="rounded-2xl w-full h-full object-cover border-8 border-gray-100 shadow-xl bg-gray-200 animate-pulse min-h-[600px] flex items-center justify-center">
+                        <img id="about-image" src="" alt="Abstract generative art" class="rounded-lg w-full h-full object-cover hidden">
+                    </div>
+                </div>
+                <div class="reveal">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-8 reveal-text">
+                        <span style="--i: 0;">About</span>
+                        <span style="--i: 1; margin-left: 0.2em;">Me</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
+                        I'm a creative Frontend Engineer with expertise in Web Development and UI Design. I'm proficient in building responsive layouts and collaborating on impactful projects that enhance the user experience.
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-10">
+                        My expertise lies in the modern JavaScript ecosystem, including HTML, CSS, Javascript, Bootstrap, and Tailwind. I'm passionate about building beautiful, functional, and accessible digital experiences.
+                    </p>
+                    <a href="#" class="inline-block bg-blue-600 text-white font-medium py-4 px-8 rounded-full text-lg magnetic-link hover:bg-blue-700 transition-colors">
+                        Download My CV
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section (NEW) -->
+        <section id="services" class="py-32 md:py-40 px-6 md:px-8 bg-gray-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-4 reveal-text">
+                        <span style="--i: 0;">What</span>
+                        <span style="--i: 1; margin-left: 0.2em;">I</span>
+                        <span style="--i: 2; margin-left: 0.2em;">Do</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">My services are tailored to bring your digital ideas to life with precision and creativity.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 reveal">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                        <h3 class="text-2xl font-bold mb-3">Web Development</h3>
+                        <p class="text-gray-600">Full-stack development of blazing-fast, scalable websites and applications using modern technologies like HTML, CSS, JavaScript, and Tailwind.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 reveal">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.539 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.539-1.118l1.518-4.674a1 1 0 00-.363-1.118L2.05 10.1c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                        <h3 class="text-2xl font-bold mb-3">UI Design</h3>
+                        <p class="text-gray-600">Crafting intuitive and beautiful user interfaces. Proficient in UI best practices to create engaging and user-friendly designs.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 reveal">
+                        <svg class="w-12 h-12 text-blue-600 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                        <h3 class="text-2xl font-bold mb-3">Responsive Layouts</h3>
+                        <p class="text-gray-600">Building fully responsive websites that work perfectly on all devices, from mobile phones to desktops, ensuring a seamless user experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section (Redesigned) -->
+        <section id="projects" class="py-32 md:py-40 px-6 md:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-4 reveal-text">
+                        <span style="--i: 0;">Recent</span>
+                        <span style="--i: 1; margin-left: 0.2em;">Work</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">A selection of my projects. Click to see more details.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    <!-- Project Card 1: Code Maze -->
+                    <div class="project-card magnetic-link cursor-hover reveal" 
+                         data-title="Code Maze - Mobile Learning App"
+                         data-image=""
+                         data-tags="Flutter,Dart,Firebase,AI API"
+                         data-description="An interactive mobile app for learning to code, built with Flutter. Features lessons, quizzes, puzzles, and games. Also includes an integrated AI assistant and compiler using REST APIs.">
+                        
+                        <div id="project-loader-1" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-1" src="" 
+                                 alt="Code Maze Mobile App" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                            
+                            <!-- NEW Smooth Filter -->
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+
+                            <!-- MODIFIED Hover Overlay (Tags only) -->
+                            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent transition-all duration-500 ease-in-out transform translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
+                                <p class="text-gray-200">Flutter, Dart, AI API</p>
+                            </div>
+                        </div>
+                        <!-- NEW Static Title -->
+                        <div class="mt-5">
+                            <h3 class="text-2xl font-bold text-gray-900">Code Maze - Mobile App</h3>
+                            <p class="text-base text-gray-600">Click card for details</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2: News Blog Website -->
+                    <div class="project-card magnetic-link cursor-hover reveal"
+                         data-title="News Blog Website"
+                         data-image=""
+                         data-tags="React,Node.js,Express,MongoDB"
+                         data-description="A full-stack news and blog website. Users can read articles, search, and filter by category. Built as a key project during MERN stack training, focusing on frontend engineering and API integration.">
+                        
+                        <div id="project-loader-2" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-2" src="" 
+                                 alt="News Blog Website" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                            
+                            <!-- NEW Smooth Filter -->
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+
+                            <!-- MODIFIED Hover Overlay (Tags only) -->
+                            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent transition-all duration-500 ease-in-out transform translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-1Do">
+                                <p class="text-gray-200">React, Node.js, MERN</p>
+                            </div>
+                        </div>
+                        <!-- NEW Static Title -->
+                        <div class="mt-5">
+                            <h3 class="text-2xl font-bold text-gray-900">News Blog Website</h3>
+                            <p class="text-base text-gray-600">Click card for details</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3: Dartar.ai -->
+                    <div class="project-card magnetic-link cursor-hover reveal"
+                         data-title="Dartar.ai Tech Website"
+                         data-image=""
+                         data-tags="HTML,Tailwind CSS,JavaScript,Tech"
+                         data-description="A modern and cutting-edge website for the tech startup Dartar.ai. This project was built using Tailwind CSS to create a fully responsive, pixel-perfect design that reflects their innovative brand.">
+                        
+                        <div id="project-loader-3" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-3" src="" 
+                                 alt="Dartar.ai Website" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                            
+                            <!-- NEW Smooth Filter -->
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+
+                            <!-- MODIFIED Hover Overlay (Tags only) -->
+                            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent transition-all duration-500 ease-in-out transform translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
+                                <p class="text-gray-200">HTML, Tailwind CSS</p>
+                            </div>
+                        </div>
+                        <!-- NEW Static Title -->
+                        <div class="mt-5">
+                            <h3 class="text-2xl font-bold text-gray-900">Dartar.ai Website</h3>
+                            <p class="text-base text-gray-600">Click card for details</p>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 4: Clean Africa (NGO) -->
+                    <div class="project-card magnetic-link cursor-hover reveal"
+                         data-title="Clean Africa (NGO) Landing Page"
+                         data-image=""
+                         data-tags="HTML,CSS,JavaScript,NGO"
+                         data-description="A professional landing page built for the Clean Africa NGO. The project focuses on clear communication, user engagement, and responsive design to support their mission and outreach.">
+                        
+                        <div id="project-loader-4" class="w-full h-64 md:h-80 bg-gray-200 animate-pulse rounded-2xl overflow-hidden relative shadow-lg group">
+                            <img id="project-image-4" src="" 
+                                 alt="Clean Africa (NGO) Landing Page" 
+                                 class="w-full h-full object-cover transition-transform duration-500 hidden">
+                            
+                            <!-- NEW Smooth Filter -->
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
+                            
+                            <!-- MODIFIED Hover Overlay (Tags only) -->
+                            <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent transition-all duration-500 ease-in-out transform translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
+                                <p class="text-gray-200">HTML, CSS, JavaScript</p>
+                            </div>
+                        </div>
+                        <!-- NEW Static Title -->
+                        <div class="mt-5">
+                            <h3 class="text-2xl font-bold text-gray-900">Clean Africa (NGO)</h3>
+                            <p class="text-base text-gray-600">Click card for details</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (Redesigned) -->
+        <section id="contact" class="py-32 md:py-48 px-6 md:px-8 bg-gray-50">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <h2 class="text-5xl md:text-8xl font-black uppercase mb-8 reveal-text">
+                    <span style="--i: 0;">Get</span>
+                    <span style="--i: 1; margin-left: 0.2em;">In</span>
+                    <span style="--i: 2; margin-left: 0.2em;">Touch</span>
+                </h2>
+                <p class="text-xl md:text-2xl text-gray-600 mt-8 max-w-2xl mx-auto mb-12">
+                    Have a project in mind or just want to say hello? My inbox is always open.
+                </p>
+                <a href="mailto:awaistariq467nh.21@gmail.com" class="inline-block text-xl md:text-4xl font-bold magnetic-link relative group text-blue-600">
+                    awaistariq467nh.21@gmail.com
+                    <span class="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 md:px-8 bg-white">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-gray-500">
+            <p class="text-lg">&copy; 2025 Awais Tariq. All rights reserved.</p>
+            <div class="flex space-x-8 mt-6 md:mt-0">
+                <a href="#" class="text-lg magnetic-link hover:text-gray-900 transition-colors">LinkedIn</a>
+                <a href="#" class="text-lg magnetic-link hover:text-gray-900 transition-colors">GitHub</a>
+                <a href="#" class="text-lg magnetic-link hover:text-gray-900 transition-colors">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 5. Project Detail Panel (NEW) -->
+    <div id="project-detail-panel">
+        <div class="max-w-5xl mx-auto py-12 md:py-24 relative">
+            <button id="close-panel" class="absolute top-8 right-8 text-3xl text-gray-500 hover:text-gray-900 magnetic-link">&times;</button>
+            <div class="w-full h-64 md:h-[500px] rounded-2xl overflow-hidden mb-12">
+                <img id="detail-image" src="" alt="Project Image" class="w-full h-full object-cover">
+            </div>
+            <h2 id="detail-title" class="text-4xl md:text-6xl font-bold mb-6"></h2>
+            <div id="detail-tags" class="flex flex-wrap gap-3 mb-8">
+                <!-- Tags will be injected by JS -->
+            </div>
+            <p id="detail-description" class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl"></p>
+        </div>
+    </div>
+
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+
+            // --- 1. Preloader ---
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 2000);
+
+            // --- 2. Custom Cursor ---
+            const cursor = document.querySelector('.cursor');
+            const magneticLinks = document.querySelectorAll('.magnetic-link');
+            const hoverLinks = document.querySelectorAll('a, button, .cursor-hover');
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            window.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                cursorX += (mouseX - cursorX) * 0.1;
+                cursorY += (mouseY - cursorY) * 0.1;
+                cursor.style.transform = `translate3d(${cursorX - (cursor.offsetWidth / 2)}px, ${cursorY - (cursor.offsetHeight / 2)}px, 0)`;
+                requestAnimationFrame(animateCursor);
+            }
+            animateCursor();
+
+            hoverLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => cursor.classList.add('cursor-grow'));
+                link.addEventListener('mouseleave', () => cursor.classList.remove('cursor-grow'));
+            });
+
+            // --- 3. Magnetic Buttons ---
+            magneticLinks.forEach(link => {
+                link.addEventListener('mousemove', function(e) {
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - (rect.left + rect.width / 2);
+                    const y = e.clientY - (rect.top + rect.height / 2);
+                    this.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+                    this.style.transition = 'transform 0.1s ease-out';
+                });
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translate(0, 0)';
+                    this.style.transition = 'transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                });
+            });
+
+            // --- NEW: Typing Effect ---
+            const typingWords = ['Web Development', 'UI Design', 'Responsive Layouts'];
+            let textIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            const typeSpeed = 100;
+            const deleteSpeed = 50;
+            const delay = 2000;
+            const typingEl = document.getElementById('typing-effect');
+
+            function type() {
+                const currentWord = typingWords[textIndex];
+                let displayText = '';
+
+                if (isDeleting) {
+                    displayText = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                } else {
+                    displayText = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                }
+
+                typingEl.textContent = displayText;
+
+                let typeDuration = isDeleting ? deleteSpeed : typeSpeed;
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    typeDuration = delay;
+                    isDeleting = true;
+                } else if (isDeleting && charIndex === 0) {
+                    typeDuration = 500;
+                    isDeleting = false;
+                    textIndex = (textIndex + 1) % typingWords.length;
+                }
+
+                setTimeout(type, typeDuration);
+            }
+            
+            // Start the typing effect
+            if(typingEl) {
+                setTimeout(type, 500); // Start after a short delay
+            }
+
+
+            // --- 4. Hero 3D Sphere (three.js) ---
+            let scene, camera, renderer, particleSystem;
+            let mouse = new THREE.Vector2();
+            const canvas = document.getElementById('hero-canvas');
+
+            function initThree() {
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.z = 5;
+                
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+                renderer.setClearColor(0xffffff, 0);
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                const particleCount = 5000;
+                const positions = new Float32Array(particleCount * 3);
+                const geometry = new THREE.BufferGeometry();
+                const material = new THREE.PointsMaterial({
+                    color: 0x2563EB,
+                    size: 0.015,
+                    transparent: true,
+                    blending: THREE.AdditiveBlending,
+                    depthWrite: false
+                });
+
+                for (let i = 0; i < particleCount; i++) {
+                    const i3 = i * 3;
+                    const phi = Math.acos(-1 + (2 * i) / particleCount);
+                    const theta = Math.sqrt(particleCount * Math.PI) * phi;
+                    positions[i3] = 2.5 * Math.cos(theta) * Math.sin(phi);
+                    positions[i3 + 1] = 2.5 * Math.sin(theta) * Math.sin(phi);
+                    positions[i3 + 2] = 2.5 * Math.cos(phi);
+                }
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                particleSystem = new THREE.Points(geometry, material);
+                scene.add(particleSystem);
+
+                window.addEventListener('resize', onWindowResize);
+                window.addEventListener('mousemove', onMouseMove);
+                animateThree();
+            }
+
+            function onWindowResize() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            }
+
+            function onMouseMove(event) {
+                mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+                mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+            }
+
+            function animateThree() {
+                requestAnimationFrame(animateThree);
+                
+                particleSystem.rotation.y += 0.0005;
+                particleSystem.rotation.x += 0.0005;
+                
+                camera.position.x += (mouse.x * 0.5 - camera.position.x) * 0.02;
+                camera.position.y += (mouse.y * 0.5 - camera.position.y) * 0.02;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+            }
+            
+            if (canvas) {
+                initThree();
+            }
+
+            // --- 5. Intersection Observer for Reveals ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                        const textElements = entry.target.querySelectorAll('.reveal-text');
+                        textElements.forEach(textEl => {
+                            if (textEl.children.length === 0) {
+                                const originalText = textEl.innerText;
+                                const words = originalText.split(' ');
+                                textEl.innerHTML = words.map((word, i) => `<span style="--i: ${i}; margin-left: ${i > 0 ? '0.2em' : '0'};">${word}</span>`).join('');
+                            }
+                        });
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // --- 6. Project Detail Panel Logic (NEW) ---
+            const panel = document.getElementById('project-detail-panel');
+            const closeButton = document.getElementById('close-panel');
+            const projectCards = document.querySelectorAll('.project-card[data-title]');
+
+            const detailImage = document.getElementById('detail-image');
+            const detailTitle = document.getElementById('detail-title');
+            const detailTags = document.getElementById('detail-tags');
+            const detailDescription = document.getElementById('detail-description');
+
+            projectCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const title = card.dataset.title;
+                    // Use the generated image src for the detail panel
+                    const imageSrc = card.querySelector('img').src;
+                    const tags = card.dataset.tags.split(',');
+                    const description = card.dataset.description;
+
+                    // Use generated image if available, otherwise data-image (fallback)
+                    detailImage.src = imageSrc || card.dataset.image;
+                    detailTitle.textContent = title;
+                    detailDescription.textContent = description;
+                    
+                    detailTags.innerHTML = '';
+                    tags.forEach(tag => {
+                        const tagEl = document.createElement('span');
+                        tagEl.className = 'bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full';
+                        tagEl.textContent = tag;
+                        detailTags.appendChild(tagEl);
+                    });
+
+                    panel.classList.add('open');
+                    body.classList.add('panel-open');
+                });
+            }); // <-- ADDED THIS CLOSING BRACKET AND PARENTHESIS
+            
+            // --- NEW: Mobile Menu Logic ---
+            const menuToggleBtn = document.getElementById('menu-toggle-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const closeMenuBtn = document.getElementById('close-menu-btn');
+            const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+            menuToggleBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('invisible');
+                mobileMenu.classList.add('opacity-100');
+                body.classList.add('panel-open'); // Re-use panel-open to stop scrolling
+            });
+
+            const closeMenu = () => {
+                mobileMenu.classList.add('invisible');
+                mobileMenu.classList.remove('opacity-100');
+                body.classList.remove('panel-open');
+            };
+
+            closeMenuBtn.addEventListener('click', closeMenu);
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+
+            /**
+             * Fetches data with exponential backoff.
+             */
+            async function exponentialBackoffFetch(url, options, maxRetries = 5, baseDelay = 1000) {
+                let attempt = 0;
+                while (attempt < maxRetries) {
+                    try {
+                        const response = await fetch(url, options);
+                        if (response.ok) {
+                            return response;
+                        }
+                        if (response.status >= 400 && response.status < 500) {
+                            console.error("Client-side error, not retrying:", response.status);
+                            throw new Error(`Client error: ${response.status}`);
+                        }
+                    } catch (error) {
+                        if (attempt + 1 >= maxRetries) {
+                            console.error("Max retries reached. Fetch failed.", error);
+                            throw error;
+                        }
+                    }
+                    const delay = baseDelay * Math.pow(2, attempt) + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    attempt++;
+                }
+                throw new Error("Fetch failed after max retries.");
+            }
+
+            /**
+             * Generates an image and places it in the DOM.
+             * @param {string} loaderId - The ID of the loading container.
+             * @param {string} imageId - The ID of the img element.
+             * @param {string} prompt - The prompt for the image generation.
+             * @param {string} fallbackText - Text for the placeholder if generation fails.
+             */
+            async function generateAndPlaceImage(loaderId, imageId, prompt, fallbackText = "Image") {
+                const imageContainer = document.getElementById(loaderId);
+                const imageEl = document.getElementById(imageId);
+                
+                if (!imageContainer || !imageEl) {
+                    console.error(`Could not find elements: ${loaderId} or ${imageId}`);
+                    return;
+                }
+
+                const payload = {
+                    instances: { prompt: prompt },
+                    parameters: { "sampleCount": 1 }
+                };
+                const apiKey = ""; // Leave empty
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=${apiKey}`;
+
+                try {
+                    const response = await exponentialBackoffFetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    const result = await response.json();
+                    
+                    if (result.predictions && result.predictions.length > 0 && result.predictions[0].bytesBase64Encoded) {
+                        const imageUrl = `data:image/png;base64,${result.predictions[0].bytesBase64Encoded}`;
+                        imageEl.src = imageUrl;
+                        // Also update the data-image attribute for the modal
+                        const projectCard = imageContainer.closest('.project-card');
+                        if (projectCard) {
+                            projectCard.dataset.image = imageUrl;
+                        }
+                        
+                        imageEl.onload = () => {
+                            imageContainer.classList.remove('animate-pulse', 'bg-gray-200');
+                            if (loaderId === 'about-image-container') {
+                                imageContainer.classList.remove('min-h-[600px]', 'flex', 'items-center', 'justify-center');
+                            }
+                            imageEl.classList.remove('hidden');
+                        };
+                    } else {
+                        console.error("Failed to generate image or parse response:", result);
+                        const fallbackUrl = `https://placehold.co/800x600/E5E7EB/1F2937?text=${encodeURIComponent(fallbackText)}+Failed`;
+                        imageEl.src = fallbackUrl;
+                        const projectCard = imageContainer.closest('.project-card');
+                        if (projectCard) {
+                            projectCard.dataset.image = fallbackUrl;
+                        }
+                        imageContainer.classList.remove('animate-pulse', 'bg-gray-200');
+                        if (loaderId === 'about-image-container') {
+                            imageContainer.classList.remove('min-h-[600px]', 'flex', 'items-center', 'justify-center');
+                        }
+                        imageEl.classList.remove('hidden');
+                    }
+                } catch (error) {
+                    console.error("Error generating image:", error);
+                    const fallbackUrl = `https://placehold.co/800x600/E5E7EB/1F2937?text=Error`;
+                    imageEl.src = fallbackUrl;
+                    const projectCard = imageContainer.closest('.project-card');
+                    if (projectCard) {
+                            projectCard.dataset.image = fallbackUrl;
+                    }
+                    imageContainer.classList.remove('animate-pulse', 'bg-gray-200');
+                    if (loaderId === 'about-image-container') {
+                        imageContainer.classList.remove('min-h-[600px]', 'flex', 'items-center', 'justify-center');
+                    }
+                    imageEl.classList.remove('hidden');
+                }
+            }
+
+            // --- 8. Generate All Images on Load ---
+            function generateAboutImage() {
+                const prompt = "A minimalist, abstract, geometric wireframe bust, 3d render, professional portfolio, blue and gray, studio lighting, clean white background, high-resolution";
+                generateAndPlaceImage('about-image-container', 'about-image', prompt, 'About+Me');
+            }
+
+            function generateProjectImages() {
+                const projectPrompts = [
+                    { 
+                        loaderId: 'project-loader-1', 
+                        imageId: 'project-image-1', 
+                        prompt: "A vibrant, abstract representation of a mobile app for learning code. Geometric shapes, binary code, puzzle pieces, dark mode, purple and blue glowing elements, 3d render, professional.", 
+                        fallback: "Code+Maze" 
+                    },
+                    { 
+                        loaderId: 'project-loader-2', 
+                        imageId: 'project-image-2', 
+                        prompt: "A clean, minimalist, abstract design of a news website. Lines of text, data visualization, global map, pink and white, professional, high-resolution.", 
+                        fallback: "News+Blog" 
+                    },
+                    { 
+                        loaderId: 'project-loader-3', 
+                        imageId: 'project-image-3', 
+                        prompt: "A high-tech, futuristic, abstract image for an AI startup. Neural network, glowing circuits, dark background, blue and white, 3d render, professional, minimalist.", 
+                        fallback: "Dartar.ai" 
+                    },
+                    { 
+                        loaderId: 'project-loader-4', 
+                        imageId: 'project-image-4', 
+                        prompt: "A hopeful, abstract image for an NGO in Africa. Stylized map of Africa, green and white, themes of nature and community, clean, minimalist, professional, high-resolution.", 
+                        fallback: "Clean+Africa" 
+                    }
+                ];
+
+                projectPrompts.forEach(p => {
+                    generateAndPlaceImage(p.loaderId, p.imageId, p.prompt, p.fallback);
+                });
+            }
+            
+            generateAboutImage();
+            generateProjectImages();
+
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
+
