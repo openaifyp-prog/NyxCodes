@@ -1,0 +1,74 @@
+class Lessons extends StatefulWidget {
+  const Lessons({Key? key}) : super(key: key);
+@override
+State<Lessons> createState() => _LessonsState();
+}
+
+class _LessonsState extends State<Lessons> {
+late Future<List<Lesson>> _localLessons;
+
+@override
+void initState() {
+super.initState();
+_localLessons = _loadLocalLessons();
+}
+
+Future<List<Lesson>> _loadLocalLessons() async {
+final raw = await rootBundle.loadString('assets/lessons_seed.json');
+final List<dynamic> data = jsonDecode(raw);
+return data.map((m) => Lesson.fromMap(
+m['id'], Map<String, dynamic>.from(m),
+)).toList();
+}
+
+@override
+Widget build(BuildContext context) {
+final service = FirestoreLessonService();
+
+return Scaffold(
+appBar: AppBar(title: const Text('Lessons')),
+body: StreamBuilder<List<Lesson>>(
+stream: service.streamLessons(),
+builder: (context, snap) {
+if (snap.connectionState == ConnectionState.waiting) {
+return const Center(child: CircularProgressIndicator());
+}
+final remote = snap.data ?? [];
+
+// If Firestore has <9 lessons, merge in the local ones
+return FutureBuilder<List<Lesson>>(
+future: _localLessons,
+builder: (ctx, locSnap) {
+final local = locSnap.data ?? [];
+// prefer remote, then fill missing from local
+final ids = remote.map((l) => l.id).toSet();
+final merged = [
+...remote,
+for (var l in local)
+if (!ids.contains(l.id)) l
+]..sort((a, b) => a.order.compareTo(b.order));
+
+// now show `merged` list exactly like before
+return ListView.builder(
+itemCount: merged.length,
+itemBuilder: (c, i) {
+final lesson = merged[i];
+return ListTile(
+title: Text(lesson.title),
+subtitle: Text(lesson.description),
+onTap: () => Navigator.push(
+c,
+MaterialPageRoute(
+builder: (_) => LessonDetail(lesson: lesson),
+),
+),
+);
+},
+);
+},
+);
+},
+),
+);
+}
+}

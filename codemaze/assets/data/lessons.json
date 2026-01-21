@@ -1,0 +1,16 @@
+{
+  "Introduction": {
+    "What is C++": {
+      "title": "What is C++",
+      "content": "C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language. It has imperative, object-oriented and generic programming features. C++ is known for its performance and is widely used in developing systems software, games, real-time systems, and large-scale applications.",
+      "example": "#include <iostream>\nusing namespace std;\nint main() {\n    cout << \"Hello, World!\";\n    return 0;\n}",
+      "output": "Hello, World!"
+    },
+    "Why Learn C++": {
+      "title": "Why Learn C++",
+      "content": "Learning C++ is valuable because it's a foundational language that teaches fundamental programming concepts such as memory management, object-oriented programming, and high-performance computing. It is used in developing operating systems, browsers, games, and complex applications requiring speed and efficiency.",
+      "example": "int sum(int a, int b) {\n    return a + b;\n}",
+      "output": ""
+    }
+  }
+}

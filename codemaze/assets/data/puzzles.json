@@ -1,0 +1,20 @@
+{
+  "Introduction": {
+    "What is C++": [
+      {
+        "question": "Fill in the blank: C++ is a ______-purpose programming language.",
+        "answer": "general"
+      },
+      {
+        "question": "Write the missing part to print in C++:\n____ << \"Hello\";",
+        "answer": "cout"
+      }
+    ],
+    "Why Learn C++": [
+      {
+        "question": "C++ is used in developing ______ systems, browsers, and games.",
+        "answer": "operating"
+      }
+    ]
+  }
+}

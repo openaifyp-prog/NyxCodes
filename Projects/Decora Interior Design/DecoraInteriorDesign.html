@@ -1,0 +1,614 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dekora Website</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            /* A small style for the gradient background in the image */
+            body {
+                background-color: #3d4a59; /* Fallback */
+            }
+            .nav-bg {
+                background: linear-gradient(to bottom, #4a5568, #2d3748); /* Gradient from nav image */
+            }
+            /* Custom font for section titles to match the image */
+            .custom-font-heading {
+                font-family: 'Playfair Display', serif; /* Or similar elegant serif font */
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body class="bg-slate-900">
+    <!-- Navbar -->
+        <nav class="nav-bg text-white shadow-lg">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between items-center h-16">
+                    <div>
+                        <a href="#">
+                            <img class="h-10 w-auto" src="Logo.svg" alt="Dekora Logo">
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-6">
+                        <a href="#" class="py-2 px-3 text-cyan-400 font-medium">Home</a>
+                        <a href="#" class="py-2 px-3 text-white hover:text-cyan-400 font-medium">Shop</a>
+                        <a href="#" class="py-2 px-3 text-white hover:text-cyan-400 font-medium">About Us</a>
+                        <a href="#" class="py-2 px-3 text-white hover:text-cyan-400 font-medium">Contact</a>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <a href="#" class="hidden md:block relative p-1 text-white hover:text-cyan-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+                            <span class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-xs font-bold text-slate-900">1</span>
+                        </a>
+                        <button id="mobile-menu-button" class="md:hidden p-1 text-white hover:text-cyan-400">
+                            <svg id="icon-open" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                            <svg id="icon-close" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-800">
+                <a href="#" class="block py-2 px-4 text-sm text-cyan-400 hover:bg-slate-700">Home</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-slate-700">Shop</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-slate-700">About Us</a>
+                <a href="#" class="block py-2 px-4 text-sm text-white hover:bg-slate-700">Contact</a>
+                <a href="#" class="flex items-center py-2 px-4 text-sm text-white hover:bg-slate-700">
+                    <div class="relative mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" /></svg>
+                        <span class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-xs font-bold text-slate-900">1</span>
+                    </div>
+                    Cart
+                </a>
+            </div>
+        </nav>
+        <!-- Hero Section -->
+        <section id="hero-section">
+            <div class="relative w-full h-[80vh] bg-cover bg-center" style="background-image: url('Rectangle 2.png');">
+                <div class="relative z-10 flex flex-col items-center justify-start h-full text-center text-white px-4 pt-16 md:pt-24">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 max-w-4xl">
+                        Design Your Dream Home With Perfect Flooring
+                    </h1>
+                    <a href="#" 
+                    class="py-3 px-8 bg-gradient-to-r from-green-400 to-cyan-500 text-white font-semibold rounded-full shadow-lg hover:from-green-500 hover:to-cyan-600 transition-all duration-300 ease-in-out">
+                        Our Solutions
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about-us-section" class="bg-white py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="Rectangle 47.png" alt="Comfortable sofa in a modern room" class="w-full h-auto rounded-3xl shadow-lg">
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                        WHY CHOOSE US
+                    </p>
+                    <h2 class="text-4xl font-bold text-slate-800 mb-4">
+                        About Alori Solutions<br>flooring company
+                    </h2>
+                    <p class="text-gray-600 mb-8">
+                        Decora is a full-service landscape company. Our established systems allow us to deliver industry-leading landscape solutions to commercial and residential clients.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <span class="flex-shrink-0 h-8 w-8 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center mr-4">
+                                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            </span>
+                            <span class="text-lg font-medium text-slate-700">Hardwood Floor Repair</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="flex-shrink-0 h-8 w-8 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center mr-4">
+                                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            </span>
+                            <span class="text-lg font-medium text-slate-700">Custom projects with unique designs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <span class="flex-shrink-0 h-8 w-8 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 flex items-center justify-center mr-4">
+                                <svg class="h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            </span>
+                            <span class="text-lg font-medium text-slate-700">We bring our showroom to your home.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- Expert-Installers-Section -->
+        <section id="expert-installers-section" class="bg-[#e9faf4] py-16 md:py-24 overflow-hidden relative">
+            <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <div class="relative z-10">
+                    <p class="text-sm font-semibold text-green-500 uppercase tracking-wider mb-2">
+                        OUR NUMBERING
+                    </p>
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 custom-font-heading">
+                        Expert Flooring<br>Installers
+                    </h2>
+                    <p class="text-gray-600 mb-8 max-w-md">
+                        At Decora, our expert flooring installers bring skill, precision, and care to every project.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-8 mb-10">
+                        <div>
+                            <p class="text-5xl font-bold text-slate-800 mb-1 custom-font-heading">5k+</p>
+                            <p class="text-gray-600">Completed Projects</p>
+                        </div>
+                        <div>
+                            <p class="text-5xl font-bold text-slate-800 mb-1 custom-font-heading">30+</p>
+                            <p class="text-gray-600">Our Expert Team</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-500 text-sm max-w-md">
+                        There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration
+                    </p>
+                </div>
+
+                <div class="relative h-[400px] md:h-full min-h-[500px]">
+            
+                    <img src="Rectangle 9.png" alt="Blue modern hallway" 
+                        class="absolute top-0 right-0 md:-right-8 w-3/4 md:w-4/5 h-auto rounded-3xl shadow-xl z-10">
+                    
+                    <img src="Rectangle 13.png" alt="White modern chair in a room" 
+                        class="absolute bottom-0 left-0 w-1/2 md:w-1/2 h-auto rounded-3xl shadow-xl z-20">
+                </div>
+
+            </div>
+        </section>
+        <!-- Services -->
+        <section id="services-section" class="bg-white py-16 md:py-24">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="text-center mb-16">
+            
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                OUR SERVICES
+            </p>
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4 custom-font-heading">
+                Services we Provide
+            </h2>
+            
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Our design services starts and ends with a best in class experience strategy that builds brands.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+                <img class="h-20 w-20 rounded-full object-cover mb-6" src="Rectangle 40.png" alt="Wood floor repair service icon">
+                
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">
+                    Wood Floor Repair
+                </h3>
+                
+                <p class="text-gray-600 mb-6">
+                    At Decora, we specialize in restoring the natural beauty of your wooden floors.
+                </p>
+                
+                <a href="#" class="text-cyan-500 font-semibold hover:text-cyan-600 transition-colors">
+                    Read More
+                </a>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+                <img class="h-20 w-20 rounded-full object-cover mb-6" src="Rectangle 49.png" alt="Kitchen strip out service icon">
+                
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">
+                    Kitchen Strips Outs
+                </h3>
+                
+                <p class="text-gray-600 mb-6">
+                    At Decora, we provide professional kitchen strip out services to prepare your space for a brand-new design.
+                </p>
+                
+                <a href="#" class="text-cyan-500 font-semibold hover:text-cyan-600 transition-colors">
+                    Read More
+                </a>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+                <img class="h-20 w-20 rounded-full object-cover mb-6" src="Rectangle 51.png" alt="Floor removal service icon">
+                
+                <h3 class="text-2xl font-bold text-slate-800 mb-3">
+                    Floor Removal
+                </h3>
+                
+                <p class="text-gray-600 mb-6">
+                    At Decora, we offer fast and professional floor removal services for all types of flooring.
+                </p>
+                
+                <a href="#" class="text-cyan-500 font-semibold hover:text-cyan-600 transition-colors">
+                    Read More
+                </a>
+            </div>
+
+        </div> </div> </section>
+        <!-- Our Products -->
+
+      <section id="products-section" class="bg-white py-16 md:py-24 overflow-hidden relative">
+
+    <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        <div class="relative h-[400px] md:h-full min-h-[500px]">
+    
+            <img src="Rectangle 10.png" alt="Modern room with cabinet and plant" 
+                 class="absolute top-0 left-0 w-3/4 h-auto rounded-3xl shadow-xl z-10">
+            
+            <img src="Rectangle 11.png" alt="Sofa and coffee table with purple flowers" 
+                 class="absolute bottom-0 right-0 w-3/5 h-auto rounded-3xl shadow-xl z-20">
+        </div>
+
+        <div>
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                OUR PRODUCTS
+            </p>
+
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 custom-font-heading">
+                Out Flooring<br>
+                Hardwood, Material<br>
+                Stone, Laminate, Carpet
+            </h2>
+
+            <p class="text-gray-600 mb-8 max-w-lg">
+                There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration
+            </p>
+
+            <a href="#" 
+               class="inline-block py-3 px-8 bg-gradient-to-r from-green-400 to-cyan-500 text-white font-semibold rounded-lg shadow-lg hover:from-green-500 hover:to-cyan-600 transition-all duration-300 ease-in-out">
+                Our Products
+            </a>
+        </div>
+        
+    </div> </section>
+    <!-- Our Smart Processes -->
+    <section id="processes-section" class="bg-[#e9faf4] py-16 md:py-24">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="text-center mb-16">
+            
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                OUR PROCESSES
+            </p>
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4 custom-font-heading">
+                Our Smart Processes
+            </h2>
+            
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Our design services starts and ends with a best in class experience strategy that builds brands.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+
+            <div class="flex flex-col items-center text-center">
+                <div class="w-28 h-28 bg-emerald-400 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                    <span class="text-5xl font-bold text-slate-800 custom-font-heading">1</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 custom-font-heading">
+                    Color Board
+                </h3>
+            </div>
+
+            <div class="flex flex-col items-center text-center">
+                <div class="w-28 h-28 bg-emerald-400 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                    <span class="text-5xl font-bold text-slate-800 custom-font-heading">2</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 custom-font-heading">
+                    Dimention
+                </h3>
+            </div>
+
+            <div class="flex flex-col items-center text-center">
+                <div class="w-28 h-28 bg-emerald-400 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                    <span class="text-5xl font-bold text-slate-800 custom-font-heading">3</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 custom-font-heading">
+                    Installution
+                </h3>
+            </div>
+
+            <div class="flex flex-col items-center text-center">
+                <div class="w-28 h-28 bg-emerald-400 rounded-full flex items-center justify-center mb-4 shadow-lg">
+                    <span class="text-5xl font-bold text-slate-800 custom-font-heading">4</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 custom-font-heading">
+                    Finishing
+                </h3>
+            </div>
+
+        </div> </div> </section>
+
+        <!-- Our project  -->
+   <section id="projects-section">
+
+    <div class="bg-white pt-16 md:pt-24 pb-24 md:pb-32">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                OUR PROCESSES
+            </p>
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-4 custom-font-heading">
+                We have done more than<br> 712+ Flooring Projects Successfully
+            </h2>
+            
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Our design services starts and ends with a best in class experience strategy that builds brands.
+            </p>
+        </div>
+    </div>
+
+    <div class="bg-[#e9faf4]">
+        <div class="max-w-6xl mx-auto px-4 py-16 md:py-24 relative">
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 -mt-40 md:-mt-48">
+                
+                <img src="Rectangle 15.png" alt="Lounge with blue chair" class="rounded-3xl shadow-xl w-full h-full object-cover">
+                
+                <img src="Rectangle 40.png" alt="Modern room with two white chairs" class="rounded-3xl shadow-xl w-full h-full object-cover">
+                
+                <img src="Rectangle 41.png" alt="Living room with brown sofa" class="rounded-3xl shadow-xl w-full h-full object-cover">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!-- Contact Us -->
+<section id="contact-section" class="bg-white grid grid-cols-1 md:grid-cols-2 items-center overflow-hidden">
+
+    <div class="py-16 md:py-24 px-4 sm:px-8 md:pl-16 lg:pl-32">
+
+        <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+            CONTACT US
+        </p>
+
+        <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-6 custom-font-heading">
+            Lets Create Something Great Together
+        </h2>
+
+        <p class="text-gray-600 mb-8 max-w-md">
+            Decora is a full-service landscape company. Our established systems allow us to deliver industry
+        </p>
+
+        <form action="#" method="POST" class="space-y-4 max-w-lg">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="full-name" class="sr-only">Enter Full Name</label>
+                    <input type="text" name="full-name" id="full-name" 
+                           class="w-full bg-gray-100 border border-gray-200 rounded-xl p-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500" 
+                           placeholder="Enter Full Name">
+                </div>
+                
+                <div>
+                    <label for="mobile-number" class="sr-only">Enter Mobile Number</label>
+                    <input type="tel" name="mobile-number" id="mobile-number" 
+                           class="w-full bg-gray-100 border border-gray-200 rounded-xl p-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500" 
+                           placeholder="Enter Mobile Number">
+                </div>
+            </div>
+
+            <div>
+                <label for="message" class="sr-only">Enter Your Message</label>
+                <textarea name="message" id="message" rows="4" 
+                          class="w-full bg-gray-100 border border-gray-200 rounded-xl p-4 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500" 
+                          placeholder="Enter Your Message"></textarea>
+            </div>
+
+            <div>
+                <button type="submit" 
+                        class="w-auto py-3 px-8 bg-emerald-400 text-white font-semibold rounded-xl shadow-lg hover:bg-emerald-500 transition-all duration-300 ease-in-out">
+                    Send
+                </button>
+            </div>
+
+        </form> </div>
+
+    <div class="h-96 md:h-full w-full bg-cover bg-center" 
+         style="background-image: url('Rectangle 47.png');">
+        </div>
+
+</section>
+<!-- Testimonials -->
+<section id="testimonials-section" class="bg-[#e9faf4] py-16 md:py-24">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="text-center mb-12">
+            
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                TESTIMONIALS
+            </p>
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 custom-font-heading">
+                Here's What Our Satisfied Clients Are Saying...
+            </h2>
+        </div>
+
+        <div>
+            <img src="Rectangle 48.png" alt="A modern living room with a grey sofa and large windows" 
+                 class="w-full h-auto max-w-4xl mx-auto rounded-3xl shadow-xl">
+        </div>
+        
+    </div> </section>
+    <!-- Blogs -->
+    <section id="blog-section" class="bg-white py-16 md:py-24">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="text-center mb-16">
+            
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                BLOGS
+            </p>
+            
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 custom-font-heading">
+                Articles daily updated latest articles<br> directly from the blog
+            </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col">
+                <img class="w-full h-56 object-cover" src="Rectangle 49.png" alt="A rustic modern kitchen">
+                
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                        <span>4 Dec 2025</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">
+                        <a href="#" class="hover:text-cyan-600 transition-colors">
+                            Best Flooring for Modern kitchen
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600">
+                        Choosing the right flooring can completely change the look of your modern kitchen.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col">
+                <img class="w-full h-56 object-cover" src="Rectangle 50.png" alt="A minimalist room with a green sofa">
+                
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                        <span>4 Dec 2025</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">
+                        <a href="#" class="hover:text-cyan-600 transition-colors">
+                            Top Kitchen Flooring Trends in 2025
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600">
+                        Give your kitchen a fresh, modern touch! Discover the latest flooring trends
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col">
+                <img class="w-full h-56 object-cover" src="Rectangle 51.png" alt="A living room with a brown sofa and yellow chair">
+                
+                <div class="p-6 flex-grow">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                        <span>4 Dec 2025</span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-slate-800 mb-3">
+                        <a href="#" class="hover:text-cyan-600 transition-colors">
+                            How to Choose the Right Flooring for Your Kitchen
+                        </a>
+                    </h3>
+                    
+                    <p class="text-gray-600">
+                        Picking the perfect kitchen floor can be tricky — but it doesn't have to be! Learn simple tips
+                    </p>
+                </div>
+            </div>
+
+        </div> </div> </section>
+<!-- Footer -->
+        <footer id="footer-section" class="bg-slate-800 text-gray-300 py-16">
+
+    <div class="max-w-6xl mx-auto px-4">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-8">
+
+            <div class="lg:col-span-1">
+                <h2 class="text-3xl font-bold text-white mb-6">Newslatter</h2>
+                
+                <form class="relative flex w-full max-w-md bg-slate-700 rounded-full border border-gray-600 p-1.5">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="flex-grow bg-transparent text-white placeholder-gray-400 focus:outline-none px-4">
+                    <button type="submit" 
+                            class="bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-full py-2 px-6 hover:from-cyan-500 hover:to-blue-600 transition-all">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <div class="lg:col-span-2">
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-4">Support</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-4">Useful Link</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="hover:text-white transition-colors">Payment & Tax</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Team of service</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Privaci Policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-4">Our Menu</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="hover:text-white transition-colors">Best Product</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Category</a></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-white mb-4">Address</h3>
+                        <div class="space-y-3">
+                            <p>JL. Setiabudhi No. 193 Sukasari, Bandung West Java, Indonesia</p>
+                            <p>info@decora.com</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div> <div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-center text-gray-400 text-sm">
+                    © 2025 Decora - All rights reserved.
+                </p>
+            </div>
+        </div>
+
+    </div> </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const menuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const iconOpen = document.getElementById('icon-open');
+                const iconClose = document.getElementById('icon-close');
+
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    iconOpen.classList.toggle('hidden');
+                    iconClose.classList.toggle('hidden');
+                });
+            });
+        </script>
+
+    </body>
+    </html>

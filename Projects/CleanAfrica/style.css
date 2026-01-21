@@ -1,0 +1,1738 @@
+ body {
+            font-family: 'Inter', sans-serif;
+        }
+        a:hover{
+            color: #00B67A;
+        }
+        /* Google Fonts Import - place this in your main stylesheet or <head> if not already there */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* * Main container for the entire component. 
+     * It replaces the old body styling.
+    */
+    .ca-section-container {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa; /* You can change or remove this */
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+    }
+
+    /* Unique class for the section heading */
+    .ca-heading-wrapper {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .ca-heading-wrapper p {
+        color: #00B67A;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .ca-heading-wrapper h1 {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-top: 0;
+    }
+
+    /* Unique class for the flex container of the cards */
+    .ca-cards-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    /* Unique class for the card base styling */
+    .ca-card-item {
+        position: relative;
+        background-color: #ffffff;
+        color: #333;
+        border-radius: 16px;
+        padding: 80px 25px 30px 25px;
+        width: calc(25% - 20px);
+        min-width: 260px;
+        text-align: center;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        margin-top: 50px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 3px solid #00B67A; /* Green border for default cards */
+        box-sizing: border-box;
+    }
+
+    .ca-card-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Unique class for the highlighted card */
+    .ca-card-item.ca-highlighted-card {
+        background-color: #00B67A;
+        color: white;
+        border: 3px solid #ffffff; /* White border for highlighted card */
+    }
+
+    /* Unique class for the icon circle */
+    .ca-icon-circle {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90px;
+        height: 90px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 3px solid #e0e0e0;
+    }
+
+    .ca-card-item.ca-highlighted-card .ca-icon-circle {
+        border-color: #00B67A;
+    }
+    
+    .ca-icon-circle svg path {
+        stroke: #00B67A;
+        fill: #00B67A;
+    }
+    .ca-icon-circle svg path[fill="none"] {
+         fill: none;
+    }
+
+    /* Unique class for the text content within the card */
+    .ca-text-content h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: inherit;
+    }
+
+    .ca-text-content p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        font-weight: 400;
+        opacity: 0.9;
+        color: inherit;
+    }
+
+    /* Responsive adjustments with unique class names */
+    @media (max-width: 1024px) {
+        .ca-card-item {
+            width: calc(50% - 20px);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .ca-heading-wrapper h1 {
+            font-size: 2rem;
+        }
+        .ca-card-item {
+            width: 100%;
+            min-width: unset;
+        }
+    }
+        .hero-shape {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50%;
+            height: 80%;
+            background: #00B67A;
+            border-radius: 50% 0 0 0;
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .hero-shape {
+                width: 100%;
+                height: 40%;
+                border-radius: 0;
+            }
+        }
+        .card-icon-wrapper {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        .card-icon-circle {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            border: 3px solid #00B67A;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 640px) {
+            .card-icon-circle {
+                width: 70px;
+                height: 70px;
+            }
+            .card-icon-wrapper {
+                top: -35px;
+            }
+        }
+        /* Mobile menu animation */
+        .mobile-menu-enter {
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+         /* Google Fonts Import - place this in your main stylesheet or <head> if not already there */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* Main container for the entire "How to Get Started" component */
+    .ca-get-started-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa; /* Light grey background, change as needed */
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+    }
+
+    /* Unique class for the section heading */
+    .ca-get-started-heading {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .ca-get-started-heading p {
+        color: #00B67A; /* Green for "Let's Get Started" */
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .ca-get-started-heading h1 {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-top: 0;
+    }
+
+    /* Unique class for the flex container of the cards */
+    .ca-get-started-cards-grid {
+        display: flex;
+        flex-wrap: wrap; /* Allows cards to wrap on smaller screens */
+        gap: 25px; /* Space between cards */
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    /* Unique class for the card base styling */
+    .ca-get-started-card-item {
+        position: relative;
+        background-color: #ffffff;
+        color: #333;
+        border-radius: 16px;
+        padding: 80px 25px 30px 25px; /* Adjust top padding for icon */
+        width: calc(33.333% - 20px); /* Approximately 3 cards per row with gap */
+        min-width: 280px; /* Minimum width for responsiveness */
+        text-align: center;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+        margin-top: 50px; /* Space for the icon to float above */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        /* Green border for default cards */
+        border: 3px solid #00B67A;
+        box-sizing: border-box; /* Ensures border doesn't add to the width */
+    }
+
+    .ca-get-started-card-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Unique class for the highlighted card */
+    .ca-get-started-card-item.ca-get-started-highlighted-card {
+        background-color: #00B67A; /* Green background */
+        color: white; /* White text for the highlighted card */
+        /* White border for highlighted card */
+        border: 3px solid #ffffff;
+    }
+
+    /* Unique class for the icon circle */
+    .ca-get-started-icon-circle {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Centers the icon perfectly */
+        width: 90px;
+        height: 90px;
+        background-color: #ffffff; /* White background for all icon circles */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 3px solid #e0e0e0; /* Light grey border for default icons */
+    }
+
+    /* Border color for the highlighted card's icon */
+    .ca-get-started-card-item.ca-get-started-highlighted-card .ca-get-started-icon-circle {
+        border-color: #00B67A; /* Green border for highlighted card's icon */
+    }
+
+    /* SVG icon color - default for non-highlighted */
+    .ca-get-started-icon-circle svg path {
+        stroke: #00B67A; /* Green stroke for icons in non-highlighted cards */
+        fill: #00B67A; /* Green fill for icons in non-highlighted cards */
+    }
+    .ca-get-started-icon-circle svg path[fill="none"] { /* Ensure stroke-only paths remain stroke-only */
+         fill: none;
+    }
+
+
+    /* Unique class for the text content within the card */
+    .ca-get-started-text-content h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.5rem; /* 24px */
+        font-weight: 600;
+        color: inherit; /* Inherit color from parent (.ca-get-started-card-item or .ca-get-started-highlighted-card) */
+    }
+
+    .ca-get-started-text-content p {
+        margin: 0;
+        font-size: 0.9rem; /* 14.5px */
+        line-height: 1.6;
+        font-weight: 400;
+        opacity: 0.9;
+        color: inherit; /* Inherit color from parent */
+    }
+
+    .ca-get-started-text-content ul {
+        list-style: none; /* Remove default bullet points */
+        padding: 0;
+        margin: 15px 0 0;
+        text-align: left; /* Align list items to the left */
+        color: inherit;
+        opacity: 0.9;
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .ca-get-started-text-content ul li {
+        position: relative;
+        padding-left: 25px; /* Space for custom bullet */
+        margin-bottom: 8px;
+    }
+
+    .ca-get-started-text-content ul li::before {
+        content: '\2022'; /* Unicode for a solid bullet point */
+        color: #00B67A; /* Green bullet for default cards */
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-size: 1.2em; /* Slightly larger bullet */
+        line-height: 1.6;
+    }
+
+    /* Bullet color for highlighted card */
+    .ca-get-started-card-item.ca-get-started-highlighted-card .ca-get-started-text-content ul li::before {
+        color: #ffffff; /* White bullet for highlighted card */
+    }
+
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .ca-get-started-card-item {
+            width: calc(50% - 20px); /* 2 cards per row on medium screens */
+        }
+    }
+
+    @media (max-width: 768px) {
+        .ca-get-started-heading h1 {
+            font-size: 2rem;
+        }
+        .ca-get-started-card-item {
+            width: calc(100% - 20px); /* 1 card per row on small screens */
+            min-width: unset;
+        }
+    }
+     /* Google Fonts Import - place this in your main stylesheet or <head> if not already there */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+    /* Main container for the entire "ABOUT US" component */
+    .ca-about-section-wrapper {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa; /* Light grey background, change as needed */
+        padding: 80px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align items to the start vertically */
+        color: #333;
+        max-width: 1400px; /* Max width for the entire section */
+        margin: 0 auto; /* Center the section on the page */
+        flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+        gap: 40px; /* Space between text content and image grid */
+    }
+
+    /* Left column: Text content */
+    .ca-about-text-content-column {
+        flex: 1; /* Allow column to grow */
+        min-width: 350px; /* Minimum width before wrapping */
+        max-width: 550px; /* Max width for readability */
+        text-align: left;
+    }
+
+    .ca-about-text-content-column .ca-about-subtitle {
+        color: #00B67A; /* Green for "ABOUT US" */
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+    }
+
+    .ca-about-text-content-column .ca-about-title {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 25px;
+    }
+
+    .ca-about-text-content-column .ca-about-description {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 25px;
+    }
+
+    .ca-about-text-content-column .ca-about-vision-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .ca-about-text-content-column .ca-about-vision-description {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #555;
+        margin-bottom: 30px;
+    }
+
+    /* Contact button style */
+    .ca-about-contact-button {
+        display: inline-block;
+        background-color: #00B67A;
+        color: white;
+        padding: 14px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .ca-about-contact-button:hover {
+        background-color: #00997a;
+        transform: translateY(-2px);
+    }
+
+    /* Right column: Image grid */
+    .ca-about-image-grid-column {
+        flex: 1; /* Allow column to grow */
+        min-width: 400px; /* Minimum width before wrapping */
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Space between images */
+        justify-content: center;
+        align-items: flex-start; /* Align grid items to the top */
+    }
+
+    .ca-about-image-item {
+        width: calc(50% - 10px); /* 2 images per row with gap */
+        border-radius: 8px;
+        overflow: hidden; /* Hide parts of image outside border-radius */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .ca-about-image-item img {
+        width: 100%;
+        height: 100%; /* Ensure image fills its container */
+        object-fit: cover; /* Cover the area, cropping if necessary */
+        display: block; /* Remove extra space below image */
+        border-radius: 8px; /* Apply border radius to the image itself */
+    }
+
+    /* Specific adjustments for the layout based on the image provided */
+    .ca-about-image-item:nth-child(1) {
+        height: 250px; /* Adjust height for the top-left image */
+    }
+    .ca-about-image-item:nth-child(2) {
+        height: 250px; /* Adjust height for the top-right image */
+    }
+    .ca-about-image-item:nth-child(3) {
+        height: 250px; /* Adjust height for the bottom-left image */
+    }
+    .ca-about-image-item:nth-child(4) {
+        height: 250px; /* Adjust height for the bottom-right image */
+    }
+
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .ca-about-section-wrapper {
+            flex-direction: column; /* Stack columns on smaller screens */
+            align-items: center;
+            padding: 60px 15px;
+        }
+
+        .ca-about-text-content-column {
+            min-width: unset;
+            max-width: 100%;
+            text-align: center;
+        }
+        
+        .ca-about-text-content-column .ca-about-title {
+            font-size: 2rem;
+        }
+
+        .ca-about-image-grid-column {
+            min-width: unset;
+            width: 100%;
+            max-width: 600px; /* Constrain image grid width on small screens */
+            gap: 15px;
+        }
+
+        .ca-about-image-item {
+            width: calc(50% - 8px); /* Adjust width and gap for 2 columns */
+            height: 200px; /* Adjust image height for smaller screens */
+        }
+    }
+
+    @media (max-width: 576px) {
+        .ca-about-text-content-column .ca-about-title {
+            font-size: 1.75rem;
+        }
+        .ca-about-image-item {
+            width: 100%; /* 1 image per row on very small screens */
+            height: 220px; /* Maintain a reasonable image height */
+        }
+    } /* Main container for the "KEY BENEFITS" section */
+    .ca-key-benefits-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff; /* White background for this section */
+        padding: 80px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+    }
+
+    /* Unique class for the section heading */
+    .ca-key-benefits-heading {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .ca-key-benefits-heading p {
+        color: #00B67A; /* Green for "Our Company" */
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .ca-key-benefits-heading h1 {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-top: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Flex container for the cards */
+    .ca-key-benefits-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    /* Base styling for each card */
+    .ca-key-benefits-card {
+        position: relative;
+        background-color: #ffffff;
+        color: #333;
+        border-radius: 12px;
+        padding: 70px 25px 30px 25px; /* Top padding for icon space */
+        width: calc(25% - 25px); /* 4 cards per row with gap */
+        min-width: 250px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        margin-top: 50px; /* Space for the icon */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e9e9e9; /* Subtle border for default cards */
+        box-sizing: border-box;
+    }
+
+    .ca-key-benefits-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Styling for the highlighted card */
+    .ca-key-benefits-card.ca-key-benefits-highlighted {
+        background-color: #00B67A;
+        color: white;
+        border: none; /* No border for the highlighted card */
+    }
+
+    /* Icon circle styling */
+    .ca-key-benefits-icon-circle {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90px;
+        height: 90px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 2px solid #e9e9e9;
+    }
+    
+    .ca-key-benefits-card.ca-key-benefits-highlighted .ca-key-benefits-icon-circle {
+        border-color: #00B67A;
+    }
+
+    .ca-key-benefits-icon-circle svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .ca-key-benefits-icon-circle svg path {
+        stroke: #00B67A;
+        fill: #00B67A;
+    }
+    .ca-key-benefits-icon-circle svg path[fill="none"] {
+         fill: none;
+    }
+
+    /* Text content styling */
+    .ca-key-benefits-card h2 {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #00B67A; /* Green heading for default cards */
+    }
+    
+    .ca-key-benefits-card.ca-key-benefits-highlighted h2 {
+        color: #ffffff; /* White heading for highlighted card */
+    }
+
+    .ca-key-benefits-card p {
+        margin: 0;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        color: #666;
+    }
+    
+    .ca-key-benefits-card.ca-key-benefits-highlighted p {
+        color: #ffffff;
+        opacity: 0.9;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .ca-key-benefits-card {
+            width: calc(50% - 15px); /* 2 cards per row */
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .ca-key-benefits-heading h1 {
+            font-size: 2rem;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .ca-key-benefits-card {
+            width: 100%; /* 1 card per row */
+        }
+    }  /* Main container for the "Our Team" component */
+    .ca-our-team-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        padding: 80px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+    }
+
+    /* Heading styles */
+    .ca-our-team-heading {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .ca-our-team-heading p {
+        color: #00B67A;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .ca-our-team-heading h1 {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-top: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Grid container for the team cards */
+    .ca-our-team-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    /* Individual team card styling */
+    .ca-our-team-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        width: calc(25% - 25px); /* 4 cards per row */
+        min-width: 250px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        border: 1px solid #f0f0f0;
+        text-align: center;
+        transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Image container with relative positioning for the overlay */
+    .ca-our-team-img-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        background-color: #f5f5f5; /* Light grey background for images */
+    }
+
+    .ca-our-team-img-wrapper img {
+        width: 100%;
+        display: block;
+        height: 300px; /* Fixed height for all images */
+        object-fit: cover; /* Ensures image covers the area */
+        object-position: top center; /* Focus on the top part of the image */
+    }
+
+    /* The overlay that appears on hover */
+    .ca-our-team-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 184, 148, 0.85); /* Semi-transparent green */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0; /* Hidden by default */
+        transition: opacity 0.3s ease;
+    }
+
+    /* Social media links container */
+    .ca-our-team-social-links {
+        display: flex; /* Use flex to align links and separators */
+        align-items: center;
+    }
+
+    .ca-our-team-social-links a {
+        color: white;
+        margin: 0 10px; /* Space around links */
+        transition: transform 0.3s ease;
+        display: flex; /* Ensure SVG is properly centered if needed */
+    }
+    .ca-our-team-social-links a:hover {
+        transform: scale(1.1);
+    }
+    .ca-our-team-social-links svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    /* --- NEW ---: Separator line for links */
+    .ca-our-team-social-links a + a::before {
+        content: ''; /* Empty content for the pseudo-element */
+        display: block;
+        width: 1px; /* Width of the line */
+        height: 20px; /* Height of the line */
+        background-color: rgba(255, 255, 255, 0.6); /* White, semi-transparent line */
+        margin-left: -10px; /* Adjust to sit between links with current margin */
+        margin-right: 10px; /* Provide space after the line */
+    }
+    /* --- END NEW --- */
+
+    /* Text info below the image */
+    .ca-our-team-info {
+        padding: 20px;
+    }
+
+    .ca-our-team-info h3 {
+        margin: 0 0 5px 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #333;
+        transition: color 0.3s ease;
+    }
+
+    .ca-our-team-info p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    /* --- HOVER EFFECTS --- */
+    .ca-our-team-card:hover {
+        border-color: #00B67A;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+    }
+    /* Show the overlay on card hover */
+    .ca-our-team-card:hover .ca-our-team-overlay {
+        opacity: 1;
+    }
+    /* Change the name color on card hover */
+    .ca-our-team-card:hover .ca-our-team-info h3 {
+        color: #00B67A;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .ca-our-team-card {
+            width: calc(50% - 15px); /* 2 cards per row */
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .ca-our-team-card {
+            width: 100%; /* 1 card per row */
+        }
+    }  /* Main container for the "Feedback" component */
+    .ca-feedback-fade-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        padding: 80px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+    }
+
+    .ca-feedback-fade-container {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        max-width: 1100px; /* Adjusted max-width */
+        width: 100%;
+    }
+
+    /* Left Column: Text Content */
+    .ca-feedback-fade-text-content {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .ca-feedback-fade-text-content h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .ca-feedback-fade-text-content p {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    /* Navigation Buttons */
+    .ca-feedback-fade-nav-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .ca-feedback-fade-nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid #00B67A;
+        background-color: transparent;
+    }
+    
+    .ca-feedback-fade-nav-btn.ca-feedback-fade-next-btn {
+        background-color: #00B67A;
+        color: white;
+    }
+    
+    .ca-feedback-fade-nav-btn.ca-feedback-fade-prev-btn {
+        background-color: white;
+        color: #00B67A;
+    }
+
+    .ca-feedback-fade-nav-btn:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Right Column: Slider */
+    .ca-feedback-fade-slider-area {
+        flex: 1.2;
+        position: relative;
+    }
+
+    /* --- UPDATED --- Wrapper now acts as a frame */
+    .ca-feedback-fade-slider-wrapper {
+        position: relative;
+        min-height: 300px; /* Set a min-height to avoid layout shifts */
+    }
+
+    /* --- UPDATED --- Individual Testimonial Card for Fading */
+    .ca-feedback-fade-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0; /* Hidden by default */
+        visibility: hidden; /* Hide from screen readers when inactive */
+        transition: opacity 0.6s ease-in-out, visibility 0.6s;
+        
+        /* Card styling from previous version */
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        padding: 25px;
+        border: 2px solid #00B67A;
+        border-radius: 12px;
+        background-color: #ffffff;
+    }
+    
+    /* --- NEW --- Active card styling for fading */
+    .ca-feedback-fade-card.is-active {
+        opacity: 1;
+        visibility: visible;
+        position: static; /* Let the active card define the container's height */
+    }
+
+    .ca-feedback-fade-card-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .ca-feedback-fade-card-content {
+        flex-grow: 1;
+    }
+
+    .ca-feedback-fade-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+    
+    .ca-feedback-fade-quote-icon {
+        width: 40px;
+        height: 40px;
+        color: #00B67A;
+    }
+
+    .ca-feedback-fade-person-info h3 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    .ca-feedback-fade-person-info p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #777;
+    }
+    
+    .ca-feedback-fade-stars {
+        margin-bottom: 15px;
+        color: #f39c12;
+    }
+    .ca-feedback-fade-stars svg { width: 20px; height: 20px; }
+
+    .ca-feedback-fade-quote-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #555;
+    }
+    
+    /* Navigation Dots */
+    .ca-feedback-fade-dots {
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    .ca-feedback-fade-dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: #d4e9e5;
+        border-radius: 50%;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    
+    .ca-feedback-fade-dot.active {
+        background-color: #00B67A;
+        transform: scale(1.2);
+    }
+    
+    @media (max-width: 992px) {
+        .ca-feedback-fade-container { flex-direction: column; text-align: center; }
+        .ca-feedback-fade-nav-buttons { justify-content: center; }
+        .ca-feedback-fade-slider-area { width: 100%; max-width: 600px; }
+    }
+     /* Main container for the "Blog" component */
+    .ca-latest-blog-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        padding: 80px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+    }
+
+    .ca-latest-blog-container {
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    /* Main heading styles */
+    .ca-latest-blog-main-heading {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .ca-latest-blog-main-heading p {
+        color: #00B67A;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+
+    .ca-latest-blog-main-heading h1 {
+        font-size: 2.5rem;
+        color: #333;
+        font-weight: 700;
+        margin-top: 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Sub-header with "See All" link */
+    .ca-latest-blog-sub-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e9e9e9;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+    }
+
+    .ca-latest-blog-sub-header h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin: 0;
+        color: #00B67A;
+        text-transform: uppercase;
+    }
+
+    .ca-latest-blog-sub-header a {
+        color: #555;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+    .ca-latest-blog-sub-header a:hover {
+        color: #00B67A;
+    }
+
+    /* Grid container for the blog posts */
+    .ca-latest-blog-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+    }
+
+    /* Individual blog card styling */
+    .ca-latest-blog-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+        border: 1px solid #f0f0f0;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .ca-latest-blog-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Image container for positioning the date badge */
+    .ca-latest-blog-image-wrapper {
+        position: relative;
+    }
+
+    .ca-latest-blog-image-wrapper img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Date badge styling */
+    .ca-latest-blog-date-badge {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background-color: #00B67A; /* Default green color */
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        text-align: center;
+        font-weight: 700;
+        line-height: 1;
+    }
+    .ca-latest-blog-date-badge span { display: block; }
+    .ca-latest-blog-date-badge .day { font-size: 1.5rem; }
+    .ca-latest-blog-date-badge .month { font-size: 0.7rem; text-transform: uppercase; margin-top: 2px; }
+
+    /* Color variations for the badge */
+    .ca-latest-blog-date-badge.color-teal { background-color: #00a8a8; }
+    .ca-latest-blog-date-badge.color-blue { background-color: #3498db; }
+
+    /* Card content area */
+    .ca-latest-blog-content {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1; /* Allows content to fill space */
+    }
+
+    .ca-latest-blog-author-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .ca-latest-blog-author-info img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .ca-latest-blog-author-info h4 {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    .ca-latest-blog-author-info p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #777;
+    }
+    
+    .ca-latest-blog-content h3 {
+        margin: 0 0 10px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        flex-grow: 1; /* Pushes excerpt down */
+    }
+
+    .ca-latest-blog-content .excerpt {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+        .ca-latest-blog-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .ca-latest-blog-grid {
+            grid-template-columns: 1fr; /* 1 card per row */
+        }
+        .ca-latest-blog-main-heading h1 {
+            font-size: 2rem;
+        }
+    }
+     /* Main container for the "Contact" component */
+    .ca-contact-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        padding: 80px 20px;
+        color: #333;
+    }
+
+    .ca-contact-container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* --- "Trusted By" Section --- */
+    .ca-trusted-by-wrapper {
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .ca-trusted-by-wrapper h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 auto 40px auto;
+        max-width: 500px;
+        line-height: 1.3;
+    }
+
+    .ca-logos-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .ca-logos-container img {
+        max-height: 40px; /* Control logo size */
+        filter: grayscale(100%);
+        opacity: 0.6;
+        transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    
+    .ca-logos-container img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    /* --- Main Contact Area (2-column grid) --- */
+    .ca-contact-main-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr; /* Give more space to the form */
+        gap: 60px;
+    }
+    
+    /* Left Column: "Find Us" */
+    .ca-find-us-column h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+    
+    .ca-info-box {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+    }
+
+    .ca-info-icon {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: #00B67A;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .ca-info-icon svg { width: 28px; height: 28px; }
+
+    .ca-info-text h4 {
+        margin: 0 0 5px 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    .ca-info-text p {
+        margin: 0;
+        font-size: 1rem;
+        color: #555;
+    }
+
+    /* Right Column: "Keep In Touch" Form */
+    .ca-keep-in-touch-column .subtitle {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 5px;
+    }
+    
+    .ca-keep-in-touch-column h2 {
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    
+    .ca-keep-in-touch-column .description {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+    
+    .ca-contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .ca-form-group input,
+    .ca-form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #e0e0e0;
+        background-color: #f9f9f9;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .ca-form-group input:focus,
+    .ca-form-group textarea:focus {
+        outline: none;
+        border-color: #00B67A;
+        box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.1);
+    }
+    
+    .ca-form-group textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .ca-submit-btn {
+        align-self: flex-start; /* Don't stretch full width */
+        padding: 14px 35px;
+        background-color: #00B67A;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .ca-submit-btn:hover {
+        background-color: #00997a;
+        transform: translateY(-2px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 992px) {
+        .ca-contact-main-grid {
+            grid-template-columns: 1fr; /* Stack columns */
+        }
+        .ca-trusted-by-wrapper h1,
+        .ca-find-us-column h2,
+        .ca-keep-in-touch-column h2 {
+            font-size: 2rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .ca-contact-section { padding: 60px 15px; }
+        .ca-logos-container { gap: 30px; }
+        .ca-logos-container img { max-height: 30px; }
+    }
+      /* Main Footer Styling */
+    .ca-site-footer {
+        font-family: 'Poppins', sans-serif;
+        background-color: #2c2c2c; /* Dark grey background */
+        color: #cccccc; /* Light grey text */
+        padding-top: 60px;
+    }
+
+    .ca-footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* 4-column grid for the main footer content */
+    .ca-footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        padding-bottom: 50px;
+    }
+
+    /* --- Column 1: About & Logo --- */
+    .ca-footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .ca-footer-logo img {
+        height: 50px;
+        width: 50px;
+    }
+    .ca-footer-logo span {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+    .ca-footer-about p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* --- General Column Heading Styling --- */
+    .ca-footer-col h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #ffffff;
+        margin: 0 0 25px 0;
+        position: relative;
+    }
+    /* Green underline effect */
+    .ca-footer-col h4::after {
+        content: '';
+        display: block;
+        width: 40px;
+        height: 3px;
+        background-color: #00B67A;
+        margin-top: 10px;
+    }
+
+    /* --- Column 2: Page Links --- */
+    .ca-footer-links ul,
+    .ca-footer-contact ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .ca-footer-links li,
+    .ca-footer-contact li {
+        margin-bottom: 12px;
+    }
+    .ca-footer-links a,
+    .ca-footer-contact span {
+        color: #cccccc;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+    }
+    .ca-footer-links a:hover {
+        color: #00B67A;
+    }
+
+    /* --- Column 3: Contact Info --- */
+    .ca-footer-contact li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .ca-footer-contact svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        color: #00B67A;
+    }
+
+    /* --- Column 4: Social Media Links --- */
+    .ca-footer-social-icons {
+        display: flex;
+        gap: 15px;
+    }
+    .ca-footer-social-icons a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #555555;
+        border-radius: 50%;
+        color: #cccccc;
+        text-decoration: none;
+        transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    .ca-footer-social-icons a:hover {
+        background-color: #00B67A;
+        border-color: #00B67A;
+        color: #ffffff;
+    }
+    .ca-footer-social-icons svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* --- Footer Bottom Bar --- */
+    .ca-footer-bottom {
+        border-top: 1px solid #444444;
+        padding: 20px 0;
+        text-align: center;
+    }
+    .ca-footer-bottom p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #aaaaaa;
+    }
+    .ca-footer-bottom span {
+        color: #00B67A;
+        font-weight: 600;
+    }
+     
+    
+    /* Main container for the "Feedback" component */
+    .ca-feedback-fade-section {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff;
+        padding: 80px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+    }
+
+    .ca-feedback-fade-container {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        max-width: 1100px; /* Adjusted max-width */
+        width: 100%;
+    }
+
+    /* Left Column: Text Content */
+    .ca-feedback-fade-text-content {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .ca-feedback-fade-text-content h1 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .ca-feedback-fade-text-content p {
+        font-size: 1rem;
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    /* Navigation Buttons */
+    .ca-feedback-fade-nav-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .ca-feedback-fade-nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid #00b894;
+        background-color: transparent;
+    }
+    
+    .ca-feedback-fade-nav-btn.ca-feedback-fade-next-btn {
+        background-color: #00b894;
+        color: white;
+    }
+    
+    .ca-feedback-fade-nav-btn.ca-feedback-fade-prev-btn {
+        background-color: white;
+        color: #00b894;
+    }
+
+    .ca-feedback-fade-nav-btn:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Right Column: Slider */
+    .ca-feedback-fade-slider-area {
+        flex: 1.2;
+        position: relative;
+    }
+
+    /* --- UPDATED --- Wrapper now acts as a frame */
+    .ca-feedback-fade-slider-wrapper {
+        position: relative;
+        min-height: 300px; /* Set a min-height to avoid layout shifts */
+    }
+
+    /* --- UPDATED --- Individual Testimonial Card for Fading */
+    .ca-feedback-fade-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0; /* Hidden by default */
+        visibility: hidden; /* Hide from screen readers when inactive */
+        transition: opacity 0.6s ease-in-out, visibility 0.6s;
+        
+        /* Card styling from previous version */
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        padding: 25px;
+        border: 2px solid #00b894;
+        border-radius: 12px;
+        background-color: #ffffff;
+    }
+    
+    /* --- NEW --- Active card styling for fading */
+    .ca-feedback-fade-card.is-active {
+        opacity: 1;
+        visibility: visible;
+        position: static; /* Let the active card define the container's height */
+    }
+
+    .ca-feedback-fade-card-image {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .ca-feedback-fade-card-content {
+        flex-grow: 1;
+    }
+
+    .ca-feedback-fade-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 10px;
+    }
+    
+    .ca-feedback-fade-quote-icon {
+        width: 40px;
+        height: 40px;
+        color: #00b894;
+    }
+
+    .ca-feedback-fade-person-info h3 {
+        margin: 0;
+        font-size: 1.2rem;
+    }
+    .ca-feedback-fade-person-info p {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #777;
+    }
+    
+    .ca-feedback-fade-stars {
+        margin-bottom: 15px;
+        color: #f39c12;
+    }
+    .ca-feedback-fade-stars svg { width: 20px; height: 20px; }
+
+    .ca-feedback-fade-quote-text {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #555;
+    }
+    
+    /* Navigation Dots */
+    .ca-feedback-fade-dots {
+        text-align: center;
+        padding-top: 20px;
+    }
+    
+    .ca-feedback-fade-dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 0 5px;
+        background-color: #d4e9e5;
+        border-radius: 50%;
+        display: inline-block;
+        transition: all 0.3s ease;
+    }
+    
+    .ca-feedback-fade-dot.active {
+        background-color: #00b894;
+        transform: scale(1.2);
+    }
+    
+    @media (max-width: 992px) {
+        .ca-feedback-fade-container { flex-direction: column; text-align: center; }
+        .ca-feedback-fade-nav-buttons { justify-content: center; }
+        .ca-feedback-fade-slider-area { width: 100%; max-width: 600px; }
+    }

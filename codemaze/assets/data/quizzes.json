@@ -1,0 +1,38 @@
+{
+  "Introduction": {
+    "What is C++": [
+      {
+        "question": "Who created C++?",
+        "options": [
+          "Bjarne Stroustrup",
+          "James Gosling",
+          "Guido van Rossum",
+          "Dennis Ritchie"
+        ],
+        "answer": "Bjarne Stroustrup"
+      },
+      {
+        "question": "C++ is an extension of which language?",
+        "options": [
+          "Python",
+          "C",
+          "Java",
+          "Assembly"
+        ],
+        "answer": "C"
+      }
+    ],
+    "Why Learn C++": [
+      {
+        "question": "What is one of the main advantages of C++?",
+        "options": [
+          "Automatic memory management",
+          "Speed and performance",
+          "Dynamic typing",
+          "Built-in GUI"
+        ],
+        "answer": "Speed and performance"
+      }
+    ]
+  }
+}

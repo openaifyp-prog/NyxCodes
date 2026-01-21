@@ -1,0 +1,803 @@
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Africa - Waste Data Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script>
+        tailwind = {
+            config: {
+                theme: {
+                    extend: {
+                        colors: {
+                            'ca-green': '#00B67A',
+                            'ca-dark': '#1a1a1a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+   
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40/00B67A/ffffff?text=CA" alt="Clean Africa" class="rounded-full w-8 h-8 sm:w-10 sm:h-10">
+                    <span class="text-lg sm:text-xl font-bold">CLEAN AFRICA</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 xl:space-x-8">
+                    <a href="#" class="text-ca-green font-semibold text-sm xl:text-base">HOME</a>
+                    <a href="#" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">ABOUT US</a>
+                    <a href="#" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">SOLUTIONS</a>
+                    <a href="#" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">IMPACT</a>
+                    <a href="#" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">PARTNERS</a>
+                    <a href="#" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">BLOG</a>
+                    <a href="#" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">CONTACT</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button class="bg-ca-green text-white px-4 sm:px-6 py-2 rounded-lg text-sm font-semibold bg-green-700">Sign in</button>
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-700 hover:text-ca-green">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-3 space-y-2">
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-ca-green bg-green-50">HOME</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">ABOUT US</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">SOLUTIONS</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">IMPACT</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">PARTNERS</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">BLOG</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            if (!menu.classList.contains('hidden')) {
+                menu.classList.add('mobile-menu-enter');
+            }
+        }
+    </script>
+
+    <!-- Hero Section -->
+    <section class="relative bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
+                <div class="text-center lg:text-left">
+                    <p class="text-ca-green font-semibold mb-3 sm:mb-4 text-sm sm:text-base">Waste Data Company</p>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                        We organize the world's waste data and make it available & useful.
+                    </h1>
+                    <p class="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
+                        Air, water, soil, municipal, industrial Waste data collection and intelligence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
+                        <button class="bg-ca-green text-white px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold bg-green-700 w-full sm:w-auto">Request a Demo</button>
+                        <button class="border-2 border-gray-300 text-gray-700 px-6 sm:px-8 py-3 rounded-lg text-sm sm:text-base font-semibold hover:bg-gray-50 w-full sm:w-auto">Download Our Guide</button>
+                    </div>
+                </div>
+                <div class="relative z-10 flex justify-center mt-8 lg:mt-0">
+                    <div class="w-64 sm:w-72 bg-black rounded-[3rem] p-2.5 sm:p-3 shadow-2xl">
+                        <div class="bg-white rounded-[2.5rem] overflow-hidden">
+                            <div class="relative h-[500px] sm:h-[600px] bg-gray-50 p-4 sm:p-6">
+                                <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 sm:w-32 h-5 sm:h-6 bg-black rounded-b-3xl"></div>
+                                <div class="pt-6 sm:pt-8">
+                                    <h3 class="text-center font-bold text-ca-green text-lg sm:text-xl mb-4 sm:mb-6">CLEAN AFRICA</h3>
+                                    <div class="bg-green-50 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 text-center">
+                                        <svg class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-3 sm:mb-4" fill="none" stroke="#00B67A" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                        <p class="text-gray-700 text-xs sm:text-sm">Community waste tracking</p>
+                                    </div>
+                                    <button class="w-full bg-ca-green text-white py-2.5 sm:py-3 rounded-lg text-sm sm:text-base font-semibold">Get Started</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-shape"></div>
+    </section>
+
+    <!-- Why Clean Africa Section -->
+    <section class="relative bg-cover bg-center py-16 sm:py-20 md:py-24" style="background-image: url('africa.jpg');">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center text-white">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Why Clean Africa?</h2>
+            <p class="text-base sm:text-lg leading-relaxed">
+                Lack Of Accurate And Up To Date data About Waste Sites And Their Location, Waste Nature And Composition, And Their Dynamic Evolution Is Hindering Municipalities And Government Agencies In Their Efforts To Deal With The
+            </p>
+        </div>
+    </section>
+
+   <div class="ca-section-container">
+    <div class="ca-heading-wrapper">
+        <p>Join Us</p>
+        <h1>WHAT CAN YOU DO WITH CLEAN AFRICA?</h1>
+    </div>
+
+    <div class="ca-cards-grid">
+        
+        <div class="ca-card-item">
+            <div class="ca-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 14L12 17L17 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 22V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 7L12 12L21 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ca-text-content">
+                <h2>For Municipalities</h2>
+                <p>
+                    Lack Of Accurate And Up To Date Data About Waste Sites And Their Location, Waste Nature And Composition, And Their Dynamic Evolution Is Hindering Municipalities And Government Agencies In Their Efforts To Deal With The
+                </p>
+            </div>
+        </div>
+
+        <div class="ca-card-item ca-highlighted-card">
+            <div class="ca-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5 17.5L22 22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C14.3879 20 17.345 18.1258 18.9187 15.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 8C5.55228 8 6 7.55228 6 7C6 6.44772 5.55228 6 5 6C4.44772 6 4 6.44772 4 7C4 7.55228 4.44772 8 5 8Z" />
+                    <path d="M8 9C8.55228 9 9 8.55228 9 8C9 7.44772 8.55228 7 8 7C7.44772 7 7 7.44772 7 8C7 8.55228 7.44772 9 8 9Z" />
+                    <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" />
+                    <path d="M11 9C11.5523 9 12 8.55228 12 8C12 7.44772 11.5523 7 11 7C10.4477 7 10 7.44772 10 8C10 8.55228 10.4477 9 11 9Z" />
+                </svg>
+            </div>
+            <div class="ca-text-content">
+                <h2>Researchers</h2>
+                <p>
+                    Lack Of Accurate And Up To Date Data About Waste Sites And Their Location, Waste Nature And Composition, And Their Dynamic Evolution Is Hindering Municipalities And Government Agencies In Their Efforts To Deal With The
+                </p>
+            </div>
+        </div>
+
+        <div class="ca-card-item">
+            <div class="ca-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 22H21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 22V12L12 7L19 12V22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 7V2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M10 5H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 17H16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 12H16" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ca-text-content">
+                <h2>Government</h2>
+                <p>
+                    Lack Of Accurate And Up To Date Data About Waste Sites And Their Location, Waste Nature And Composition, And Their Dynamic Evolution Is Hindering Municipalities And Government Agencies In Their Efforts To Deal With The
+                </p>
+            </div>
+        </div>
+
+        <div class="ca-card-item">
+            <div class="ca-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7V17L12 22L22 17V7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M2 7L12 12L22 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 22V12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 14L12 17L7 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ca-text-content">
+                <h2>International Organisation</h2>
+                <p>
+                    Lack Of Accurate And Up To Date Data About Waste Sites And Their Location, Waste Nature And Composition, And Their Dynamic Evolution Is Hindering Municipalities And Government Agencies In Their Efforts To Deal With The
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+   
+
+<div class="ca-get-started-section">
+    <div class="ca-get-started-heading">
+        <p>Let's Get Started</p>
+        <h1>HOW TO GET STARTED?</h1>
+    </div>
+
+    <div class="ca-get-started-cards-grid">
+        
+        <div class="ca-get-started-card-item">
+            <div class="ca-get-started-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M7 14L12 17L17 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 22V17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 7L12 12L21 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ca-get-started-text-content">
+                <h2>Citizen</h2>
+                <p>Download The App</p>
+                <ul>
+                    <li>Report Your House Waste</li>
+                    <li>Report Waste Site In Your Area</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ca-get-started-card-item ca-get-started-highlighted-card">
+            <div class="ca-get-started-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.5 17.5L22 22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C14.3879 20 17.345 18.1258 18.9187 15.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M5 8C5.55228 8 6 7.55228 6 7C6 6.44772 5.55228 6 5 6C4.44772 6 4 6.44772 4 7C4 7.55228 4.44772 8 5 8Z" />
+                    <path d="M8 9C8.55228 9 9 8.55228 9 8C9 7.44772 8.55228 7 8 7C7.44772 7 7 7.44772 7 8C7 8.55228 7.44772 9 8 9Z" />
+                    <path d="M14 9C14.5523 9 15 8.55228 15 8C15 7.44772 14.5523 7 14 7C13.4477 7 13 7.44772 13 8C13 8.55228 13.4477 9 14 9Z" />
+                    <path d="M11 9C11.5523 9 12 8.55228 12 8C12 7.44772 11.5523 7 11 7C10.4477 7 10 7.44772 10 8C10 8.55228 10.4477 9 11 9Z" />
+                </svg>
+            </div>
+            <div class="ca-get-started-text-content">
+                <h2>Researchers</h2>
+                <p>Send A Request To Access Take.</p>
+            </div>
+        </div>
+
+        <div class="ca-get-started-card-item">
+            <div class="ca-get-started-icon-circle">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 13C19.3452 13.4867 19.6548 13.9867 19.9286 14.5M19 13H15M19 13V17M15 17L19.9286 14.5M5 7L2 4M5 7H9M5 7V3M2 3L5 7M12 21L12 17M12 17L15 14M12 17L9 14M12 17L12 21M12 21L9 18M12 21L15 18M12 21L12 17" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 10.9751 21.8491 9.98205 21.5583 9.0375" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="ca-get-started-text-content">
+                <h2>Solution Integration</h2>
+                <p>Clean Africa Could Help Government, Municipalities, Int'l Agencies Implement Waste Information Systems</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <div class="ca-about-section-wrapper">
+    <div class="ca-about-text-content-column">
+        <p class="ca-about-subtitle">ABOUT US</p>
+        <h1 class="ca-about-title">Transforming Waste Management With Smart Technology</h1>
+        <p class="ca-about-description">
+            At Clean Africa, We Leverage Advanced Technology To Help
+            Municipalities, Governments, And International Organizations
+            Tackle Waste Management Challenges Through Accurate
+            Mapping And Predictive Analytics.
+        </p>
+        <h2 class="ca-about-vision-title">Our Vision</h2>
+        <p class="ca-about-vision-description">
+            A Cleaner, More Sustainable Future Powered By Data And
+            Innovation.
+        </p>
+        <a href="#" class="ca-about-contact-button">Contact us</a>
+    </div>
+
+    <div class="ca-about-image-grid-column">
+        <div class="ca-about-image-item">
+             <img src="https://via.placeholder.com/300x250/cccccc/ffffff?text=Data+Analysis" alt="Data Analysis">
+        </div>
+        <div class="ca-about-image-item">
+            <img src="https://via.placeholder.com/300x250/cccccc/ffffff?text=Hands+Global" alt="Hands holding globe">
+        </div>
+        <div class="ca-about-image-item">
+            <img src="https://via.placeholder.com/300x250/cccccc/ffffff?text=Waste+Recycling" alt="Waste Recycling">
+        </div>
+        <div class="ca-about-image-item">
+            <img src="https://via.placeholder.com/300x250/cccccc/ffffff?text=Eco+Blocks" alt="Eco blocks">
+        </div>
+    </div>
+</div>
+
+    <!-- Key Benefits Section -->
+    <div class="ca-key-benefits-section">
+    <div class="ca-key-benefits-heading">
+        <p>Our Company</p>
+        <h1>KEY BENEFITS</h1>
+    </div>
+
+    <div class="ca-key-benefits-grid">
+        
+        <div class="ca-key-benefits-card">
+            <div class="ca-key-benefits-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 21.35L3.35 12.7C2.5 11.85 2 10.7 2 9.5C2 7.02 4.02 5 6.5 5C7.94 5 9.33 5.67 10.24 6.76L12 8.76L13.76 6.76C14.67 5.67 16.06 5 17.5 5C19.98 5 22 7.02 22 9.5C22 10.7 21.5 11.85 20.65 12.7L12 21.35Z" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2>Real-Time Waste Mapping</h2>
+            <p>Amet Minim Mollit Non Deserunt Ullamco Est Sit Aliqua Dolor Do Amet Sint.</p>
+        </div>
+
+        <div class="ca-key-benefits-card ca-key-benefits-highlighted">
+            <div class="ca-key-benefits-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 20V10" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M18 20V4" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 20V16" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2>Data-Driven Solutions</h2>
+            <p>Amet Minim Mollit Non Deserunt Ullamco Est Sit Aliqua Dolor Do Amet Sint.</p>
+        </div>
+
+        <div class="ca-key-benefits-card">
+            <div class="ca-key-benefits-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16Z" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 2V22" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2>Sustainable Impact</h2>
+            <p>Amet Minim Mollit Non Deserunt Ullamco Est Sit Aliqua Dolor Do Amet Sint.</p>
+        </div>
+
+        <div class="ca-key-benefits-card">
+            <div class="ca-key-benefits-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11L12 14L22 4" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="#00B67A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2>Global Partnership</h2>
+            <p>D</p>
+        </div>
+    </div>
+</div>
+
+    <!-- Team Section -->
+   <div class="ca-our-team-section">
+    <div class="ca-our-team-heading">
+        <p>OUR TEAM</p>
+        <h1>OUR EXPERT TEAM MEMBERS</h1>
+    </div>
+
+    <div class="ca-our-team-grid">
+        
+        <div class="ca-our-team-card">
+            <div class="ca-our-team-img-wrapper">
+                <img src="https://via.placeholder.com/300x300/cccccc/ffffff?text=Devon+Lane" alt="Devon Lane">
+                <div class="ca-our-team-overlay">
+                    <div class="ca-our-team-social-links">
+                        <a href="#" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm2.6 10.44h-1.92v6.62h-2.92V12.48H8.82V9.9h.94c0-1.7.9-2.82 2.82-2.82h1.68v2.58h-1.1c-.58 0-.68.28-.68.68v1.24h1.86l-.24 2.58z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm4.84 7.67c.01.1.01.2.01.31 0 3.14-2.4 6.75-6.75 6.75-1.34 0-2.59-.39-3.64-1.07.19.02.37.03.56.03.1.06 1.01 0 1.93-.66-.94-.02-1.74-.64-2.02-1.5.13.02.26.04.4.04.2 0 .39-.03.57-.08-1-.2-1.75-1.08-1.75-2.14v-.03c.3.16.64.26.99.27-.58-.39-1.07-1.29-1.07-2.1 0-.46.12-.9.34-1.27 1.06 1.3 2.65 2.15 4.42 2.24-.04-.16-.06-.32-.06-.49 0-1.18.96-2.14 2.14-2.14.62 0 1.17.26 1.56.68.49-.1.95-.27 1.36-.52-.16.5-.5.92-.95 1.18.43-.05.85-.17 1.23-.34-.29.43-.65.8-1.07 1.1z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zM8.43 17.65H6.15V9.7h2.28v7.95zm-1.14-8.9c-.72 0-1.3-.58-1.3-1.3s.58-1.3 1.3-1.3 1.3.58 1.3 1.3-.58 1.3-1.3 1.3zm10.36 8.9h-2.28v-3.8c0-.9-.02-2.06-1.25-2.06s-1.45.98-1.45 2v3.86H9.4V9.7h2.18v1c.32-.6 1.1-1.23 2.15-1.23 2.3 0 2.73 1.5 2.73 3.46v4.02z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ca-our-team-info">
+                <h3>Devon Lane</h3>
+                <p>Geospatial Data Analyst</p>
+            </div>
+        </div>
+
+        <div class="ca-our-team-card">
+            <div class="ca-our-team-img-wrapper">
+                <img src="https://via.placeholder.com/300x300/cccccc/ffffff?text=Cody+Fisher" alt="Cody Fisher">
+                <div class="ca-our-team-overlay">
+                    <div class="ca-our-team-social-links">
+                        <a href="#" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm2.6 10.44h-1.92v6.62h-2.92V12.48H8.82V9.9h.94c0-1.7.9-2.82 2.82-2.82h1.68v2.58h-1.1c-.58 0-.68.28-.68.68v1.24h1.86l-.24 2.58z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm4.84 7.67c.01.1.01.2.01.31 0 3.14-2.4 6.75-6.75 6.75-1.34 0-2.59-.39-3.64-1.07.19.02.37.03.56.03.1.06 1.01 0 1.93-.66-.94-.02-1.74-.64-2.02-1.5.13.02.26.04.4.04.2 0 .39-.03.57-.08-1-.2-1.75-1.08-1.75-2.14v-.03c.3.16.64.26.99.27-.58-.39-1.07-1.29-1.07-2.1 0-.46.12-.9.34-1.27 1.06 1.3 2.65 2.15 4.42 2.24-.04-.16-.06-.32-.06-.49 0-1.18.96-2.14 2.14-2.14.62 0 1.17.26 1.56.68.49-.1.95-.27 1.36-.52-.16.5-.5.92-.95 1.18.43-.05.85-.17 1.23-.34-.29.43-.65.8-1.07 1.1z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zM8.43 17.65H6.15V9.7h2.28v7.95zm-1.14-8.9c-.72 0-1.3-.58-1.3-1.3s.58-1.3 1.3-1.3 1.3.58 1.3 1.3-.58 1.3-1.3 1.3zm10.36 8.9h-2.28v-3.8c0-.9-.02-2.06-1.25-2.06s-1.45.98-1.45 2v3.86H9.4V9.7h2.18v1c.32-.6 1.1-1.23 2.15-1.23 2.3 0 2.73 1.5 2.73 3.46v4.02z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ca-our-team-info">
+                <h3>Cody Fisher</h3>
+                <p>Predictive Analytics Specialist</p>
+            </div>
+        </div>
+
+        <div class="ca-our-team-card">
+            <div class="ca-our-team-img-wrapper">
+                <img src="https://via.placeholder.com/300x300/cccccc/ffffff?text=Ralph+Edwards" alt="Ralph Edwards">
+                <div class="ca-our-team-overlay">
+                    <div class="ca-our-team-social-links">
+                        <a href="#" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm2.6 10.44h-1.92v6.62h-2.92V12.48H8.82V9.9h.94c0-1.7.9-2.82 2.82-2.82h1.68v2.58h-1.1c-.58 0-.68.28-.68.68v1.24h1.86l-.24 2.58z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm4.84 7.67c.01.1.01.2.01.31 0 3.14-2.4 6.75-6.75 6.75-1.34 0-2.59-.39-3.64-1.07.19.02.37.03.56.03.1.06 1.01 0 1.93-.66-.94-.02-1.74-.64-2.02-1.5.13.02.26.04.4.04.2 0 .39-.03.57-.08-1-.2-1.75-1.08-1.75-2.14v-.03c.3.16.64.26.99.27-.58-.39-1.07-1.29-1.07-2.1 0-.46.12-.9.34-1.27 1.06 1.3 2.65 2.15 4.42 2.24-.04-.16-.06-.32-.06-.49 0-1.18.96-2.14 2.14-2.14.62 0 1.17.26 1.56.68.49-.1.95-.27 1.36-.52-.16.5-.5.92-.95 1.18.43-.05.85-.17 1.23-.34-.29.43-.65.8-1.07 1.1z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zM8.43 17.65H6.15V9.7h2.28v7.95zm-1.14-8.9c-.72 0-1.3-.58-1.3-1.3s.58-1.3 1.3-1.3 1.3.58 1.3 1.3-.58 1.3-1.3 1.3zm10.36 8.9h-2.28v-3.8c0-.9-.02-2.06-1.25-2.06s-1.45.98-1.45 2v3.86H9.4V9.7h2.18v1c.32-.6 1.1-1.23 2.15-1.23 2.3 0 2.73 1.5 2.73 3.46v4.02z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ca-our-team-info">
+                <h3>Ralph Edwards</h3>
+                <p>Sustainability Solutions Manager</p>
+            </div>
+        </div>
+
+        <div class="ca-our-team-card">
+            <div class="ca-our-team-img-wrapper">
+                <img src="https://via.placeholder.com/300x300/cccccc/ffffff?text=Bessie+Cooper" alt="Bessie Cooper">
+                <div class="ca-our-team-overlay">
+                    <div class="ca-our-team-social-links">
+                        <a href="#" aria-label="Facebook"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm2.6 10.44h-1.92v6.62h-2.92V12.48H8.82V9.9h.94c0-1.7.9-2.82 2.82-2.82h1.68v2.58h-1.1c-.58 0-.68.28-.68.68v1.24h1.86l-.24 2.58z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zm4.84 7.67c.01.1.01.2.01.31 0 3.14-2.4 6.75-6.75 6.75-1.34 0-2.59-.39-3.64-1.07.19.02.37.03.56.03.1.06 1.01 0 1.93-.66-.94-.02-1.74-.64-2.02-1.5.13.02.26.04.4.04.2 0 .39-.03.57-.08-1-.2-1.75-1.08-1.75-2.14v-.03c.3.16.64.26.99.27-.58-.39-1.07-1.29-1.07-2.1 0-.46.12-.9.34-1.27 1.06 1.3 2.65 2.15 4.42 2.24-.04-.16-.06-.32-.06-.49 0-1.18.96-2.14 2.14-2.14.62 0 1.17.26 1.56.68.49-.1.95-.27 1.36-.52-.16.5-.5.92-.95 1.18.43-.05.85-.17 1.23-.34-.29.43-.65.8-1.07 1.1z"/></svg></a>
+                        <a href="#" aria-label="LinkedIn"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96s4.46 9.96 9.96 9.96c5.5 0 9.96-4.46 9.96-9.96S17.5 2.04 12 2.04zM8.43 17.65H6.15V9.7h2.28v7.95zm-1.14-8.9c-.72 0-1.3-.58-1.3-1.3s.58-1.3 1.3-1.3 1.3.58 1.3 1.3-.58 1.3-1.3 1.3zm10.36 8.9h-2.28v-3.8c0-.9-.02-2.06-1.25-2.06s-1.45.98-1.45 2v3.86H9.4V9.7h2.18v1c.32-.6 1.1-1.23 2.15-1.23 2.3 0 2.73 1.5 2.73 3.46v4.02z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="ca-our-team-info">
+                <h3>Bessie Cooper</h3>
+                <p>Technology Integration Engineer</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Testimonial Section -->
+ <div class="ca-feedback-fade-section">
+    <div class="ca-feedback-fade-container">
+        <div class="ca-feedback-fade-text-content">
+            <h1>Feedback About Their Experience With Us</h1>
+            <p>Read testimonials from our satisfied Partners. See how our services have made a difference.</p>
+            <div class="ca-feedback-fade-nav-buttons">
+                <button class="ca-feedback-fade-nav-btn ca-feedback-fade-prev-btn" aria-label="Previous testimonial">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <button class="ca-feedback-fade-nav-btn ca-feedback-fade-next-btn" aria-label="Next testimonial">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="ca-feedback-fade-slider-area">
+            <div class="ca-feedback-fade-slider-wrapper">
+                
+                <div class="ca-feedback-fade-card">
+                    <img class="ca-feedback-fade-card-image" src="https://via.placeholder.com/150/cccccc/ffffff?text=Robert+Fox" alt="Robert Fox">
+                    <div class="ca-feedback-fade-card-content">
+                        <div class="ca-feedback-fade-card-header">
+                            <div class="ca-feedback-fade-person-info">
+                                <h3>Robert Fox</h3>
+                                <p>Business Man</p>
+                            </div>
+                            <svg class="ca-feedback-fade-quote-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                        </div>
+                        <div class="ca-feedback-fade-stars" aria-label="5 out of 5 stars">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="ca-feedback-fade-quote-text">Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                    </div>
+                </div>
+
+                <div class="ca-feedback-fade-card">
+                    <img class="ca-feedback-fade-card-image" src="https://via.placeholder.com/150/cccccc/ffffff?text=Jane+Doe" alt="Jane Doe">
+                    <div class="ca-feedback-fade-card-content">
+                        <div class="ca-feedback-fade-card-header">
+                            <div class="ca-feedback-fade-person-info">
+                                <h3>Jane Doe</h3>
+                                <p>Marketing Manager</p>
+                            </div>
+                           <svg class="ca-feedback-fade-quote-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/></svg>
+                        </div>
+                        <div class="ca-feedback-fade-stars" aria-label="5 out of 5 stars">
+                            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        </div>
+                        <p class="ca-feedback-fade-quote-text">A fantastic experience from start to finish. The team was professional, and the results exceeded my expectations. Highly recommended for everyone!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="ca-feedback-fade-dots"></div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Blog Section -->
+  <div class="ca-latest-blog-section">
+    <div class="ca-latest-blog-container">
+        <div class="ca-latest-blog-main-heading">
+            <p>LATEST NEWS</p>
+            <h1>READ OUR LATEST BLOG</h1>
+        </div>
+
+        <div class="ca-latest-blog-sub-header">
+            <h2>CLEAN AFRICA BLOG</h2>
+            <a href="#">See All</a>
+        </div>
+
+        <div class="ca-latest-blog-grid">
+            
+            <div class="ca-latest-blog-card">
+                <div class="ca-latest-blog-image-wrapper">
+                    <img src="https://via.placeholder.com/400x200/cccccc/ffffff?text=Office" alt="Modern office space">
+                    <div class="ca-latest-blog-date-badge">
+                        <span class="day">22</span>
+                        <span class="month">APR</span>
+                    </div>
+                </div>
+                <div class="ca-latest-blog-content">
+                    <div class="ca-latest-blog-author-info">
+                        <img src="https://via.placeholder.com/40" alt="Kristin Watson">
+                        <div>
+                            <h4>Kristin Watson</h4>
+                            <p>Team Coordinator</p>
+                        </div>
+                    </div>
+                    <h3>HIGH CLASS CLEANING</h3>
+                    <p class="excerpt">Amet Minim Mollit Non Deserunt Ullamcosit Aliqua Dolor.</p>
+                </div>
+            </div>
+
+            <div class="ca-latest-blog-card">
+                <div class="ca-latest-blog-image-wrapper">
+                    <img src="https://via.placeholder.com/400x200/cccccc/ffffff?text=City+Traffic" alt="City traffic at dusk">
+                    <div class="ca-latest-blog-date-badge color-teal">
+                        <span class="day">16</span>
+                        <span class="month">JUL</span>
+                    </div>
+                </div>
+                <div class="ca-latest-blog-content">
+                    <div class="ca-latest-blog-author-info">
+                        <img src="https://via.placeholder.com/40" alt="Ralph Edwards">
+                        <div>
+                            <h4>Ralph Edwards</h4>
+                            <p>Team Assistant</p>
+                        </div>
+                    </div>
+                    <h3>QUICK WORKER FINDING</h3>
+                    <p class="excerpt">Amet Minim Mollit Non Deserunt Ullamcosit Aliqua Dolor.</p>
+                </div>
+            </div>
+
+            <div class="ca-latest-blog-card">
+                <div class="ca-latest-blog-image-wrapper">
+                    <img src="https://via.placeholder.com/400x200/cccccc/ffffff?text=Art+Gallery" alt="Abstract art in a gallery">
+                    <div class="ca-latest-blog-date-badge">
+                        <span class="day">31</span>
+                        <span class="month">DEC</span>
+                    </div>
+                </div>
+                <div class="ca-latest-blog-content">
+                    <div class="ca-latest-blog-author-info">
+                        <img src="https://via.placeholder.com/40" alt="Albert Flores">
+                        <div>
+                            <h4>Albert Flores</h4>
+                            <p>President</p>
+                        </div>
+                    </div>
+                    <h3>CUSTOMIZED SERVICE</h3>
+                    <p class="excerpt">Amet Minim Mollit Non Deserunt Ullamcosit Aliqua Dolor.</p>
+                </div>
+            </div>
+
+            <div class="ca-latest-blog-card">
+                <div class="ca-latest-blog-image-wrapper">
+                    <img src="https://via.placeholder.com/400x200/cccccc/ffffff?text=Living+Room" alt="Cozy living room interior">
+                    <div class="ca-latest-blog-date-badge color-teal">
+                        <span class="day">18</span>
+                        <span class="month">MAY</span>
+                    </div>
+                </div>
+                <div class="ca-latest-blog-content">
+                    <div class="ca-latest-blog-author-info">
+                        <img src="https://via.placeholder.com/40" alt="Jacob Jones">
+                        <div>
+                            <h4>Jacob Jones</h4>
+                            <p>Trainer</p>
+                        </div>
+                    </div>
+                    <h3>TRAINED WORKERS</h3>
+                    <p class="excerpt">Amet Minim Mollit Non Deserunt Ullamcosit Aliqua Dolor.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <!-- Contact Section -->
+    <div class="ca-contact-section">
+    <div class="ca-contact-container">
+
+        <div class="ca-trusted-by-wrapper">
+            <h1>Trusted by Over 50 Leading Brands as Valued Partners</h1>
+            <div class="ca-logos-container">
+                <img src="https://via.placeholder.com/150x40/cccccc/ffffff?text=ULTRA" alt="Ultra Brand Logo">
+                <img src="https://via.placeholder.com/150x40/cccccc/ffffff?text=QC+POWER" alt="QC Power Module Logo">
+                <img src="https://via.placeholder.com/150x40/cccccc/ffffff?text=CLIMATE+AWARDS" alt="Climate Awards Winner Logo">
+                <img src="https://via.placeholder.com/150x40/cccccc/ffffff?text=INTERNATIONAL+STANDARD" alt="International Standard Logo">
+                <img src="https://via.placeholder.com/150x40/cccccc/ffffff?text=LOGOIPSUM" alt="Logoipsum Logo">
+            </div>
+        </div>
+
+        <div class="ca-contact-main-grid">
+            <div class="ca-find-us-column">
+                <h2>Find us</h2>
+                <div class="ca-info-box">
+                    <div class="ca-info-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.02.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="ca-info-text">
+                        <h4>Call Us</h4>
+                        <p>+xxx-xxx-xxx</p>
+                    </div>
+                </div>
+                <div class="ca-info-box">
+                    <div class="ca-info-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="ca-info-text">
+                        <h4>Email Now</h4>
+                        <p>info@cleanafrica.com</p>
+                    </div>
+                </div>
+                <div class="ca-info-box">
+                    <div class="ca-info-icon">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div class="ca-info-text">
+                        <h4>Address</h4>
+                        <p>Johannesburg, Africa</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ca-keep-in-touch-column">
+                <p class="subtitle">Contact info</p>
+                <h2>Keep In Touch</h2>
+                <p class="description">We prioritize responding to your inquiries promptly to ensure you receive the assistance you need in a timely manner</p>
+                <form action="#" method="POST" class="ca-contact-form">
+                    <div class="ca-form-group">
+                        <input type="text" id="ca_name" name="name" placeholder="Name" required>
+                    </div>
+                    <div class="ca-form-group">
+                        <input type="email" id="ca_email" name="email" placeholder="Email" required>
+                    </div>
+                    <div class="ca-form-group">
+                        <textarea id="ca_message" name="message" placeholder="Message" required></textarea>
+                    </div>
+                    <button type="submit" class="ca-submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+    <!-- Footer -->
+   <footer class="ca-site-footer">
+    <div class="ca-footer-container">
+        <div class="ca-footer-grid">
+            
+            <div class="ca-footer-col ca-footer-about">
+                <div class="ca-footer-logo">
+                    <img src="https://via.placeholder.com/50x50/00b894/ffffff?text=C" alt="Clean Africa Logo">
+                    <span>CLEAN AFRICA</span>
+                </div>
+                <p>
+                    Ipsum Is Simply Dummy Text Of
+                    The Printing And Typesetting
+                    Industry. Lorem Ipsum Has Been
+                    The Industry's Standard Dummy...
+                </p>
+            </div>
+
+            <div class="ca-footer-col ca-footer-links">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Solutions</a></li>
+                    <li><a href="#">Impact</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="ca-footer-col ca-footer-contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        <span>Info@cleanafrica.com</span>
+                    </li>
+                    <li>
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.02.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <span>+XXX-XXX-XXX</span>
+                    </li>
+                    <li>
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span>Johannesburg, Africa</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="ca-footer-col ca-footer-social">
+                <h4>Social Media Links</h4>
+                <div class="ca-footer-social-icons">
+                    <a href="#" aria-label="LinkedIn">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-11 5H5v9h3V8zm-1.5-2a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5 2H12v9h3v-4.5c0-1.25.6-2.5 2-2.5s1.5 1.25 1.5 2.5V17h3v-5c0-3-2-5-5-5z"/></svg>
+                    </a>
+                    <a href="#" aria-label="X (formerly Twitter)">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04C6.48 2.04 2 6.52 2 12.04s4.48 10 10 10 10-4.48 10-10S17.52 2.04 12 2.04zm3.6 7.4h-1.8v-1.8c0-.49.39-.89.89-.89h.9V4.64s-.81-.14-1.59-.14c-1.6 0-2.65 1-2.65 2.72v1.82h-1.8v2.84h1.8V20h3.6v-7.32h2.4l.36-2.84z"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="ca-footer-bottom">
+        <div class="ca-footer-container">
+            <p>Copyright © 2025 <span>Clean Africa</span>. All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const sliderWrapper = document.querySelector('.ca-feedback-fade-slider-wrapper');
+        if (!sliderWrapper) return;
+
+        const slides = Array.from(sliderWrapper.children).filter(child => child.classList.contains('ca-feedback-fade-card'));
+        const nextButton = document.querySelector('.ca-feedback-fade-next-btn');
+        const prevButton = document.querySelector('.ca-feedback-fade-prev-btn');
+        const dotsNav = document.querySelector('.ca-feedback-fade-dots');
+        
+        let currentIndex = 0;
+
+        const goToSlide = (slideIndex) => {
+            if (slideIndex < 0 || slideIndex >= slides.length) return;
+            
+            // Update active slide class
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('is-active', index === slideIndex);
+            });
+
+            // Update active dot
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slideIndex);
+            });
+            
+            currentIndex = slideIndex;
+        };
+
+        // Create navigation dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('ca-feedback-fade-dot');
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dotsNav.appendChild(dot);
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+        const dots = Array.from(dotsNav.children);
+
+        // Event Listeners
+        nextButton.addEventListener('click', () => {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            goToSlide(nextIndex);
+        });
+
+        prevButton.addEventListener('click', () => {
+            const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+            goToSlide(prevIndex);
+        });
+
+        // Initialize slider
+        goToSlide(0);
+    });
+</script>
+</body>
+
+</html>
