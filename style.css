@@ -1,0 +1,324 @@
+:root {
+    /* Light Theme (Default) */
+    --bg-light: #FFFFFF;
+    --bg-secondary: #F3F4F6;
+    --text-dark: #1F2937;
+    --text-secondary: #6B7280;
+    --card-bg: #FFFFFF;
+    --border-color: #E5E7EB;
+    --accent: #2563EB;
+    --accent-hover: #1D4ED8;
+}
+
+.filter-btn.active {
+    background-color: var(--accent);
+    color: white !important;
+    border-color: var(--accent);
+}
+
+.nav-link.active {
+    color: var(--accent);
+}
+
+
+/* Hide default cursor */
+* {
+    overscroll-behavior: none;
+}
+
+/* Body Transition for Theme Switch */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utility classes that need variable updates */
+.bg-theme-ground {
+    background-color: var(--bg-light);
+}
+
+.bg-theme-secondary {
+    background-color: var(--bg-secondary);
+}
+
+.text-theme-primary {
+    color: var(--text-dark);
+}
+
+.text-theme-secondary {
+    color: var(--text-secondary);
+}
+
+.border-theme {
+    border-color: var(--border-color);
+}
+
+/* Invert icons in dark mode if needed, or specific fills */
+
+/* --- Tech Stack Marquee --- */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: inline-flex;
+    align-items: center;
+    animation: marquee 25s linear infinite;
+}
+
+.marquee-content:hover {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    padding: 0 2rem;
+    font-size: 2rem;
+    /* Size for text/icons */
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- Scroll Progress Bar --- */
+#scroll-progress-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 10001;
+    /* Above preloader if needed, or slightly below */
+    background: transparent;
+}
+
+#scroll-progress-bar {
+    height: 100%;
+    background-color: var(--accent);
+    width: 0%;
+    transition: width 0.1s;
+}
+
+/* --- Back to Top Button --- */
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--accent);
+    color: white;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    cursor: none;
+    /* Let custom cursor handle hovering */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#back-to-top:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+/* --- 1. Custom Cursor --- */
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    /* Use CSS variables for position, default off-screen */
+    transform: translate3d(calc(var(--cursor-x, -100px) - 50%), calc(var(--cursor-y, -100px) - 50%), 0) scale(1);
+    transition: transform 0.1s ease-out, background-color 0.3s ease;
+    background-color: var(--accent);
+    opacity: 0.7;
+    will-change: transform;
+    /* Hint for browser */
+}
+
+.cursor-grow {
+    /* Scale instead of changing width/height */
+    transform: translate3d(calc(var(--cursor-x, -100px) - 50%), calc(var(--cursor-y, -100px) - 50%), 0) scale(2.5);
+    transform: translate3d(calc(var(--cursor-x, -100px) - 50%), calc(var(--cursor-y, -100px) - 50%), 0) scale(2.5);
+    background-color: var(--accent);
+}
+
+/* Hide custom cursor on mobile/tablet and restore default */
+@media (max-width: 1024px) {
+    .cursor {
+        display: none !important;
+    }
+
+    * {
+        cursor: auto !important;
+    }
+}
+
+.cursor-hide {
+    opacity: 0;
+}
+
+/* --- 2. Preloader --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-light);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-text {
+    display: flex;
+    font-size: 2rem;
+    font-weight: 700;
+    overflow: hidden;
+    color: var(--text-dark);
+}
+
+.loader-text span {
+    display: inline-block;
+    transform: translateY(100%);
+    animation: loader-reveal 1.5s ease-out forwards;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes loader-reveal {
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* --- 3. Hero 3D Canvas --- */
+#hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.7;
+    background: linear-gradient(180deg, #FFFFFF 0%, #F3F4F6 100%);
+}
+
+/* --- 4. Staggered Text Reveal --- */
+.reveal-text {
+    overflow: hidden;
+}
+
+.reveal-text>* {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition-delay: calc(0.05s * var(--i));
+}
+
+.reveal-visible .reveal-text>* {
+    transform: translateY(0);
+}
+
+/* --- 5. Project Detail Panel (NEW) --- */
+#project-detail-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    z-index: 6000;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), background-color 0.3s ease, color 0.3s ease;
+    overflow-y: auto;
+    padding: 1.5rem;
+    /* Reduced for mobile */
+    will-change: transform;
+}
+
+#project-detail-panel.open {
+    transform: translateX(0);
+}
+
+body.panel-open {
+    overflow: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+/* Fixed Social Sidebar Animation */
+#social-sidebar {
+    animation: fade-in-up 1s ease-out 1s backwards;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
