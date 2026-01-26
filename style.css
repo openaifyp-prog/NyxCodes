@@ -151,6 +151,8 @@ body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-light);
     color: var(--text-dark);
+    overflow-x: hidden;
+    /* Fix horizontal scroll on hover/animations */
 }
 
 /* --- 1. Custom Cursor --- */

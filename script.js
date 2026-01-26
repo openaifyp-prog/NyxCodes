@@ -263,17 +263,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectsData = [
         {
             title: "Clean Africa NGO",
-            image: "Projects/CleanAfrica/hero-bg.jpg", // Using local image if available, fallback to placeholder if needed. Or keep existing structure if different.
-            // Wait, previous Clean Africa used a div with bg image in projects.html.
-            // script.js previously didn't have CleanAfrica because it wasn't in the list?
-            // Ah, checking the previous view_file of script.js (Step 721):
-            // It HAD: CoinPulse, Nexus, Zenith, Code Maze, Dartar, Decora.
-            // Clean Africa WAS NOT IN script.js projectsData!
-            // I need to ADD Clean Africa to projectsData first.
+            image: "images/project-cleanafrica.webp",
             tags: ["Non-Profit", "Eco", "HTML", "CSS"],
             description: "A comprehensive multi-page website for an environmental NGO, featuring donation flows, project galleries, and blog.",
             category: "Web",
             link: "Projects/CleanAfrica/CleanAfrica.html"
+        },
+        {
+            title: "Lars Petters Education",
+            image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop",
+            tags: ["HTML", "CS", "SwiperJS", "EdTech"],
+            description: "A comprehensive education platform landing page featuring course categories, instructor carousels, and student testimonials.",
+            category: "Web",
+            link: "Projects/Education landing page/index.html"
         },
         {
             title: "Dartar.ai Tech Landing",
