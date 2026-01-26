@@ -262,6 +262,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
+            title: "Clean Africa NGO",
+            image: "Projects/CleanAfrica/hero-bg.jpg", // Using local image if available, fallback to placeholder if needed. Or keep existing structure if different.
+            // Wait, previous Clean Africa used a div with bg image in projects.html.
+            // script.js previously didn't have CleanAfrica because it wasn't in the list?
+            // Ah, checking the previous view_file of script.js (Step 721):
+            // It HAD: CoinPulse, Nexus, Zenith, Code Maze, Dartar, Decora.
+            // Clean Africa WAS NOT IN script.js projectsData!
+            // I need to ADD Clean Africa to projectsData first.
+            tags: ["Non-Profit", "Eco", "HTML", "CSS"],
+            description: "A comprehensive multi-page website for an environmental NGO, featuring donation flows, project galleries, and blog.",
+            category: "Web",
+            link: "Projects/CleanAfrica/CleanAfrica.html"
+        },
+        {
+            title: "Dartar.ai Tech Landing",
+            image: "images/project-dartarai.webp",
+            tags: ["HTML", "Tailwind", "SaaS", "Tech"],
+            description: "A modern B2B landing page for an AI logistics startup. Features clean corporate design, feature grids, and pricing tables.",
+            category: "Web",
+            link: "Projects/Dartar.Ai/darterAi.html"
+        },
+        {
+            title: "Decora Interior Design",
+            image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2500&auto=format&fit=crop",
+            tags: ["HTML", "CSS", "E-Commerce", "Design"],
+            description: "An elegant interior design and e-commerce platform. Features product listings, services page, and a polished dark-themed footer.",
+            category: "Design",
+            link: "Projects/Decora Interior Design/DecoraInteriorDesign.html"
+        },
+        {
+            title: "Code Maze - Mobile Game",
+            image: "images/project-codemaze.webp",
+            tags: ["Flutter", "Dart", "Firebase", "Game Dev"],
+            description: "An interactive mobile puzzle game built with Flutter. Features complex algorithms for maze generation and a sleek, native UI.",
+            category: "Mobile",
+            link: "https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze"
+        },
+        {
             title: "CoinPulse - Crypto Dashboard",
             image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=2555&auto=format&fit=crop",
             tags: ["JS", "Chart.js", "API", "Fintech"],
@@ -284,30 +322,6 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "A premium, minimalist portfolio for an architecture studio. Focuses on whitespace, elegant typography, and micro-interactions.",
             category: "Design",
             link: "Projects/Zenith/index.html"
-        },
-        {
-            title: "Code Maze - Mobile Game",
-            image: "images/project-codemaze.webp",
-            tags: ["Flutter", "Dart", "Firebase", "Game Dev"],
-            description: "An interactive mobile puzzle game built with Flutter. Features complex algorithms for maze generation and a sleek, native UI.",
-            category: "Mobile",
-            link: "https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze"
-        },
-        {
-            title: "Dartar.ai Tech Landing",
-            image: "images/project-dartarai.webp",
-            tags: ["HTML", "Tailwind", "SaaS", "Tech"],
-            description: "A modern B2B landing page for an AI logistics startup. Features clean corporate design, feature grids, and pricing tables.",
-            category: "Web",
-            link: "Projects/Dartar.Ai/darterAi.html"
-        },
-        {
-            title: "Decora Interior Design",
-            image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2500&auto=format&fit=crop",
-            tags: ["HTML", "CSS", "E-Commerce", "Design"],
-            description: "An elegant interior design and e-commerce platform. Features product listings, services page, and a polished dark-themed footer.",
-            category: "Design",
-            link: "Projects/Decora Interior Design/DecoraInteriorDesign.html"
         }
     ];
 
@@ -316,13 +330,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderProjects() {
         if (!projectsGrid) return;
 
+        // Slice first 4 for Home Page
         projectsGrid.innerHTML = projectsData.slice(0, 4).map((project, index) => `
             <div class="project-card cursor-hover reveal" 
                  data-title="${project.title}" 
                  data-image="${project.image}" 
                  data-tags="${project.tags.join(',')}" 
                  data-description="${project.description}"
-                 data-link="${project.link}">
+                 data-link="${project.link}"
+                 data-category="${project.category}"> <!-- Added category data attribute -->
 
                 <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative shadow-lg group">
                     <img src="${project.image}" alt="${project.title}" loading="lazy" width="1024" height="1024"
@@ -439,15 +455,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.display = 'block';
                     setTimeout(() => card.style.opacity = '1', 50);
                 } else {
+                    // Refined Filtering Logic using 'data-category' or tags
+                    const category = card.getAttribute('data-category');
                     const tags = card.getAttribute('data-tags');
-                    // Check against categories or specific tags.
-                    // Data logic: 'Web' matches tags like React, Node, HTML. 'Mobile' matches Flutter. 'Design' matches generic?
-                    // Let's refine the logic to match the previous behavior or use explicit categories in data.
-                    // For now, simple tag matching:
+
                     let isMatch = false;
-                    if (filterValue === 'Web' && (tags.includes('React') || tags.includes('HTML') || tags.includes('Node'))) isMatch = true;
+
+                    // Logic: Match if Category equals Filter or if Filter is 'Web' and category is 'Web' etc.
+                    if (category === filterValue) isMatch = true;
+
+                    // Fallback/Legacy tag matching if category not perfect or for overlaps
+                    if (filterValue === 'Web' && (tags.includes('React') || tags.includes('JS') || tags.includes('HTML'))) isMatch = true;
                     if (filterValue === 'Mobile' && tags.includes('Flutter')) isMatch = true;
-                    if (filterValue === 'Design' && tags.includes('Tailwind')) isMatch = true; // Heuristic based on existing content
 
                     if (isMatch) {
                         card.style.display = 'block';
