@@ -262,6 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
+            title: "The Nook Hostel",
+            image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop",
+            tags: ["HTML", "CSS", "Boho Design", "Travel"],
+            description: "A reimagined hostel booking platform with a warm, boho-rustic aesthetic. Features a split-hero layout, floating booking widgets, and specialty amenity showcases.",
+            category: "Web",
+            link: "Projects/HostelHaven/index.html"
+        },
+        {
             title: "Clean Africa NGO",
             image: "images/project-cleanafrica.webp",
             tags: ["Non-Profit", "Eco", "HTML", "CSS"],

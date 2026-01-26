@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Nook | Cozy & Social Hostel</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    The Nook<span style="color:var(--accent);">.</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="rooms.html">Bunks & Rooms</a></li>
+                    <li><a href="#vibe">The Vibe</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="rooms.html" class="btn-book">Book a Stay</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <span class="tagline">Est. 2024 • Bali, Indonesia</span>
+                <h1>Sleep well, <br> <span>connect</span> often.</h1>
+                <p>More than just a hostel. The Nook is a boutique sanctuary for digital nomads, creatives, and free
+                    spirits looking for community.</p>
+
+                <div class="booking-bar">
+                    <div class="input-group">
+                        <label>Location</label>
+                        <select>
+                            <option>Ubud, Bali</option>
+                            <option>Canggu, Bali</option>
+                            <option>Uluwatu, Bali</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Dates</label>
+                        <input type="date">
+                    </div>
+                    <div class="input-group">
+                        <label>Travelers</label>
+                        <select>
+                            <option>1 Wanderer</option>
+                            <option>2 Friends</option>
+                            <option>Group</option>
+                        </select>
+                    </div>
+                    <button class="btn-search">&#8594;</button>
+                </div>
+            </div>
+
+            <div class="hero-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop"
+                    alt="Cozy Hostel Lounge" class="hero-img">
+                <div class="floating-review">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+                        alt="User" class="review-avatar">
+                    <div class="review-text">
+                        <p>"The best community I've ever found traveling!"</p>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vibe">
+        <div class="container">
+            <div class="section-header">
+                <h2>The Nook Vibe</h2>
+                <p>We believe in slow travel, good coffee, and meaningful conversations.</p>
+            </div>
+
+            <div class="vibe-grid">
+                <div class="vibe-card">
+                    <div class="vibe-icon">
+                        <img src="https://img.icons8.com/ios/50/264653/coffee-to-go.png" alt="Coffee">
+                    </div>
+                    <h3>Specialty Coffee</h3>
+                    <p>Free barista-made coffee every morning. Start your day with the perfect brew and a chat.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-icon">
+                        <img src="https://img.icons8.com/ios/50/264653/wifi--v1.png" alt="Wifi">
+                    </div>
+                    <h3>Coworking Space</h3>
+                    <p>Reliable 100mbps fiber wifi and ergonomic chairs. Work hard, then surf hard.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-icon">
+                        <img src="https://img.icons8.com/ios/50/264653/partly-cloudy-day--v1.png" alt="Sunset">
+                    </div>
+                    <h3>Sunset Yoga</h3>
+                    <p>Daily rooftop yoga sessions at golden hour. Connect with your breath and the view.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rooms">
+        <div class="container">
+            <div class="section-header">
+                <h2>Rest Your Head</h2>
+                <p>From social dorms to private sanctuaries.</p>
+            </div>
+
+            <div class="room-grid">
+                <div class="room-card link-card" onclick="window.location.href='rooms.html'">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=1920&auto=format&fit=crop"
+                        alt="The Social Dorm" class="room-bg">
+                    <div class="room-details">
+                        <div class="room-info">
+                            <h3>The Social Dorm</h3>
+                            <p>Luxury pods with privacy curtains.</p>
+                        </div>
+                        <span class="room-price">from $24</span>
+                    </div>
+                </div>
+                <div class="room-card link-card" onclick="window.location.href='rooms.html'">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=1920&auto=format&fit=crop"
+                        alt="Private Sanctuary" class="room-bg">
+                    <div class="room-details">
+                        <div class="room-info">
+                            <h3>Private Sanctuary</h3>
+                            <p>En-suite king room with balcony.</p>
+                        </div>
+                        <span class="room-price">from $85</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rituals" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Daily Rituals</h2>
+                <p>Join the tribe. Every day brings something new.</p>
+            </div>
+            <div class="rituals-list">
+                <div class="ritual-item">
+                    <div class="ritual-time">07:00 AM</div>
+                    <div class="ritual-content">
+                        <h3>Sunrise Yoga</h3>
+                        <p>Start your day with flow and mindfulness on the rooftop terrace.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-time">09:00 AM</div>
+                    <div class="ritual-content">
+                        <h3>Communal Breakfast</h3>
+                        <p>Free banana pancakes and local coffee. The best time to plan the day.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-time">05:00 PM</div>
+                    <div class="ritual-content">
+                        <h3>Sunset Surf Session</h3>
+                        <p>Grab a board and head to the beach with the crew for the golden hour.</p>
+                    </div>
+                </div>
+                <div class="ritual-item">
+                    <div class="ritual-time">08:00 PM</div>
+                    <div class="ritual-content">
+                        <h3>Family Dinner</h3>
+                        <p>A delicious local feast served family-style. Vegan options always available.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tales from the Tribe</h2>
+                <p>Don't just take our word for it.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop"
+                            alt="Sarah" class="user-avatar">
+                        <div class="user-details">
+                            <h4>Sarah Jenkins</h4>
+                            <span>Digital Nomad</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"I planned to stay for 3 days and stayed for 3 weeks. The wifi is fast,
+                        but the people are what make this place magic."</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop"
+                            alt="Marc" class="user-avatar">
+                        <div class="user-details">
+                            <h4>Marc Dupont</h4>
+                            <span>Backpacker</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"The best hostel bed I've ever slept in. Private curtains, reading
+                        light, and super clean. A+"</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="user-info">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop"
+                            alt="Elena" class="user-avatar">
+                        <div class="user-details">
+                            <h4>Elena Rodriguez</h4>
+                            <span>Solo Traveler</span>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"As a solo female traveler, I felt so safe and welcomed here. The family
+                        dinners are a must-do!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="story">
+        <div class="container">
+            <div class="story-content">
+                <div class="story-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1000&auto=format&fit=crop"
+                        alt="Our Story" class="story-img">
+                </div>
+                <div class="story-text">
+                    <h2>Built for Slow Travel</h2>
+                    <p>The Nook started as a dream by two friends who were tired of impersonal hotels. We wanted to
+                        create a space that felt like a living room, not a lobby.</p>
+                    <p>We believe travel isn't just about the places you go, but the people you meet. That's why every
+                        corner of The Nook is designed to spark conversation and connection.</p>
+                    <button class="btn-book" style="margin-top: 20px;">Read Our Full Story</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>#NookLife</h2>
+                <p>Follow us on Instagram @TheNookBali</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?q=80&w=600&auto=format&fit=crop"
+                        alt="Poolside Vibe"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=600&auto=format&fit=crop"
+                        alt="Friends Laughing"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1493770348161-369560ae357d?q=80&w=600&auto=format&fit=crop"
+                        alt="Healthy Breakfast"></div>
+                <div class="gallery-item"><img
+                        src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?q=80&w=600&auto=format&fit=crop"
+                        alt="Surf Day"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h2>The Nook.</h2>
+                    <p>A boutique hostel for the modern wanderer. Born in Bali, raised by the community. Join us for
+                        good vibes and slow living.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><img
+                                src="https://img.icons8.com/ios-filled/50/instagram-new--v1.png" alt="IG"></a>
+                        <a href="#" class="social-icon"><img src="https://img.icons8.com/ios-filled/50/facebook-new.png"
+                                alt="FB"></a>
+                        <a href="#" class="social-icon"><img src="https://img.icons8.com/ios-filled/50/tiktok.png"
+                                alt="TT"></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rooms.html">Bunks & Rooms</a></li>
+                        <li><a href="index.html#rituals">Daily Rituals</a></li>
+                        <li><a href="#story">Our Story</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">T&Cs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Join the Tribe</h4>
+                    <p style="margin-bottom: 10px; opacity: 0.8; font-size: 0.9rem;">Get 10% off your first stay.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" class="newsletter-input">
+                        <button type="button" class="btn-subscribe">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 The Nook Hostels. Designed by refined taste.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

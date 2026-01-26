@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms | The Nook</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    The Nook<span style="color:var(--accent);">.</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="rooms.html" class="active">Bunks & Rooms</a></li>
+                    <li><a href="index.html#vibe">The Vibe</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <a href="#book" class="btn-book">Book a Stay</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" style="min-height: 400px; padding-top: 120px; align-items: flex-start;">
+        <div class="container" style="display: block; text-align: center;">
+            <div class="section-header">
+                <h2>Our Quarters</h2>
+                <p>Designed for deep sleep and easy mornings.</p>
+            </div>
+
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 60px;">
+
+                <!-- Room 1 -->
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-card);">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=800&auto=format&fit=crop"
+                        style="width: 100%; height: 250px; object-fit: cover;" alt="Mixed Dorm">
+                    <div style="padding: 30px; text-align: left;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h3 style="font-family: var(--font-heading); font-size: 1.5rem;">The Social Dorm</h3>
+                            <span style="color: var(--accent); font-weight: 700;">$24</span>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">8-bed mixed dorm. Each bunk has a
+                            reading light, privacy curtain, and locker.</p>
+                        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                            <span
+                                style="background: #E0F2F1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary);">AC</span>
+                            <span
+                                style="background: #E0F2F1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary);">Lockers</span>
+                        </div>
+                        <button class="btn-book" style="width: 100%;">Reserve Bunk</button>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-card);">
+                    <img src="https://images.unsplash.com/photo-1520277739336-7bf67edfa768?q=80&w=800&auto=format&fit=crop"
+                        style="width: 100%; height: 250px; object-fit: cover;" alt="Female Dorm">
+                    <div style="padding: 30px; text-align: left;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h3 style="font-family: var(--font-heading); font-size: 1.5rem;">Female Sanctuary</h3>
+                            <span style="color: var(--accent); font-weight: 700;">$28</span>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">4-bed female only dorm. En-suite
+                            bathroom with lighted mirrors and hair dryers.</p>
+                        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                            <span
+                                style="background: #E0F2F1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary);">En-suite</span>
+                            <span
+                                style="background: #E0F2F1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary);">Quiet</span>
+                        </div>
+                        <button class="btn-book" style="width: 100%;">Reserve Bunk</button>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-card);">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=800&auto=format&fit=crop"
+                        style="width: 100%; height: 250px; object-fit: cover;" alt="Private">
+                    <div style="padding: 30px; text-align: left;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                            <h3 style="font-family: var(--font-heading); font-size: 1.5rem;">Private King</h3>
+                            <span style="color: var(--accent); font-weight: 700;">$85</span>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 20px;">Private room with king bed, balcony,
+                            and work desk. Hotel comfort, hostel vibes.</p>
+                        <div style="display: flex; gap: 10px; margin-bottom: 25px;">
+                            <span
+                                style="background: #E0F2F1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary);">Balcony</span>
+                            <span
+                                style="background: #E0F2F1; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary);">TV</span>
+                        </div>
+                        <button class="btn-book" style="width: 100%;">Reserve Room</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 The Nook Hostels.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
