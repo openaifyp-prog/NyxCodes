@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Zenith</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f0;
+            color: #1a1a1a;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <nav
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-8 mix-blend-difference text-white">
+        <a href="index.html" class="text-2xl tracking-[0.2em] font-light z-50">ZENITH</a>
+        <div class="hidden md:flex gap-12 text-sm tracking-widest uppercase">
+            <a href="index.html" class="hover:border-b hover:border-white transition-all">Projects</a>
+            <a href="studio.html" class="hover:border-b hover:border-white transition-all">Studio</a>
+            <a href="news.html" class="border-b border-white">News</a>
+            <a href="contact.html" class="hover:border-b hover:border-white transition-all">Contact</a>
+        </div>
+        <!-- Mobile Toggle -->
+        <button id="mobile-toggle" class="md:hidden z-50 text-white mix-blend-difference focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-[#1a1a1a] z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500">
+        <nav class="flex flex-col gap-8 text-center text-white text-2xl font-serif italic">
+            <a href="index.html" class="mobile-link">Projects</a>
+            <a href="studio.html" class="mobile-link">Studio</a>
+            <a href="news.html" class="mobile-link">Journal</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </nav>
+    </div>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+                mobileToggle.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+                mobileToggle.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+            }
+        });
+    </script>
+
+    <header class="pt-40 pb-20 px-8 text-center bg-[#1a1a1a] text-white">
+        <h1 class="text-6xl italic mb-4">Journal</h1>
+        <p class="tracking-widest uppercase text-sm">Thoughts on Space & Form</p>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-8 py-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24">
+
+            <article class="group cursor-pointer">
+                <div class="overflow-hidden h-64 md:h-80 mb-6 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2670&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                </div>
+                <span class="text-xs font-bold tracking-widest uppercase text-gray-500">Jan 24, 2026</span>
+                <h3 class="text-3xl italic mt-2 mb-4 group-hover:underline">The Return of Brutalism</h3>
+                <p class="text-gray-600 font-light leading-relaxed">Why raw concrete is making a comeback in modern
+                    luxury residential design.</p>
+            </article>
+
+            <article class="group cursor-pointer">
+                <div class="overflow-hidden h-64 md:h-80 mb-6 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?q=80&w=2671&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                </div>
+                <span class="text-xs font-bold tracking-widest uppercase text-gray-500">Jan 10, 2026</span>
+                <h3 class="text-3xl italic mt-2 mb-4 group-hover:underline">Light as Material</h3>
+                <p class="text-gray-600 font-light leading-relaxed">Exploring how natural light shapes our perception of
+                    volume and texture.</p>
+            </article>
+
+            <article class="group cursor-pointer">
+                <div class="overflow-hidden h-64 md:h-80 mb-6 bg-gray-200">
+                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2671&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                </div>
+                <span class="text-xs font-bold tracking-widest uppercase text-gray-500">Dec 20, 2025</span>
+                <h3 class="text-3xl italic mt-2 mb-4 group-hover:underline">Award: Best Nordic Villa</h3>
+                <p class="text-gray-600 font-light leading-relaxed">We are honored to receive the prestigious 2025
+                    Nordic Design Award for The Stone House.</p>
+            </article>
+
+        </div>
+    </section>
+
+    <footer class="bg-[#1a1a1a] text-white py-12 text-center text-xs tracking-widest uppercase">
+        &copy; 2026 Zenith Architecture
+    </footer>
+
+</body>
+
+</html>

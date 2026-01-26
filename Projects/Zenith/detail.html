@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Stone House | Zenith</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f0;
+            color: #1a1a1a;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <nav
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-8 mix-blend-difference text-white">
+        <a href="index.html" class="text-2xl tracking-[0.2em] font-light z-50">ZENITH</a>
+        <a href="index.html"
+            class="text-sm tracking-widest uppercase border-b border-transparent hover:border-white transition-opacity">Back
+            to Projects</a>
+    </nav>
+
+    <!-- Header Image -->
+    <header class="h-screen w-full relative">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop"
+            class="w-full h-full object-cover">
+        <div class="absolute bottom-16 left-8 md:left-16 text-white">
+            <h1 class="text-6xl md:text-8xl italic mb-4">The Stone House</h1>
+            <p class="tracking-widest uppercase text-sm">Reykjavik, Iceland</p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="max-w-4xl mx-auto px-8 py-32">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
+            <div>
+                <h3 class="text-xl italic mb-4 text-gray-500">Overview</h3>
+                <ul class="text-sm space-y-2 text-gray-600">
+                    <li><strong>Year:</strong> 2024</li>
+                    <li><strong>Area:</strong> 450 m²</li>
+                    <li><strong>Client:</strong> Private</li>
+                    <li><strong>Status:</strong> Completed</li>
+                </ul>
+            </div>
+            <div class="col-span-2">
+                <p class="text-lg leading-relaxed text-gray-800 font-light">
+                    Nestled in the rugged Icelandic landscape, The Stone House is a dialogue between brutalism and
+                    nature. The concrete structure mimics the surrounding basalt rocks, while expansive glazing frames
+                    the Northern Lights. The interior features locally sourced stone, warm timber paneling, and a
+                    minimalist aesthetic that allows the environment to take center stage.
+                </p>
+            </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="space-y-4">
+            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2700"
+                class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700">
+            <div class="grid grid-cols-2 gap-4">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=2187"
+                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2574"
+                    class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
+            </div>
+        </div>
+
+        <div class="mt-32 text-center">
+            <a href="index.html"
+                class="inline-block border border-black px-12 py-4 text-sm tracking-widest uppercase hover:bg-black hover:text-white transition-colors">Next
+                Project</a>
+        </div>
+    </main>
+
+    <footer class="bg-[#1a1a1a] text-white py-12 text-center text-xs tracking-widest uppercase">
+        &copy; 2026 Zenith Architecture
+    </footer>
+
+</body>
+
+</html>

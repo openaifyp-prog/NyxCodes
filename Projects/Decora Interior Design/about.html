@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Dekora Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #3d4a59;
+        }
+
+        .nav-bg {
+            background: linear-gradient(to bottom, #4a5568, #2d3748);
+        }
+
+        .custom-font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-white">
+    <!-- Navbar -->
+    <nav class="nav-bg text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div>
+                    <a href="DecoraInteriorDesign.html">
+                        <img class="h-10 w-auto" src="Logo.svg" alt="Dekora Logo">
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="DecoraInteriorDesign.html"
+                        class="py-2 px-3 text-white hover:text-cyan-400 font-medium">Home</a>
+                    <a href="shop.html" class="py-2 px-3 text-white hover:text-cyan-400 font-medium">Shop</a>
+                    <a href="about.html" class="py-2 px-3 text-cyan-400 font-medium">About Us</a>
+                    <a href="contact.html" class="py-2 px-3 text-white hover:text-cyan-400 font-medium">Contact</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="#" class="hidden md:block relative p-1 text-white hover:text-cyan-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                        <span
+                            class="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-xs font-bold text-slate-900">1</span>
+                    </a>
+                    <button id="mobile-menu-button" class="md:hidden p-1 text-white hover:text-cyan-400">
+                        <svg id="icon-open" class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg id="icon-close" class="w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-800">
+            <a href="DecoraInteriorDesign.html" class="block py-2 px-4 text-sm text-white hover:bg-slate-700">Home</a>
+            <a href="shop.html" class="block py-2 px-4 text-sm text-white hover:bg-slate-700">Shop</a>
+            <a href="about.html" class="block py-2 px-4 text-sm text-cyan-400 hover:bg-slate-700">About Us</a>
+            <a href="contact.html" class="block py-2 px-4 text-sm text-white hover:bg-slate-700">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-[#f0f9ff] py-20 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10 text-center">
+            <span class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2 block">Our Story</span>
+            <h1 class="text-4xl md:text-5xl font-bold text-slate-800 custom-font-heading mb-6">Redefining Interior
+                Spaces<br>Since 2010</h1>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">We started with a simple mission: to make high-quality,
+                beautiful living spaces accessible to everyone.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section id="about-us-section" class="bg-white py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="Rectangle 9.png" alt="Comfortable sofa in a modern room"
+                    class="w-full h-auto rounded-3xl shadow-lg">
+            </div>
+            <div>
+                <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">
+                    WHO WE ARE
+                </p>
+                <h2 class="text-4xl font-bold text-slate-800 mb-4 custom-font-heading">
+                    Design Excellence in Every Detail
+                </h2>
+                <p class="text-gray-600 mb-8">
+                    Decora isn't just a flooring company; we are partners in creating your dream home. Our team of
+                    expert designers and installers work tirelessly to bring your vision to life. From selection to
+                    installation, we ensure a seamless experience.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-800 mb-2">15+</h4>
+                        <p class="text-gray-500 text-sm">Years Experience</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-800 mb-2">5000+</h4>
+                        <p class="text-gray-500 text-sm">Happy Clients</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-800 mb-2">50+</h4>
+                        <p class="text-gray-500 text-sm">Awards Won</p>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-800 mb-2">100%</h4>
+                        <p class="text-gray-500 text-sm">Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="bg-[#e9faf4] py-16 md:py-24">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-sm font-semibold text-cyan-500 uppercase tracking-wider mb-2">OUR LEADERSHIP</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-800 mb-12 custom-font-heading">Meet The Experts</h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-3xl shadow-md">
+                    <div class="h-32 w-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://via.placeholder.com/150" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Sarah Johnson</h3>
+                    <p class="text-cyan-500 text-sm">Founder & CEO</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-md">
+                    <div class="h-32 w-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://via.placeholder.com/150" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Michael Chen</h3>
+                    <p class="text-cyan-500 text-sm">Head of Design</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-md">
+                    <div class="h-32 w-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://via.placeholder.com/150" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">Emily Davis</h3>
+                    <p class="text-cyan-500 text-sm">Operations Manager</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl shadow-md">
+                    <div class="h-32 w-32 bg-gray-200 rounded-full mx-auto mb-4 overflow-hidden">
+                        <img src="https://via.placeholder.com/150" alt="Team Member" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-800">David Wilson</h3>
+                    <p class="text-cyan-500 text-sm">Lead Installer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer-section" class="bg-slate-800 text-gray-300 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-8">
+                <div class="lg:col-span-1">
+                    <h2 class="text-3xl font-bold text-white mb-6">Newsletter</h2>
+                    <form class="relative flex w-full max-w-md bg-slate-700 rounded-full border border-gray-600 p-1.5">
+                        <input type="email" placeholder="Enter your email"
+                            class="flex-grow bg-transparent text-white placeholder-gray-400 focus:outline-none px-4">
+                        <button type="submit"
+                            class="bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold rounded-full py-2 px-6 hover:from-cyan-500 hover:to-blue-600 transition-all">Subscribe</button>
+                    </form>
+                </div>
+                <div class="lg:col-span-2">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Support</h3>
+                            <ul class="space-y-3">
+                                <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+                                <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                                <li><a href="blog.html" class="hover:text-white transition-colors">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Useful Link</h3>
+                            <ul class="space-y-3">
+                                <li><a href="#" class="hover:text-white transition-colors">Payment & Tax</a></li>
+                                <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                                <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Our Menu</h3>
+                            <ul class="space-y-3">
+                                <li><a href="shop.html" class="hover:text-white transition-colors">Best Product</a></li>
+                                <li><a href="shop.html" class="hover:text-white transition-colors">Category</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-4">Address</h3>
+                            <div class="space-y-3">
+                                <p>JL. Setiabudhi No. 193 Sukasari, Bandung West Java, Indonesia</p>
+                                <p>info@decora.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-center text-gray-400 text-sm">© 2025 Decora - All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const iconOpen = document.getElementById('icon-open');
+            const iconClose = document.getElementById('icon-close');
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                iconOpen.classList.toggle('hidden');
+                iconClose.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>

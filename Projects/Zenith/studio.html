@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio | Zenith</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f0;
+            color: #1a1a1a;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <nav
+        class="fixed top-0 w-full z-50 flex justify-between items-center px-8 md:px-16 py-8 mix-blend-difference text-white">
+        <a href="index.html" class="text-2xl tracking-[0.2em] font-light z-50">ZENITH</a>
+        <div class="hidden md:flex gap-12 text-sm tracking-widest uppercase">
+            <a href="index.html" class="hover:border-b hover:border-white transition-all">Projects</a>
+            <a href="studio.html" class="border-b border-white">Studio</a>
+            <a href="news.html" class="hover:border-b hover:border-white transition-all">News</a>
+            <a href="contact.html" class="hover:border-b hover:border-white transition-all">Contact</a>
+        </div>
+        <!-- Mobile Toggle -->
+        <button id="mobile-toggle" class="md:hidden z-50 text-white mix-blend-difference focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-[#1a1a1a] z-40 flex flex-col justify-center items-center opacity-0 pointer-events-none transition-opacity duration-500">
+        <nav class="flex flex-col gap-8 text-center text-white text-2xl font-serif italic">
+            <a href="index.html" class="mobile-link">Projects</a>
+            <a href="studio.html" class="mobile-link">Studio</a>
+            <a href="news.html" class="mobile-link">Journal</a>
+            <a href="contact.html" class="mobile-link">Contact</a>
+        </nav>
+    </div>
+
+    <script>
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+        let isMenuOpen = false;
+
+        mobileToggle.addEventListener('click', () => {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+                mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+                mobileToggle.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>';
+            } else {
+                mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+                mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = '';
+                mobileToggle.innerHTML = '<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+            }
+        });
+    </script>
+
+    <header class="h-[60vh] w-full relative flex items-center justify-center bg-zinc-900">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2301&auto=format&fit=crop"
+            class="absolute inset-0 w-full h-full object-cover opacity-50">
+        <div class="relative z-10 text-white text-center">
+            <h1 class="text-6xl md:text-8xl italic">The Studio</h1>
+            <p class="mt-4 tracking-widest uppercase text-sm">Philosophy & Team</p>
+        </div>
+    </header>
+
+    <section class="max-w-4xl mx-auto px-8 py-32">
+        <div class="prose prose-lg prose-stone mx-auto">
+            <h2 class="text-4xl italic font-light mb-8">Architecture is frozen music.</h2>
+            <p class="text-xl font-light leading-relaxed mb-12">
+                Founded in 2024, Zenith has quickly established itself as a leading voice in minimalist architecture. We
+                strive to create spaces that are not just visually stunning, but emotionally resonant. Our approach is
+                rooted in a deep respect for context, material, and light.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 my-24">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2670&auto=format&fit=crop"
+                        class="w-full h-96 object-cover grayscale mb-4">
+                    <h4 class="text-xl font-bold">Erik Magnus</h4>
+                    <p class="text-sm tracking-widest uppercase text-gray-500">Principal Architect</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2576&auto=format&fit=crop"
+                        class="w-full h-96 object-cover grayscale mb-4">
+                    <h4 class="text-xl font-bold">Sarah Chen</h4>
+                    <p class="text-sm tracking-widest uppercase text-gray-500">Design Director</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1a1a1a] text-white py-12 text-center text-xs tracking-widest uppercase">
+        &copy; 2026 Zenith Architecture
+    </footer>
+
+</body>
+
+</html>

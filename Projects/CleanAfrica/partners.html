@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners - Clean Africa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script>
+        tailwind = {
+            config: {
+                theme: {
+                    extend: {
+                        colors: {
+                            'ca-green': '#00B67A',
+                            'ca-dark': '#1a1a1a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <img src="ca_logo.png" alt="Clean Africa" class="rounded-full w-8 h-8 sm:w-10 sm:h-10">
+                    <span class="text-lg sm:text-xl font-bold">CLEAN AFRICA</span>
+                </div>
+                <div class="hidden lg:flex space-x-6 xl:space-x-8">
+                    <a href="CleanAfrica.html" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">HOME</a>
+                    <a href="about.html" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">ABOUT US</a>
+                    <a href="solutions.html"
+                        class="text-gray-700 hover:text-ca-green text-sm xl:text-base">SOLUTIONS</a>
+                    <a href="impact.html" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">IMPACT</a>
+                    <a href="partners.html" class="text-ca-green font-semibold text-sm xl:text-base">PARTNERS</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">BLOG</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-ca-green text-sm xl:text-base">CONTACT</a>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button
+                        class="bg-ca-green text-white px-4 sm:px-6 py-2 rounded-lg text-sm font-semibold hover:bg-green-700 transition">Sign
+                        in</button>
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-gray-700 hover:text-ca-green">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-gray-100">
+            <div class="px-4 py-3 space-y-2">
+                <a href="CleanAfrica.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">HOME</a>
+                <a href="about.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">ABOUT US</a>
+                <a href="solutions.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">SOLUTIONS</a>
+                <a href="impact.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">IMPACT</a>
+                <a href="partners.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-ca-green bg-green-50">PARTNERS</a>
+                <a href="blog.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">BLOG</a>
+                <a href="contact.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+            if (!menu.classList.contains('hidden')) {
+                menu.classList.add('mobile-menu-enter');
+            }
+        }
+    </script>
+
+
+    <!-- Page Header -->
+    <header class="bg-gray-900 text-white py-20 text-center"
+        style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('global_hands.png'); background-size: cover; background-position: center;">
+        <h1 class="text-4xl sm:text-5xl font-bold mb-4">Our Partners</h1>
+        <p class="text-lg sm:text-xl text-gray-200">Collaborating for a sustainable future.</p>
+    </header>
+
+    <!-- Partners Grid -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Trusted By</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center opacity-70">
+                <!-- Placeholder Logos using text/icons for now as per plan -->
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">ECO WORLD</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">GREEN CITY</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">WASTE NOT</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">PLANET FIRST</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">AFRICA TECH</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">SUSTAIN</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">CLEAN FUTURE</span>
+                </div>
+                <div
+                    class="p-6 border border-gray-100 rounded-lg flex items-center justify-center h-32 hover:opacity-100 transition">
+                    <span class="text-xl font-bold text-gray-400">UN HABITAT</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-green-50">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">Partner With Us</h2>
+            <p class="text-gray-600 mb-8 text-lg">Join our network of municipalities, NGOs, and private companies
+                working together to solve the waste crisis.</p>
+            <a href="contact.html"
+                class="bg-ca-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition">Become a
+                Partner</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="ca-site-footer">
+        <div class="ca-footer-container">
+            <div class="ca-footer-grid">
+
+                <div class="ca-footer-col ca-footer-about">
+                    <div class="ca-footer-logo">
+                        <img src="ca_logo.png" alt="Clean Africa Logo">
+                        <span>CLEAN AFRICA</span>
+                    </div>
+                    <p>
+                        Clean Africa is dedicated to solving the continent's waste management crisis through technology,
+                        data, and community engagement. Join us in building a greener future.
+                    </p>
+                </div>
+
+                <div class="ca-footer-col ca-footer-links">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="CleanAfrica.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="impact.html">Impact</a></li>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="ca-footer-col ca-footer-contact">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li>
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                            </svg>
+                            <span>Info@cleanafrica.com</span>
+                        </li>
+                        <li>
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.02.74-.25 1.02l-2.2 2.2z" />
+                            </svg>
+                            <span>+XXX-XXX-XXX</span>
+                        </li>
+                        <li>
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                            </svg>
+                            <span>Johannesburg, Africa</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="ca-footer-col ca-footer-social">
+                    <h4>Social Media Links</h4>
+                    <div class="ca-footer-social-icons">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-11 5H5v9h3V8zm-1.5-2a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm8.5 2H12v9h3v-4.5c0-1.25.6-2.5 2-2.5s1.5 1.25 1.5 2.5V17h3v-5c0-3-2-5-5-5z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X (formerly Twitter)">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.04C6.48 2.04 2 6.52 2 12.04s4.48 10 10 10 10-4.48 10-10S17.52 2.04 12 2.04zm3.6 7.4h-1.8v-1.8c0-.49.39-.89.89-.89h.9V4.64s-.81-.14-1.59-.14c-1.6 0-2.65 1-2.65 2.72v1.82h-1.8v2.84h1.8V20h3.6v-7.32h2.4l.36-2.84z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="ca-footer-bottom">
+            <div class="ca-footer-container">
+                <p>Copyright © 2025 <span>Clean Africa</span>. All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

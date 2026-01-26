@@ -262,40 +262,52 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
-            title: "Code Maze - Mobile Learning App",
-            image: "images/project-codemaze.webp",
-            imagePng: "images/project-codemaze.png",
-            tags: ["Flutter", "Dart", "Firebase", "AI API"],
-            description: "An interactive mobile app for learning to code, built with Flutter. Features lessons, quizzes, puzzles, and games. Also includes an integrated AI assistant and compiler using REST APIs.",
-            category: "Mobile",
-            link: "https://github.com/openaifyp-prog/codemaze" // Placeholder - Update with actual repo
+            title: "CoinPulse - Crypto Dashboard",
+            image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=2555&auto=format&fit=crop",
+            tags: ["JS", "Chart.js", "API", "Fintech"],
+            description: "A professional crypto dashboard featuring live Bitcoin prices, interactive Chart.js graphs, and market trending data fetched from CoinGecko.",
+            category: "Web",
+            link: "Projects/CoinPulse/index.html"
         },
         {
-            title: "Decora Interior Design",
-            image: "images/project-news.webp", // Keeping placeholder for card consistency
-            imagePng: "images/project-news.png",
-            tags: ["HTML", "CSS", "JavaScript", "Design"],
-            description: "A modern interior design landing page showcasing elegance and style. Features responsive layouts and a clean aesthetic.",
+            title: "Nexus News Aggregator",
+            image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop",
+            tags: ["JS", "News API", "Tailwind", "Editorial"],
+            description: "A daily auto-updating news blog. Features category filtering, instant search, and a curated editorial layout powered by live data.",
+            category: "Web",
+            link: "Projects/NexusNews/index.html"
+        },
+        {
+            title: "Zenith Architecture",
+            image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2670&auto=format&fit=crop",
+            tags: ["Design", "Minimalist", "Tailwind", "Animation"],
+            description: "A premium, minimalist portfolio for an architecture studio. Focuses on whitespace, elegant typography, and micro-interactions.",
             category: "Design",
-            link: "Projects/Decora Interior Design/DecoraInteriorDesign.html"
+            link: "Projects/Zenith/index.html"
         },
         {
-            title: "Dartar.ai Tech Website",
+            title: "Code Maze - Mobile Game",
+            image: "images/project-codemaze.webp",
+            tags: ["Flutter", "Dart", "Firebase", "Game Dev"],
+            description: "An interactive mobile puzzle game built with Flutter. Features complex algorithms for maze generation and a sleek, native UI.",
+            category: "Mobile",
+            link: "https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze"
+        },
+        {
+            title: "Dartar.ai Tech Landing",
             image: "images/project-dartarai.webp",
-            imagePng: "images/project-dartarai.png",
-            tags: ["HTML", "Tailwind CSS", "JavaScript", "Tech"],
-            description: "A modern and cutting-edge website for the tech startup Dartar.ai. This project was built using Tailwind CSS to create a fully responsive, pixel-perfect design that reflects their innovative brand.",
+            tags: ["HTML", "Tailwind", "SaaS", "Tech"],
+            description: "A modern B2B landing page for an AI logistics startup. Features clean corporate design, feature grids, and pricing tables.",
             category: "Web",
             link: "Projects/Dartar.Ai/darterAi.html"
         },
         {
-            title: "Clean Africa (NGO) Landing Page",
-            image: "images/project-cleanafrica.webp",
-            imagePng: "images/project-cleanafrica.png",
-            tags: ["HTML", "CSS", "JavaScript", "NGO"],
-            description: "A professional landing page built for the Clean Africa NGO. The project focuses on clear communication, user engagement, and responsive design to support their mission and outreach.",
-            category: "Web",
-            link: "Projects/CleanAfrica/CleanAfrica.html"
+            title: "Decora Interior Design",
+            image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2500&auto=format&fit=crop",
+            tags: ["HTML", "CSS", "E-Commerce", "Design"],
+            description: "An elegant interior design and e-commerce platform. Features product listings, services page, and a polished dark-themed footer.",
+            category: "Design",
+            link: "Projects/Decora Interior Design/DecoraInteriorDesign.html"
         }
     ];
 
@@ -304,8 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderProjects() {
         if (!projectsGrid) return;
 
-        projectsGrid.innerHTML = projectsData.map((project, index) => `
-            <div class="project-card magnetic-link cursor-hover reveal" 
+        projectsGrid.innerHTML = projectsData.slice(0, 4).map((project, index) => `
+            <div class="project-card cursor-hover reveal" 
                  data-title="${project.title}" 
                  data-image="${project.image}" 
                  data-tags="${project.tags.join(',')}" 

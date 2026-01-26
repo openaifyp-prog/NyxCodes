@@ -44,6 +44,9 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body class="">
@@ -287,6 +290,13 @@
                 <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
                     <!-- Projects will be injected here by script.js -->
                 </div>
+
+                <div class="text-center mt-16">
+                    <a href="projects.html"
+                        class="inline-block bg-gray-900 text-white font-medium py-4 px-10 rounded-full text-lg magnetic-link hover:bg-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        View All Projects
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -391,7 +401,20 @@
     </div>
 
     <!-- JavaScript Link -->
+    <script src="email-service.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Initialize Contact Form
+        document.addEventListener('DOMContentLoaded', () => {
+            // Replace these placeholders with your actual EmailJS keys!
+            // Service ID, Template ID
+            const btn = document.getElementById('contact-submit-btn');
+            if (btn) {
+                // Using placeholders - User needs to update email-service.js init() and these IDs
+                handleContactForm('contact-form', 'service_default', 'template_default', btn);
+            }
+        });
+    </script>
 
 </body>
 

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Darter.ai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <nav class="header-nav-section w-full relative shadow-md" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="darterAi.html" aria-label="Home">
+                <svg class="h-8 w-auto text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.001,4.524c-0.196,0-0.392,0.051-0.566,0.152L2.569,9.889c-0.345,0.198-0.569,0.566-0.569,0.978 c0,0.412,0.224,0.78,0.569,0.978l8.866,5.213c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152l8.866-5.213 c0.345-0.198,0.569-0.566,0.569-0.978c0-0.412-0.224-0.78-0.569-0.978L12.567,4.676C12.393,4.575,12.197,4.524,12.001,4.524z M12.001,6.176l7.134,4.213l-7.134,4.213l-7.134-4.213L12.001,6.176z M3.655,11.868l7.134,4.213v2.859 c0,0.412,0.224,0.78,0.569,0.978c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152 c0.345-0.198,0.569-0.566,0.569-0.978v-2.859l7.134-4.213L12.001,17.29L3.655,11.868z">
+                    </path>
+                </svg>
+            </a>
+
+            <div class="header-nav-links-desktop hidden md:flex items-center gap-8 text-gray-200">
+                <a href="solutions.html" class="hover:text-white transition-colors flex items-center gap-1">Solutions
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </a>
+                <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                <a href="about.html" class="hover:text-white transition-colors">About Us</a>
+                <a href="contact.html" class="text-white font-semibold transition-colors">Contact</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#"
+                    class="header-nav-button-secondary text-sm text-white border border-gray-400 rounded-lg px-5 py-2.5 hover:bg-gray-600 transition-colors">Go
+                    To Portal</a>
+                <a href="#"
+                    class="header-nav-button-primary text-sm bg-white text-gray-800 font-semibold rounded-lg px-5 py-2.5 hover:bg-gray-200 transition-colors">Start
+                    Free Trial</a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="header-nav-menu-button" class="text-white focus:outline-none">
+                    <svg id="header-nav-open-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg id="header-nav-close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="header-nav-mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full"
+            style="background-color: #2d3748;">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="solutions.html"
+                    class="text-gray-200 hover:text-white transition-colors flex items-center gap-1">Solutions
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </a>
+                <a href="blog.html" class="text-gray-200 hover:text-white transition-colors">Blog</a>
+                <a href="about.html" class="text-gray-200 hover:text-white transition-colors">About Us</a>
+                <a href="contact.html" class="text-white font-semibold transition-colors">Contact</a>
+
+                <hr class="border-gray-600 my-4" />
+
+                <a href="#"
+                    class="header-nav-button-secondary block text-center text-sm text-white border border-gray-400 rounded-lg px-5 py-2.5 hover:bg-gray-600 transition-colors">Go
+                    To Portal</a>
+                <a href="#"
+                    class="header-nav-button-primary block text-center text-sm bg-white text-gray-800 font-semibold rounded-lg px-5 py-2.5 hover:bg-gray-200 transition-colors">Start
+                    Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section w-full" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6 text-center py-20 md:py-28">
+            <h1 class="hero-section-title text-4xl md:text-6xl font-bold text-white mb-4">
+                Get in Touch
+            </h1>
+            <p class="hero-section-subtitle max-w-2xl mx-auto text-lg text-gray-300 leading-relaxed mb-8">
+                Have questions? Ready to get started? Our team is here to help you every step of the way.
+            </p>
+        </div>
+    </section>
+
+    <section class="contact-form-section w-full py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 max-w-6xl mx-auto">
+
+                <div class="md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                placeholder="John Doe">
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Work Email</label>
+                            <input type="email" id="email"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                placeholder="john@company.com">
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company
+                                    Name</label>
+                                <input type="text" id="company"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                    placeholder="Acme Logistics">
+                            </div>
+                            <div>
+                                <label for="fleet-size" class="block text-sm font-medium text-gray-700 mb-2">Fleet
+                                    Size</label>
+                                <select id="fleet-size"
+                                    class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all">
+                                    <option value="" disabled selected>Select size</option>
+                                    <option value="1-10">1-10 Vehicles</option>
+                                    <option value="11-50">11-50 Vehicles</option>
+                                    <option value="51-100">51-100 Vehicles</option>
+                                    <option value="100+">100+ Vehicles</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">How can we
+                                help?</label>
+                            <textarea id="message" rows="4"
+                                class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all"
+                                placeholder="Tell us about your needs..."></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-colors duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h2>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-orange-100 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">New York Office</h3>
+                                    <p class="text-gray-600">123 Logistics Way, Suite 400<br>New York, NY 10001</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="bg-orange-100 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Email Us</h3>
+                                    <p class="text-gray-600">Sales: sales@darter.ai<br>Support: support@darter.ai</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="bg-orange-100 p-3 rounded-lg">
+                                    <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-800">Call Us</h3>
+                                    <p class="text-gray-600">+1 (555) 123-4567<br>Mon-Fri, 9am - 6pm EST</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-section w-full pt-16 pb-8" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                <div class="footer-brand-info">
+                    <a href="darterAi.html" class="flex items-center gap-3 mb-4">
+                        <svg class="h-8 w-auto text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.001,4.524c-0.196,0-0.392,0.051-0.566,0.152L2.569,9.889c-0.345,0.198-0.569,0.566-0.569,0.978 c0,0.412,0.224,0.78,0.569,0.978l8.866,5.213c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152l8.866-5.213 c0.345-0.198,0.569-0.566,0.569-0.978c0-0.412-0.224-0.78-0.569-0.978L12.567,4.676C12.393,4.575,12.197,4.524,12.001,4.524z M12.001,6.176l7.134,4.213l-7.134,4.213l-7.134-4.213L12.001,6.176z M3.655,11.868l7.134,4.213v2.859 c0,0.412,0.224,0.78,0.569,0.978c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152 c0.345-0.198,0.569-0.566,0.569-0.978v-2.859l7.134-4.213L12.001,17.29L3.655,11.868z">
+                            </path>
+                        </svg>
+                    </a>
+                    <h3 class="text-xl font-bold text-white mb-2">Darter.ai</h3>
+                    <p class="text-gray-400">New York, USA</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-semibold text-white mb-4">Menu</h4>
+                    <ul class="space-y-3">
+                        <li><a href="solutions.html"
+                                class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a>
+                        </li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-socials">
+                    <h4 class="font-semibold text-white mb-4">Social Media</h4>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.171 0-3.52.012-4.752.069-2.775.127-3.905 1.257-4.033 4.033-.057 1.232-.068 1.582-.068 4.752s.011 3.52.068 4.752c.128 2.775 1.258 3.905 4.033 4.033 1.232.057 1.582.068 4.752.068s3.52-.011 4.752-.068c2.775-.128 3.905-1.258 4.033-4.033.057-1.232.068-1.582.068-4.752s-.011-3.52-.068-4.752c-.128-2.775-1.258-3.905-4.033-4.033-1.232-.057-1.582-.068-4.752-.068zM12 6.837a5.163 5.163 0 100 10.326 5.163 5.163 0 000-10.326zm0 8.441a3.279 3.279 0 110-6.558 3.279 3.279 0 010 6.558zM17.505 6.362a1.231 1.231 0 100 2.462 1.231 1.231 0 000-2.462z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22.46 6c-.77.35-1.6.58-2.46.67.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98-3.54-.18-6.69-1.86-8.79-4.46-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.22-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21c7.35 0 11.37-6.08 11.37-11.37 0-.17 0-.34-.01-.51.78-.57 1.45-1.28 1.98-2.08z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M9.198 21.5h4v-8.01h2.598l.397-3.03H13.198V8.41c0-.87.243-1.464 1.482-1.464h1.583V4.145C15.823 4.09 14.85 4 13.72 4c-2.43 0-4.09 1.48-4.09 4.22v2.23H6.46v3.03h3.248v8.01z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuButton = document.getElementById('header-nav-menu-button');
+        const mobileMenu = document.getElementById('header-nav-mobile-menu');
+        const openIcon = document.getElementById('header-nav-open-icon');
+        const closeIcon = document.getElementById('header-nav-close-icon');
+
+        menuButton.addEventListener('click', () => {
+            // Toggle the visibility of the menu and icons
+            mobileMenu.classList.toggle('hidden');
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>

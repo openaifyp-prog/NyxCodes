@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Darter.ai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+
+    <nav class="header-nav-section w-full relative shadow-md" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="darterAi.html" aria-label="Home">
+                <svg class="h-8 w-auto text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12.001,4.524c-0.196,0-0.392,0.051-0.566,0.152L2.569,9.889c-0.345,0.198-0.569,0.566-0.569,0.978 c0,0.412,0.224,0.78,0.569,0.978l8.866,5.213c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152l8.866-5.213 c0.345-0.198,0.569-0.566,0.569-0.978c0-0.412-0.224-0.78-0.569-0.978L12.567,4.676C12.393,4.575,12.197,4.524,12.001,4.524z M12.001,6.176l7.134,4.213l-7.134,4.213l-7.134-4.213L12.001,6.176z M3.655,11.868l7.134,4.213v2.859 c0,0.412,0.224,0.78,0.569,0.978c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152 c0.345-0.198,0.569-0.566,0.569-0.978v-2.859l7.134-4.213L12.001,17.29L3.655,11.868z">
+                    </path>
+                </svg>
+            </a>
+
+            <div class="header-nav-links-desktop hidden md:flex items-center gap-8 text-gray-200">
+                <a href="solutions.html" class="hover:text-white transition-colors flex items-center gap-1">Solutions
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </a>
+                <a href="blog.html" class="hover:text-white transition-colors">Blog</a>
+                <a href="about.html" class="text-white font-semibold transition-colors">About Us</a>
+                <a href="contact.html" class="hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#"
+                    class="header-nav-button-secondary text-sm text-white border border-gray-400 rounded-lg px-5 py-2.5 hover:bg-gray-600 transition-colors">Go
+                    To Portal</a>
+                <a href="#"
+                    class="header-nav-button-primary text-sm bg-white text-gray-800 font-semibold rounded-lg px-5 py-2.5 hover:bg-gray-200 transition-colors">Start
+                    Free Trial</a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="header-nav-menu-button" class="text-white focus:outline-none">
+                    <svg id="header-nav-open-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                    <svg id="header-nav-close-icon" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="header-nav-mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full"
+            style="background-color: #2d3748;">
+            <div class="flex flex-col p-6 space-y-4">
+                <a href="solutions.html"
+                    class="text-gray-200 hover:text-white transition-colors flex items-center gap-1">Solutions
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </a>
+                <a href="blog.html" class="text-gray-200 hover:text-white transition-colors">Blog</a>
+                <a href="about.html" class="text-white font-semibold transition-colors">About Us</a>
+                <a href="contact.html" class="text-gray-200 hover:text-white transition-colors">Contact</a>
+
+                <hr class="border-gray-600 my-4" />
+
+                <a href="#"
+                    class="header-nav-button-secondary block text-center text-sm text-white border border-gray-400 rounded-lg px-5 py-2.5 hover:bg-gray-600 transition-colors">Go
+                    To Portal</a>
+                <a href="#"
+                    class="header-nav-button-primary block text-center text-sm bg-white text-gray-800 font-semibold rounded-lg px-5 py-2.5 hover:bg-gray-200 transition-colors">Start
+                    Free Trial</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section w-full" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6 text-center py-20 md:py-28">
+            <h1 class="hero-section-title text-4xl md:text-6xl font-bold text-white mb-4">
+                Driven by Experience
+            </h1>
+            <p class="hero-section-subtitle max-w-3xl mx-auto text-lg text-gray-300 leading-relaxed mb-8">
+                Darter was built by industry veterans who understand the challenges of modern logistics. We're here to
+                change the game.
+            </p>
+        </div>
+    </section>
+
+    <section class="story-section w-full py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Story</h2>
+                    <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+                        <p>
+                            Before Darter was a software company, we were dispatchers, drivers, and fleet owners. We
+                            spent years navigating the complexities of the transportation industry, dealing with
+                            outdated tools, inefficient routes, and constant communication breakdowns.
+                        </p>
+                        <p>
+                            We knew there had to be a better way. So, we decided to build it ourselves.
+                        </p>
+                        <p>
+                            Founded in New York, Darter.ai combines deep industry knowledge with cutting-edge
+                            technology. Our mission is simple: to empower fleet operators with the tools they need to
+                            run safer, more efficient, and more profitable businesses.
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="pexels-goumbik-590016.jpg" alt="Team meeting" class="rounded-xl shadow-lg w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section w-full py-16 md:py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Core Values</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The principles that guide everything we do.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Safety First</h3>
+                    <p class="text-gray-600">We prioritize the safety of drivers and cargo above all else. Our
+                        technology is designed to reduce risks and promote safe driving habits.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Efficiency</h3>
+                    <p class="text-gray-600">We believe in doing more with less. Our algorithms squeeze every ounce of
+                        efficiency out of your operations to maximize your bottom line.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Transparency</h3>
+                    <p class="text-gray-600">No hidden fees, no black boxes. We believe in open communication and clear
+                        data.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section w-full py-16 md:py-24" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6">
+
+            <div class="team-section-header text-center mb-12 md:mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-3">
+                    Meet the Team
+                </h2>
+                <p class="text-lg text-gray-300">
+                    The experts behind the platform.
+                </p>
+            </div>
+
+            <div class="team-section-grid grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+
+                <!-- Nolan -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Nolan Korsgaard"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Nolan Korsgaard</h3>
+                    <p class="text-gray-400 mb-4">Co-Founder</p>
+                </div>
+
+                <!-- Jaylon -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Jaylon Vaccaro"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Jaylon Vaccaro</h3>
+                    <p class="text-gray-400 mb-4">Co-Founder</p>
+                </div>
+
+                <!-- Cooper -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Cooper Saris"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Cooper Saris</h3>
+                    <p class="text-gray-400 mb-4">Engineering Manager</p>
+                </div>
+
+                <!-- Marcus -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Marcus Philips"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Marcus Philips</h3>
+                    <p class="text-gray-400 mb-4">Software Engineer</p>
+                </div>
+                <!-- Brandon -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Brandon Herwitz"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Brandon Herwitz</h3>
+                    <p class="text-gray-400 mb-4">Head of Product</p>
+                </div>
+
+                <!-- Ryan -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Ryan Gouse"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Ryan Gouse</h3>
+                    <p class="text-gray-400 mb-4">Fleet Operations Specialist</p>
+                </div>
+
+                <!-- Miracle D -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Miracle Dorwart"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Miracle Dorwart</h3>
+                    <p class="text-gray-400 mb-4">Senior Dispatcher</p>
+                </div>
+
+                <!-- Miracle S -->
+                <div class="team-member-card text-center">
+                    <img src="member.jpeg" alt="Miracle Siphron"
+                        class="w-40 h-40 mx-auto rounded-lg border border-gray-600 mb-4">
+                    <h3 class="text-xl font-semibold text-white">Miracle Siphron</h3>
+                    <p class="text-gray-400 mb-4">Customer Success Lead</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer-section w-full pt-16 pb-8" style="background-color: #2d3748;">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                <div class="footer-brand-info">
+                    <a href="darterAi.html" class="flex items-center gap-3 mb-4">
+                        <svg class="h-8 w-auto text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12.001,4.524c-0.196,0-0.392,0.051-0.566,0.152L2.569,9.889c-0.345,0.198-0.569,0.566-0.569,0.978 c0,0.412,0.224,0.78,0.569,0.978l8.866,5.213c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152l8.866-5.213 c0.345-0.198,0.569-0.566,0.569-0.978c0-0.412-0.224-0.78-0.569-0.978L12.567,4.676C12.393,4.575,12.197,4.524,12.001,4.524z M12.001,6.176l7.134,4.213l-7.134,4.213l-7.134-4.213L12.001,6.176z M3.655,11.868l7.134,4.213v2.859 c0,0.412,0.224,0.78,0.569,0.978c0.174,0.101,0.37,0.152,0.566,0.152s0.392-0.051,0.566-0.152 c0.345-0.198,0.569-0.566,0.569-0.978v-2.859l7.134-4.213L12.001,17.29L3.655,11.868z">
+                            </path>
+                        </svg>
+                    </a>
+                    <h3 class="text-xl font-bold text-white mb-2">Darter.ai</h3>
+                    <p class="text-gray-400">New York, USA</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-semibold text-white mb-4">Menu</h4>
+                    <ul class="space-y-3">
+                        <li><a href="solutions.html"
+                                class="text-gray-400 hover:text-white transition-colors">Solutions</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a>
+                        </li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-socials">
+                    <h4 class="font-semibold text-white mb-4">Social Media</h4>
+                    <div class="flex items-center gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.012 3.584-.07 4.85c-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919C8.416 2.175 8.796 2.163 12 2.163zm0 1.441c-3.171 0-3.52.012-4.752.069-2.775.127-3.905 1.257-4.033 4.033-.057 1.232-.068 1.582-.068 4.752s.011 3.52.068 4.752c.128 2.775 1.258 3.905 4.033 4.033 1.232.057 1.582.068 4.752.068s3.52-.011 4.752-.068c2.775-.128 3.905-1.258 4.033-4.033.057-1.232.068-1.582.068-4.752s-.011-3.52-.068-4.752c-.128-2.775-1.258-3.905-4.033-4.033-1.232-.057-1.582-.068-4.752-.068zM12 6.837a5.163 5.163 0 100 10.326 5.163 5.163 0 000-10.326zm0 8.441a3.279 3.279 0 110-6.558 3.279 3.279 0 010 6.558zM17.505 6.362a1.231 1.231 0 100 2.462 1.231 1.231 0 000-2.462z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M9.198 21.5h4v-8.01h2.598l.397-3.03H13.198V8.41c0-.87.243-1.464 1.482-1.464h1.583V4.145C15.823 4.09 14.85 4 13.72 4c-2.43 0-4.09 1.48-4.09 4.22v2.23H6.46v3.03h3.248v8.01z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuButton = document.getElementById('header-nav-menu-button');
+        const mobileMenu = document.getElementById('header-nav-mobile-menu');
+        const openIcon = document.getElementById('header-nav-open-icon');
+        const closeIcon = document.getElementById('header-nav-close-icon');
+
+        menuButton.addEventListener('click', () => {
+            // Toggle the visibility of the menu and icons
+            mobileMenu.classList.toggle('hidden');
+            openIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>
