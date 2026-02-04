@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velvet | Luxury Real Estate</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo">VELVET</div>
+        <nav class="desktop-nav">
+            <a href="properties.html">Properties</a>
+            <a href="agents.html">Agents</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button class="menu-toggle"><i class="ph ph-list"></i></button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider" id="hero-slider">
+            <!-- Slides injected by JS -->
+        </div>
+        <div class="hero-overlay">
+            <h1 class="hero-title fade-in-up">Find Your Sanctuary</h1>
+            <p class="hero-subtitle fade-in-up delay-1">Exclusive properties for the discerning few.</p>
+            <button class="btn-primary fade-in-up delay-2">Explore Collection</button>
+        </div>
+
+        <div class="slider-controls">
+            <button id="prev-slide"><i class="ph ph-caret-left"></i></button>
+            <button id="next-slide"><i class="ph ph-caret-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Featured Properties -->
+    <section class="featured">
+        <div class="section-header">
+            <h2 class="section-title">Curated Selection</h2>
+            <a href="#" class="view-all">View All <i class="ph ph-arrow-right"></i></a>
+        </div>
+        <div class="property-grid" id="property-grid">
+            <!-- Properties injected by JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- Brand & Address -->
+            <div class="footer-col">
+                <div>
+                    <span class="footer-brand">VELVET</span>
+                    <p style="opacity: 0.5; font-size: 0.9em; font-family: var(--font-serif); font-style: italic;">Est.
+                        2024</p>
+                </div>
+                <address class="footer-address">
+                    1280 Fifth Avenue<br>
+                    New York, NY 10029<br>
+                    +1 (212) 555-0199
+                </address>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Explore</h4>
+                <nav class="footer-links">
+                    <a href="properties.html">Properties</a>
+                    <a href="agents.html">Curators</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <nav class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                </nav>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Inquiries</h4>
+                <p style="opacity: 0.6; margin-bottom: 1rem;">Join our exclusive list for off-market updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Email Address">
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Velvet Real Estate. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

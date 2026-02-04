@@ -1,0 +1,227 @@
+/* Glassmorphism Logic */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly more visible */
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    /* Crisper border */
+    box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.4);
+    /* Subtle inner glow */
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* Stat Box Styling */
+.stat-box {
+    background: rgba(255, 255, 255, 0.08);
+    /* Slightly lighter */
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-box:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Forecast Items */
+.forecast-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 12px 16px;
+    min-width: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.forecast-item:hover,
+.forecast-item.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Demo Buttons */
+.demo-btn {
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 8px 16px;
+    /* Larger touch area */
+    border-radius: 99px;
+    font-size: 0.85rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+
+.demo-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Scrollbar Hide */
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* --- Dynamic Weather Themes (Living Backgrounds) --- */
+
+body {
+    background-size: 300% 300%;
+    animation: gradientBG 25s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Day: Clear */
+.theme-clear {
+    background-image: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 50%, #1e3a8a 100%);
+}
+
+/* Day: Clouds */
+.theme-clouds {
+    background-image: linear-gradient(135deg, #64748b 0%, #94a3b8 50%, #cbd5e1 100%);
+}
+
+/* Day: Rain */
+.theme-rain {
+    background-image: linear-gradient(135deg, #334155 0%, #475569 50%, #1e293b 100%);
+}
+
+/* Day: Snow */
+.theme-snow {
+    background-image: linear-gradient(135deg, #94a3b8 0%, #e2e8f0 50%, #f8fafc 100%);
+    color: #0f172a;
+    /* Dark text for contrast on white snow */
+}
+
+.theme-snow .text-white {
+    color: #1e293b !important;
+}
+
+.theme-snow .text-white\/60 {
+    color: #475569 !important;
+}
+
+.theme-snow .text-white\/50 {
+    color: #64748b !important;
+}
+
+.theme-snow .glass-panel {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Night: Clear (Starfield bg) */
+.theme-night-clear {
+    background-image: linear-gradient(135deg, #020617 0%, #172554 50%, #1e1b4b 100%);
+}
+
+/* Night: Cloudy */
+.theme-night-cloudy {
+    background-image: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+/* Storm (Purple/Dark) */
+.theme-storm {
+    background-image: linear-gradient(135deg, #2e1065 0%, #4c1d95 50%, #1e1b4b 100%);
+}
+
+/* --- Animations & Effects --- */
+
+.glow-text {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.icon-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Lightning Flash Overlay */
+.lightning-flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 50;
+    /* Above everything */
+    animation: flash 0.2s cubic-bezier(0.1, 0, 0.9, 1);
+}
+
+@keyframes flash {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}

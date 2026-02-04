@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax - Code Screenshot Tool</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- HTML2Canvas -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon"><i class="ph ph-camera"></i></div>
+                <h1>Syntax.</h1>
+            </div>
+
+            <div class="control-group">
+                <label>Theme</label>
+                <div class="theme-grid">
+                    <button class="theme-btn active" data-theme="midnight" style="background: #0f172a;"></button>
+                    <button class="theme-btn" data-theme="dracula" style="background: #282a36;"></button>
+                    <button class="theme-btn" data-theme="sunset" style="background: #432438;"></button>
+                    <button class="theme-btn" data-theme="ocean" style="background: #0f4c75;"></button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Background</label>
+                <div class="color-picker-wrapper">
+                    <input type="color" id="bg-color" value="#6366f1">
+                    <span id="bg-value">#6366f1</span>
+                </div>
+                <!-- Gradient Presets -->
+                <div class="gradient-grid">
+                    <button class="gradient-btn"
+                        data-gradient="linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%)"
+                        style="background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);"></button>
+                    <button class="gradient-btn active"
+                        data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></button>
+                    <button class="gradient-btn" data-gradient="linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)"
+                        style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);"></button>
+                    <button class="gradient-btn" data-gradient="linear-gradient(135deg, #09203f 0%, #537895 100%)"
+                        style="background: linear-gradient(135deg, #09203f 0%, #537895 100%);"></button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>Padding: <span id="padding-val">64px</span></label>
+                <input type="range" id="padding-slider" min="32" max="128" value="64">
+            </div>
+
+            <div class="control-group">
+                <label>Shadow: <span id="shadow-val">Medium</span></label>
+                <input type="range" id="shadow-slider" min="1" max="4" value="2">
+            </div>
+
+            <div class="control-group">
+                <label>Language</label>
+                <div class="custom-select">
+                    <select id="language-select">
+                        <option value="javascript">JavaScript</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="python">Python</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="export-btn" class="btn-primary">
+                    <i class="ph ph-download-simple"></i> Export PNG
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Preview Area -->
+        <main class="preview-area">
+            <div id="capture-container" class="capture-container">
+                <div id="code-window" class="code-window theme-midnight">
+                    <div class="window-header">
+                        <div class="dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <input type="text" class="file-name" value="untitled.js">
+                    </div>
+                    <div class="editor-content">
+                        <!-- Line Numbers (Optional, might complex implementation) -->
+                        <div class="code-area" contenteditable="true" spellcheck="false">
+                            const hello = "World";
+
+                            function welcome(name) {
+                            return `Hello, ${name}!`;
+                            }
+
+                            console.log(welcome("Syntax"));
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

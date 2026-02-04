@@ -2,41 +2,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     // --- 1. Preloader ---
+    // --- 1. Preloader ---
     const preloader = document.getElementById('preloader');
     // Reduced timeout for better LCP
-    setTimeout(() => {
-        preloader.classList.add('loaded');
-    }, 500);
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('loaded');
+        }, 500);
+    }
 
+    // --- 2. Custom Cursor ---
     // --- 2. Custom Cursor ---
     const cursor = document.querySelector('.cursor');
     // REMOVED: Initial selection here is now handled by functions
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
 
-    window.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
+    if (cursor) {
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
 
-    function animateCursor() {
-        const dx = mouseX - cursorX;
-        const dy = mouseY - cursorY;
+        function animateCursor() {
+            const dx = mouseX - cursorX;
+            const dy = mouseY - cursorY;
 
-        // Idle detection to save CPU
-        if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) {
+            // Idle detection to save CPU
+            if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) {
+                requestAnimationFrame(animateCursor);
+                return;
+            }
+
+            cursorX += dx * 0.1;
+            cursorY += dy * 0.1;
+            // Use CSS variables for hardware accelerated movement
+            cursor.style.setProperty('--cursor-x', `${cursorX}px`);
+            cursor.style.setProperty('--cursor-y', `${cursorY}px`);
             requestAnimationFrame(animateCursor);
-            return;
         }
-
-        cursorX += dx * 0.1;
-        cursorY += dy * 0.1;
-        // Use CSS variables for hardware accelerated movement
-        cursor.style.setProperty('--cursor-x', `${cursorX}px`);
-        cursor.style.setProperty('--cursor-y', `${cursorY}px`);
-        requestAnimationFrame(animateCursor);
+        animateCursor();
     }
-    animateCursor();
 
     function initHoverLinks() {
         const hoverLinks = document.querySelectorAll('a, button, .cursor-hover');
@@ -50,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const onMouseEnter = () => cursor.classList.add('cursor-grow');
-    const onMouseLeave = () => cursor.classList.remove('cursor-grow');
+    const onMouseEnter = () => { if (cursor) cursor.classList.add('cursor-grow'); }
+    const onMouseLeave = () => { if (cursor) cursor.classList.remove('cursor-grow'); }
 
     initHoverLinks();
 
@@ -262,6 +268,39 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
+            title: "Syntax Code Snaps",
+            image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            tags: ["JS", "Canvas", "Tool", "SaaS"],
+            description: "A developer tool to create aesthetic code screenshots. Features live customization, multiple themes, and client-side image generation.",
+            category: "Web",
+            link: "Projects/Syntax/index.html"
+        },
+        {
+            title: "Velvet Real Estate",
+            image: "https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            tags: ["HTML", "CSS", "JS", "Luxury"],
+            description: "A premium real estate showcase featuring a 'Ken Burns' slider, elegant serif typography, and a hover-reveal property grid.",
+            category: "Web",
+            link: "Projects/Velvet/index.html"
+        },
+
+        {
+            title: "Orbit Task Manager",
+            image: "images/project-orbit.webp",
+            tags: ["JS", "Kanban", "Drag & Drop", "Productivity"],
+            description: "A calm, pastel-themed productivity tool featuring a drag-and-drop Kanban board, local storage persistence, and light/dark modes.",
+            category: "Web",
+            link: "Projects/Orbit/index.html"
+        },
+        {
+            title: "Flux Fintech",
+            image: "images/project-flux.webp", // Needs screenshot generation
+            tags: ["JS", "Chart.js", "Glassmorphism", "Fintech"],
+            description: "A modern fintech dashboard featuring a glassmorphism aesthetic, interactive Chart.js analytics, and dynamic transaction tracking.",
+            category: "Web",
+            link: "Projects/Flux/index.html"
+        },
+        {
             title: "The Nook Hostel",
             image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop",
             tags: ["HTML", "CSS", "Boho Design", "Travel"],
@@ -332,60 +371,110 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "A premium, minimalist portfolio for an architecture studio. Focuses on whitespace, elegant typography, and micro-interactions.",
             category: "Design",
             link: "Projects/Zenith/index.html"
+        },
+        {
+            title: "WeatherNova 3D",
+            image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=2670&auto=format&fit=crop",
+            tags: ["Three.js", "WebGL", "API", "Glassmorphism"],
+            description: "A futuristic 3D weather dashboard featuring real-time particle effects (rain, snow, clouds) and a glassmorphism UI.",
+            category: "Web",
+            link: "Projects/WeatherNova/index.html"
         }
     ];
 
-    const projectsGrid = document.getElementById('projects-grid');
+    const homeProjectsGrid = document.getElementById('projects-grid');
+    const allProjectsGrid = document.getElementById('all-projects-grid');
 
-    function renderProjects() {
-        if (!projectsGrid) return;
+    // Helper to generate Card HTML (Updated to Premium White Design)
+    const generateCardHTML = (project) => {
+        // Tag Logic: Map specific tags to colors or use defaults
+        const getTagColor = (tag) => {
+            const lowerTag = tag.toLowerCase();
+            if (['html', 'css', 'js', 'react', 'web'].some(t => lowerTag.includes(t))) return 'bg-blue-100 text-blue-800';
+            if (['design', 'ui', 'ux', 'minimalist'].some(t => lowerTag.includes(t))) return 'bg-purple-100 text-purple-800';
+            if (['mobile', 'flutter', 'dart'].some(t => lowerTag.includes(t))) return 'bg-orange-100 text-orange-800';
+            if (['crypto', 'fintech', 'api'].some(t => lowerTag.includes(t))) return 'bg-yellow-100 text-yellow-800';
+            if (['three.js', 'webgl', '3d'].some(t => lowerTag.includes(t))) return 'bg-indigo-100 text-indigo-800';
+            if (['eco', 'ngo', 'non-profit'].some(t => lowerTag.includes(t))) return 'bg-green-100 text-green-800';
+            return 'bg-gray-100 text-gray-800';
+        };
 
-        // Slice first 4 for Home Page
-        projectsGrid.innerHTML = projectsData.slice(0, 4).map((project, index) => `
-            <div class="project-card cursor-hover reveal" 
+        const tagHTML = project.tags.map(tag =>
+            `<span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide ${getTagColor(tag)}">${tag}</span>`
+        ).join('');
+
+        return `
+            <div class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group project-card cursor-hover reveal"
                  data-title="${project.title}" 
                  data-image="${project.image}" 
                  data-tags="${project.tags.join(',')}" 
                  data-description="${project.description}"
                  data-link="${project.link}"
-                 data-category="${project.category}"> <!-- Added category data attribute -->
+                 data-category="${project.category}">
 
-                <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden relative shadow-lg group">
-                    <img src="${project.image}" alt="${project.title}" loading="lazy" width="1024" height="1024"
-                        class="w-full h-full object-cover transition-transform duration-500">
-
-                    <!-- Smooth Filter -->
-                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out"></div>
-
-                    <!-- Hover Overlay -->
-                    <div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/60 to-transparent transition-all duration-500 ease-in-out transform translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
-                        <p class="text-gray-200">${project.tags.join(', ')}</p>
-                    </div>
+                <div class="h-64 overflow-hidden relative">
+                    <img src="${project.image}" alt="${project.title}" loading="lazy"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 
-                <div class="mt-5">
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900">${project.title}</h3>
-                    <p class="text-base text-gray-600">Click card for details</p>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${tagHTML}
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">${project.title}</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">${project.description}</p>
+                    <a href="${project.link}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
                 </div>
             </div>
-        `).join('');
+        `;
+    };
 
+    // --- Refined Rendering & Filtering ---
+    function displayProjects(category = 'all') {
+        if (!homeProjectsGrid) return; // Only run on Home Page
+
+        let filtered = projectsData;
+
+        if (category !== 'all') {
+            filtered = projectsData.filter(project => {
+                // Match logic
+                if (project.category === category) return true;
+                // Fallback tag matching
+                if (category === 'Web' && (project.tags.includes('React') || project.tags.includes('JS') || project.tags.includes('HTML'))) return true;
+                if (category === 'Mobile' && project.tags.includes('Flutter')) return true;
+                return false;
+            });
+        }
+
+        // Render Top 4 of the filtered results
+        // If filtering, we might want to show up to 4 matches, or all? 
+        // "Recent Work" usually implies limited count. let's stick to 4 to maintain layout.
+        homeProjectsGrid.innerHTML = filtered.slice(0, 4).map(generateCardHTML).join('');
+
+        // Force opacity for immediate feedback if replacing content
+        // But we rely on observers for animation usually. 
+        // Since we are replacing content, observers need to re-run.
+
+        initObserversAndListeners(homeProjectsGrid);
+
+        // Also Init Panel for the new cards
+        initDetailPanel();
+    }
+
+    function initObserversAndListeners(container) {
         // Re-initialize observers for new elements
-        const newReveals = projectsGrid.querySelectorAll('.reveal');
+        const newReveals = container.querySelectorAll('.reveal');
         newReveals.forEach(el => revealObserver.observe(el));
 
-        // Re-initialize details panel logic for new elements
-        initDetailPanel();
-
-        // RE-INITIALIZE INTERACTIVITY FOR NEW ELEMENTS
+        // RE-INITIALIZE INTERACTIVITY
         initHoverLinks();
         initMagneticLinks();
     }
 
-    // Call render immediately
-    // renderProjects called at the end to ensure all dependencies are init
-
-    // --- 7. Project Detail Panel Logic (Modified to be callable) ---
+    // --- 7. Project Detail Panel Logic ---
     const panel = document.getElementById('project-detail-panel');
     const closeButton = document.getElementById('close-panel');
     const detailImage = document.getElementById('detail-image');
@@ -396,9 +485,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function initDetailPanel() {
         const projectCards = document.querySelectorAll('.project-card[data-title]');
         projectCards.forEach(card => {
-            // Remove old listeners to prevent duplicates if re-running (not strictly necessary with innerHTML replace but good practice)
-            // simple addEventListener is fine here as elements are fresh
-            card.addEventListener('click', () => {
+            // Remove old listeners (cloning is a clean way to wipe listeners, but here we just re-add which is safe enough if init only once per render)
+            card.onclick = () => { // using onclick property to prevent stacking listeners
                 const title = card.dataset.title;
                 const imageSrc = card.dataset.image;
                 const tags = card.dataset.tags.split(',');
@@ -441,54 +529,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 panel.classList.add('open');
                 body.classList.add('panel-open');
-            });
+            };
         });
     }
 
-    // --- 8. Project Filtering (Updated) ---
+    // --- 8. Project Filtering (Updated for Dynamic Home Grid) ---
     const filterBtns = document.querySelectorAll('.filter-btn');
-    // Note: allProjects needs to be queried AFTER render
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            const allProjects = document.querySelectorAll('.project-card'); // Query fresh elements
-
             // Remove active class from all
             filterBtns.forEach(b => b.classList.remove('active'));
             // Add active to clicked
             btn.classList.add('active');
 
             const filterValue = btn.getAttribute('data-filter');
-
-            allProjects.forEach(card => {
-                if (filterValue === 'all') {
-                    card.style.display = 'block';
-                    setTimeout(() => card.style.opacity = '1', 50);
-                } else {
-                    // Refined Filtering Logic using 'data-category' or tags
-                    const category = card.getAttribute('data-category');
-                    const tags = card.getAttribute('data-tags');
-
-                    let isMatch = false;
-
-                    // Logic: Match if Category equals Filter or if Filter is 'Web' and category is 'Web' etc.
-                    if (category === filterValue) isMatch = true;
-
-                    // Fallback/Legacy tag matching if category not perfect or for overlaps
-                    if (filterValue === 'Web' && (tags.includes('React') || tags.includes('JS') || tags.includes('HTML'))) isMatch = true;
-                    if (filterValue === 'Mobile' && tags.includes('Flutter')) isMatch = true;
-
-                    if (isMatch) {
-                        card.style.display = 'block';
-                        setTimeout(() => card.style.opacity = '1', 50);
-                    } else {
-                        card.style.opacity = '0';
-                        setTimeout(() => card.style.display = 'none', 300); // Wait for transition
-                    }
-                }
-            });
+            displayProjects(filterValue);
         });
     });
+
+    // Initial Render
+    displayProjects('all');
 
     // --- NEW: Scroll Spy ---
     const sections = document.querySelectorAll('section[id]');
@@ -529,22 +590,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
 
-    menuToggleBtn.addEventListener('click', () => {
-        mobileMenu.classList.remove('invisible');
-        mobileMenu.classList.add('opacity-100');
-        body.classList.add('panel-open'); // Re-use panel-open to stop scrolling
-    });
+    if (menuToggleBtn && mobileMenu && closeMenuBtn) {
+        menuToggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('invisible');
+            mobileMenu.classList.add('opacity-100');
+            body.classList.add('panel-open'); // Re-use panel-open to stop scrolling
+        });
 
-    const closeMenu = () => {
-        mobileMenu.classList.add('invisible');
-        mobileMenu.classList.remove('opacity-100');
-        body.classList.remove('panel-open');
-    };
+        const closeMenu = () => {
+            mobileMenu.classList.add('invisible');
+            mobileMenu.classList.remove('opacity-100');
+            body.classList.remove('panel-open');
+        };
 
-    closeMenuBtn.addEventListener('click', closeMenu);
-    mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    }
 
     // --- 9. Scroll Progress & Back to Top ---
     const scrollProgressBar = document.getElementById('scroll-progress-bar');
@@ -578,5 +641,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    renderProjects();
+    // renderProjects(); // Replaced by displayProjects('all') above
 });

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties | Velvet Real Estate</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Page Specific Tweaks */
+        .page-header {
+            padding: 12rem 10% 4rem;
+            text-align: center;
+            background-color: var(--color-text);
+            color: var(--color-white);
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            opacity: 0.8;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .filter-btn {
+            opacity: 0.5;
+            transition: opacity 0.3s;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.8rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            opacity: 1;
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header scrolled"> <!-- Always scrolled style for subpages -->
+        <div class="logo">VELVET</div>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="properties.html" class="active" style="color: var(--color-accent);">Properties</a>
+            <a href="agents.html">Agents</a>
+            <a href="journal.html">Journal</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button class="menu-toggle"><i class="ph ph-list"></i></button>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1 class="page-title fade-in-up">The Collection</h1>
+        <p class="page-subtitle fade-in-up delay-1">Exceptional homes for the modern connoisseur.</p>
+    </section>
+
+    <!-- Properties Grid -->
+    <section class="featured">
+        <div class="filters fade-in-up delay-2">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn">Penthouse</button>
+            <button class="filter-btn">Villa</button>
+            <button class="filter-btn">Estate</button>
+        </div>
+        <div class="property-grid" id="property-grid">
+            <!-- Properties injected by JS -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- Brand & Address -->
+            <div class="footer-col">
+                <div>
+                    <span class="footer-brand">VELVET</span>
+                    <p style="opacity: 0.5; font-size: 0.9em; font-family: var(--font-serif); font-style: italic;">Est.
+                        2024</p>
+                </div>
+                <address class="footer-address">
+                    1280 Fifth Avenue<br>
+                    New York, NY 10029<br>
+                    +1 (212) 555-0199
+                </address>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Explore</h4>
+                <nav class="footer-links">
+                    <a href="properties.html">Properties</a>
+                    <a href="agents.html">Curators</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <nav class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                </nav>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Inquiries</h4>
+                <p style="opacity: 0.6; margin-bottom: 1rem;">Join our exclusive list for off-market updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Email Address">
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Velvet Real Estate. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

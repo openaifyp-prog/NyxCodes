@@ -1,0 +1,305 @@
+/* Fonts */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- LIGHT MODE --- */
+body {
+    background-color: #f0f4f8;
+    /* Softer gray-blue tint */
+    color: #334155;
+    /* slate-700 */
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.task-card {
+    animation: slideUp 0.3s ease-out forwards;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: grab;
+    position: relative;
+    z-index: 10;
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 20;
+}
+
+.task-card:active {
+    cursor: grabbing;
+}
+
+.task-card.dragging {
+    opacity: 0.6;
+    transform: scale(0.98) rotate(1deg);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    cursor: grabbing;
+}
+
+/* 
+   CRITICAL FIX: 
+   When dragging ANY card, disable pointer events on ALL cards.
+   This ensures we can only drop onto the column background, 
+   preventing flickering and missed drops.
+*/
+.dragging-mode .task-card {
+    pointer-events: none !important;
+}
+
+/* Modal Animation */
+.modal-open {
+    display: flex !important;
+    animation: fadeIn 0.2s forwards;
+}
+
+.modal-open>div {
+    animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* --- CUSTOM DROPDOWNS --- */
+.custom-dropdown {
+    position: relative;
+    user-select: none;
+}
+
+.dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dropdown-options {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    width: 100%;
+    min-width: 140px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 6px;
+    opacity: 0;
+    transform: translateY(-5px) scale(0.98);
+    pointer-events: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+}
+
+.dropdown-options.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.dropdown-option {
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #475569;
+    transition: background 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dropdown-option:hover {
+    background-color: #f1f5f9;
+    color: #4f46e5;
+}
+
+/* Dark Mode Dropdown */
+body.dark-mode .dropdown-options {
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .dropdown-option {
+    color: #cbd5e1;
+}
+
+body.dark-mode .dropdown-option:hover {
+    background-color: #334155;
+    color: white;
+}
+
+
+/* --- PREMIUM DARK MODE (Refined) --- */
+/* Using a deeper 'Midnight' palette instead of generic Slate */
+
+body.dark-mode {
+    background-color: #0b0f19;
+    /* Deep midnight blue */
+    color: #e2e8f0;
+    /* slater-200 */
+}
+
+/* Layout Elements */
+body.dark-mode nav {
+    background-color: rgba(11, 15, 25, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+}
+
+body.dark-mode .board-column h2 {
+    color: #cbd5e1;
+    /* Lighter headings */
+}
+
+/* Column Backgrounds */
+body.dark-mode .column-content {
+    background-color: #111827;
+    /* gray-900 */
+    border-color: rgba(255, 255, 255, 0.03);
+    border-style: solid;
+    /* Solid border looks cleaner in dark mode */
+}
+
+/* Card Styles */
+body.dark-mode .task-card {
+    background-color: #1f2937;
+    /* gray-800 */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #f3f4f6;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .task-card:hover {
+    background-color: #374151;
+    /* gray-700 */
+    border-color: #6366f1;
+    /* Indigo highlight on hover */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+}
+
+/* Form Elements & Inputs */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #111827;
+    /* gray-900 */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f9fafb;
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #818cf8;
+    /* indigo-400 */
+    background-color: #0f172a;
+    box-shadow: 0 0 0 1px #818cf8;
+}
+
+/* Filter Bar Specifics */
+body.dark-mode .filter-bar {
+    background-color: #1f2937;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .filter-divider {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modals */
+body.dark-mode .modal-content {
+    background-color: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Deadline Badges */
+.badge-urgent {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+}
+
+body.dark-mode .badge-urgent {
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #fca5a5;
+    border-color: rgba(220, 38, 38, 0.3);
+}
+
+.badge-upcoming {
+    background-color: #fff7ed;
+    color: #ea580c;
+    border: 1px solid #fed7aa;
+}
+
+body.dark-mode .badge-upcoming {
+    background-color: rgba(234, 88, 12, 0.15);
+    color: #fdba74;
+    border-color: rgba(234, 88, 12, 0.3);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Drag Over Effect */
+.bg-drop-active {
+    background-color: rgba(99, 102, 241, 0.1) !important;
+    border: 2px dashed #6366f1 !important;
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Velvet Real Estate</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .contact-info {
+            background-color: #111;
+            color: #fff;
+            padding: 10rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-form-section {
+            padding: 10rem 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem 0;
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            background: transparent;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-bottom-color: var(--color-accent);
+        }
+
+        .contact-detail {
+            margin-bottom: 3rem;
+        }
+
+        .detail-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .split-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form-section {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header scrolled">
+        <div class="logo" style="color: #000">VELVET</div>
+        <nav class="desktop-nav">
+            <a href="index.html" style="color: #000">Home</a>
+            <a href="properties.html" style="color: #000">Properties</a>
+            <a href="agents.html" style="color: #000">Agents</a>
+            <a href="journal.html" style="color: #000">Journal</a>
+            <a href="contact.html" class="active" style="color: var(--color-accent);">Contact</a>
+        </nav>
+        <button class="menu-toggle"><i class="ph ph-list"></i></button>
+    </header>
+
+    <div class="split-layout">
+        <div class="contact-info fade-in-up">
+            <h1 class="hero-title" style="font-size: 3rem; margin-bottom: 4rem;">Get in Touch</h1>
+
+            <div class="contact-detail">
+                <p class="detail-label">Visit Us</p>
+                <p class="detail-value">1280 Fifth Avenue,<br>New York, NY 10029</p>
+            </div>
+
+            <div class="contact-detail">
+                <p class="detail-label">Email</p>
+                <p class="detail-value">concierge@velvetre.com</p>
+            </div>
+
+            <div class="contact-detail">
+                <p class="detail-label">Phone</p>
+                <p class="detail-value">+1 (212) 555-0199</p>
+            </div>
+        </div>
+
+        <div class="contact-form-section fade-in-up delay-1">
+            <form style="width: 100%; max-width: 500px;">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Inquiry</label>
+                    <input type="text" class="form-input" placeholder="I'm interested in...">
+                </div>
+                <button type="submit" class="btn-primary" style="background: #111; color: #fff; margin-top: 2rem;">Send
+                    Message</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- Brand & Address -->
+            <div class="footer-col">
+                <div>
+                    <span class="footer-brand">VELVET</span>
+                    <p style="opacity: 0.5; font-size: 0.9em; font-family: var(--font-serif); font-style: italic;">Est.
+                        2024</p>
+                </div>
+                <address class="footer-address">
+                    1280 Fifth Avenue<br>
+                    New York, NY 10029<br>
+                    +1 (212) 555-0199
+                </address>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Explore</h4>
+                <nav class="footer-links">
+                    <a href="properties.html">Properties</a>
+                    <a href="agents.html">Curators</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <nav class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                </nav>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Inquiries</h4>
+                <p style="opacity: 0.6; margin-bottom: 1rem;">Join our exclusive list for off-market updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Email Address">
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Velvet Real Estate. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

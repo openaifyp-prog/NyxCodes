@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherNova | 3D Weather Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="overflow-hidden text-white font-['Outfit'] transition-colors duration-1000 ease-in-out theme-clear">
+
+    <!-- 3D Background Canvas -->
+    <canvas id="weather-canvas" class="fixed inset-0 z-0"></canvas>
+
+    <!-- UI Overlay -->
+    <main class="relative z-10 w-full h-screen flex items-center justify-center p-4">
+
+        <!-- Glass Panel -->
+        <div class="glass-panel w-full max-w-4xl rounded-3xl overflow-hidden p-8 md:p-12 relative fade-in">
+
+            <!-- Header / Search -->
+            <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+                <div>
+                    <h1 class="text-3xl font-bold tracking-tight">WeatherNova</h1>
+                    <p class="text-white/60 text-sm" id="date-display">Monday, 12th Oct</p>
+                </div>
+
+                <div class="relative w-full md:w-auto group">
+                    <input type="text" id="city-search" placeholder="Search City..."
+                        class="bg-white/10 border border-white/20 rounded-full py-3 px-6 pl-12 w-full md:w-64 focus:outline-none focus:bg-white/20 transition-all placeholder-white/50 backdrop-blur-md">
+                    <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-white/60 group-hover:text-white transition-colors"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </header>
+
+            <!-- Main Weather Info -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
+
+                <!-- Left: Big Temp -->
+                <div class="flex flex-col">
+                    <div class="flex items-start">
+                        <span id="temp-display"
+                            class="text-8xl md:text-9xl font-extrabold leading-none tracking-tighter glow-text">72</span>
+                        <span class="text-4xl mt-4 font-light text-white/80">°F</span>
+                    </div>
+                    <div class="mt-2 flex items-center gap-4">
+                        <div id="weather-icon" class="text-4xl icon-float">☀️</div>
+                        <span id="condition-display" class="text-2xl font-medium text-white/90">Clear Sky</span>
+                    </div>
+                </div>
+
+                <!-- Right: Location & Stats -->
+                <div class="space-y-6">
+                    <h2 id="city-display" class="text-4xl md:text-5xl font-bold">San Francisco</h2>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="stat-box">
+                            <span class="text-white/50 text-xs uppercase tracking-wider">Humidity</span>
+                            <span id="humidity-display" class="text-xl font-semibold mt-1">45%</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="text-white/50 text-xs uppercase tracking-wider">Wind</span>
+                            <span id="wind-display" class="text-xl font-semibold mt-1">12 mph</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="text-white/50 text-xs uppercase tracking-wider">Pressure</span>
+                            <span id="pressure-display" class="text-xl font-semibold mt-1">1012 hPa</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="text-white/50 text-xs uppercase tracking-wider">Visibility</span>
+                            <span id="visibility-display" class="text-xl font-semibold mt-1">10 km</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Forecast Row -->
+            <div class="border-t border-white/10 pt-8">
+                <div class="flex justify-between items-center text-center gap-2 overflow-x-auto pb-2"
+                    id="forecast-container">
+                    <!-- Forecast Items injected by JS -->
+                    <div class="forecast-item active">
+                        <span class="text-sm text-white/60">Now</span>
+                        <div class="my-2">☀️</div>
+                        <span class="font-bold">72°</span>
+                    </div>
+                    <!-- ... -->
+                </div>
+            </div>
+
+            <!-- Absolute Texture/Glow -->
+            <div
+                class="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/30 rounded-full blur-3xl pointer-events-none mix-blend-screen">
+            </div>
+            <div
+                class="absolute -bottom-24 -left-24 w-64 h-64 bg-purple-500/30 rounded-full blur-3xl pointer-events-none mix-blend-screen">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Controls / Hints -->
+    <div class="fixed bottom-8 right-8 z-20 text-right hidden md:block">
+        <p class="text-white/40 text-sm mb-2">Try searching for:</p>
+        <div class="flex gap-2">
+            <button class="demo-btn" data-city="London">London 🌧️</button>
+            <button class="demo-btn" data-city="Dubai">Dubai ☀️</button>
+            <button class="demo-btn" data-city="New York">New York ❄️</button>
+            <button class="demo-btn" data-city="Tokyo">Tokyo ☁️</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

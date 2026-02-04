@@ -380,7 +380,7 @@ section {
     border-radius: var(--radius-lg);
     overflow: hidden;
     height: 500px;
-    group: cursor;
+    cursor: pointer;
 }
 
 .room-bg {
@@ -711,12 +711,23 @@ footer {
 
     .testimonials-grid,
     .story-content,
-    .gallery-grid {
+    .gallery-grid,
+    .footer-top {
         grid-template-columns: 1fr;
+    }
+
+    .footer-top {
+        gap: 30px;
     }
 
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
     }
 
     .hero .container {

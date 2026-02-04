@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal | Velvet Real Estate</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .page-header {
+            padding: 12rem 10% 4rem;
+            text-align: left;
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6rem;
+            padding: 0 10% 8rem;
+            max-width: 1000px;
+        }
+
+        .journal-post {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding-bottom: 4rem;
+        }
+
+        .post-meta {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .journal-post:hover .post-title {
+            color: var(--color-text-light);
+        }
+
+        .post-excerpt {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .read-more {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header scrolled">
+        <div class="logo">VELVET</div>
+        <nav class="desktop-nav">
+            <a href="index.html">Home</a>
+            <a href="properties.html">Properties</a>
+            <a href="agents.html">Agents</a>
+            <a href="journal.html" class="active" style="color: var(--color-accent);">Journal</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <button class="menu-toggle"><i class="ph ph-list"></i></button>
+    </header>
+
+    <section class="page-header">
+        <h1 class="page-title fade-in-up">The Journal</h1>
+    </section>
+
+    <section class="journal-grid">
+        <article class="journal-post fade-in-up delay-1">
+            <span class="post-meta">Architecture • Oct 12, 2024</span>
+            <h2 class="post-title"><a href="#">The Renaissance of Brutalism in Modern Luxury</a></h2>
+            <p class="post-excerpt">Why concrete and raw materials are becoming the new gold standard in high-end
+                residential design.</p>
+            <a href="#" class="read-more">Read Story</a>
+        </article>
+
+        <article class="journal-post fade-in-up delay-1">
+            <span class="post-meta">Lifestyle • Sep 28, 2024</span>
+            <h2 class="post-title"><a href="#">Curating a Minimalist Art Collection</a></h2>
+            <p class="post-excerpt">A guide to selecting pieces that enhance, rather than clutter, your sanctuary.</p>
+            <a href="#" class="read-more">Read Story</a>
+        </article>
+
+        <article class="journal-post fade-in-up delay-1">
+            <span class="post-meta">Market • Sep 15, 2024</span>
+            <h2 class="post-title"><a href="#">Investment Trends: The Shift to Private Islands</a></h2>
+            <p class="post-excerpt">Analysing the surge in demand for absolute seclusion and self-sustainable estates.
+            </p>
+            <a href="#" class="read-more">Read Story</a>
+        </article>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <!-- Brand & Address -->
+            <div class="footer-col">
+                <div>
+                    <span class="footer-brand">VELVET</span>
+                    <p style="opacity: 0.5; font-size: 0.9em; font-family: var(--font-serif); font-style: italic;">Est.
+                        2024</p>
+                </div>
+                <address class="footer-address">
+                    1280 Fifth Avenue<br>
+                    New York, NY 10029<br>
+                    +1 (212) 555-0199
+                </address>
+            </div>
+
+            <!-- Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Explore</h4>
+                <nav class="footer-links">
+                    <a href="properties.html">Properties</a>
+                    <a href="agents.html">Curators</a>
+                    <a href="journal.html">Journal</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+            </div>
+
+            <!-- Legal -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Legal</h4>
+                <nav class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
+                </nav>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Inquiries</h4>
+                <p style="opacity: 0.6; margin-bottom: 1rem;">Join our exclusive list for off-market updates.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Email Address">
+                    <button type="submit" class="newsletter-btn">Join</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Velvet Real Estate. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="ph ph-instagram-logo"></i></a>
+                <a href="#"><i class="ph ph-twitter-logo"></i></a>
+                <a href="#"><i class="ph ph-linkedin-logo"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

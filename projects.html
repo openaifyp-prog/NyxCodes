@@ -5,12 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Projects | Awais Tariq</title>
+    <!-- CSP: Allow unsafe-eval for dev tools/Live Server -->
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data:; 
+        script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com;
+    ">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-gray-50 text-gray-900">
+
+    <!-- Preloader -->
+    <div id="preloader"
+        class="fixed inset-0 bg-white z-[9999] flex items-center justify-center transition-opacity duration-500">
+        <div class="text-4xl font-bold animate-pulse text-gray-900">Awais<span class="text-blue-600">Tariq</span>.</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor hidden md:block"></div>
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
@@ -36,199 +50,39 @@
                 A collection of web development and UI design projects, ranging from corporate websites to Web3
                 platforms and minimalist portfolios.
             </p>
+
+            <!-- Filter Buttons Removed -->
         </div>
     </section>
 
     <!-- Projects Grid -->
     <section class="py-20 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div id="static-projects-grid" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Project 0: CoinPulse (New) -->
+            <!-- 1. The Nook Hostel -->
             <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-gray-900">
-                    <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=2555&auto=format&fit=crop"
-                        alt="CoinPulse"
-                        class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-4xl font-bold text-white tracking-tighter drop-shadow-lg">CoinPulse</span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span
-                            class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold uppercase">Crypto</span>
-                        <span
-                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase">API</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">CoinPulse Dashboard</h3>
-                    <p class="text-gray-600 mb-6">A professional crypto dashboard featuring live Bitcoin prices,
-                        interactive Chart.js graphs, and market trending data.</p>
-                    <a href="Projects/CoinPulse/index.html" target="_blank"
-                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 1: Nexus News -->
-            <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-gray-100">
-                    <img src="images/project-news.webp" alt="Nexus News"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span
-                            class="text-4xl font-serif font-bold text-black tracking-tighter bg-white/90 px-4 py-2 border border-black shadow-lg">NexusNews</span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-xs font-bold uppercase">News
-                            API</span>
-                        <span
-                            class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase">Dynamic
-                            JS</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Nexus News Aggregator</h3>
-                    <p class="text-gray-600 mb-6">A daily auto-updating news blog featuring category filtering, instant
-                        search, and a curated editorial layout.</p>
-                    <a href="Projects/NexusNews/index.html" target="_blank"
-                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 2: Zenith -->
-            <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-[#f5f5f0]">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop"
-                        alt="Zenith"
-                        class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-4xl font-light tracking-[0.2em] text-white drop-shadow-md">ZENITH</span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span
-                            class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase">Architecture</span>
-                        <span
-                            class="px-3 py-1 bg-stone-100 text-stone-600 rounded-full text-xs font-bold uppercase">Minimalist</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Zenith Architecture</h3>
-                    <p class="text-gray-600 mb-6">A premium, minimalist portfolio for an architecture studio. Focuses on
-                        whitespace, elegant typography, and micro-interactions.</p>
-                    <a href="Projects/Zenith/index.html" target="_blank"
-                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 3: Clean Africa -->
-            <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-green-800">
-                    <img src="images/project-cleanafrica.webp" alt="Clean Africa"
-                        class="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-3xl font-bold text-white uppercase drop-shadow-md">Clean Africa</span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span
-                            class="px-3 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold uppercase">Non-Profit</span>
-                        <span
-                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase">Eco</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Clean Africa NGO</h3>
-                    <p class="text-gray-600 mb-6">A comprehensive multi-page website for an environmental NGO, featuring
-                        donation flows, project galleries, and blog.</p>
-                    <a href="Projects/CleanAfrica/CleanAfrica.html" target="_blank"
-                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 4: Decora -->
-            <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2500&auto=format&fit=crop"
-                        alt="Decora"
-                        class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-3xl font-serif italic text-white drop-shadow-md">Decora</span>
-                    </div>
-                </div>
-                <div class="p-8">
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span
-                            class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-bold uppercase">E-Commerce</span>
-                        <span
-                            class="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase">Interior</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Decora Interiors</h3>
-                    <p class="text-gray-600 mb-6">An elegant interior design and e-commerce platform. Features product
-                        listings, services page, and a polished dark-themed footer.</p>
-                    <a href="Projects/Decora Interior Design/DecoraInteriorDesign.html" target="_blank"
-                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Project 4: The Nook -->
-            <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-teal-50">
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop"
-                        alt="The Nook"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-3xl font-bold text-white drop-shadow-md">The Nook.</span>
-                    </div>
+                        alt="The Nook Hostel"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="p-8">
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span
-                            class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-bold uppercase">Travel</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-yellow-100 text-yellow-800">Boho
+                            Design</span>
                         <span
-                            class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-bold uppercase">Boho</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800">Travel</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-gray-900">The Nook Hostel</h3>
-                    <p class="text-gray-600 mb-6">A reimagined hostel booking platform with a warm, boho-rustic
-                        aesthetic. Features a split-hero layout, floating booking widgets, and specialty amenity
-                        showcases.</p>
-                    <a href="Projects/HostelHaven/index.html" target="_blank"
+                    <p class="text-gray-600 leading-relaxed mb-6">A reimagined hostel booking platform with a warm,
+                        boho-rustic aesthetic. Features a split-hero layout and floating booking widgets.</p>
+                    <a href="Projects/HostelHaven/index.html"
                         class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
@@ -236,31 +90,58 @@
                 </div>
             </div>
 
-            <!-- Project 5: Lars Petters -->
+            <!-- 2. Clean Africa NGO -->
             <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-blue-50">
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="images/project-cleanafrica.webp" alt="Clean Africa NGO"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-green-100 text-green-800">Non-Profit</span>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-emerald-100 text-emerald-800">Eco</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Clean Africa NGO</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A comprehensive multi-page website for an
+                        environmental NGO, featuring donation flows, project galleries, and blog.</p>
+                    <a href="Projects/CleanAfrica/CleanAfrica.html"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Lars Petters Education -->
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
                     <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop"
-                        alt="Lars Petters"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-3xl font-bold text-white drop-shadow-md">Lars Petters</span>
-                    </div>
+                        alt="Lars Petters Education"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="p-8">
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span
-                            class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-bold uppercase">EdTech</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-indigo-100 text-indigo-800">EdTech</span>
                         <span
-                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase">SwiperJS</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800">SwiperJS</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Education Platform</h3>
-                    <p class="text-gray-600 mb-6">A comprehensive education platform landing page featuring course
-                        categories, instructor carousels, and student testimonials.</p>
-                    <a href="Projects/Education landing page/index.html" target="_blank"
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Lars Petters Education</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A comprehensive education platform landing page
+                        featuring course categories, instructor carousels, and student testimonials.</p>
+                    <a href="Projects/Education landing page/index.html"
                         class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
@@ -268,31 +149,28 @@
                 </div>
             </div>
 
-            <!-- Project 6: Dartar.ai -->
+            <!-- 4. Dartar.ai Tech Landing -->
             <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-[#2d3748]">
-                    <img src="images/project-dartarai.webp" alt="Dartar.ai"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-3xl font-bold text-white drop-shadow-md">Darter<span
-                                class="text-orange-500">.ai</span></span>
-                    </div>
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="images/project-dartarai.webp" alt="Dartar.ai Tech Landing"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="p-8">
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span
-                            class="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase">SaaS</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-800">SaaS</span>
                         <span
-                            class="px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-bold uppercase">Tech</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800">Tech</span>
                     </div>
-                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Darter.ai Landing</h3>
-                    <p class="text-gray-600 mb-6">A modern SaaS landing page for a logistics AI company. Clean,
-                        corporate design with feature grids and pricing sections.</p>
-                    <a href="Projects/Dartar.Ai/darterAi.html" target="_blank"
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Dartar.ai Tech Landing</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A modern B2B landing page for an AI logistics startup.
+                        Features clean corporate design, feature grids, and pricing tables.</p>
+                    <a href="Projects/Dartar.Ai/darterAi.html"
                         class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
@@ -300,35 +178,183 @@
                 </div>
             </div>
 
-            <!-- Project 6: Code Maze -->
+            <!-- 5. Decora Interior Design -->
             <div
-                class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group border border-gray-100">
-                <div class="h-64 overflow-hidden relative bg-indigo-900">
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2500&auto=format&fit=crop"
+                        alt="Decora Interior Design"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-purple-100 text-purple-800">Interior</span>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-800">E-Commerce</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Decora Interior Design</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">An elegant interior design and e-commerce platform.
+                        Features product listings, services page, and a polished dark-themed footer.</p>
+                    <a href="Projects/Decora Interior Design/DecoraInteriorDesign.html"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 6. Code Maze -->
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
                     <img src="images/project-codemaze.webp" alt="Code Maze"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <span
-                            class="text-4xl font-mono font-bold text-white tracking-wider drop-shadow-md">&lt;Code<br>Maze/&gt;</span>
-                    </div>
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                 </div>
                 <div class="p-8">
                     <div class="flex flex-wrap gap-2 mb-4">
                         <span
-                            class="px-3 py-1 bg-indigo-100 text-indigo-600 rounded-full text-xs font-bold uppercase">Game
-                            Dev</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800">Flutter</span>
                         <span
-                            class="px-3 py-1 bg-purple-100 text-purple-600 rounded-full text-xs font-bold uppercase">Flutter</span>
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-orange-100 text-orange-800">Game
+                            Dev</span>
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-gray-900">Code Maze</h3>
-                    <p class="text-gray-600 mb-6">A mobile puzzle game built with Flutter. Features complex algorithms
-                        for maze generation and a sleek, native UI.</p>
-                    <a href="https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze" target="_blank"
-                        class="inline-flex items-center text-gray-900 font-semibold hover:text-indigo-600 transition-colors">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    <p class="text-gray-600 leading-relaxed mb-6">An interactive mobile puzzle game built with Flutter.
+                        Features complex algorithms for maze generation and a sleek, native UI.</p>
+                    <a href="https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze"
+                        class="inline-flex items-center text-gray-800 font-semibold hover:text-gray-900 transition-colors">
+                        View Project Source
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                         </svg>
-                        View Source
+                    </a>
+                </div>
+            </div>
+
+            <!-- 7. CoinPulse -->
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=2555&auto=format&fit=crop"
+                        alt="CoinPulse"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-yellow-100 text-yellow-800">Crypto</span>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800">Fintech</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">CoinPulse</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A professional crypto dashboard featuring live Bitcoin
+                        prices, interactive Chart.js graphs, and market trending data.</p>
+                    <a href="Projects/CoinPulse/index.html"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 8. Nexus News -->
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop"
+                        alt="Nexus News"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-red-100 text-red-800">News
+                            API</span>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-800">Editorial</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Nexus News</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A daily auto-updating news blog. Features category
+                        filtering, instant search, and a curated editorial layout powered by live data.</p>
+                    <a href="Projects/NexusNews/index.html"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 9. Zenith Architecture -->
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2670&auto=format&fit=crop"
+                        alt="Zenith Architecture"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-800">Architecture</span>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-gray-100 text-gray-800">Minimalist</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">Zenith Architecture</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A premium, minimalist portfolio for an architecture
+                        studio. Focuses on whitespace, elegant typography, and micro-interactions.</p>
+                    <a href="Projects/Zenith/index.html"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 10. WeatherNova -->
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 transition-transform duration-300 border border-gray-100 group">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=2670&auto=format&fit=crop"
+                        alt="WeatherNova 3D"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <div class="p-8">
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800">Three.js</span>
+                        <span
+                            class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide bg-purple-100 text-purple-800">WebGL</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-3 text-gray-900">WeatherNova 3D</h3>
+                    <p class="text-gray-600 leading-relaxed mb-6">A futuristic 3D weather dashboard featuring real-time
+                        particle effects (rain, snow, clouds) and a glassmorphism UI.</p>
+                    <a href="Projects/WeatherNova/index.html"
+                        class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        View Live Project
+                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -340,6 +366,33 @@
     <footer class="py-12 bg-white border-t border-gray-200 text-center">
         <p class="text-gray-500">&copy; 2026 Awais Tariq.</p>
     </footer>
+
+    <!-- Project Detail Panel (Shared) -->
+    <div id="project-detail-panel">
+        <div class="max-w-5xl mx-auto py-12 md:py-24 relative">
+            <button id="close-panel"
+                class="absolute top-8 right-8 text-3xl text-gray-500 hover:text-gray-900 magnetic-link">&times;</button>
+            <div class="w-full h-64 md:h-[500px] rounded-2xl overflow-hidden mb-12">
+                <img id="detail-image" src="" alt="Project Image" class="w-full h-full object-cover">
+            </div>
+            <h2 id="detail-title" class="text-4xl md:text-6xl font-bold mb-6"></h2>
+            <div id="detail-tags" class="flex flex-wrap gap-3 mb-8">
+                <!-- Tags will be injected by JS -->
+            </div>
+            <p id="detail-description" class="text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl"></p>
+
+            <!-- View Project Button -->
+            <div class="mt-8">
+                <a id="view-project-btn" href="#" target="_blank"
+                    class="hidden inline-block bg-blue-600 text-white font-medium py-3 px-8 rounded-full text-lg magnetic-link hover:bg-blue-700 transition-colors">
+                    View Project Live
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
 
 </body>
 

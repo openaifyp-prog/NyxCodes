@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit - Task Manager</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-50 text-slate-800 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav
+        class="w-full px-6 py-4 flex flex-col md:flex-row gap-4 justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200/50">
+        <div class="flex items-center gap-2">
+            <div
+                class="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                <i class="ph ph-planet text-xl"></i>
+            </div>
+            <span class="text-xl font-bold tracking-tight">Orbit.</span>
+        </div>
+
+        <!-- Controls: Filter & Sort -->
+        <div
+            class="filter-bar flex items-center gap-3 bg-white p-1.5 rounded-xl shadow-sm border border-slate-200/50 transition-colors">
+            <!-- Search -->
+            <div class="relative group">
+                <i
+                    class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors"></i>
+                <input type="text" id="search-input" placeholder="Search..."
+                    class="bg-transparent border-none outline-none text-sm pl-9 pr-3 py-1.5 w-32 md:w-56 placeholder-slate-400 focus:ring-0">
+            </div>
+
+            <div class="filter-divider h-5 w-[1px] bg-slate-200"></div>
+
+            <!-- Filter Dropdown -->
+            <div class="custom-dropdown relative" id="filter-dropdown">
+                <div
+                    class="dropdown-trigger flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 px-2 py-1.5 rounded-md transition-colors">
+                    <span id="filter-label">All Tags</span>
+                    <i class="ph ph-caret-down text-slate-400"></i>
+                </div>
+                <input type="hidden" id="filter-tag" value="all">
+                <div class="dropdown-options" id="filter-options">
+                    <div class="dropdown-option" data-value="all"><i class="ph ph-squares-four"></i> All Tags</div>
+                    <div class="dropdown-option" data-value="Design"><span
+                            class="w-2 h-2 rounded-full bg-pink-400"></span> Design</div>
+                    <div class="dropdown-option" data-value="Dev"><span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                        Dev</div>
+                    <div class="dropdown-option" data-value="Marketing"><span
+                            class="w-2 h-2 rounded-full bg-orange-400"></span> Marketing</div>
+                    <div class="dropdown-option" data-value="Urgent"><span
+                            class="w-2 h-2 rounded-full bg-red-400"></span> Urgent</div>
+                    <div class="dropdown-option" data-value="Custom"><i class="ph ph-tag"></i> Custom</div>
+                </div>
+            </div>
+
+            <div class="filter-divider h-5 w-[1px] bg-slate-200"></div>
+
+            <!-- Sort Dropdown -->
+            <div class="custom-dropdown relative" id="sort-dropdown">
+                <div class="dropdown-trigger flex items-center gap-2 text-slate-500 hover:text-indigo-600 px-2 py-1 rounded-md hover:bg-slate-100 transition-colors dark:hover:bg-white/5"
+                    title="Sort By">
+                    <i class="ph ph-sort-ascending text-lg" id="sort-icon"></i>
+                </div>
+                <!-- Hidden input to store sort value -->
+                <input type="hidden" id="sort-value" value="date-asc">
+                <div class="dropdown-options !min-w-[160px] right-0 left-auto">
+                    <div class="dropdown-option" data-value="date-asc"><i class="ph ph-calendar"></i> Date (Oldest)
+                    </div>
+                    <div class="dropdown-option" data-value="date-desc"><i class="ph ph-calendar"></i> Date (Newest)
+                    </div>
+                    <div class="dropdown-option" data-value="name-asc"><i class="ph ph-text-aa"></i> Name (A-Z)</div>
+                    <div class="dropdown-option" data-value="name-desc"><i class="ph ph-text-aa"></i> Name (Z-A)</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="flex items-center gap-4">
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 transition-colors text-slate-500">
+                <i class="ph ph-moon text-xl"></i>
+            </button>
+            <button id="add-task-btn"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium shadow-md shadow-indigo-600/20 transition-all flex items-center gap-2 active:scale-95">
+                <i class="ph ph-plus"></i> New Task
+            </button>
+        </div>
+    </nav>
+
+    <!-- Kanban Board -->
+    <main class="flex-1 overflow-x-auto p-6" id="board-container">
+        <!-- Columns (Same as before) -->
+        <div class="flex gap-6 min-w-max h-full mx-auto max-w-7xl items-start">
+
+            <!-- Column 1: To Do -->
+            <div class="board-column w-80 flex-shrink-0 flex flex-col gap-4">
+                <div class="flex justify-between items-center px-2">
+                    <h2 class="font-bold text-slate-600 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> To Do
+                        <span class="bg-slate-200 text-slate-600 text-xs px-2 py-0.5 rounded-full"
+                            id="count-todo">0</span>
+                    </h2>
+                </div>
+                <div class="column-content flex-1 bg-slate-100/50 rounded-2xl p-4 border border-slate-200 border-dashed min-h-[60vh] transition-colors"
+                    data-status="todo">
+                    <!-- Tasks injected here -->
+                </div>
+            </div>
+
+            <!-- Column 2: In Progress -->
+            <div class="board-column w-80 flex-shrink-0 flex flex-col gap-4">
+                <div class="flex justify-between items-center px-2">
+                    <h2 class="font-bold text-indigo-600 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-400"></span> In Progress
+                        <span class="bg-indigo-100 text-indigo-600 text-xs px-2 py-0.5 rounded-full"
+                            id="count-progress">0</span>
+                    </h2>
+                </div>
+                <div class="column-content flex-1 bg-indigo-50/50 rounded-2xl p-4 border border-indigo-100 border-dashed min-h-[60vh] transition-colors"
+                    data-status="progress">
+                    <!-- Tasks -->
+                </div>
+            </div>
+
+            <!-- Column 3: Done -->
+            <div class="board-column w-80 flex-shrink-0 flex flex-col gap-4">
+                <div class="flex justify-between items-center px-2">
+                    <h2 class="font-bold text-emerald-600 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span> Done
+                        <span class="bg-emerald-100 text-emerald-600 text-xs px-2 py-0.5 rounded-full"
+                            id="count-done">0</span>
+                    </h2>
+                </div>
+                <div class="column-content flex-1 bg-emerald-50/50 rounded-2xl p-4 border border-emerald-100 border-dashed min-h-[60vh] transition-colors"
+                    data-status="done">
+                    <!-- Tasks -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal: New Task -->
+    <div id="task-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 opacity-0 transition-opacity duration-300">
+        <div
+            class="modal-content bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl transform scale-95 transition-transform duration-300">
+            <h3 class="text-xl font-bold mb-4">New Task</h3>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">Task
+                        Title</label>
+                    <input type="text" id="task-title" placeholder="e.g. Redesign Homepage"
+                        class="w-full bg-slate-50 border border-slate-200 rounded-lg p-3 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">Due
+                            Date</label>
+                        <input type="date" id="task-date"
+                            class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 outline-none focus:border-indigo-500 text-sm">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">Status
+                            Tag</label>
+
+                        <!-- Custom Dropdown with Custom Input Support -->
+                        <div class="custom-dropdown relative w-full" id="new-task-dropdown">
+                            <div
+                                class="dropdown-trigger bg-slate-50 border border-slate-200 rounded-lg p-2.5 flex justify-between items-center cursor-pointer hover:border-indigo-400 transition-colors">
+                                <span id="new-task-Label" class="text-sm">Select Tag</span>
+                                <i class="ph ph-caret-down text-slate-400"></i>
+                            </div>
+                            <input type="hidden" id="task-tag" value="Design">
+                            <div class="dropdown-options w-full max-h-48 overflow-y-auto">
+                                <div class="dropdown-option" data-value="Design"><span
+                                        class="w-2 h-2 rounded-full bg-pink-400"></span> Design</div>
+                                <div class="dropdown-option" data-value="Dev"><span
+                                        class="w-2 h-2 rounded-full bg-blue-400"></span> Dev</div>
+                                <div class="dropdown-option" data-value="Marketing"><span
+                                        class="w-2 h-2 rounded-full bg-orange-400"></span> Marketing</div>
+                                <div class="dropdown-option" data-value="Urgent"><span
+                                        class="w-2 h-2 rounded-full bg-red-400"></span> Urgent</div>
+                                <div class="dropdown-option border-t border-slate-100 mt-1 pt-1" data-value="Custom+"><i
+                                        class="ph ph-plus text-indigo-500"></i> Custom Pin...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Tag Input (Hidden by default) -->
+                <div id="custom-tag-container" class="hidden animate-in fade-in slide-in-from-top-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">Custom Pin
+                        Name</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="custom-tag-input" placeholder="e.g. Research, meeting..."
+                            class="flex-1 bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex justify-end gap-3 mt-8">
+                <button id="cancel-btn"
+                    class="text-slate-500 hover:bg-slate-100 px-4 py-2 rounded-lg transition-colors font-medium">Cancel</button>
+                <button id="save-task-btn"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-medium shadow-lg shadow-indigo-600/20 transition-all transform hover:scale-105">Create
+                    Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Task Details (Same as before) -->
+    <div id="details-modal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center z-50 opacity-0 transition-opacity duration-300">
+        <div
+            class="modal-content bg-white rounded-2xl w-full max-w-2xl shadow-2xl transform scale-95 transition-transform duration-300 overflow-hidden flex flex-col max-h-[90vh]">
+            <!-- Header -->
+            <div class="p-6 border-b border-slate-100 flex justify-between items-start bg-indigo-50/30">
+                <div class="flex-1 mr-4">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span id="detail-tag"
+                            class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-600 uppercase tracking-wide">DEV</span>
+                        <span id="detail-date" class="text-xs text-slate-400 flex items-center gap-1"><i
+                                class="ph ph-calendar"></i> <span>Oct 24</span></span>
+                    </div>
+                    <h2 id="detail-title" class="text-2xl font-bold text-slate-800 leading-tight">Implement User
+                        Authentication</h2>
+                </div>
+                <button id="close-details-btn"
+                    class="text-slate-400 hover:text-slate-600 p-2 rounded-full hover:bg-black/5 transition-colors">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 overflow-y-auto flex-1 space-y-8">
+                <!-- Description Section -->
+                <div>
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                        <i class="ph ph-text-align-left"></i> Description
+                    </h4>
+                    <textarea id="detail-desc" placeholder="Add a more detailed description..."
+                        class="w-full bg-transparent border border-transparent hover:border-slate-200 focus:border-indigo-500 rounded-lg p-2 text-slate-600 text-sm h-24 resize-none transition-all outline-none"></textarea>
+                </div>
+                <!-- Attachments Section -->
+                <div>
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i class="ph ph-paperclip"></i> Attachments
+                    </h4>
+                    <div class="flex flex-wrap gap-3" id="detail-attachments">
+                        <div
+                            class="flex items-center gap-2 px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm group cursor-pointer hover:border-indigo-300">
+                            <div
+                                class="w-8 h-8 rounded bg-red-100 text-red-500 flex items-center justify-center font-bold text-xs">
+                                PDF</div>
+                            <div>
+                                <p class="font-medium text-slate-700">Specs.pdf</p>
+                                <p class="text-[10px] text-slate-400">2.4 MB</p>
+                            </div>
+                        </div>
+                        <button
+                            class="flex items-center gap-2 px-3 py-2 border border-dashed border-slate-300 rounded-lg text-sm text-slate-400 hover:text-indigo-600 hover:border-indigo-300 transition-colors">
+                            <i class="ph ph-plus"></i> Add
+                        </button>
+                    </div>
+                </div>
+                <!-- Comments Section -->
+                <div>
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+                        <i class="ph ph-chat-circle"></i> Comments
+                    </h4>
+                    <div class="space-y-4 mb-4" id="detail-comments"></div>
+                    <div class="flex gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center text-indigo-600 font-bold text-xs">
+                            AT</div>
+                        <div class="flex-1 relative">
+                            <input type="text" id="new-comment-input" placeholder="Write a comment..."
+                                class="w-full bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-sm outline-none focus:border-indigo-500 focus:bg-white transition-all pr-10">
+                            <button id="add-comment-btn"
+                                class="absolute right-2 top-1/2 -translate-y-1/2 text-indigo-600 hover:text-indigo-700">
+                                <i class="ph ph-paper-plane-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
+                <div class="text-xs text-slate-400">Created <span id="detail-created">Oct 20</span></div>
+                <button id="delete-task-btn"
+                    class="text-red-500 hover:bg-red-50 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors flex items-center gap-2">
+                    <i class="ph ph-trash"></i> Delete Task
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

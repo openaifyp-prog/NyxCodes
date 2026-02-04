@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux - Modern Fintech Dashboard</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        glass: 'rgba(255, 255, 255, 0.25)',
+                        'glass-border': 'rgba(255, 255, 255, 0.4)',
+                        'glass-text': 'rgba(255, 255, 255, 0.9)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-900 text-white min-h-screen overflow-hidden relative selection:bg-purple-500 selection:text-white">
+
+    <!-- Background Decoration -->
+    <div class="fixed top-0 left-0 w-full h-full z-[-1] overflow-hidden">
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-purple-600 blur-[120px] opacity-40 animate-blob">
+        </div>
+        <div
+            class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-blue-600 blur-[150px] opacity-40 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute top-[40%] left-[40%] w-[400px] h-[400px] rounded-full bg-pink-600 blur-[100px] opacity-30 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <div class="flex h-screen p-4 md:p-6 gap-6">
+
+        <!-- Sidebar -->
+        <aside class="glass-panel w-20 md:w-64 flex flex-col justify-between py-8 px-4 transition-all duration-300">
+            <div>
+                <!-- Logo -->
+                <div class="flex items-center justify-center md:justify-start gap-3 mb-12">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/30">
+                        <i class="ph ph-hexagon text-2xl text-white"></i>
+                    </div>
+                    <span class="text-2xl font-bold hidden md:block tracking-wide">Flux.</span>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="space-y-2">
+                    <button class="nav-item w-full text-left active" data-view="dashboard">
+                        <i class="ph ph-squares-four text-xl"></i>
+                        <span class="hidden md:block">Dashboard</span>
+                    </button>
+                    <button class="nav-item w-full text-left" data-view="analytics">
+                        <i class="ph ph-chart-line-up text-xl"></i>
+                        <span class="hidden md:block">Analytics</span>
+                    </button>
+                    <button class="nav-item w-full text-left" data-view="wallet">
+                        <i class="ph ph-wallet text-xl"></i>
+                        <span class="hidden md:block">Wallet</span>
+                    </button>
+                    <button class="nav-item w-full text-left" data-view="transactions">
+                        <i class="ph ph-arrows-left-right text-xl"></i>
+                        <span class="hidden md:block">Transactions</span>
+                    </button>
+                    <button class="nav-item w-full text-left" data-view="settings">
+                        <i class="ph ph-gear text-xl"></i>
+                        <span class="hidden md:block">Settings</span>
+                    </button>
+                </nav>
+            </div>
+
+            <!-- User -->
+            <div
+                class="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group">
+                <img src="https://ui-avatars.com/api/?name=Awais+Tariq&background=6366f1&color=fff" alt="User"
+                    class="w-10 h-10 rounded-full border-2 border-white/20">
+                <div class="hidden md:block">
+                    <p class="text-sm font-semibold group-hover:text-blue-200 transition-colors">Awais T.</p>
+                    <p class="text-xs text-gray-400">Pro Member</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col gap-6 overflow-hidden">
+
+            <!-- Header -->
+            <header class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold" id="page-title">Dashboard</h1>
+                    <p class="text-gray-400 text-sm">Welcome back, here's what's happening today.</p>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <!-- Search -->
+                    <div
+                        class="glass-panel px-4 py-2 flex items-center gap-2 rounded-full hidden sm:flex focus-within:ring-2 focus-within:ring-blue-500/50 transition-all">
+                        <i class="ph ph-magnifying-glass text-gray-400"></i>
+                        <input type="text" placeholder="Search..."
+                            class="bg-transparent border-none outline-none text-sm w-40 placeholder-gray-400 text-white">
+                    </div>
+
+                    <!-- Notifications -->
+                    <button
+                        class="glass-btn w-10 h-10 rounded-full flex items-center justify-center relative hover:bg-white/10 transition-colors">
+                        <i class="ph ph-bell text-xl"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    </button>
+                    <!-- Back to Portfolio -->
+                    <a href="../../index.html"
+                        class="glass-btn px-4 py-2 rounded-full text-sm font-medium hover:bg-white/20 transition-all">
+                        Back to Portfolio
+                    </a>
+                </div>
+            </header>
+
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto pr-2 space-y-6 custom-scrollbar pb-6 relative">
+
+                <!-- VIEW: DASHBOARD -->
+                <div id="view-dashboard" class="view-section animate-fade-in text-white">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Total Balance -->
+                        <div class="glass-card p-6 relative overflow-hidden group">
+                            <div
+                                class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl group-hover:bg-blue-500/30 transition-all">
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1">Total Balance</p>
+                                    <h3 class="text-3xl font-bold" id="total-balance">$124,500.20</h3>
+                                </div>
+                                <div class="p-2 bg-blue-500/20 rounded-lg text-blue-300">
+                                    <i class="ph ph-wallet text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 text-sm">
+                                <span
+                                    class="bg-green-500/20 text-green-300 px-2 py-0.5 rounded flex items-center gap-1">
+                                    <i class="ph ph-trend-up"></i> +12.5%
+                                </span>
+                                <span class="text-gray-400">vs last month</span>
+                            </div>
+                        </div>
+
+                        <!-- Income -->
+                        <div class="glass-card p-6 relative overflow-hidden group">
+                            <div
+                                class="absolute -right-6 -top-6 w-24 h-24 bg-green-500/20 rounded-full blur-2xl group-hover:bg-green-500/30 transition-all">
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1">Total Income</p>
+                                    <h3 class="text-3xl font-bold">$32,450.00</h3>
+                                </div>
+                                <div class="p-2 bg-green-500/20 rounded-lg text-green-300">
+                                    <i class="ph ph-arrow-down-left text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="w-full h-10 mt-2">
+                                <canvas id="incomeSparkline"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Expenses -->
+                        <div class="glass-card p-6 relative overflow-hidden group">
+                            <div
+                                class="absolute -right-6 -top-6 w-24 h-24 bg-red-500/20 rounded-full blur-2xl group-hover:bg-red-500/30 transition-all">
+                            </div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-gray-400 text-sm mb-1">Total Expense</p>
+                                    <h3 class="text-3xl font-bold">$11,230.40</h3>
+                                </div>
+                                <div class="p-2 bg-red-500/20 rounded-lg text-red-300">
+                                    <i class="ph ph-arrow-up-right text-xl"></i>
+                                </div>
+                            </div>
+                            <div class="w-full h-10 mt-2">
+                                <canvas id="expenseSparkline"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Chart & Recent Transactions -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+
+                        <!-- Main Chart -->
+                        <div class="glass-card p-6 lg:col-span-2">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-lg font-bold">Revenue Analytics</h3>
+                                <select
+                                    class="bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-sm outline-none focus:border-blue-500/50 text-gray-300">
+                                    <option>Weekly</option>
+                                    <option>Monthly</option>
+                                    <option>Yearly</option>
+                                </select>
+                            </div>
+                            <div class="h-64 w-full">
+                                <canvas id="mainChart"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Recent Transactions -->
+                        <div class="glass-card p-6 flex flex-col">
+                            <div class="flex justify-between items-center mb-6">
+                                <h3 class="text-lg font-bold">Recent</h3>
+                                <button class="text-sm text-blue-400 hover:text-blue-300 transition-colors">View
+                                    All</button>
+                            </div>
+                            <div class="space-y-4 overflow-y-auto flex-1 custom-scrollbar pr-1"
+                                id="transaction-list-dashboard">
+                                <!-- Transactions injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Section: Quick Transfer & Stats -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6 mt-6">
+                        <!-- Quick Transfer -->
+                        <div class="glass-card p-6">
+                            <h3 class="text-lg font-bold mb-4">Quick Transfer</h3>
+                            <div class="flex items-center gap-4 mb-6 overflow-x-auto pb-2 custom-scrollbar">
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center border border-dashed border-white/30 hover:border-blue-500 hover:bg-blue-500/20 transition-all">
+                                        <i class="ph ph-plus text-xl"></i>
+                                    </div>
+                                    <span class="text-xs text-gray-400">Add</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                                    <img src="https://ui-avatars.com/api/?name=Alex+M&background=random"
+                                        class="w-12 h-12 rounded-full border-2 border-transparent group-hover:border-blue-500 transition-all">
+                                    <span class="text-xs text-gray-400 group-hover:text-white">Alex</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                                    <img src="https://ui-avatars.com/api/?name=Sara+K&background=random"
+                                        class="w-12 h-12 rounded-full border-2 border-transparent group-hover:border-blue-500 transition-all">
+                                    <span class="text-xs text-gray-400 group-hover:text-white">Sara</span>
+                                </div>
+                                <div class="flex flex-col items-center gap-2 cursor-pointer group">
+                                    <img src="https://ui-avatars.com/api/?name=John+D&background=random"
+                                        class="w-12 h-12 rounded-full border-2 border-transparent group-hover:border-blue-500 transition-all">
+                                    <span class="text-xs text-gray-400 group-hover:text-white">John</span>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4">
+                                <div class="flex-1 relative">
+                                    <span
+                                        class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">$</span>
+                                    <input type="number" id="transfer-amount" value="150"
+                                        class="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-8 pr-4 outline-none focus:border-blue-500/50 transition-all text-lg font-bold text-white">
+                                </div>
+                                <button id="btn-send-transfer"
+                                    class="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-bold py-3 px-6 rounded-xl shadow-lg shadow-blue-600/20 transition-all transform hover:scale-105 active:scale-95">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Spending Limit -->
+                        <div class="glass-card p-6 flex flex-col justify-center">
+                            <h3 class="text-lg font-bold mb-2">Monthly Budget</h3>
+                            <div class="flex justify-between items-end mb-2">
+                                <div
+                                    class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400">
+                                    $2,450</div>
+                                <div class="text-gray-400 text-sm">of $3,000</div>
+                            </div>
+                            <div class="w-full bg-white/10 rounded-full h-3 mb-4 overflow-hidden">
+                                <div
+                                    class="bg-gradient-to-r from-green-400 to-blue-500 h-full rounded-full w-[82%] relative">
+                                    <div class="absolute right-0 top-0 h-full w-2 bg-white/50 blur-[2px]"></div>
+                                </div>
+                            </div>
+                            <p class="text-sm text-gray-400">You've spent <span class="text-white font-bold">82%</span>
+                                of your budget. Keep it up!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: ANALYTICS -->
+                <div id="view-analytics"
+                    class="view-section hidden animate-fade-in flex flex-col items-center justify-center p-12">
+                    <div class="glass-card p-12 text-center max-w-lg w-full">
+                        <i class="ph ph-chart-polar text-6xl text-blue-400 mb-6 inline-block animate-bounce-slow"></i>
+                        <h2 class="text-3xl font-bold mb-4">Deep Analytics</h2>
+                        <p class="text-gray-400 leading-relaxed mb-8">Access detailed reports, forecasting models, and
+                            spending heatmaps. This data is being aggregated in real-time.</p>
+                        <div class="flex justify-center gap-3">
+                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse delay-100"></span>
+                            <span class="w-2 h-2 bg-blue-500 rounded-full animate-pulse delay-200"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: WALLET -->
+                <div id="view-wallet" class="view-section hidden animate-fade-in">
+                    <h2 class="text-xl font-bold mb-6">Your Cards</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Visa Card (Flip Enabled) -->
+                        <div class="card-flip-container h-64 cursor-pointer perspective-1000">
+                            <div
+                                class="card-inner w-full h-full relative transition-transform duration-700 preserve-3d">
+                                <!-- Front -->
+                                <div
+                                    class="card-front absolute w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-8 shadow-2xl overflow-hidden backface-hidden">
+                                    <div
+                                        class="absolute right-[-20px] top-[-20px] w-40 h-40 bg-white/10 rounded-full blur-2xl">
+                                    </div>
+                                    <div class="flex justify-between items-center mb-8">
+                                        <span class="text-lg font-medium tracking-widest text-white/80">Flux.</span>
+                                        <i class="ph ph-contactless-payment text-2xl text-white/80"></i>
+                                    </div>
+                                    <div class="mb-8">
+                                        <p class="text-2xl font-mono tracking-widest mb-1">4522 1234 5678 9012</p>
+                                    </div>
+                                    <div class="flex justify-between items-end">
+                                        <div>
+                                            <p class="text-xs text-white/60 mb-1">Card Holder</p>
+                                            <p class="font-bold tracking-wide">AWAIS TARIQ</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <p class="text-xs text-white/60 mb-1">Expires</p>
+                                            <p class="font-bold tracking-wide">12/28</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Back -->
+                                <div
+                                    class="card-back absolute w-full h-full bg-gradient-to-bl from-purple-700 to-indigo-800 rounded-3xl p-8 shadow-2xl overflow-hidden backface-hidden rotate-y-180">
+                                    <div class="w-full h-12 bg-black/30 absolute left-0 top-8"></div>
+                                    <div class="mt-24 px-4">
+                                        <div class="bg-white h-10 w-full flex items-center justify-end px-4">
+                                            <p class="text-gray-800 font-mono font-bold">123</p>
+                                        </div>
+                                        <p class="text-xs text-white/60 mt-2 text-right">CVV</p>
+                                    </div>
+                                    <div class="absolute bottom-6 left-8">
+                                        <i class="ph ph-bank text-3xl text-white/50"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add New Card -->
+                        <div
+                            class="glass-card flex flex-col items-center justify-center p-8 border border-dashed border-white/20 hover:border-blue-500/50 hover:bg-white/10 cursor-pointer transition-all h-64">
+                            <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                                <i class="ph ph-plus text-3xl text-gray-400"></i>
+                            </div>
+                            <h3 class="text-lg font-medium text-gray-300">Add New Card</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: TRANSACTIONS -->
+                <div id="view-transactions" class="view-section hidden animate-fade-in">
+                    <div class="glass-card p-6">
+                        <div class="flex justify-between items-center mb-8">
+                            <h2 class="text-xl font-bold">Transaction History</h2>
+                            <div class="flex gap-2">
+                                <button class="px-3 py-1 bg-white/10 rounded-lg text-sm hover:bg-white/20">All</button>
+                                <button
+                                    class="px-3 py-1 bg-transparent rounded-lg text-sm hover:bg-white/10">Income</button>
+                                <button
+                                    class="px-3 py-1 bg-transparent rounded-lg text-sm hover:bg-white/10">Expenses</button>
+                            </div>
+                        </div>
+                        <div class="space-y-2" id="transaction-list-full">
+                            <!-- Injected via JS -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VIEW: SETTINGS -->
+                <div id="view-settings"
+                    class="view-section hidden animate-fade-in flex flex-col items-center justify-center p-12">
+                    <div class="glass-card p-12 text-center max-w-lg w-full">
+                        <i class="ph ph-gear text-6xl text-gray-400 mb-6 inline-block spin-slow"></i>
+                        <h2 class="text-3xl font-bold mb-4">Settings</h2>
+                        <p class="text-gray-400 leading-relaxed mb-8">System preferences and account configuration.</p>
+
+                        <!-- Theme Toggle -->
+                        <div class="flex items-center justify-between bg-white/5 p-4 rounded-xl border border-white/10">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                    <i class="ph ph-moon-stars text-xl"></i>
+                                </div>
+                                <div class="text-left">
+                                    <h4 class="font-bold">Appearance</h4>
+                                    <p class="text-xs text-gray-400">Switch between Dark & Light mode</p>
+                                </div>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="theme-toggle" class="sr-only peer">
+                                <div
+                                    class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>

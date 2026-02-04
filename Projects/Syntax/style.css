@@ -1,0 +1,413 @@
+:root {
+    --bg-color: #0f172a;
+    --sidebar-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent: #6366f1;
+    --border: rgba(255, 255, 255, 0.1);
+
+    /* Code Themes (Variables to be swapped) */
+    --code-bg: #0f172a;
+    --code-text: #e2e8f0;
+    --token-keyword: #c678dd;
+    --token-string: #98c379;
+    --token-func: #61afef;
+    --token-comment: #6272a4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 320px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.brand h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Theme Grid */
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.theme-btn {
+    aspect-ratio: 1;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.theme-btn.active {
+    border-color: white;
+    transform: scale(1.1);
+}
+
+/* Gradient Grid */
+.card-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.gradient-btn {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.gradient-btn.active {
+    border-color: white;
+    transform: scale(1.1);
+}
+
+.color-picker-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 6px;
+}
+
+input[type="color"] {
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: none;
+}
+
+#bg-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Sliders */
+input[type="range"] {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    appearance: none;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+/* Canvas Area */
+.preview-area {
+    flex: 1;
+    background-color: var(--bg-color);
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow: auto;
+}
+
+.capture-container {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 64px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    min-width: 400px;
+    max-width: 100%;
+}
+
+.code-window {
+    background-color: var(--code-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    font-family: 'JetBrains Mono', monospace;
+    min-width: 400px;
+}
+
+.window-header {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.file-name {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-family: inherit;
+    font-size: 0.85rem;
+    text-align: center;
+    width: 100%;
+    margin-right: 40px;
+    /* offset dots width to center */
+    opacity: 0.6;
+    outline: none;
+}
+
+.editor-content {
+    padding: 1.5rem;
+}
+
+.code-area {
+    color: var(--code-text);
+    font-size: 14px;
+    line-height: 1.6;
+    outline: none;
+    white-space: pre;
+    min-height: 100px;
+}
+
+/* Syntax Highlighting Classes (to be applied by JS) */
+.token-keyword {
+    color: var(--token-keyword);
+    font-weight: bold;
+}
+
+.token-string {
+    color: var(--token-string);
+}
+
+.token-comment {
+    color: var(--token-comment);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.token-container {
+    display: inline-block;
+}
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.btn-primary:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+}
+
+/* Custom Select Styles */
+.custom-select {
+    position: relative;
+    width: 100%;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+    appearance: none;
+    /* Hide default arrow */
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+select:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+/* Custom Arrow (via SVG background) */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2394a3b8' viewBox='0 0 256 256'%3E%3Cpath d='M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 16px;
+    padding-right: 2.5rem;
+    /* Space for arrow */
+}
+
+select option {
+    background-color: var(--sidebar-bg);
+    color: var(--text-primary);
+    padding: 10px;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 900px) {
+    body {
+        overflow: auto;
+        /* Enable page scroll on mobile */
+        height: auto;
+    }
+
+    .app-container {
+        flex-direction: column-reverse;
+        /* Preview on top/sidebar below? Or Standard vertical stack. Let's do Standard: Column */
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        overflow-y: visible;
+        /* Let it flow */
+        padding: 1.5rem;
+    }
+
+    .preview-area {
+        min-height: 60vh;
+        /* Ensure canvas has space */
+        padding: 1rem;
+        align-items: flex-start;
+        /* Start from top */
+        overflow: hidden;
+        /* Prevent horizontal blowouts */
+    }
+
+    .capture-container {
+        min-width: 100%;
+        /* Resize to fit mobile width */
+        padding: 32px 16px;
+        /* Reduce padding */
+        transform-origin: center top;
+    }
+
+    .code-window {
+        min-width: 100%;
+        font-size: 12px;
+        /* Smaller font for code */
+    }
+
+    .window-header {
+        padding: 0.75rem 1rem;
+    }
+
+    .editor-content {
+        padding: 1rem;
+    }
+}
