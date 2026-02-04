@@ -148,4 +148,4 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
-}
+}@media (max-width: 768px) { .app-container { flex-direction: column; } .glass-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); } main { padding: 1rem; } .grid { grid-template-columns: 1fr; } }

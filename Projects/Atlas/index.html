@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas - World Explorer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar / Filter Panel -->
+        <aside class="sidebar">
+            <div class="brand">
+                <i class="ph ph-globe-hemisphere-west"></i>
+                <h1>Atlas.</h1>
+            </div>
+
+            <div class="search-wrapper">
+                <i class="ph ph-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Search for a country...">
+            </div>
+
+            <div class="filter-group">
+                <label>Region</label>
+                <div class="region-chips">
+                    <button class="chip active" data-region="all">All</button>
+                    <button class="chip" data-region="Africa">Africa</button>
+                    <button class="chip" data-region="Americas">Americas</button>
+                    <button class="chip" data-region="Asia">Asia</button>
+                    <button class="chip" data-region="Europe">Europe</button>
+                    <button class="chip" data-region="Oceania">Oceania</button>
+                </div>
+            </div>
+
+            <div class="stats-card">
+                <h3>Global Stats</h3>
+                <div class="stat-row">
+                    <span>Total Countries</span>
+                    <span id="total-count">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>World Rep.</span>
+                    <span id="total-pop">0B</span>
+                </div>
+            </div>
+
+            <!-- Comparator Widget -->
+            <div class="comparator-widget">
+                <h3>Comparator</h3>
+                <p class="subtitle">Select two countries to compare stats.</p>
+                <div class="compare-slots">
+                    <div class="slot" id="slot-1" data-empty="Select Country A">Select A</div>
+                    <div class="vs-badge">VS</div>
+                    <div class="slot" id="slot-2" data-empty="Select Country B">Select B</div>
+                </div>
+                <button id="compare-btn" class="btn-primary" disabled>Compare Now</button>
+            </div>
+        </aside>
+
+        <!-- Main Grid Area -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h2>Explore The World</h2>
+                <div class="view-toggles">
+                    <button class="view-btn active" id="grid-view"><i class="ph ph-squares-four"></i></button>
+                    <button class="view-btn" id="list-view"><i class="ph ph-list-dashes"></i></button>
+                </div>
+            </header>
+
+            <div id="countries-grid" class="countries-grid">
+                <!-- Cards injected by JS -->
+                <div class="loading-state">
+                    <i class="ph ph-spinner ph-spin"></i>
+                    <p>Fetching world data...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Comparison Modal -->
+    <div id="comparison-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal"><i class="ph ph-x"></i></button>
+            <h2>Stat Showdown</h2>
+            <div class="comparison-body" id="comparison-result">
+                <!-- Result injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

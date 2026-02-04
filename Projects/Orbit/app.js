@@ -223,12 +223,54 @@ function renderComments(task) {
 }
 
 closeDetailsBtn.addEventListener('click', () => closeModal(detailsModal));
-deleteTaskBtn.addEventListener('click', () => {
-    if (confirm('Are you sure you want to delete this task?')) {
+
+// --- Premium Delete UI Logic ---
+const deleteBtnTrigger = document.getElementById('delete-btn-trigger');
+const footerNormal = document.getElementById('detail-footer-normal');
+const footerConfirm = document.getElementById('detail-footer-confirm');
+const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+
+deleteBtnTrigger.addEventListener('click', () => {
+    footerNormal.classList.add('hidden');
+    footerNormal.classList.remove('flex');
+    footerConfirm.classList.add('flex');
+    footerConfirm.classList.remove('hidden');
+});
+
+cancelDeleteBtn.addEventListener('click', () => {
+    footerConfirm.classList.add('hidden');
+    footerConfirm.classList.remove('flex');
+    footerNormal.classList.add('flex');
+    footerNormal.classList.remove('hidden');
+});
+
+confirmDeleteBtn.addEventListener('click', () => {
+    // Find the card in DOM for animation
+    const card = document.querySelector(`.task-card[data-id="${currentOpenTaskId}"]`);
+    if (card) {
+        card.style.transform = 'scale(0.8) translateY(-20px)';
+        card.style.opacity = '0';
+        card.style.pointerEvents = 'none';
+
+        setTimeout(() => {
+            tasks = tasks.filter(t => t.id !== currentOpenTaskId);
+            saveAndRender();
+        }, 300);
+    } else {
         tasks = tasks.filter(t => t.id !== currentOpenTaskId);
         saveAndRender();
-        closeModal(detailsModal);
     }
+
+    closeModal(detailsModal);
+
+    // Reset footer for next open
+    setTimeout(() => {
+        footerConfirm.classList.add('hidden');
+        footerConfirm.classList.remove('flex');
+        footerNormal.classList.add('flex');
+        footerNormal.classList.remove('hidden');
+    }, 400);
 });
 
 

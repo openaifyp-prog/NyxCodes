@@ -268,47 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
-            title: "Syntax Code Snaps",
-            image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
-            tags: ["JS", "Canvas", "Tool", "SaaS"],
-            description: "A developer tool to create aesthetic code screenshots. Features live customization, multiple themes, and client-side image generation.",
-            category: "Web",
-            link: "Projects/Syntax/index.html"
-        },
-        {
-            title: "Velvet Real Estate",
-            image: "https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
-            tags: ["HTML", "CSS", "JS", "Luxury"],
-            description: "A premium real estate showcase featuring a 'Ken Burns' slider, elegant serif typography, and a hover-reveal property grid.",
-            category: "Web",
-            link: "Projects/Velvet/index.html"
-        },
-
-        {
-            title: "Orbit Task Manager",
-            image: "images/project-orbit.webp",
-            tags: ["JS", "Kanban", "Drag & Drop", "Productivity"],
-            description: "A calm, pastel-themed productivity tool featuring a drag-and-drop Kanban board, local storage persistence, and light/dark modes.",
-            category: "Web",
-            link: "Projects/Orbit/index.html"
-        },
-        {
-            title: "Flux Fintech",
-            image: "images/project-flux.webp", // Needs screenshot generation
-            tags: ["JS", "Chart.js", "Glassmorphism", "Fintech"],
-            description: "A modern fintech dashboard featuring a glassmorphism aesthetic, interactive Chart.js analytics, and dynamic transaction tracking.",
-            category: "Web",
-            link: "Projects/Flux/index.html"
-        },
-        {
-            title: "The Nook Hostel",
-            image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop",
-            tags: ["HTML", "CSS", "Boho Design", "Travel"],
-            description: "A reimagined hostel booking platform with a warm, boho-rustic aesthetic. Features a split-hero layout, floating booking widgets, and specialty amenity showcases.",
-            category: "Web",
-            link: "Projects/HostelHaven/index.html"
-        },
-        {
             title: "Clean Africa NGO",
             image: "images/project-cleanafrica.webp",
             tags: ["Non-Profit", "Eco", "HTML", "CSS"],
@@ -331,6 +290,70 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "A modern B2B landing page for an AI logistics startup. Features clean corporate design, feature grids, and pricing tables.",
             category: "Web",
             link: "Projects/Dartar.Ai/darterAi.html"
+        },
+        {
+            title: "Zenith Architecture",
+            image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2670&auto=format&fit=crop",
+            tags: ["Design", "Minimalist", "Tailwind", "Animation"],
+            description: "A premium, minimalist portfolio for an architecture studio. Focuses on whitespace, elegant typography, and micro-interactions.",
+            category: "Design",
+            link: "Projects/Zenith/index.html"
+        },
+        {
+            title: "Gourmet Recipe AI",
+            image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=2671&auto=format&fit=crop",
+            tags: ["API", "AI Search", "Logic", "Utility"],
+            description: "A smart culinary assistant that fetches 5000+ real-world recipes. Features an 'Ingredient Scaler' that mathematically adjust portions and a 'Feeling Lucky' randomizer.",
+            category: "Web",
+            link: "Projects/Gourmet/index.html"
+        },
+        {
+            title: "Atlas Explorer",
+            image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            tags: ["API", "Data", "Dashboard"],
+            description: "An interactive world data explorer using the RestCountries API. Features real-time search, stats, and a country comparator tool.",
+            category: "Web",
+            link: "Projects/Atlas/index.html"
+        },
+        {
+            title: "Syntax Code Snaps",
+            image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            tags: ["JS", "Canvas", "Tool", "SaaS"],
+            description: "A developer tool to create aesthetic code screenshots. Features live customization, multiple themes, and client-side image generation.",
+            category: "Web",
+            link: "Projects/Syntax/index.html"
+        },
+        {
+            title: "Velvet Real Estate",
+            image: "https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            tags: ["HTML", "CSS", "JS", "Luxury"],
+            description: "A premium real estate showcase featuring a 'Ken Burns' slider, elegant serif typography, and a hover-reveal property grid.",
+            category: "Web",
+            link: "Projects/Velvet/index.html"
+        },
+        {
+            title: "Orbit Task Manager",
+            image: "images/project-orbit.webp",
+            tags: ["JS", "Kanban", "Drag & Drop", "Productivity"],
+            description: "A calm, pastel-themed productivity tool featuring a drag-and-drop Kanban board, local storage persistence, and light/dark modes.",
+            category: "Web",
+            link: "Projects/Orbit/index.html"
+        },
+        {
+            title: "Flux Fintech",
+            image: "images/project-flux.webp",
+            tags: ["JS", "Chart.js", "Glassmorphism", "Fintech"],
+            description: "A modern fintech dashboard featuring a glassmorphism aesthetic, interactive Chart.js analytics, and dynamic transaction tracking.",
+            category: "Web",
+            link: "Projects/Flux/index.html"
+        },
+        {
+            title: "The Nook Hostel",
+            image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop",
+            tags: ["HTML", "CSS", "Boho Design", "Travel"],
+            description: "A reimagined hostel booking platform with a warm, boho-rustic aesthetic. Features a split-hero layout, floating booking widgets, and specialty amenity showcases.",
+            category: "Web",
+            link: "Projects/HostelHaven/index.html"
         },
         {
             title: "Decora Interior Design",
@@ -363,14 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "A daily auto-updating news blog. Features category filtering, instant search, and a curated editorial layout powered by live data.",
             category: "Web",
             link: "Projects/NexusNews/index.html"
-        },
-        {
-            title: "Zenith Architecture",
-            image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2670&auto=format&fit=crop",
-            tags: ["Design", "Minimalist", "Tailwind", "Animation"],
-            description: "A premium, minimalist portfolio for an architecture studio. Focuses on whitespace, elegant typography, and micro-interactions.",
-            category: "Design",
-            link: "Projects/Zenith/index.html"
         },
         {
             title: "WeatherNova 3D",

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet | Smart Recipe Assistant</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar/Navigation -->
+        <header class="header">
+            <div class="brand">
+                <i class="ph ph-cooking-pot"></i>
+                <h1>Gourmet</h1>
+            </div>
+
+            <div class="search-container">
+                <div class="search-bar">
+                    <i class="ph ph-magnifying-glass"></i>
+                    <input type="text" id="search-input" placeholder="Search recipes (e.g. Chicken, Pasta)...">
+                    <button id="random-btn" title="Feeling Lucky?">
+                        <i class="ph ph-dice-five"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="categories" id="categories-container">
+                <!-- Categories will be injected here -->
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="results-header">
+                <h2 id="results-title">Popular Recipes</h2>
+                <div class="stats">
+                    <span id="recipe-count">0</span> recipes found
+                </div>
+            </div>
+
+            <div class="recipe-grid" id="recipe-grid">
+                <!-- Loading state or recipes injected here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Recipe Modal -->
+    <div class="modal" id="recipe-modal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-btn" id="close-modal">
+                <i class="ph ph-x"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Recipe details injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
