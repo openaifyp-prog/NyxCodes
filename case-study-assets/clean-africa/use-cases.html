@@ -1,0 +1,336 @@
+<div class="ca-theme-wrapper">
+    <!-- Fonts Validation (Scoped Import) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700;800&display=swap');
+
+        /* Scoped Theme Wrapper to prevent leaks */
+        .ca-theme-wrapper {
+            /* Project Tokens from CleanAfrica/style.css */
+            --ca-green: #00B67A;
+            --ca-dark: #1a1a1a;
+            --ca-bg: #f8f9fa;
+            --ca-white: #ffffff;
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            background-color: var(--ca-bg);
+            color: var(--ca-dark);
+            font-family: var(--font-body);
+            padding: 8rem 5% 4rem;
+            border-radius: 16px;
+            /* Matching app curvature */
+        }
+
+        /* --- Section Headers (Clean Africa Style) --- */
+        .ca-section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--ca-dark);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .ca-section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Custom Flex Grid (Not Grid) to match project style --- */
+        .ca-flex-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+        }
+
+        /* Card Style replicating .ca-card-item */
+        .ca-feature-card {
+            background: var(--ca-white);
+            border-radius: 16px;
+            padding: 2rem;
+            width: calc(50% - 1rem);
+            /* Flex spacing */
+            min-width: 300px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+            /* Exact shadow token */
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ca-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--ca-green);
+            /* Green border on hover */
+        }
+
+        /* Top Accent imitating the 'floating icon' look */
+        .ca-card-accent {
+            height: 4px;
+            width: 40px;
+            background: var(--ca-green);
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .ca-feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--ca-dark);
+        }
+
+        .ca-feature-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .ca-feature-img {
+            width: 100%;
+            border-radius: 8px;
+            border: 4px solid #f8fafc;
+        }
+
+        /* Tech Pills */
+        .ca-pill {
+            display: inline-block;
+            background: #e6f8f2;
+            color: var(--ca-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        /* --- Design System Footer (App Replica) --- */
+        .ca-ds-container {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 4rem;
+            margin-top: 4rem;
+        }
+
+        /* Font Showcase */
+        .font-row {
+            display: flex;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .font-block {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .font-preview {
+            font-size: 4rem;
+            line-height: 1;
+            color: var(--ca-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Authentic Design System --- */
+        .ca-ds-container {
+            margin-top: 10rem;
+            padding: 6rem 5rem;
+            background: #1a1a1a;
+            color: #fff;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .ds-tag-ca {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--ca-green);
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .ca-ds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 8rem;
+            align-items: center;
+        }
+
+        .font-row-ca {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .font-preview-ca {
+            font-family: var(--font-heading);
+            font-size: 6rem;
+            line-height: 1;
+            color: #fff;
+        }
+
+        .font-details-ca h4 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+            color: var(--ca-green);
+        }
+
+        .font-details-ca p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        .color-grid-ca {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .color-item-ca {
+            text-align: center;
+        }
+
+        .color-circle-ca {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .color-item-ca:hover .color-circle-ca {
+            transform: scale(1.1);
+        }
+
+        .color-item-ca span {
+            font-family: monospace;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            .ca-ds-container {
+                padding: 4rem 2rem;
+                margin-top: 6rem;
+            }
+
+            .ca-ds-grid {
+                grid-template-columns: 1fr;
+                gap: 5rem;
+            }
+
+            .color-grid-ca {
+                justify-content: flex-start;
+            }
+
+            .font-preview-ca {
+                font-size: 4rem;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .ca-feature-card {
+                width: 100%;
+            }
+
+            .ca-theme-wrapper {
+                padding: 2rem 1rem;
+            }
+
+            .font-row {
+                gap: 2rem;
+            }
+        }
+    </style>
+
+    <!-- 1. Intro -->
+    <div>
+        <h2 class="ca-section-title">Core Architecture</h2>
+        <p class="ca-section-subtitle">Built with Tailwind JIT and Vanilla Flexbox for maximum compatibility and
+            performance.</p>
+    </div>
+
+    <!-- 2. Feature Cards (Flexbox Layout) -->
+    <div class="ca-flex-grid">
+        <!-- Card 1 -->
+        <div class="ca-feature-card">
+            <div class="ca-card-accent"></div>
+            <h3>Responsive Flex Layout</h3>
+            <p>The layout engine uses `flex-wrap: wrap` with precise calc width (`calc(25% - 20px)`) to ensure perfect
+                card alignment across 4 distinct breakpoints.</p>
+            <div style="margin-bottom:1.5rem;">
+                <span class="ca-pill">Flexbox</span>
+                <span class="ca-pill">Calc()</span>
+            </div>
+            <img src="case-study-assets/clean-africa/map-dashboard.png" class="ca-feature-img" alt="Layout UI">
+        </div>
+
+        <!-- Card 2 -->
+        <div class="ca-feature-card">
+            <div class="ca-card-accent"></div>
+            <h3>Zero-Shift Menu</h3>
+            <p>The mobile menu uses a custom `@keyframes slideDown` animation combined with `.hidden` state toggling to
+                ensure smooth enter/exit transitions.</p>
+            <div style="margin-bottom:1.5rem;">
+                <span class="ca-pill">Keyframes</span>
+                <span class="ca-pill">State Toggle</span>
+            </div>
+            <img src="case-study-assets/clean-africa/menu-wireframe.png" class="ca-feature-img" alt="Menu UI">
+        </div>
+    </div>
+
+
+    <!-- 3. Authentic Design System -->
+    <div class="ca-ds-container">
+        <div class="ca-ds-grid">
+            <div class="type-col">
+                <span class="ds-tag-ca">Typography</span>
+                <div class="font-row-ca">
+                    <div class="font-preview-ca">Aa</div>
+                    <div class="font-details-ca"
+                        style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
+                        <h4>Poppins</h4>
+                        <p>Environmental Identity Sans</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color-col">
+                <span class="ds-tag-ca">Color Palette</span>
+                <div class="color-grid-ca">
+                    <div class="color-item-ca">
+                        <div class="color-circle-ca" style="background:#00B67A"></div>
+                        <span>#00B67A</span>
+                    </div>
+                    <div class="color-item-ca">
+                        <div class="color-circle-ca" style="background:#1A1A1A"></div>
+                        <span>#1A1A1A</span>
+                    </div>
+                    <div class="color-item-ca">
+                        <div class="color-circle-ca" style="background:#F8F9FA"></div>
+                        <span>#F8F9FA</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,314 @@
+<div class="fx-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+        /* Scoped Clean Theme (Flux Identity) */
+        .fx-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #f9fafb;
+            /* Gray 50 */
+            --bg-panel: #ffffff;
+            --border-light: #e5e7eb;
+            --text-main: #1f2937;
+            --text-muted: #6b7280;
+
+            /* Brand Accents (Glassmorphism) */
+            --brand-primary: #3b82f6;
+            /* Blue 500 */
+            --brand-dark: #111827;
+            /* Gray 900 */
+
+            --font-display: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .fx-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .fx-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+
+        /* --- Tech Specs --- */
+        .fx-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-fx h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item-fx p {
+            font-size: 1.5rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* --- Feature Layout --- */
+        .fx-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        .fx-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .fx-feature-content h3 {
+            font-size: 2.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .fx-feature-content p {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Visual: Glass Card Simulation */
+        .fx-feature-visual {
+            flex: 1.2;
+            height: 350px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Glass Object */
+        .fx-glass-object {
+            width: 200px;
+            height: 120px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            position: relative;
+            z-index: 2;
+        }
+
+        .fx-blob {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: #3b82f6;
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(40px);
+            z-index: 1;
+        }
+
+        /* Tags */
+        .glass-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #eff6ff;
+            /* Blue 50 */
+            color: #2563eb;
+            /* Blue 600 */
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Design System Footer --- */
+        .ds-fx-footer {
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 4rem;
+        }
+
+        .ds-fx-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .ds-fx-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .fx-feature-row,
+            .fx-feature-row.reverse {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .fx-feature-row,
+            .fx-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        .type-showcase {
+            padding-left: 1.5rem;
+            border-left: 4px solid var(--brand-primary);
+        }
+
+        .type-huge {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--brand-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .fx-colors {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .fx-color-circle {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="fx-specs-clean">
+        <div class="spec-item-fx">
+            <h4>Styling</h4>
+            <p>CSS Variables</p>
+        </div>
+        <div class="spec-item-fx">
+            <h4>Effect</h4>
+            <p>Backdrop Filter</p>
+        </div>
+        <div class="spec-item-fx">
+            <h4>Animation</h4>
+            <p>Keyframes</p>
+        </div>
+        <div class="spec-item-fx">
+            <h4>Layout</h4>
+            <p>Flex/Grid</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Glass Engine -->
+    <div class="fx-feature-row">
+        <div class="fx-feature-content">
+            <h3>Glassmorphism Engine</h3>
+            <p>The UI relies on a centralized set of CSS variables (`--glass-bg`, `--glass-border`) to control opacity
+                and blur radius. This allows for real-time theme switching (Light/Dark) while maintaining the frosted
+                glass aesthetic.</p>
+            <div>
+                <span class="glass-tag">CSS Custom Properties</span>
+                <span class="glass-tag">Backdrop Filter</span>
+                <span class="glass-tag">Dynamic Theming</span>
+            </div>
+        </div>
+        <div class="fx-feature-visual">
+            <img src="images/project-flux.webp" style="width:100%; height:100%; object-fit:cover; opacity:0.9;">
+            <div class="fx-glass-object"
+                style="position:absolute; bottom:20px; left:20px; display:flex; justify-content:center; align-items:center; color:#1e293b; font-weight:600; width:120px; height:60px;">
+                UI Flow
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature: 3D Transforms -->
+    <div class="fx-feature-row reverse">
+        <div class="fx-feature-content">
+            <h3>3D Flip Cards</h3>
+            <p>Cards utilize `perspective: 1000px` and `rotateY` transforms to create a tactile 3D flip effect. The
+                `backface-visibility: hidden` property ensures smooth hardware-accelerated transitions during the flip.
+            </p>
+            <div>
+                <span class="glass-tag">CSS 3D Transforms</span>
+                <span class="glass-tag">Hardware Acceleration</span>
+                <span class="glass-tag">Interactive States</span>
+            </div>
+        </div>
+        <div class="fx-feature-visual" style="background:#f1f5f9;">
+            <div
+                style="width:140px; height:180px; background:#fff; border-radius:12px; box-shadow:0 10px 20px rgba(0,0,0,0.1); transform: rotateY(15deg) rotateX(10deg); border:1px solid #cbd5e1;">
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-fx-footer">
+        <h2 style="text-align:center; font-family:var(--font-display); font-size:2rem; margin-bottom:3rem;">Visual
+            System</h2>
+
+        <div class="ds-fx-grid">
+            <div class="type-showcase">
+                <div class="type-huge">AaBb</div>
+                <div
+                    style="color:var(--text-muted); text-transform:uppercase; font-size:0.9rem; letter-spacing:0.1em; margin-top:1rem;">
+                    Inter</div>
+                <div style="color:var(--text-muted); font-size:0.8rem;">Modern Sans-Serif</div>
+            </div>
+
+            <div class="fx-colors" style="align-items:center;">
+                <div style="text-align:center">
+                    <div class="fx-color-circle" style="background:#111827;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #111827</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="fx-color-circle" style="background:#3b82f6;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #3B82F6</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="fx-color-circle"
+                        style="background:linear-gradient(135deg, #ddd 0%, #fff 100%); border:1px solid #eee;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        Glass</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

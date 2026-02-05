@@ -1,0 +1,344 @@
+<div class="vl-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        /* Scoped Clean Theme (Velvet Identity) */
+        .vl-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #ffffff;
+            --bg-panel: #F9F9F9;
+            /* Off-white Cream */
+            --border-light: #e5e7eb;
+            --text-main: #222222;
+            /* Charcoal */
+            --text-muted: #666666;
+
+            /* Brand Accents (Luxury) */
+            --brand-primary: #D4AF37;
+            /* Gold */
+            --brand-dark: #111827;
+            /* Midnight */
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .vl-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .vl-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        /* --- Tech Specs --- */
+        .vl-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-vl h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .spec-item-vl p {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* --- Feature Layout --- */
+        .vl-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        .vl-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .vl-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .vl-feature-content p {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        /* Visual: Editorial Card */
+        .vl-feature-visual {
+            flex: 1.2;
+            height: 400px;
+            background: #F9F9F9;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Tags */
+        .lux-tag {
+            display: inline-block;
+            border-bottom: 1px solid var(--brand-primary);
+            color: var(--brand-dark);
+            padding-bottom: 2px;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-body);
+        }
+
+        /* --- Design System Footer --- */
+        .ds-vl-footer {
+            margin-top: 10rem;
+            padding: 6rem 5rem;
+            background: #111827;
+            color: #fff;
+            border-radius: 0;
+            /* Full width luxury feel */
+            position: relative;
+        }
+
+        .ds-vl-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 10rem;
+            align-items: center;
+        }
+
+        .ds-tag-vl {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            color: var(--brand-primary);
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .type-showcase {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .type-huge {
+            font-family: 'Playfair Display', serif;
+            font-size: 7rem;
+            color: #fff;
+            line-height: 1;
+            font-style: italic;
+        }
+
+        .vl-colors {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .vl-color-block {
+            text-align: center;
+        }
+
+        .vl-color-sq {
+            width: 100px;
+            height: 100px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1rem;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .vl-color-block:hover .vl-color-sq {
+            transform: translateY(-10px);
+        }
+
+        .vl-color-block span {
+            font-family: monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+
+            .vl-feature-row,
+            .vl-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .ds-vl-footer {
+                padding: 4rem 2rem;
+                margin-top: 6rem;
+            }
+
+            .ds-vl-grid {
+                grid-template-columns: 1fr;
+                gap: 5rem;
+            }
+
+            .vl-colors {
+                justify-content: flex-start;
+            }
+
+            .type-huge {
+                font-size: 5rem;
+            }
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="vl-specs-clean">
+        <div class="spec-item-vl">
+            <h4>Motion</h4>
+            <p>GSAP Timelines</p>
+        </div>
+        <div class="spec-item-vl">
+            <h4>Effect</h4>
+            <p>Ken Burns Zoom</p>
+        </div>
+        <div class="spec-item-vl">
+            <h4>Grid</h4>
+            <p>Editorial CSS</p>
+        </div>
+        <div class="spec-item-vl">
+            <h4>Type</h4>
+            <p>Fluid Scaling</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Cinematic Slider -->
+    <div class="vl-feature-row">
+        <div class="vl-feature-content">
+            <h3>Cinematic Transitions</h3>
+            <p>The hero section uses a custom JavaScript timer (`setInterval`) to orchestrate a 'Ken Burns' effect on
+                background images. Text elements use staggered CSS keyframes (`fadeInUp`) to ensure copy remains
+                readable against dynamic backgrounds.</p>
+            <div>
+                <span class="lux-tag">Keyframe Sync</span>
+                <span class="lux-tag">Z-Index Layering</span>
+                <span class="lux-tag">Performance</span>
+            </div>
+        </div>
+        <div class="vl-feature-visual" style="background:#111827;">
+            <!-- Premium CSS Editorial Schematic -->
+            <div class="vl-editorial-card"
+                style="width:85%; height:75%; background:#fff; position:relative; border-radius:4px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); overflow:hidden;">
+                <div
+                    style="width:100%; height:100%; background:linear-gradient(45deg, #1a1a1a, #444); display:flex; align-items:flex-end; padding:2rem;">
+                    <div style="z-index:2;">
+                        <div style="width:50px; height:2px; background:var(--brand-primary); margin-bottom:1.5rem;">
+                        </div>
+                        <h4 style="font-family:var(--font-display); font-size:2rem; color:#fff; font-style:italic;">
+                            Luxury Estates</h4>
+                    </div>
+                </div>
+                <!-- Animated Lens Flare Placeholder -->
+                <div
+                    style="position:absolute; top:10%; right:10%; width:100px; height:100px; background:radial-gradient(circle, rgba(212,175,55,0.2) 0%, transparent 70%); filter:blur(20px);">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature: Editorial Grid -->
+    <div class="vl-feature-row reverse">
+        <div class="vl-feature-content">
+            <h3>Editorial Grid Layout</h3>
+            <p>Property listings break the standard "card" mold by using an asymmetric grid layout. Images and metadata
+                slide into view upon hover, mimicking the experience of browsing a high-end architectural magazine.</p>
+            <div>
+                <span class="lux-tag">CSS Grid</span>
+                <span class="lux-tag">Hover Reveal</span>
+                <span class="lux-tag">Visual Hierarchy</span>
+            </div>
+        </div>
+        <div class="vl-feature-visual" style="background:#fff; border:1px solid #eee;">
+            <div style="display:flex; gap:20px; width:100%; padding:20px; align-items:flex-end;">
+                <div style="flex:1; height:200px; background:#f3f4f6; position:relative;">
+                    <div
+                        style="position:absolute; bottom:0; width:100%; padding:10px; background:rgba(255,255,255,0.9);">
+                        <div style="height:4px; width:40%; background:#D4AF37;"></div>
+                    </div>
+                </div>
+                <div style="flex:1; height:240px; background:#111827;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-vl-footer">
+        <div class="ds-vl-grid">
+            <div class="type-col">
+                <span class="ds-tag-vl">Typography</span>
+                <div class="type-showcase">
+                    <div class="type-huge">Aa</div>
+                    <div style="border-left: 1px solid rgba(255,255,255,0.2); padding-left: 2rem;">
+                        <h4
+                            style="font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 0.5rem; color: var(--brand-primary);">
+                            Playfair Display</h4>
+                        <p
+                            style="color:#94a3b8; font-size:1rem; margin:0; letter-spacing:0.1em; text-transform:uppercase;">
+                            Luxury Editorial Font</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color-col">
+                <span class="ds-tag-vl">Color Palette</span>
+                <div class="vl-colors">
+                    <div class="vl-color-block">
+                        <div class="vl-color-sq" style="background:#111827;"></div>
+                        <span>#111827</span>
+                    </div>
+                    <div class="vl-color-block">
+                        <div class="vl-color-sq" style="background:#D4AF37;"></div>
+                        <span>#D4AF37</span>
+                    </div>
+                    <div class="vl-color-block">
+                        <div class="vl-color-sq" style="background:#F9F9F9;"></div>
+                        <span>#F9F9F9</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,298 @@
+<div class="zn-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500&display=swap');
+
+        /* Scoped Clean Theme (Zenith Identity) */
+        .zn-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #f5f5f0;
+            /* Off White from Zenith source */
+            --bg-panel: #ffffff;
+            --border-light: #e5e5e5;
+            --text-main: #1a1a1a;
+            --text-muted: #737373;
+
+            /* Brand Accents (Minimalist) */
+            --brand-primary: #1a1a1a;
+            /* Black */
+            --brand-secondary: #a3a3a3;
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .zn-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .zn-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-style: italic;
+            color: var(--brand-primary);
+            margin-bottom: 1rem;
+            font-weight: 300;
+        }
+
+        /* --- Tech Specs --- */
+        .zn-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid #d4d4d4;
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-zn h4 {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .spec-item-zn p {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--brand-primary);
+            margin: 0;
+            font-style: italic;
+        }
+
+        /* --- Feature Layout --- */
+        .zn-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 6rem;
+            margin-bottom: 10rem;
+        }
+
+        .zn-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .zn-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--brand-primary);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .zn-feature-content p {
+            color: #404040;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Visual: Wide & Minimal */
+        .zn-feature-visual {
+            flex: 1.5;
+            height: 400px;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+        }
+
+        /* Function Tags */
+        .arch-tag {
+            display: inline-block;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
+            padding: 0.4rem 1rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .arch-tag:hover {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        /* --- Design System Footer --- */
+        .ds-zn-footer {
+            background: #fff;
+            padding: 5rem;
+        }
+
+        .ds-zn-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .ds-zn-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .zn-feature-row,
+            .zn-feature-row.reverse {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .zn-feature-row,
+            .zn-feature-row.reverse {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .zn-feature-visual {
+                height: 300px;
+                width: 100%;
+            }
+        }
+
+        .type-showcase {
+            text-align: center;
+        }
+
+        .type-huge {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 5rem;
+            font-style: italic;
+            line-height: 1;
+            color: var(--brand-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .zn-colors {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .zn-color-block {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #e5e5e5;
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="zn-specs-clean">
+        <div class="spec-item-zn">
+            <h4>Animation</h4>
+            <p>CSS Keyframes</p>
+        </div>
+        <div class="spec-item-zn">
+            <h4>Interaction</h4>
+            <p>Hover Scale</p>
+        </div>
+        <div class="spec-item-zn">
+            <h4>Layout</h4>
+            <p>CSS Subgrid</p>
+        </div>
+        <div class="spec-item-zn">
+            <h4>Typography</h4>
+            <p>Serif Focus</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Animation -->
+    <div class="zn-feature-row">
+        <div class="zn-feature-content">
+            <h3>Cinematic Reveals</h3>
+            <p>To mimic the elegance of architectural forms, the hero text uses a staggered `@keyframes reveal`
+                animation. Each line translates from y+100% to 0 with a cubic-bezier easing, creating a fluid
+                text-reveal effect that feels organic, not mechanical.</p>
+            <div>
+                <span class="arch-tag">Cubic-Bezier</span>
+                <span class="arch-tag">Transform Y</span>
+                <span class="arch-tag">Staggered Delay</span>
+            </div>
+        </div>
+        <div class="zn-feature-visual">
+            <!-- Premium Architectural Schematic -->
+            <div
+                style="width:100%; height:100%; background:#fff; position:relative; display:flex; justify-content:center; align-items:center;">
+                <div style="width:80%; height:80%; border:1px solid #e5e5e5; position:relative;">
+                    <div style="position:absolute; top:20%; left:0; width:100%; height:1px; background:#f0f0f0;"></div>
+                    <div style="position:absolute; top:40%; left:0; width:100%; height:1px; background:#f0f0f0;"></div>
+                    <div style="position:absolute; top:60%; left:0; width:100%; height:1px; background:#f0f0f0;"></div>
+                    <div style="position:absolute; left:30%; top:0; width:1px; height:100%; background:#f0f0f0;"></div>
+                    <div style="position:absolute; left:60%; top:0; width:1px; height:100%; background:#f0f0f0;"></div>
+                    <div
+                        style="position:absolute; bottom:20px; right:20px; font-family:var(--font-display); font-size:1.2rem; font-style:italic;">
+                        Floor 01</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature: Minimal Grid -->
+    <div class="zn-feature-row reverse">
+        <div class="zn-feature-content">
+            <h3>Visual Silence</h3>
+            <p>The project grid is defined by what isn't there. Large negative space, asymmetric layouts, and grayscale
+                imagery that only saturates on hover (`grayscale-0`) allow the user to focus purely on the structural
+                composition of the work.</p>
+            <div>
+                <span class="arch-tag">Negative Space</span>
+                <span class="arch-tag">Hover State</span>
+                <span class="arch-tag">Grayscale Filters</span>
+            </div>
+        </div>
+        <div class="zn-feature-visual" style="background:#f5f5f0;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; padding:40px; height:100%; width:100%;">
+                <div style="background:#d4d4d4; height:100%;"></div>
+                <div style="background:#a3a3a3; height:80%; align-self:center;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-zn-footer">
+        <h2
+            style="text-align:center; font-family:var(--font-display); font-size:2.5rem; font-style:italic; margin-bottom:4rem;">
+            Studio Identity</h2>
+
+        <div class="ds-zn-grid">
+            <div class="type-showcase">
+                <div class="type-huge">AaBb</div>
+                <div
+                    style="color:var(--text-muted); text-transform:uppercase; font-size:0.75rem; letter-spacing:0.2em; margin-top:1rem;">
+                    Cormorant Garamond</div>
+            </div>
+
+            <div class="zn-colors">
+                <div style="text-align:center">
+                    <div class="zn-color-block" style="background:#1a1a1a;"></div>
+                    <div style="margin-top:1rem; font-family:monospace; font-size:0.7rem; color:var(--text-muted);">
+                        #1A1A1A</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="zn-color-block" style="background:#f5f5f0;"></div>
+                    <div style="margin-top:1rem; font-family:monospace; font-size:0.7rem; color:var(--text-muted);">
+                        #F5F5F0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

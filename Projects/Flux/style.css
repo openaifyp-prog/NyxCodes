@@ -8,20 +8,12 @@
     --glass-shadow: rgba(0, 0, 0, 0.1);
 }
 
-.light-mode {
-    --bg-color: #f3f4f6;
-    /* gray-100 */
-    --text-color: #1f2937;
-    /* gray-800 */
-    --glass-bg: rgba(255, 255, 255, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.4);
-    --glass-shadow: rgba(0, 0, 0, 0.05);
-}
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
 }
 
 /* Update Glass Panel to use variables */
@@ -93,10 +85,9 @@ body {
 }
 
 .nav-item.active {
-    background: linear-gradient(90deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.05) 100%);
+    background: rgba(59, 130, 246, 0.15);
     color: #60a5fa;
-    /* blue-400 */
-    border-left: 3px solid #60a5fa;
+    box-shadow: inset 0 0 12px rgba(59, 130, 246, 0.1);
 }
 
 /* Animations */
@@ -130,6 +121,33 @@ body {
     animation-delay: 4s;
 }
 
+@keyframes notification-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.animate-notification-pulse {
+    animation: notification-pulse 2s infinite;
+}
+
+.back-portfolio-btn {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-portfolio-btn:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+    transform: translateY(-1px);
+}
+
 /* Custom Scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
     width: 6px;
@@ -148,4 +166,93 @@ body {
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.2);
-}@media (max-width: 768px) { .app-container { flex-direction: column; } .glass-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--glass-border); } main { padding: 1rem; } .grid { grid-template-columns: 1fr; } }
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 1024px) {
+    body {
+        overflow-y: auto !important;
+        background-attachment: fixed;
+    }
+
+    .app-container {
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+        padding: 0 !important;
+        margin-bottom: 5rem;
+        /* Space for bottom nav */
+    }
+
+    aside {
+        display: none !important;
+        /* Hide sidebar, replaced by bottom nav */
+    }
+
+    main {
+        padding: 1rem !important;
+        overflow: visible !important;
+        height: auto !important;
+    }
+
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 100;
+        background: rgba(17, 24, 39, 0.8) !important;
+        backdrop-filter: blur(12px) !important;
+        border-radius: 0 0 1.5rem 1.5rem !important;
+        margin: 0 !important;
+        padding: 1rem !important;
+        flex-direction: row !important;
+        /* Keep logo and buttons aligned */
+        justify-content: space-between !important;
+    }
+
+    header p {
+        display: none;
+        /* Hide subtitle for space */
+    }
+
+    header h1 {
+        font-size: 1.25rem !important;
+    }
+
+    .bottom-nav {
+        background: rgba(17, 24, 39, 0.85) !important;
+        backdrop-filter: blur(20px) !important;
+        border-right: none !important;
+        border-top: 1px solid var(--glass-border);
+        box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .bottom-nav .nav-item {
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0.5rem !important;
+        gap: 0.25rem !important;
+        color: #9ca3af;
+    }
+
+    .bottom-nav .nav-item.active {
+        color: #60a5fa !important;
+    }
+
+    .grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    .glass-card {
+        padding: 1.5rem !important;
+    }
+
+    /* Fix views for mobile */
+    .view-section {
+        padding-top: 0.5rem;
+    }
+
+    #view-settings {
+        padding: 1rem !important;
+    }
+}

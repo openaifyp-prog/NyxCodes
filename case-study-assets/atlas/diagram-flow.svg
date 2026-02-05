@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    /* System Font Stack for reliability */
+    .bg { fill: #fdfbf7; }
+    .node-box { fill: #ffffff; stroke: #0f172a; stroke-width: 2px; }
+    .node-header { fill: #0f172a; font-family: 'Times New Roman', Times, serif; font-weight: 700; font-size: 16px; text-anchor: middle; }
+    .node-text { fill: #64748b; font-family: 'Arial', Helvetica, sans-serif; font-size: 12px; text-anchor: middle; }
+    
+    .start-box { fill: #0f172a; stroke: #0f172a; }
+    .start-text { fill: #fbbf24; font-family: 'Arial', Helvetica, sans-serif; font-weight: 600; font-size: 14px; text-anchor: middle; }
+    
+    .connector-solid { stroke: #0f172a; stroke-width: 2px; fill: none; }
+  </style>
+
+  <defs>
+    <marker id="arrow-solid" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0f172a" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+  
+  <!-- Diagram Title -->
+  <text x="50" y="50" font-family="'Times New Roman', Times, serif" font-size="24" fill="#0f172a" font-weight="bold">Atlas Explorer</text>
+  <text x="50" y="75" font-family="'Arial', Helvetica, sans-serif" font-size="14" fill="#64748b">Logic &amp; Data Flow</text>
+  <line x1="50" y1="85" x2="200" y2="85" stroke="#fbbf24" stroke-width="2" />
+
+  <!-- Node 1: User Query (Start) -->
+  <g transform="translate(300, 100)">
+    <rect x="0" y="0" width="200" height="50" class="start-box" />
+    <text x="100" y="30" class="start-text">USER INPUT</text>
+  </g>
+
+  <!-- Connector 1 -->
+  <path d="M400,150 L400,200" class="connector-solid" marker-end="url(#arrow-solid)" />
+
+  <!-- Node 2: API Fetch -->
+  <g transform="translate(300, 200)">
+    <rect x="0" y="0" width="200" height="70" rx="2" class="node-box" />
+    <text x="100" y="25" class="node-header">API Request</text>
+    <line x1="20" y1="35" x2="180" y2="35" stroke="#e2e8f0" stroke-width="1" />
+    <text x="100" y="55" class="node-text">GET /v3.1/all</text>
+  </g>
+
+  <!-- Connector 2 (Split) -->
+  <path d="M400,270 L400,320" class="connector-solid" />
+  <path d="M400,320 L250,320 L250,350" class="connector-solid" marker-end="url(#arrow-solid)" />
+  <path d="M400,320 L550,320 L550,350" class="connector-solid" marker-end="url(#arrow-solid)" />
+
+  <!-- Node 3A: Search Logic -->
+  <g transform="translate(150, 350)">
+    <rect x="0" y="0" width="200" height="80" rx="2" class="node-box" />
+    <text x="100" y="25" class="node-header">Text Filter</text>
+    <line x1="20" y1="35" x2="180" y2="35" stroke="#e2e8f0" stroke-width="1" />
+    <text x="100" y="52" class="node-text">.filter(country => matches)</text>
+    <text x="100" y="68" class="node-text" fill="#94a3b8" font-size="10">Regex / Case-insensitive</text>
+  </g>
+
+  <!-- Node 3B: Region Logic -->
+  <g transform="translate(450, 350)">
+    <rect x="0" y="0" width="200" height="80" rx="2" class="node-box" />
+    <text x="100" y="25" class="node-header">Region Sort</text>
+    <line x1="20" y1="35" x2="180" y2="35" stroke="#e2e8f0" stroke-width="1" />
+    <text x="100" y="52" class="node-text">.reduce(byRegion)</text>
+    <text x="100" y="68" class="node-text" fill="#94a3b8" font-size="10">Group Data Structure</text>
+  </g>
+
+  <!-- Connector 3 (Merge) -->
+  <path d="M250,430 L250,460 L550,460 L550,430" class="connector-solid" fill="none" />
+  <path d="M400,460 L400,500" class="connector-solid" marker-end="url(#arrow-solid)" />
+
+  <!-- Node 4: Render Grid -->
+  <g transform="translate(300, 500)">
+    <rect x="0" y="0" width="200" height="60" rx="0" stroke="#fbbf24" stroke-width="3" fill="#ffffff" />
+    <text x="100" y="35" class="node-header" fill="#0f172a">RENDER UI</text>
+  </g>
+
+</svg>

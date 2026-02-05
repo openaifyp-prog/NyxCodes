@@ -68,18 +68,15 @@ const heroSlides = [
     }
 ];
 
-
-/* --- Hero Slider Logic --- */
-const sliderContainer = document.getElementById('hero-slider');
-const heroTitle = document.querySelector('.hero-title');
-const heroSubtitle = document.querySelector('.hero-subtitle');
-const prevBtn = document.getElementById('prev-slide');
-const nextBtn = document.getElementById('next-slide');
-
+/* --- Global State --- */
 let currentSlide = 0;
 let slideInterval;
 
+/* --- Hero Slider Logic --- */
 function initSlider() {
+    const sliderContainer = document.getElementById('hero-slider');
+    if (!sliderContainer) return;
+
     // Generate Slides
     heroSlides.forEach((slide, index) => {
         const slideDiv = document.createElement('div');
@@ -89,71 +86,71 @@ function initSlider() {
         sliderContainer.appendChild(slideDiv);
     });
 
+    // Control Listeners
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    if (nextBtn) nextBtn.addEventListener('click', () => { moveSlide(1); resetTimer(); });
+    if (prevBtn) prevBtn.addEventListener('click', () => { moveSlide(-1); resetTimer(); });
+
     startSlideTimer();
 }
 
+function moveSlide(direction) {
+    let next = currentSlide + direction;
+    if (next >= heroSlides.length) next = 0;
+    if (next < 0) next = heroSlides.length - 1;
+    updateSlide(next);
+}
+
 function updateSlide(index) {
-    const slides = document.querySelectorAll('.slide');
+    const sliderContainer = document.getElementById('hero-slider');
+    if (!sliderContainer) return;
+
+    const slides = sliderContainer.querySelectorAll('.slide');
+    if (!slides.length) return;
+
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
 
     // Fade Out
     slides.forEach(s => s.classList.remove('active'));
 
-    // Update Text (Fade out/in effect manually triggered if needed, but simple specific text update here)
-    // To make text transition smoother, we could reset animations, but for now direct update:
-    heroTitle.textContent = heroSlides[index].title;
-    heroSubtitle.textContent = heroSlides[index].subtitle;
+    // Update Text
+    if (heroTitle && heroSlides[index]) heroTitle.textContent = heroSlides[index].title;
+    if (heroSubtitle && heroSlides[index]) heroSubtitle.textContent = heroSlides[index].subtitle;
 
-    // Reset Animations for text re-trigger
-    triggerTextAnimation();
+    // Reset Animations for text
+    if (heroTitle && heroSubtitle) {
+        heroTitle.classList.remove('fade-in-up');
+        heroSubtitle.classList.remove('fade-in-up');
+        void heroTitle.offsetWidth; // Force Reflow
+        heroTitle.classList.add('fade-in-up');
+        heroSubtitle.classList.add('fade-in-up');
+    }
 
     // Fade In
     slides[index].classList.add('active');
     currentSlide = index;
 }
 
-function triggerTextAnimation() {
-    // Remove class to reset animation
-    heroTitle.classList.remove('fade-in-up');
-    heroSubtitle.classList.remove('fade-in-up');
-
-    // Force Reflow
-    void heroTitle.offsetWidth;
-
-    // Add class back
-    heroTitle.classList.add('fade-in-up');
-    heroSubtitle.classList.add('fade-in-up');
-}
-
-function nextSlide() {
-    let next = currentSlide + 1;
-    if (next >= heroSlides.length) next = 0;
-    updateSlide(next);
-}
-
-function prevSlide() {
-    let prev = currentSlide - 1;
-    if (prev < 0) prev = heroSlides.length - 1;
-    updateSlide(prev);
-}
-
 function startSlideTimer() {
-    slideInterval = setInterval(nextSlide, 6000); // 6 Seconds
+    const sliderContainer = document.getElementById('hero-slider');
+    if (!sliderContainer) return;
+    slideInterval = setInterval(() => moveSlide(1), 6000);
 }
 
 function resetTimer() {
-    clearInterval(slideInterval);
-    startSlideTimer();
+    if (slideInterval) {
+        clearInterval(slideInterval);
+        startSlideTimer();
+    }
 }
 
-// Controls
-nextBtn.addEventListener('click', () => { nextSlide(); resetTimer(); });
-prevBtn.addEventListener('click', () => { prevSlide(); resetTimer(); });
-
-
 /* --- Property Grid Rendering --- */
-const gridContainer = document.getElementById('property-grid');
-
 function renderProperties() {
+    const gridContainer = document.getElementById('property-grid');
+    if (!gridContainer) return;
+
     gridContainer.innerHTML = featuredProperties.map(prop => `
         <article class="property-card">
             <div class="property-image-wrapper">
@@ -175,58 +172,90 @@ function renderProperties() {
     `).join('');
 }
 
-
 /* --- Header Scroll Effect --- */
-const header = document.querySelector('.site-header');
+function initHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            // Only remove if it's not a sub-page that starts with scrolled
+            // Actually, sub-pages want the background when scrolling too.
+            // If we're at the very top, we can remove it.
+            header.classList.remove('scrolled');
+        }
+    });
+}
 
 /* --- Mobile Menu Logic --- */
 function initMobileMenu() {
     const toggleBtn = document.querySelector('.menu-toggle');
+    if (!toggleBtn) return;
     const icon = toggleBtn.querySelector('i');
 
-    // Create Overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'mobile-nav-overlay';
-    document.body.appendChild(overlay);
+    // Create Overlay if it doesn't exist
+    let overlay = document.querySelector('.mobile-nav-overlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.className = 'mobile-nav-overlay';
+        document.body.appendChild(overlay);
+    }
 
-    // Clone Links
-    const links = document.querySelectorAll('.desktop-nav a');
-    links.forEach(link => {
-        const mobileLink = link.cloneNode(true);
-        mobileLink.className = 'mobile-nav-link';
-        overlay.appendChild(mobileLink);
+    // Clone Links (Only if overlay is empty)
+    if (overlay.innerHTML === '') {
+        const links = document.querySelectorAll('.desktop-nav a');
+        links.forEach(link => {
+            const mobileLink = link.cloneNode(true);
+            mobileLink.className = 'mobile-nav-link';
+            mobileLink.style.color = ''; // Reset active state color
+            overlay.appendChild(mobileLink);
 
-        // Close on click
-        mobileLink.addEventListener('click', () => toggleMenu());
-    });
+            // Close on click
+            mobileLink.addEventListener('click', () => toggleMenu());
+        });
+    }
 
     function toggleMenu() {
         overlay.classList.toggle('active');
         const isActive = overlay.classList.contains('active');
 
         // Toggle Icon
-        icon.className = isActive ? 'ph ph-x' : 'ph ph-list';
+        if (icon) icon.className = isActive ? 'ph ph-x' : 'ph ph-list';
 
         // Prevent scrolling when menu is open
         document.body.style.overflow = isActive ? 'hidden' : '';
     }
 
+    // Attach click listener (ensure single attachment)
+    toggleBtn.removeEventListener('click', toggleMenu);
     toggleBtn.addEventListener('click', toggleMenu);
 }
 
-
 /* --- Init --- */
 document.addEventListener('DOMContentLoaded', () => {
-    initSlider();
-    renderProperties();
-    initMobileMenu();
+    try {
+        initHeaderScroll();
+    } catch (e) {
+        console.error("Header scroll init failed", e);
+    }
+
+    try {
+        initMobileMenu();
+    } catch (e) {
+        console.error("Mobile menu init failed", e);
+    }
+
+    try {
+        initSlider();
+    } catch (e) {
+        console.error("Slider init failed", e);
+    }
+
+    try {
+        renderProperties();
+    } catch (e) {
+        console.error("Properties init failed", e);
+    }
 });

@@ -1,0 +1,239 @@
+<div class="gm-clean-wrapper">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;600&display=swap');
+
+        .gm-clean-wrapper {
+            --bg-page: #fff7ed;
+            /* orange-50 */
+            --bg-panel: #ffffff;
+            --border-light: #fed7aa;
+            /* orange-200 */
+            --text-main: #431407;
+            /* orange-950 */
+            --text-muted: #9a3412;
+            /* orange-700 */
+            --brand-primary: #f59e0b;
+            /* amber-500 */
+            --brand-dark: #1f2937;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        .gm-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding-top: 4rem;
+        }
+
+        .gm-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .gm-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item p {
+            font-size: 1.25rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .gm-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 8rem;
+        }
+
+        .gm-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .gm-feature-content {
+            flex: 1;
+        }
+
+        .gm-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .gm-feature-content p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .gm-feature-visual {
+            flex: 1.2;
+            height: 300px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .gm-mock-ui {
+            width: 80%;
+            height: 60%;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: #fff;
+            padding: 1.5rem;
+        }
+
+        .gm-color-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #fff7ed;
+            color: #c2410c;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .gm-footer {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-light);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+
+            .gm-feature-row,
+            .gm-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .gm-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="gm-header-group">
+        <h2>Culinary Logic</h2>
+        <p style="color:var(--text-muted)">The Science of Scaling</p>
+    </div>
+
+    <div class="gm-specs-grid">
+        <div class="spec-item">
+            <h4>Logic</h4>
+            <p>Fraction Engine</p>
+        </div>
+        <div class="spec-item">
+            <h4>Data</h4>
+            <p>Spoonacular API</p>
+        </div>
+        <div class="spec-item">
+            <h4>Style</h4>
+            <p>Warm Minimal</p>
+        </div>
+        <div class="spec-item">
+            <h4>Type</h4>
+            <p>Outfit Sans</p>
+        </div>
+    </div>
+
+    <div class="gm-feature-row">
+        <div class="gm-feature-content">
+            <h3>Fractional Scaling</h3>
+            <p>We developed a custom JavaScript utility to handle recipe serving adjustments. Unlike standard floats,
+                our engine preserves exact ratios to prevent "rounding errors" in culinary measurements.</p>
+            <div>
+                <span class="gm-color-tag">Mathematics</span>
+                <span class="gm-color-tag">Performance</span>
+            </div>
+        </div>
+        <div class="gm-feature-visual">
+            <div class="gm-mock-ui">
+                <div style="height:20px; width:60%; background:#fdba74; margin-bottom:12px; border-radius:4px;"></div>
+                <div style="height:8px; width:40%; background:#e2e8f0; margin-bottom:8px;"></div>
+                <div style="height:8px; width:30%; background:#e2e8f0;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gm-feature-row reverse">
+        <div class="gm-feature-content">
+            <h3>Visual Ingredients</h3>
+            <p>Dynamic tag system that categorizes recipes by dietary needs (Keto, Vegan, GF) using a color-coded chip
+                system that remains consistent across search, filtered results, and the detailed view.</p>
+            <div>
+                <span class="gm-color-tag">Filter Logic</span>
+                <span class="gm-color-tag">Accessibility</span>
+            </div>
+        </div>
+        <div class="gm-feature-visual" style="background: #fffbeb;">
+            <div style="display:flex; gap:0.5rem;">
+                <div style="width:50px; height:20px; border-radius:10px; background:#10b981;"></div>
+                <div style="width:50px; height:20px; border-radius:10px; background:#f59e0b;"></div>
+                <div style="width:50px; height:20px; border-radius:10px; background:#3b82f6;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="gm-footer">
+        <div>
+            <h4
+                style="text-transform:uppercase; font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1rem;">
+                Typography</h4>
+            <div style="font-family:var(--font-display); font-size:3rem; margin-bottom:0.5rem;">Aa</div>
+            <p style="font-size:0.875rem; color:var(--text-muted)">Playfair Display & Outfit</p>
+        </div>
+        <div>
+            <h4
+                style="text-transform:uppercase; font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1rem;">
+                Colors</h4>
+            <div style="display:flex; gap:1rem;">
+                <div style="width:40px; height:40px; border-radius:50%; background:#f59e0b; border:1px solid #fed7aa;">
+                </div>
+                <div style="width:40px; height:40px; border-radius:50%; background:#10b981; border:1px solid #fed7aa;">
+                </div>
+                <div style="width:40px; height:40px; border-radius:50%; background:#fff7ed; border:1px solid #fed7aa;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -268,133 +268,165 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
+            id: "clean-africa",
             title: "Clean Africa NGO",
-            image: "images/project-cleanafrica.webp",
+            image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200", // Clean Africa NGO
             tags: ["Non-Profit", "Eco", "HTML", "CSS"],
             description: "A comprehensive multi-page website for an environmental NGO, featuring donation flows, project galleries, and blog.",
             category: "Web",
-            link: "Projects/CleanAfrica/CleanAfrica.html"
+            link: "Projects/CleanAfrica/CleanAfrica.html",
+            hasCaseStudy: true
         },
         {
+            id: "lars-petters",
             title: "Lars Petters Education",
-            image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2670&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200", // Lars Petters Education
             tags: ["HTML", "CS", "SwiperJS", "EdTech"],
             description: "A comprehensive education platform landing page featuring course categories, instructor carousels, and student testimonials.",
             category: "Web",
-            link: "Projects/Education landing page/index.html"
+            link: "Projects/Education landing page/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "dartar-ai",
             title: "Dartar.ai Tech Landing",
-            image: "images/project-dartarai.webp",
+            image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200", // Dartar.ai Tech Landing
             tags: ["HTML", "Tailwind", "SaaS", "Tech"],
             description: "A modern B2B landing page for an AI logistics startup. Features clean corporate design, feature grids, and pricing tables.",
             category: "Web",
-            link: "Projects/Dartar.Ai/darterAi.html"
+            link: "Projects/Dartar.Ai/darterAi.html",
+            hasCaseStudy: true
         },
         {
+            id: "zenith",
             title: "Zenith Architecture",
-            image: "https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=2670&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200", // Zenith Architecture
             tags: ["Design", "Minimalist", "Tailwind", "Animation"],
             description: "A premium, minimalist portfolio for an architecture studio. Focuses on whitespace, elegant typography, and micro-interactions.",
             category: "Design",
-            link: "Projects/Zenith/index.html"
+            link: "Projects/Zenith/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "gourmet",
             title: "Gourmet Recipe AI",
-            image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=2671&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1495521821757-a1efb6729352?q=80&w=1200", // Gourmet Recipe AI
             tags: ["API", "AI Search", "Logic", "Utility"],
             description: "A smart culinary assistant that fetches 5000+ real-world recipes. Features an 'Ingredient Scaler' that mathematically adjust portions and a 'Feeling Lucky' randomizer.",
             category: "Web",
-            link: "Projects/Gourmet/index.html"
+            link: "Projects/Gourmet/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "atlas-explorer",
             title: "Atlas Explorer",
-            image: "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200", // Atlas Explorer
             tags: ["API", "Data", "Dashboard"],
             description: "An interactive world data explorer using the RestCountries API. Features real-time search, stats, and a country comparator tool.",
             category: "Web",
-            link: "Projects/Atlas/index.html"
+            link: "Projects/Atlas/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "syntax",
             title: "Syntax Code Snaps",
-            image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1200", // Syntax Code Snaps
             tags: ["JS", "Canvas", "Tool", "SaaS"],
             description: "A developer tool to create aesthetic code screenshots. Features live customization, multiple themes, and client-side image generation.",
             category: "Web",
-            link: "Projects/Syntax/index.html"
+            link: "Projects/Syntax/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "velvet",
             title: "Velvet Real Estate",
-            image: "https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?ixlib=rb-4.0.3&auto=format&fit=crop&w=2600&q=80",
+            image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200", // Velvet Real Estate
             tags: ["HTML", "CSS", "JS", "Luxury"],
             description: "A premium real estate showcase featuring a 'Ken Burns' slider, elegant serif typography, and a hover-reveal property grid.",
             category: "Web",
-            link: "Projects/Velvet/index.html"
+            link: "Projects/Velvet/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "orbit",
             title: "Orbit Task Manager",
-            image: "images/project-orbit.webp",
+            image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1200", // Orbit Task Manager
             tags: ["JS", "Kanban", "Drag & Drop", "Productivity"],
             description: "A calm, pastel-themed productivity tool featuring a drag-and-drop Kanban board, local storage persistence, and light/dark modes.",
             category: "Web",
-            link: "Projects/Orbit/index.html"
+            link: "Projects/Orbit/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "flux",
             title: "Flux Fintech",
-            image: "images/project-flux.webp",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200", // Flux Fintech
             tags: ["JS", "Chart.js", "Glassmorphism", "Fintech"],
             description: "A modern fintech dashboard featuring a glassmorphism aesthetic, interactive Chart.js analytics, and dynamic transaction tracking.",
             category: "Web",
-            link: "Projects/Flux/index.html"
+            link: "Projects/Flux/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "hostel-haven",
             title: "The Nook Hostel",
-            image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?q=80&w=2670&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1596250410216-1ac77dc208e3?q=80&w=1200", // Hostel Haven
             tags: ["HTML", "CSS", "Boho Design", "Travel"],
             description: "A reimagined hostel booking platform with a warm, boho-rustic aesthetic. Features a split-hero layout, floating booking widgets, and specialty amenity showcases.",
             category: "Web",
-            link: "Projects/HostelHaven/index.html"
+            link: "Projects/HostelHaven/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "decora",
             title: "Decora Interior Design",
-            image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2500&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200", // Decora Interior Design
             tags: ["HTML", "CSS", "E-Commerce", "Design"],
             description: "An elegant interior design and e-commerce platform. Features product listings, services page, and a polished dark-themed footer.",
             category: "Design",
-            link: "Projects/Decora Interior Design/DecoraInteriorDesign.html"
+            link: "Projects/Decora Interior Design/DecoraInteriorDesign.html",
+            hasCaseStudy: true
         },
         {
+            id: "code-maze",
             title: "Code Maze - Mobile Game",
-            image: "images/project-codemaze.webp",
+            image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200", // Code Maze
             tags: ["Flutter", "Dart", "Firebase", "Game Dev"],
             description: "An interactive mobile puzzle game built with Flutter. Features complex algorithms for maze generation and a sleek, native UI.",
             category: "Mobile",
-            link: "https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze"
+            link: "https://github.com/openaifyp-prog/NyxCodes/tree/main/codemaze",
+            hasCaseStudy: true
         },
         {
+            id: "coin-pulse",
             title: "CoinPulse - Crypto Dashboard",
-            image: "https://images.unsplash.com/photo-1621416894569-0f39ed31d247?q=80&w=2555&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1518546305927-5a555bb7020d?q=80&w=1200", // Coin Pulse
             tags: ["JS", "Chart.js", "API", "Fintech"],
             description: "A professional crypto dashboard featuring live Bitcoin prices, interactive Chart.js graphs, and market trending data fetched from CoinGecko.",
             category: "Web",
-            link: "Projects/CoinPulse/index.html"
+            link: "Projects/CoinPulse/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "nexus-news",
             title: "Nexus News Aggregator",
-            image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=2070&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=1200", // Nexus News
             tags: ["JS", "News API", "Tailwind", "Editorial"],
             description: "A daily auto-updating news blog. Features category filtering, instant search, and a curated editorial layout powered by live data.",
             category: "Web",
-            link: "Projects/NexusNews/index.html"
+            link: "Projects/NexusNews/index.html",
+            hasCaseStudy: true
         },
         {
+            id: "weather-nova",
             title: "WeatherNova 3D",
-            image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=2670&auto=format&fit=crop",
+            image: "https://images.unsplash.com/photo-1534088568595-a066f410bcda?q=80&w=1200", // Weather Nova
             tags: ["Three.js", "WebGL", "API", "Glassmorphism"],
             description: "A futuristic 3D weather dashboard featuring real-time particle effects (rain, snow, clouds) and a glassmorphism UI.",
             category: "Web",
-            link: "Projects/WeatherNova/index.html"
-        }
+            link: "Projects/WeatherNova/index.html",
+            hasCaseStudy: true
+        },
     ];
 
     const homeProjectsGrid = document.getElementById('projects-grid');
@@ -438,10 +470,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <h3 class="text-2xl font-bold mb-3 text-gray-900">${project.title}</h3>
                     <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">${project.description}</p>
-                    <a href="${project.link}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        View Live Project
-                        <svg class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
+                    <div class="flex justify-between items-center">
+                        <a href="${project.link}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                            View Live
+                        </a>
+                        ${project.hasCaseStudy ? `
+                        <a href="case-study.html?project=${project.id}" class="text-gray-400 hover:text-blue-600 transition-colors" title="View Case Study">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                        </a>` : ''}
+                    </div>
                 </div>
             </div>
         `;

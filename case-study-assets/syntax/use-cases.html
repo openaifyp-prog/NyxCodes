@@ -1,0 +1,323 @@
+<div class="sx-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        /* Scoped Clean Theme (Syntax Identity) */
+        .sx-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #ffffff;
+            --bg-panel: #f8fafc;
+            --border-light: #e2e8f0;
+            --text-main: #0f172a;
+            /* Slate 900 */
+            --text-muted: #64748b;
+
+            /* Brand Accents (IDE) */
+            --brand-primary: #6366f1;
+            /* Indigo 500 */
+            --brand-dark: #0f172a;
+            /* Slate 900 */
+            --code-purple: #c678dd;
+
+            --font-display: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .sx-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .sx-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* --- Tech Specs --- */
+        .sx-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-sx h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item-sx p {
+            font-family: var(--font-code);
+            font-size: 1.4rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* --- Feature Layout --- */
+        .sx-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        .sx-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .sx-feature-content h3 {
+            font-size: 2.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .sx-feature-content p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Visual: Code Editor Simulation */
+        .sx-feature-visual {
+            flex: 1.2;
+            background: #1e293b;
+            /* Dark Editor BG */
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-mock {
+            font-family: var(--font-code);
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .token-k {
+            color: #c678dd;
+        }
+
+        /* keyword */
+        .token-f {
+            color: #61afef;
+        }
+
+        /* function */
+        .token-s {
+            color: #98c379;
+        }
+
+        /* string */
+
+        /* Tags */
+        .dev-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f5f9;
+            color: #475569;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: var(--font-code);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* --- Design System Footer --- */
+        .ds-sx-footer {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 4rem;
+        }
+
+        .ds-sx-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .ds-sx-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .sx-feature-row,
+            .sx-feature-row.reverse {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .sx-feature-row,
+            .sx-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        .type-showcase {
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+        }
+
+        .type-huge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            color: var(--brand-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .sx-colors {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .sx-color-sq {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="sx-specs-clean">
+        <div class="spec-item-sx">
+            <h4>Export</h4>
+            <p>html2canvas</p>
+        </div>
+        <div class="spec-item-sx">
+            <h4>Parsing</h4>
+            <p>RegEx Tokenizer</p>
+        </div>
+        <div class="spec-item-sx">
+            <h4>Styling</h4>
+            <p>CSS Variables</p>
+        </div>
+        <div class="spec-item-sx">
+            <h4>Storage</h4>
+            <p>Blob / File API</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Syntax Highlighting -->
+    <div class="sx-feature-row">
+        <div class="sx-feature-content">
+            <h3>Real-time Tokenization</h3>
+            <p>The editor uses lightweight Regex-based parsing to identify and wrap code tokens (keywords, strings,
+                functions) in `span` elements. This mimics a full IDE experience without the weight of a heavy parser
+                like Prism.js.</p>
+            <div>
+                <span class="dev-tag">RegExp</span>
+                <span class="dev-tag">DOM Injection</span>
+                <span class="dev-tag">Performance</span>
+            </div>
+        </div>
+        <div class="sx-feature-visual">
+            <div class="code-mock">
+                <span class="token-k">const</span> app = <span class="token-f">init</span>();<br>
+                <span class="token-k">if</span> (isReady) {<br>
+                &nbsp;&nbsp;<span class="token-f">render</span>(<span class="token-s">"Hello World"</span>);<br>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature: Image Generation -->
+    <div class="sx-feature-row reverse">
+        <div class="sx-feature-content">
+            <h3>Clean Snapshots</h3>
+            <p>Users can export their code snippets as high-res PNGs. The app captures the DOM element using
+                `html2canvas`, rasterizes the CSS gradients and shadows, and triggers a browser download via Blob URL.
+            </p>
+            <div>
+                <span class="dev-tag">Canvas API</span>
+                <span class="dev-tag">Blob Objects</span>
+                <span class="dev-tag">File Saver</span>
+            </div>
+        </div>
+        <div class="sx-feature-visual"
+            style="background:#fff; padding:0; display:flex; justify-content:center; align-items:center;">
+            <div
+                style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); width:100%; height:100%; display:flex; justify-content:center; align-items:center;">
+                <div
+                    style="background:#0f172a; padding:1.5rem; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+                    <div style="display:flex; gap:6px; margin-bottom:10px;">
+                        <div style="width:8px; height:8px; border-radius:50%; background:#ff5f56;"></div>
+                        <div style="width:8px; height:8px; border-radius:50%; background:#ffbd2e;"></div>
+                        <div style="width:8px; height:8px; border-radius:50%; background:#27c93f;"></div>
+                    </div>
+                    <div style="width:100px; height:8px; background:#334155; border-radius:4px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-sx-footer">
+        <h2 style="text-align:center; font-family:var(--font-display); font-size:2rem; margin-bottom:3rem;">IDE Identity
+        </h2>
+
+        <div class="ds-sx-grid">
+            <div class="type-showcase">
+                <div class="type-huge">();</div>
+                <div
+                    style="color:var(--text-muted); text-transform:uppercase; font-size:0.9rem; letter-spacing:0.1em; margin-top:1rem;">
+                    JetBrains Mono</div>
+                <div style="color:var(--text-muted); font-size:0.8rem;">Monospace Legibility</div>
+            </div>
+
+            <div class="sx-colors" style="align-items:center;">
+                <div style="text-align:center">
+                    <div class="sx-color-sq" style="background:#0f172a;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #0F172A</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="sx-color-sq" style="background:#6366f1;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #6366F1</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="sx-color-sq" style="background:#c678dd;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #C678DD</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

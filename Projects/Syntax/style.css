@@ -263,6 +263,7 @@ input[type="range"]::-webkit-slider-thumb:hover {
     outline: none;
     white-space: pre;
     min-height: 100px;
+    text-align: left;
 }
 
 /* Syntax Highlighting Classes (to be applied by JS) */
@@ -355,59 +356,220 @@ select option {
     padding: 10px;
 }
 
-/* --- Responsiveness --- */
+/* --- Mobile Redesign (Flux-Style) --- */
+
+/* Mobile Header (Visible only on Mobile) */
+.mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 1rem 1.5rem;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-header .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Mobile Bottom Nav (Visible only on Mobile) */
+.mobile-bottom-nav {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 50;
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: env(safe-area-inset-bottom, 1rem);
+    /* Safe area for iPhone home bar */
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item:active {
+    transform: scale(0.95);
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+}
+
+.nav-item .nav-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.nav-item.active {
+    color: var(--accent);
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 2px 8px var(--accent);
+}
+
+/* --- Responsiveness & Mobile Drawer --- */
 @media (max-width: 900px) {
+
+    .mobile-header,
+    .mobile-bottom-nav {
+        display: flex;
+    }
+
     body {
-        overflow: auto;
-        /* Enable page scroll on mobile */
-        height: auto;
+        height: 100vh;
+        overflow: hidden;
+        /* Prevent body scroll, drawer handles its own */
     }
 
     .app-container {
-        flex-direction: column-reverse;
-        /* Preview on top/sidebar below? Or Standard vertical stack. Let's do Standard: Column */
         flex-direction: column;
+        padding-top: 70px;
+        /* Space for header */
+        padding-bottom: 90px;
+        /* Space for nav */
     }
 
+    /* Transform Sidebar into Drawer */
     .sidebar {
+        position: fixed;
+        bottom: 85px;
+        /* Sits just above bottom nav */
+        left: 0;
         width: 100%;
         height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        overflow-y: visible;
-        /* Let it flow */
+        max-height: 60vh;
+        /* Don't cover entire screen */
+        background-color: var(--sidebar-bg);
+        border-top: 1px solid var(--border);
+        border-radius: 20px 20px 0 0;
         padding: 1.5rem;
+        z-index: 45;
+        /* Above preview, below nav/header */
+
+        transform: translateY(120%);
+        /* Hidden by default */
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+        overflow-y: auto;
     }
 
+    .sidebar.active {
+        transform: translateY(0);
+    }
+
+    /* Hide Brand in Drawer */
+    .sidebar .brand {
+        display: none;
+    }
+
+    /* Drawer Specific Visibility Logic */
+    .drawer-section {
+        display: none;
+        /* Hide all by default in drawer mode */
+    }
+
+    .drawer-section.active {
+        display: block;
+        /* Only show active section */
+        animation: fadeIn 0.3s ease;
+    }
+
+    /* Preview Area Adjustments */
     .preview-area {
-        min-height: 60vh;
-        /* Ensure canvas has space */
+        height: 100%;
+        min-height: unset;
         padding: 1rem;
         align-items: flex-start;
-        /* Start from top */
-        overflow: hidden;
-        /* Prevent horizontal blowouts */
+        /* Move to top on mobile for better visibility */
+        justify-content: center;
+        overflow: auto;
+        /* Allow scrolling if window is large */
+        padding-top: 2rem;
     }
 
     .capture-container {
-        min-width: 100%;
-        /* Resize to fit mobile width */
-        padding: 32px 16px;
-        /* Reduce padding */
-        transform-origin: center top;
+        min-width: 0 !important;
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        /* Tighten padding for mobile */
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
     .code-window {
-        min-width: 100%;
-        font-size: 12px;
-        /* Smaller font for code */
+        min-width: 0 !important;
+        width: 100%;
+        font-size: 11px;
     }
 
     .window-header {
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 0.75rem;
+        /* Tighten header */
     }
 
     .editor-content {
-        padding: 1rem;
+        padding: 0.75rem;
+        /* Tighten editor content */
+    }
+
+    /* Adjust controls spacing in drawer */
+    .theme-grid,
+    .gradient-grid {
+        gap: 1rem;
+    }
+
+    .theme-btn,
+    .gradient-btn {
+        width: 100%;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }

@@ -212,6 +212,7 @@ langSelect.addEventListener('change', (e) => {
 });
 
 // Run once
+codeArea.innerText = languages[currentLang].defaultCode;
 highlightSyntax();
 
 /* --- Export Logic --- */
@@ -230,4 +231,57 @@ exportBtn.addEventListener('click', () => {
 
         exportBtn.innerHTML = '<i class="ph ph-download-simple"></i> Export PNG';
     });
+});
+
+/* --- Mobile Drawer Logic --- */
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileNavItems = document.querySelectorAll('.mobile-bottom-nav .nav-item');
+    const sidebar = document.querySelector('.sidebar');
+    const previewArea = document.querySelector('.preview-area');
+
+    if (mobileNavItems.length > 0 && sidebar) {
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Handle Export separately
+                if (item.id === 'mobile-export-trigger') {
+                    // Trigger the existing export button click
+                    const exportBtn = document.getElementById('export-btn');
+                    if (exportBtn) exportBtn.click();
+                    return;
+                }
+
+                // If clicking active tab, close drawer
+                if (item.classList.contains('active')) {
+                    item.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    return;
+                }
+
+                // Toggle Active State
+                mobileNavItems.forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+
+                // Hide all sections, Show active section
+                const targetId = item.dataset.target;
+                const sections = document.querySelectorAll('.drawer-section');
+
+                sections.forEach(sec => sec.classList.remove('active')); // Reset all
+                const activeSection = document.getElementById(targetId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                }
+
+                // Open Drawer
+                sidebar.classList.add('active');
+            });
+        });
+
+        // Close drawer when clicking outside (on preview area)
+        if (previewArea) {
+            previewArea.addEventListener('click', () => {
+                sidebar.classList.remove('active');
+                mobileNavItems.forEach(nav => nav.classList.remove('active'));
+            });
+        }
+    }
 });

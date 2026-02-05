@@ -239,12 +239,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 8. Theme Toggle ---
-    const themeToggle = document.getElementById('theme-toggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('change', (e) => {
-            document.body.classList.toggle('light-mode');
-        });
-    }
 
 });

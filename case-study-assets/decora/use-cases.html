@@ -1,0 +1,239 @@
+<div class="dc-clean-wrapper">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+        .dc-clean-wrapper {
+            --bg-page: #f8fafc;
+            --bg-panel: #ffffff;
+            --border-light: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --brand-primary: #0891b2;
+            /* cyan-600 */
+            --brand-dark: #0f172a;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        .dc-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding-top: 4rem;
+        }
+
+        .dc-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .dc-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item p {
+            font-size: 1.25rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .dc-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 8rem;
+        }
+
+        .dc-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .dc-feature-content {
+            flex: 1;
+        }
+
+        .dc-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .dc-feature-content p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .dc-feature-visual {
+            flex: 1.2;
+            height: 300px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .dc-mock-ui {
+            width: 80%;
+            height: 60%;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: #fff;
+            padding: 1rem;
+        }
+
+        .dc-color-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #ecfeff;
+            color: #0891b2;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .dc-footer {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-light);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+
+            .dc-feature-row,
+            .dc-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .dc-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="dc-header-group">
+        <h2>Interior Excellence</h2>
+        <p style="color:var(--text-muted)">Architectural Design Logic</p>
+    </div>
+
+    <div class="dc-specs-grid">
+        <div class="spec-item">
+            <h4>Layout</h4>
+            <p>CSS Grid</p>
+        </div>
+        <div class="spec-item">
+            <h4>Styling</h4>
+            <p>Tailwind CSS</p>
+        </div>
+        <div class="spec-item">
+            <h4>Animation</h4>
+            <p>AOS Library</p>
+        </div>
+        <div class="spec-item">
+            <h4>Type</h4>
+            <p>Serif Display</p>
+        </div>
+    </div>
+
+    <div class="dc-feature-row">
+        <div class="dc-feature-content">
+            <h3>Responsive Navigation</h3>
+            <p>The interior design showcase requires a distraction-free navigation. We implemented a state-managed
+                mobile menu that toggles between hero gradients and solid panels to maintain legibility across all
+                sections.</p>
+            <div>
+                <span class="dc-color-tag">Mobile First</span>
+                <span class="dc-color-tag">State Management</span>
+            </div>
+        </div>
+        <div class="dc-feature-visual">
+            <div class="dc-mock-ui">
+                <div style="height:8px; width:40%; background:#e2e8f0; margin-bottom:12px;"></div>
+                <div style="display:flex; gap:8px;">
+                    <div style="height:40px; flex:1; background:#f1f5f9;"></div>
+                    <div style="height:40px; flex:1; background:#f1f5f9;"></div>
+                    <div style="height:40px; flex:1; background:#f1f5f9;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dc-feature-row reverse">
+        <div class="dc-feature-content">
+            <h3>Visual Consistency</h3>
+            <p>By mapping design tokens (Slate-900 for depth and Cyan-400 for interest) into a reusable CSS variable
+                system, the platform ensures that the high-end photography remains the focal point while the UI recedes
+                into the background.</p>
+            <div>
+                <span class="dc-color-tag">Token System</span>
+                <span class="dc-color-tag">UI/UX Harmony</span>
+            </div>
+        </div>
+        <div class="dc-feature-visual" style="background: #0f172a;">
+            <div
+                style="width:100px; height:100px; border-radius:50%; background: #22d3ee; filter: blur(40px); opacity:0.2;">
+            </div>
+            <div style="color:white; font-family:var(--font-display); font-size:1.5rem;">Dekora</div>
+        </div>
+    </div>
+
+    <div class="dc-footer">
+        <div>
+            <h4
+                style="text-transform:uppercase; font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1rem;">
+                Typography</h4>
+            <div style="font-family:var(--font-display); font-size:3rem; margin-bottom:0.5rem;">Aa</div>
+            <p style="font-size:0.875rem; color:var(--text-muted)">Playfair Display & Inter</p>
+        </div>
+        <div>
+            <h4
+                style="text-transform:uppercase; font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1rem;">
+                Colors</h4>
+            <div style="display:flex; gap:1rem;">
+                <div style="width:40px; height:40px; border-radius:50%; background:#0f172a; border:1px solid #e2e8f0;">
+                </div>
+                <div style="width:40px; height:40px; border-radius:50%; background:#22d3ee; border:1px solid #e2e8f0;">
+                </div>
+                <div style="width:40px; height:40px; border-radius:50%; background:#f8fafc; border:1px solid #e2e8f0;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

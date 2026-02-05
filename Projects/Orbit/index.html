@@ -25,23 +25,31 @@
     <!-- Navbar -->
     <nav
         class="w-full px-6 py-4 flex flex-col md:flex-row gap-4 justify-between items-center bg-white/70 backdrop-blur-md sticky top-0 z-40 border-b border-slate-200/50">
-        <div class="flex items-center gap-2">
-            <div
-                class="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                <i class="ph ph-planet text-xl"></i>
+        <div class="flex items-center justify-between w-full md:w-auto">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-8 h-8 rounded-lg bg-indigo-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+                    <i class="ph ph-planet text-xl"></i>
+                </div>
+                <span class="text-xl font-bold tracking-tight">Orbit.</span>
             </div>
-            <span class="text-xl font-bold tracking-tight">Orbit.</span>
+
+            <!-- Theme Toggle (Mobile) -->
+            <button id="theme-toggle-mobile"
+                class="md:hidden p-2 rounded-full hover:bg-slate-200 transition-colors text-slate-500">
+                <i class="ph ph-moon text-xl"></i>
+            </button>
         </div>
 
         <!-- Controls: Filter & Sort -->
         <div
-            class="filter-bar flex items-center gap-3 bg-white p-1.5 rounded-xl shadow-sm border border-slate-200/50 transition-colors">
+            class="filter-bar flex items-center gap-3 bg-white p-1.5 rounded-xl shadow-sm border border-slate-200/50 transition-colors w-full md:w-auto">
             <!-- Search -->
-            <div class="relative group">
+            <div class="relative group flex-1 md:flex-none">
                 <i
                     class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-indigo-500 transition-colors"></i>
                 <input type="text" id="search-input" placeholder="Search..."
-                    class="bg-transparent border-none outline-none text-sm pl-9 pr-3 py-1.5 w-32 md:w-56 placeholder-slate-400 focus:ring-0">
+                    class="bg-transparent border-none outline-none text-sm pl-9 pr-3 py-1.5 w-full md:w-56 placeholder-slate-400 focus:ring-0">
             </div>
 
             <div class="filter-divider h-5 w-[1px] bg-slate-200"></div>
@@ -49,8 +57,8 @@
             <!-- Filter Dropdown -->
             <div class="custom-dropdown relative" id="filter-dropdown">
                 <div
-                    class="dropdown-trigger flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 px-2 py-1.5 rounded-md transition-colors">
-                    <span id="filter-label">All Tags</span>
+                    class="dropdown-trigger flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-indigo-600 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-100 transition-colors">
+                    <span id="filter-label" class="dropdown-label">All Tags</span>
                     <i class="ph ph-caret-down text-slate-400"></i>
                 </div>
                 <input type="hidden" id="filter-tag" value="all">
@@ -72,11 +80,11 @@
 
             <!-- Sort Dropdown -->
             <div class="custom-dropdown relative" id="sort-dropdown">
-                <div class="dropdown-trigger flex items-center gap-2 text-slate-500 hover:text-indigo-600 px-2 py-1 rounded-md hover:bg-slate-100 transition-colors dark:hover:bg-white/5"
+                <div class="dropdown-trigger flex items-center gap-2 text-slate-500 hover:text-indigo-600 px-2 py-1.5 rounded-md hover:bg-slate-100 transition-colors bg-slate-50 border border-slate-100"
                     title="Sort By">
                     <i class="ph ph-sort-ascending text-lg" id="sort-icon"></i>
+                    <span class="dropdown-label text-xs font-semibold hidden lg:inline">Date</span>
                 </div>
-                <!-- Hidden input to store sort value -->
                 <input type="hidden" id="sort-value" value="date-asc">
                 <div class="dropdown-options !min-w-[160px] right-0 left-auto">
                     <div class="dropdown-option" data-value="date-asc"><i class="ph ph-calendar"></i> Date (Oldest)
@@ -87,10 +95,9 @@
                     <div class="dropdown-option" data-value="name-desc"><i class="ph ph-text-aa"></i> Name (Z-A)</div>
                 </div>
             </div>
-
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="hidden md:flex items-center gap-4">
             <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-200 transition-colors text-slate-500">
                 <i class="ph ph-moon text-xl"></i>
             </button>
@@ -102,9 +109,9 @@
     </nav>
 
     <!-- Kanban Board -->
-    <main class="flex-1 overflow-x-auto p-6" id="board-container">
-        <!-- Columns (Same as before) -->
-        <div class="flex gap-6 min-w-max h-full mx-auto max-w-7xl items-start">
+    <main class="flex-1 p-4 md:p-6 overflow-x-auto" id="board-container">
+        <!-- Columns Container -->
+        <div class="flex flex-col md:flex-row gap-6 mx-auto max-w-7xl items-start" id="board">
 
             <!-- Column 1: To Do -->
             <div class="board-column w-80 flex-shrink-0 flex flex-col gap-4">
@@ -184,7 +191,7 @@
                         <div class="custom-dropdown relative w-full" id="new-task-dropdown">
                             <div
                                 class="dropdown-trigger bg-slate-50 border border-slate-200 rounded-lg p-2.5 flex justify-between items-center cursor-pointer hover:border-indigo-400 transition-colors">
-                                <span id="new-task-Label" class="text-sm">Select Tag</span>
+                                <span id="new-task-Label" class="text-sm dropdown-label">Select Tag</span>
                                 <i class="ph ph-caret-down text-slate-400"></i>
                             </div>
                             <input type="hidden" id="task-tag" value="Design">
@@ -330,6 +337,12 @@
     </div>
 
     <script src="app.js"></script>
+
+    <!-- Floating Action Button (Mobile) -->
+    <button id="mobile-add-btn"
+        class="md:hidden fixed bottom-8 right-6 w-14 h-14 bg-indigo-600 text-white rounded-full shadow-2xl shadow-indigo-600/40 flex items-center justify-center z-50 active:scale-95 transition-transform">
+        <i class="ph-bold ph-plus text-2xl"></i>
+    </button>
 </body>
 
 </html>

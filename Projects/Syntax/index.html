@@ -26,63 +26,77 @@
 <body>
 
     <div class="app-container">
-        <!-- Sidebar Controls -->
+        <!-- Mobile Header (Visible only on mobile) -->
+        <header class="mobile-header">
+            <div class="brand">
+                <div class="logo-icon"><i class="ph ph-camera"></i></div>
+                <h1>Syntax.</h1>
+            </div>
+        </header>
+
+        <!-- Sidebar Controls (Becomes Drawer on Mobile) -->
         <aside class="sidebar">
             <div class="brand">
                 <div class="logo-icon"><i class="ph ph-camera"></i></div>
                 <h1>Syntax.</h1>
             </div>
 
-            <div class="control-group">
-                <label>Theme</label>
-                <div class="theme-grid">
-                    <button class="theme-btn active" data-theme="midnight" style="background: #0f172a;"></button>
-                    <button class="theme-btn" data-theme="dracula" style="background: #282a36;"></button>
-                    <button class="theme-btn" data-theme="sunset" style="background: #432438;"></button>
-                    <button class="theme-btn" data-theme="ocean" style="background: #0f4c75;"></button>
+            <div id="section-theme" class="drawer-section active">
+                <div class="control-group">
+                    <label>Theme</label>
+                    <div class="theme-grid">
+                        <button class="theme-btn active" data-theme="midnight" style="background: #0f172a;"></button>
+                        <button class="theme-btn" data-theme="dracula" style="background: #282a36;"></button>
+                        <button class="theme-btn" data-theme="sunset" style="background: #432438;"></button>
+                        <button class="theme-btn" data-theme="ocean" style="background: #0f4c75;"></button>
+                    </div>
                 </div>
             </div>
 
-            <div class="control-group">
-                <label>Background</label>
-                <div class="color-picker-wrapper">
-                    <input type="color" id="bg-color" value="#6366f1">
-                    <span id="bg-value">#6366f1</span>
+            <div id="section-background" class="drawer-section">
+                <div class="control-group">
+                    <label>Background</label>
+                    <div class="color-picker-wrapper">
+                        <input type="color" id="bg-color" value="#6366f1">
+                        <span id="bg-value">#6366f1</span>
+                    </div>
+                    <!-- Gradient Presets -->
+                    <div class="gradient-grid">
+                        <button class="gradient-btn"
+                            data-gradient="linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%)"
+                            style="background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);"></button>
+                        <button class="gradient-btn active"
+                            data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></button>
+                        <button class="gradient-btn" data-gradient="linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)"
+                            style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);"></button>
+                        <button class="gradient-btn" data-gradient="linear-gradient(135deg, #09203f 0%, #537895 100%)"
+                            style="background: linear-gradient(135deg, #09203f 0%, #537895 100%);"></button>
+                    </div>
                 </div>
-                <!-- Gradient Presets -->
-                <div class="gradient-grid">
-                    <button class="gradient-btn"
-                        data-gradient="linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%)"
-                        style="background: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #FECFEF 100%);"></button>
-                    <button class="gradient-btn active"
-                        data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></button>
-                    <button class="gradient-btn" data-gradient="linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)"
-                        style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);"></button>
-                    <button class="gradient-btn" data-gradient="linear-gradient(135deg, #09203f 0%, #537895 100%)"
-                        style="background: linear-gradient(135deg, #09203f 0%, #537895 100%);"></button>
+            </div>
+
+            <div id="section-layout" class="drawer-section">
+                <div class="control-group">
+                    <label>Padding: <span id="padding-val">64px</span></label>
+                    <input type="range" id="padding-slider" min="32" max="128" value="64">
                 </div>
-            </div>
 
-            <div class="control-group">
-                <label>Padding: <span id="padding-val">64px</span></label>
-                <input type="range" id="padding-slider" min="32" max="128" value="64">
-            </div>
+                <div class="control-group">
+                    <label>Shadow: <span id="shadow-val">Medium</span></label>
+                    <input type="range" id="shadow-slider" min="1" max="4" value="2">
+                </div>
 
-            <div class="control-group">
-                <label>Shadow: <span id="shadow-val">Medium</span></label>
-                <input type="range" id="shadow-slider" min="1" max="4" value="2">
-            </div>
-
-            <div class="control-group">
-                <label>Language</label>
-                <div class="custom-select">
-                    <select id="language-select">
-                        <option value="javascript">JavaScript</option>
-                        <option value="html">HTML</option>
-                        <option value="css">CSS</option>
-                        <option value="python">Python</option>
-                    </select>
+                <div class="control-group">
+                    <label>Language</label>
+                    <div class="custom-select">
+                        <select id="language-select">
+                            <option value="javascript">JavaScript</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="python">Python</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -107,19 +121,31 @@
                     </div>
                     <div class="editor-content">
                         <!-- Line Numbers (Optional, might complex implementation) -->
-                        <div class="code-area" contenteditable="true" spellcheck="false">
-                            const hello = "World";
-
-                            function welcome(name) {
-                            return `Hello, ${name}!`;
-                            }
-
-                            console.log(welcome("Syntax"));
-                        </div>
+                        <div class="code-area" contenteditable="true" spellcheck="false"></div>
                     </div>
                 </div>
             </div>
         </main>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="mobile-bottom-nav">
+            <button class="nav-item active" data-target="section-theme">
+                <i class="ph ph-paint-brush"></i>
+                <span class="nav-label">Theme</span>
+            </button>
+            <button class="nav-item" data-target="section-background">
+                <i class="ph ph-image"></i>
+                <span class="nav-label">Backg.</span>
+            </button>
+            <button class="nav-item" data-target="section-layout">
+                <i class="ph ph-sliders-horizontal"></i>
+                <span class="nav-label">Detail</span>
+            </button>
+            <button class="nav-item" id="mobile-export-trigger">
+                <i class="ph ph-download-simple"></i>
+                <span class="nav-label">Export</span>
+            </button>
+        </nav>
     </div>
 
     <script src="app.js"></script>

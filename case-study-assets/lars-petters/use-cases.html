@@ -1,0 +1,339 @@
+<div class="lp-clean-wrapper">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;600&display=swap');
+
+        .lp-clean-wrapper {
+            /* CORRECT BRAND COLORS */
+            --bg-page: #f8f9fa;
+            /* gray-50 / bg-light */
+            --bg-panel: #ffffff;
+            --border-light: #e0e0e0;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --brand-primary: #007BFF;
+            /* Primary Blue */
+            --brand-accent: #FFC107;
+            /* Amber/Yellow */
+            --brand-dark: #333333;
+
+            --font-display: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        .lp-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding-top: 4rem;
+        }
+
+        .lp-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .lp-header-group h2 span {
+            color: var(--brand-primary);
+        }
+
+        .lp-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item p {
+            font-size: 1.25rem;
+            color: var(--brand-primary);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .lp-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 8rem;
+        }
+
+        .lp-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .lp-feature-content {
+            flex: 1;
+        }
+
+        .lp-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .lp-feature-content p {
+            color: #555555;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .lp-feature-visual {
+            flex: 1.2;
+            height: 300px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .lp-mock-ui {
+            width: 80%;
+            height: 60%;
+            border: 1px solid var(--border-light);
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .lp-color-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #e6f3ff;
+            color: var(--brand-primary);
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .lp-footer {
+            margin-top: 8rem;
+            padding: 4rem;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 24px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 6rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .ds-labels {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .lp-typo-preview {
+            display: flex;
+            align-items: baseline;
+            gap: 2rem;
+        }
+
+        .lp-typo-huge {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--brand-dark);
+        }
+
+        .lp-color-grid {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .lp-color-pill {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--bg-page);
+            padding: 0.75rem 1.25rem 0.75rem 0.75rem;
+            border-radius: 100px;
+            border: 1px solid var(--border-light);
+        }
+
+        .lp-swatch {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .lp-hex {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+
+            .lp-feature-row,
+            .lp-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .lp-footer {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+                padding: 2.5rem;
+                margin-top: 4rem;
+            }
+        }
+
+        /* Swiper Mockup */
+        .swiper-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #dde2e8;
+        }
+
+        .swiper-dot.active {
+            background: var(--brand-primary);
+            width: 20px;
+            border-radius: 4px;
+        }
+    </style>
+
+    <div class="lp-header-group">
+        <h2>Learning <span>Platform</span></h2>
+        <p style="color:var(--text-muted)">Education Landing Page Refinement</p>
+    </div>
+
+    <div class="lp-specs-grid">
+        <div class="spec-item">
+            <h4>Stack</h4>
+            <p>HTML5 / CSS3</p>
+        </div>
+        <div class="spec-item">
+            <h4>Animation</h4>
+            <p>SwiperJS</p>
+        </div>
+        <div class="spec-item">
+            <h4>Layout</h4>
+            <p>Flex/Grid</p>
+        </div>
+        <div class="spec-item">
+            <h4>Type</h4>
+            <p>Poppins Sans</p>
+        </div>
+    </div>
+
+    <div class="lp-feature-row">
+        <div class="lp-feature-content">
+            <h3>Course Categorization</h3>
+            <p>We implemented a highly scannability-focused grid for course categories. By using discrete color signals
+                (Amber for 'Hot' tags and Blue for 'Deep Learning'), users can filter thousands of lessons in seconds.
+            </p>
+            <div>
+                <span class="lp-color-tag">UX Scannability</span>
+                <span class="lp-color-tag">Visual Hierarchy</span>
+            </div>
+        </div>
+        <div class="lp-feature-visual" style="background:#f8f9fa;">
+            <!-- Premium CSS Course Grid Schematic -->
+            <div class="lp-course-grid-mock"
+                style="width:90%; height:80%; display:grid; grid-template-columns: 1fr 1fr; gap:15px; padding:20px;">
+                <div
+                    style="background:#fff; border:1px solid #e0e0e0; border-radius:12px; padding:15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+                    <div
+                        style="height:10px; width:40%; background:var(--brand-accent); border-radius:2px; margin-bottom:15px;">
+                    </div>
+                    <div style="height:8px; width:100%; background:#f1f5f9; border-radius:4px; margin-bottom:8px;">
+                    </div>
+                    <div style="height:8px; width:70%; background:#f1f5f9; border-radius:4px;"></div>
+                </div>
+                <div style="background:#fff; border:1px solid #e0e0e0; border-radius:12px; opacity:0.6;"></div>
+                <div style="background:#fff; border:1px solid #e0e0e0; border-radius:12px; opacity:0.4;"></div>
+                <div style="background:#fff; border:1px solid #e0e0e0; border-radius:12px; opacity:0.2;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lp-feature-row reverse">
+        <div class="lp-feature-content">
+            <h3>Interactive Discovery</h3>
+            <p>The slider system for top categories uses SwiperJS with custom pagination. This ensures that even on
+                small mobile devices, the "Course Hopper" experience remains tactile and responsive without sacrificing
+                high-resolution thumbnail previews.</p>
+            <div>
+                <span class="lp-color-tag">Mobile First</span>
+                <span class="lp-color-tag">SwiperJS</span>
+            </div>
+        </div>
+        <div class="lp-feature-visual" style="background: #e6f3ff;">
+            <div style="display:flex; gap:10px;">
+                <div class="swiper-dot"></div>
+                <div class="swiper-dot active"></div>
+                <div class="swiper-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lp-footer">
+        <div>
+            <span class="ds-labels">Typography</span>
+            <div class="lp-typo-preview">
+                <div class="lp-typo-huge">Aa</div>
+                <div style="border-left: 2px solid var(--brand-accent); padding-left: 1.5rem;">
+                    <h4 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.25rem;">Poppins
+                    </h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0;">& Inter Sans</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <span class="ds-labels">Color Palette</span>
+            <div class="lp-color-grid">
+                <div class="lp-color-pill">
+                    <div class="lp-swatch" style="background: #007BFF;"></div>
+                    <span class="lp-hex">#007BFF</span>
+                </div>
+                <div class="lp-color-pill">
+                    <div class="lp-swatch" style="background: #FFC107;"></div>
+                    <span class="lp-hex">#FFC107</span>
+                </div>
+                <div class="lp-color-pill">
+                    <div class="lp-swatch" style="background: #FFFFFF;"></div>
+                    <span class="lp-hex">#FFFFFF</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

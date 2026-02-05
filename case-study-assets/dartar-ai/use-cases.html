@@ -1,0 +1,315 @@
+<div class="da-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        /* Scoped Clean Theme (Dartar Identity) */
+        .da-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #ffffff;
+            --bg-panel: #f8fafc;
+            --border-light: #e2e8f0;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+
+            /* Brand Accents (Enterprise Logistics) */
+            --brand-primary: #f97316;
+            /* Orange 500 */
+            --brand-dark: #2d3748;
+            /* Navy Slate */
+
+            --font-display: 'Inter', sans-serif;
+            /* Clean Sans */
+            --font-body: 'Inter', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .da-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .da-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* --- Tech Specs --- */
+        .da-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-da h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item-da p {
+            font-size: 1.5rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* --- Feature Layout --- */
+        .da-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        .da-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .da-feature-content h3 {
+            font-size: 2.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .da-feature-content p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Visual: Enterprise Card */
+        .da-feature-visual {
+            flex: 1.2;
+            background: #fff;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Left Brand Stripe */
+        .da-feature-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 6px;
+            background: var(--brand-dark);
+        }
+
+        /* Tags */
+        .corp-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #fff7ed;
+            /* Orange 50 */
+            color: #c2410c;
+            /* Orange 700 */
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ffedd5;
+        }
+
+        /* --- Design System Footer --- */
+        .ds-da-footer {
+            background: var(--bg-panel);
+            border-radius: 8px;
+            padding: 4rem;
+        }
+
+        .ds-da-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .ds-da-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .da-feature-row,
+            .da-feature-row.reverse {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .da-feature-row,
+            .da-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        .type-showcase {
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            border-left: 6px solid var(--brand-primary);
+        }
+
+        .type-huge {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--brand-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .da-colors {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .da-color-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="da-specs-clean">
+        <div class="spec-item-da">
+            <h4>Architecture</h4>
+            <p>Multi-Page Static</p>
+        </div>
+        <div class="spec-item-da">
+            <h4>Framework</h4>
+            <p>Tailwind Utility</p>
+        </div>
+        <div class="spec-item-da">
+            <h4>Optimization</h4>
+            <p>Pre-Built Assets</p>
+        </div>
+        <div class="spec-item-da">
+            <h4>Grid System</h4>
+            <p>Staggered Flex</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Site Architecture -->
+    <div class="da-feature-row">
+        <div class="da-feature-content">
+            <h3>Enterprise Site Structure</h3>
+            <p>Unlike single-page applications, this corporate portal utilizes a robust multi-page architecture
+                (`solutions`, `about`, `blog`) to maximize SEO depth and content organization. State consistency is
+                maintained via shared Tailwind layout utilities.</p>
+            <div>
+                <span class="corp-tag">Semantic HTML</span>
+                <span class="corp-tag">SEO Optimized</span>
+                <span class="corp-tag">Shared Nav Component</span>
+            </div>
+        </div>
+        <div class="da-feature-visual">
+            <div style="display:flex; flex-direction:column; gap:10px; width:80%;">
+                <div style="height:12px; background:#2d3748; border-radius:4px; width:100%;"></div>
+                <div style="display:flex; gap:10px;">
+                    <div style="flex:1; height:80px; border:1px solid #cbd5e1; border-radius:4px; background:#f1f5f9;">
+                    </div>
+                    <div style="flex:1; height:80px; border:1px solid #cbd5e1; border-radius:4px; background:#f1f5f9;">
+                    </div>
+                    <div style="flex:1; height:80px; border:1px solid #cbd5e1; border-radius:4px; background:#f1f5f9;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature: Staggered Grids -->
+    <div class="da-feature-row reverse">
+        <div class="da-feature-content">
+            <h3>Information Density</h3>
+            <p>The "Solutions" dashboard utilizes a staggered masonry layout to present complex logistical data
+                (Heatmaps, Pay Spreads, Route Analytics) without overwhelming the user. Cards use `flex-col` for
+                vertical rhythm.</p>
+            <div>
+                <span class="corp-tag">Data Visualization</span>
+                <span class="corp-tag">Flexbox Masonry</span>
+                <span class="corp-tag">Responsive Scaling</span>
+            </div>
+        </div>
+        <div class="da-feature-visual" style="background:#2d3748; position:relative;">
+            <img src="images/project-dartarai.webp" style="width:100%; height:100%; object-fit:cover; opacity:0.6;">
+            <div class="ai-node" style="top:20%; left:20%; z-index:2;"></div>
+            <div class="ai-node" style="bottom:20%; right:20%; z-index:2;"></div>
+            <div
+                style="position:absolute; bottom:20px; left:20px; z-index:3; color:#fff; font-family:var(--font-display); font-weight:600; letter-spacing:0.05em;">
+                Logistical Matrix
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-da-footer">
+        <h2
+            style="text-align:center; font-family:var(--font-display); font-size:2rem; margin-bottom:3rem; font-weight:700;">
+            Brand Identity</h2>
+
+        <div class="ds-da-grid">
+            <div class="type-showcase">
+                <div class="type-huge">AaBb</div>
+                <div
+                    style="color:var(--text-muted); text-transform:uppercase; font-size:0.9rem; letter-spacing:0.1em; margin-top:1rem;">
+                    Inter</div>
+                <div style="color:var(--text-muted); font-size:0.8rem;">Clean Corporate Sans</div>
+            </div>
+
+            <div class="da-colors" style="align-items:center;">
+                <div style="text-align:center">
+                    <div class="da-color-circle" style="background:#2d3748;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #2D3748</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="da-color-circle" style="background:#f97316;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #F97316</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="da-color-circle" style="background:#f8fafc;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        #F8FAFC</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

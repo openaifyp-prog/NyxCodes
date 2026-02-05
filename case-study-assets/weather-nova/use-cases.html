@@ -1,0 +1,358 @@
+<div class="wn-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        /* Scoped Clean Theme (WeatherNova Identity) */
+        .wn-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #f0f9ff;
+            /* Sky 50 */
+            --bg-panel: #ffffff;
+            --border-light: #bae6fd;
+            --text-main: #0c4a6e;
+            /* Sky 900 */
+            --text-muted: #0284c7;
+            /* Sky 600 */
+
+            /* Brand Accents (Atmosphere) */
+            --brand-primary: #0ea5e9;
+            /* Sky 500 */
+            --brand-dark: #0f172a;
+            /* Slate 900 */
+
+            --font-display: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .wn-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .wn-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        /* --- Tech Specs --- */
+        .wn-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-wn h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item-wn p {
+            font-size: 1.5rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* --- Feature Layout --- */
+        .wn-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        .wn-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .wn-feature-content h3 {
+            font-size: 2.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .wn-feature-content p {
+            color: #334155;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Visual: Weather Card */
+        .wn-feature-visual {
+            flex: 1.2;
+            height: 350px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -5px rgba(14, 165, 233, 0.4);
+        }
+
+        /* Glass Object */
+        .wn-glass-panel {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* Tags */
+        .weather-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #e0f2fe;
+            color: #0284c7;
+            padding: 0.5rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Design System Footer --- */
+        .ds-wn-footer {
+            margin-top: 10rem;
+            padding: 5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid #bae6fd;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.05);
+        }
+
+        .ds-wn-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8rem;
+            align-items: center;
+        }
+
+        .ds-tag {
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            color: #0ea5e9;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .type-showcase {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .type-huge {
+            font-size: 6rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #0ea5e9, #1e3a8a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .wn-colors {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .wn-color-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 4px solid #fff;
+        }
+
+        .wn-color-circle:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        @media (max-width: 768px) {
+
+            .wn-feature-row,
+            .wn-feature-row.reverse {
+                flex-direction: column;
+                gap: 2.5rem;
+            }
+
+            .ds-wn-footer {
+                padding: 3rem 2rem;
+                margin-top: 5rem;
+            }
+
+            .ds-wn-grid {
+                grid-template-columns: 1fr;
+                gap: 5rem;
+            }
+
+            .wn-colors {
+                justify-content: flex-start;
+            }
+
+            .type-huge {
+                font-size: 4rem;
+            }
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="wn-specs-clean">
+        <div class="spec-item-wn">
+            <h4>API</h4>
+            <p>OpenWeatherMap</p>
+        </div>
+        <div class="spec-item-wn">
+            <h4>Style</h4>
+            <p>Glassmorphism</p>
+        </div>
+        <div class="spec-item-wn">
+            <h4>Logic</h4>
+            <p>Async/Await</p>
+        </div>
+        <div class="spec-item-wn">
+            <h4>Theme</h4>
+            <p>Dynamic CSS</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Dynamic Backgrounds -->
+    <div class="wn-feature-row">
+        <div class="wn-feature-content">
+            <h3>Living Backgrounds</h3>
+            <p>The app maps weather condition codes (e.g., '800' for Clear) to specific CSS classes. Each class triggers
+                a unique animated gradient background (`.theme-rain`, `.theme-clear`), creating an immersive full-screen
+                experience.</p>
+            <div>
+                <span class="weather-tag">Condition Mapping</span>
+                <span class="weather-tag">CSS Keyframes</span>
+                <span class="weather-tag">UX Immersion</span>
+            </div>
+        </div>
+        <div class="wn-feature-visual">
+            <!-- Premium CSS App Mockup -->
+            <div class="wn-phone-mock"
+                style="width:180px; height:320px; background:#fff; border-radius:30px; border:6px solid #1e3a8a; position:relative; overflow:hidden; box-shadow: 0 20px 50px rgba(14,165,233,0.3);">
+                <div
+                    style="height:100px; background:linear-gradient(to bottom, #00B67A, #0ea5e9); padding:20px; color:#fff;">
+                    <div style="font-size:0.7rem; opacity:0.8;">New York</div>
+                    <div style="font-size:1.5rem; font-weight:800;">72°</div>
+                </div>
+                <div style="padding:15px;">
+                    <div style="height:6px; width:40%; background:#e2e8f0; border-radius:3px; margin-bottom:15px;">
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <div style="flex:1; height:40px; background:#f0f9ff; border-radius:8px;"></div>
+                        <div style="flex:1; height:40px; background:#f0f9ff; border-radius:8px;"></div>
+                        <div style="flex:1; height:40px; background:#f0f9ff; border-radius:8px;"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Atmospheric Glows -->
+            <div
+                style="position:absolute; width:200px; height:200px; background:rgba(255,255,255,0.2); border-radius:50%; filter:blur(50px); top:-50px; right:-50px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature: Async Data -->
+    <div class="wn-feature-row reverse">
+        <div class="wn-feature-content">
+            <h3>Asynchronous Fetch</h3>
+            <p>Data fetching is handled via `async/await` to prevent UI blocking. The app bundles multiple API calls
+                (Current + Forecast) into a single logical flow, parsing the JSON response into a normalized state
+                object before updating the DOM.</p>
+            <div>
+                <span class="weather-tag">Promises</span>
+                <span class="weather-tag">Error Handling</span>
+                <span class="weather-tag">JSON Parsing</span>
+            </div>
+        </div>
+        <div class="wn-feature-visual" style="background:#fff; border:1px solid #bae6fd; box-shadow:none;">
+            <div style="width:100%; padding:2rem;">
+                <div style="height:10px; background:#e0f2fe; margin-bottom:10px; border-radius:4px; width:60%;"></div>
+                <div style="height:10px; background:#f0f9ff; margin-bottom:10px; border-radius:4px; width:80%;"></div>
+                <div style="height:10px; background:#f0f9ff; margin-bottom:10px; border-radius:4px; width:40%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-wn-footer">
+        <div class="ds-wn-grid">
+            <div class="type-col">
+                <span class="ds-tag">Typography</span>
+                <div class="type-showcase">
+                    <div class="type-huge">Aa</div>
+                    <div>
+                        <h4 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.2rem;">Inter
+                        </h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">Atmospheric Sans</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color-col">
+                <span class="ds-tag">Color Palette</span>
+                <div class="wn-colors">
+                    <div style="text-align:center">
+                        <div class="wn-color-circle" style="background:#0ea5e9;"></div>
+                        <div
+                            style="margin-top:1rem; font-family:monospace; font-size:0.75rem; color:var(--text-muted);">
+                            #0EA5E9</div>
+                    </div>
+                    <div style="text-align:center">
+                        <div class="wn-color-circle" style="background:#64748b;"></div>
+                        <div
+                            style="margin-top:1rem; font-family:monospace; font-size:0.75rem; color:var(--text-muted);">
+                            #64748B</div>
+                    </div>
+                    <div style="text-align:center">
+                        <div class="wn-color-circle" style="background:#1e3a8a;"></div>
+                        <div
+                            style="margin-top:1rem; font-family:monospace; font-size:0.75rem; color:var(--text-muted);">
+                            #1E3A8A</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

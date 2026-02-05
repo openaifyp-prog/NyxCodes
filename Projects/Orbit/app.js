@@ -37,23 +37,63 @@ let currentOpenTaskId = null;
 
 
 // --- Initialization ---
-init();
+document.addEventListener('DOMContentLoaded', () => {
+    init();
+});
 
 function init() {
     renderBoard();
     updateTheme();
-    setupDragAndDrop(); // Initialize Board Drop Zones
+    setupDragAndDrop();
     setupCustomDropdowns();
+
+    // Search Listener
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            renderBoard();
+        });
+    }
+
+    // FAB Listener
+    const mobileAddBtn = document.getElementById('mobile-add-btn');
+    if (mobileAddBtn) {
+        mobileAddBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openAddTaskModal();
+        });
+    }
+}
+
+// --- Task Flow ---
+function openAddTaskModal() {
+    // Reset Defaults
+    const taskTagInput = document.getElementById('task-tag');
+    const label = document.getElementById('new-task-Label');
+    if (taskTagInput) taskTagInput.value = 'Design';
+    if (label) label.innerHTML = '<span class="w-2 h-2 rounded-full bg-pink-400"></span> Design';
+
+    if (customTagContainer) customTagContainer.classList.add('hidden');
+    if (customTagInput) customTagInput.value = '';
+    if (taskTitleInput) taskTitleInput.value = '';
+    if (taskDateInput) taskDateInput.value = '';
+
+    openModal(taskModal);
 }
 
 
 // --- Theme Logic ---
-themeToggle.addEventListener('click', () => {
+themeToggle.addEventListener('click', toggleTheme);
+const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+if (themeToggleMobile) {
+    themeToggleMobile.addEventListener('click', toggleTheme);
+}
+
+function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     const isDark = document.body.classList.contains('dark-mode');
     localStorage.setItem('orbitTheme', isDark ? 'dark' : 'light');
     updateThemeIcon(isDark);
-});
+}
 
 function updateTheme() {
     const savedTheme = localStorage.getItem('orbitTheme');
@@ -64,9 +104,14 @@ function updateTheme() {
 }
 
 function updateThemeIcon(isDark) {
-    themeToggle.innerHTML = isDark
+    const iconHtml = isDark
         ? '<i class="ph ph-sun text-xl text-yellow-400"></i>'
         : '<i class="ph ph-moon text-xl text-slate-500"></i>';
+
+    themeToggle.innerHTML = iconHtml;
+    if (themeToggleMobile) {
+        themeToggleMobile.innerHTML = iconHtml;
+    }
 }
 
 
@@ -79,7 +124,7 @@ function setupCustomDropdowns() {
         const optionsContainer = dd.querySelector('.dropdown-options');
         const options = dd.querySelectorAll('.dropdown-option');
         const hiddenInput = dd.querySelector('input[type="hidden"]');
-        const labelDisplay = dd.querySelector('span[id$="-Label"]') || dd.querySelector('#filter-label');
+        const labelDisplay = dd.querySelector('.dropdown-label');
 
         trigger.addEventListener('click', (e) => {
             e.stopPropagation();
@@ -128,17 +173,9 @@ function setupCustomDropdowns() {
 
 
 // --- Task CRUD ---
-addTaskBtn.addEventListener('click', () => {
-    // Reset Defaults
-    document.getElementById('task-tag').value = 'Design';
-    document.getElementById('new-task-Label').innerHTML = '<span class="w-2 h-2 rounded-full bg-pink-400"></span> Design';
-    customTagContainer.classList.add('hidden');
-    customTagInput.value = '';
-    taskTitleInput.value = '';
-    taskDateInput.value = '';
-
-    openModal(taskModal);
-});
+if (addTaskBtn) {
+    addTaskBtn.addEventListener('click', openAddTaskModal);
+}
 
 cancelBtn.addEventListener('click', () => closeModal(taskModal));
 

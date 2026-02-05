@@ -1,0 +1,118 @@
+/* Case Study Custom Styles */
+
+:root {
+    --project-color: #2563eb;
+}
+
+/* Smooth Scrolling & Cleanup */
+::selection {
+    background-color: var(--project-color);
+    color: white;
+}
+
+/* Hero Special Effect */
+#case-hero {
+    background-color: #0f172a;
+}
+
+#hero-bg {
+    background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(30, 64, 175, 0.1) 0%, transparent 40%);
+}
+
+/* Staggered Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Architecture Step Styling */
+.arch-step {
+    border-left: 2px solid #e5e7eb;
+    padding-left: 2rem;
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.arch-step:hover {
+    border-left-color: var(--project-color);
+    padding-left: 2.5rem;
+}
+
+.arch-step::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    transition: all 0.5s ease;
+}
+
+.arch-step:hover::before {
+    background: var(--project-color);
+    box-shadow: 0 0 15px var(--project-color);
+}
+
+/* Color Swatch Hover */
+.color-swatch {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+}
+
+/* Gallery Hover Layer */
+.gallery-item {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.gallery-item img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* Navigation Blur Effect */
+header.active {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    mix-blend-mode: normal !important;
+    color: #000 !important;
+}
+
+header.active a {
+    color: #000 !important;
+}

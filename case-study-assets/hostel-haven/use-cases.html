@@ -1,0 +1,309 @@
+<div class="hh-clean-wrapper">
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+        /* Scoped Clean Theme (HostelHaven Identity) */
+        .hh-clean-wrapper {
+            /* Palette mapped to White Theme */
+            --bg-page: #faf9f6;
+            /* Off-white */
+            --bg-panel: #ffffff;
+            --border-light: #e5e7eb;
+            --text-main: #264653;
+            /* Charcoal */
+            --text-muted: #6B7280;
+
+            /* Brand Accents (Nature/Travel) */
+            --brand-primary: #2A9D8F;
+            /* Teal */
+            --brand-accent: #E76F51;
+            /* Burnt Orange */
+            --brand-dark: #264653;
+
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        /* --- Section Headers --- */
+        .hh-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .hh-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        /* --- Tech Specs --- */
+        .hh-specs-clean {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item-hh h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .spec-item-hh p {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--brand-primary);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        /* --- Feature Layout --- */
+        .hh-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            margin-bottom: 8rem;
+        }
+
+        .hh-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .hh-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .hh-feature-content p {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        /* Visual: Booking Widget */
+        .hh-feature-visual {
+            flex: 1.2;
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 10px 40px -10px rgba(42, 157, 143, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mock-input {
+            border-bottom: 2px solid #e5e7eb;
+            padding: 10px 0;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        .mock-btn {
+            background: var(--brand-accent);
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            border-radius: 50px;
+            font-weight: 700;
+            margin-top: 1rem;
+        }
+
+        /* Tags */
+        .travel-tag {
+            display: inline-flex;
+            align-items: center;
+            background: #e0f2f1;
+            /* Teal 50 */
+            color: #218376;
+            /* Teal 700 */
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Design System Footer --- */
+        .ds-hh-footer {
+            background: #fff;
+            border-radius: 16px;
+            padding: 4rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .ds-hh-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .ds-hh-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hh-feature-row,
+            .hh-feature-row.reverse {
+                flex-direction: row;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .hh-feature-row,
+            .hh-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+
+        .type-showcase {
+            text-align: left;
+        }
+
+        .type-huge {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            color: var(--brand-primary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .hh-colors {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hh-color-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+    </style>
+
+    <!-- 1. Technical Specs -->
+    <div class="hh-specs-clean">
+        <div class="spec-item-hh">
+            <h4>Forms</h4>
+            <p>Input Validation</p>
+        </div>
+        <div class="spec-item-hh">
+            <h4>Layout</h4>
+            <p>Flexbox/Grid</p>
+        </div>
+        <div class="spec-item-hh">
+            <h4>Nav</h4>
+            <p>Mobile Overlay</p>
+        </div>
+        <div class="spec-item-hh">
+            <h4>Style</h4>
+            <p>Vanilla CSS</p>
+        </div>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+
+    <!-- Feature: Booking Widget -->
+    <div class="hh-feature-row">
+        <div class="hh-feature-content">
+            <h3>Booking Logic</h3>
+            <p>The floating booking widget is the core conversion point. It features simple client-side validation logic
+                to ensure dates are valid (Checkout > Checkin) before submission, providing immediate feedback via CSS
+                classes.</p>
+            <div>
+                <span class="travel-tag">Form Validation</span>
+                <span class="travel-tag">User Feedback</span>
+                <span class="travel-tag">Conversion UI</span>
+            </div>
+        </div>
+        <div class="hh-feature-visual">
+            <div style="font-family:'Playfair Display'; font-size:1.5rem; margin-bottom:1rem; color:#264653;">Book Your
+                Stay</div>
+            <div class="mock-input">Check In: 12 Oct</div>
+            <div class="mock-input">Check Out: 15 Oct</div>
+            <div class="mock-btn">Search Availability</div>
+        </div>
+    </div>
+
+    <!-- Feature: Responsive Menu -->
+    <div class="hh-feature-row reverse">
+        <div class="hh-feature-content">
+            <h3>Responsive Navigation</h3>
+            <p>On mobile devices, the header transforms into a full-screen overlay menu with staggered link animations.
+                The logic toggles `aria-expanded` states and handles scroll-locking on the body to ensure a focused
+                navigation experience.</p>
+            <div>
+                <span class="travel-tag">Overlay Menu</span>
+                <span class="travel-tag">Staggered Anim</span>
+                <span class="travel-tag">A11y States</span>
+            </div>
+        </div>
+        <div class="hh-feature-visual"
+            style="background:#264653; justify-content:flex-start; align-items:center; padding-top:3rem;">
+            <div
+                style="color:#fff; font-family:'Playfair Display'; font-size:2rem; margin-bottom:1rem; border-bottom:2px solid #E76F51;">
+                Home</div>
+            <div style="color:#fff; font-family:'Playfair Display'; font-size:2rem; opacity:0.6;">Rooms</div>
+        </div>
+    </div>
+
+    <!-- 3. Identity System -->
+    <div class="ds-hh-footer">
+        <h2 style="text-align:center; font-family:var(--font-display); font-size:2rem; margin-bottom:3rem;">Brand Warmth
+        </h2>
+
+        <div class="ds-hh-grid">
+            <div class="type-showcase">
+                <div class="type-huge">Aa</div>
+                <div
+                    style="color:var(--text-muted); text-transform:uppercase; font-size:0.9rem; letter-spacing:0.1em; margin-top:1rem;">
+                    Playfair Display</div>
+                <div style="color:var(--text-muted); font-size:0.8rem;">inviting Serif</div>
+            </div>
+
+            <div class="hh-colors" style="align-items:center;">
+                <div style="text-align:center">
+                    <div class="hh-color-circle" style="background:#2A9D8F;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        Teal</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="hh-color-circle" style="background:#E76F51;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        Orange</div>
+                </div>
+                <div style="text-align:center">
+                    <div class="hh-color-circle" style="background:#FAF9F6; border:1px solid #ddd;"></div>
+                    <div style="margin-top:0.5rem; font-family:monospace; font-size:0.8rem; color:var(--text-muted);">
+                        Cream</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

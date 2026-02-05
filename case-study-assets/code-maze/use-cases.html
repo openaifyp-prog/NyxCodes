@@ -1,0 +1,245 @@
+<div class="cm-clean-wrapper">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+        .cm-clean-wrapper {
+            --bg-page: #f9fafb;
+            /* gray-50 */
+            --bg-panel: #ffffff;
+            --border-light: #e5e7eb;
+            --text-main: #111827;
+            --text-muted: #059669;
+            /* emerald-600 */
+            --brand-primary: #10b981;
+            /* emerald-500 */
+            --brand-dark: #1f2937;
+
+            --font-display: 'Inter', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8rem 5% 2rem;
+        }
+
+        .cm-header-group {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding-top: 4rem;
+        }
+
+        .cm-header-group h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .cm-specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 4rem;
+        }
+
+        .spec-item h4 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .spec-item p {
+            font-size: 1.25rem;
+            color: var(--brand-dark);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .cm-feature-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 8rem;
+        }
+
+        .cm-feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .cm-feature-content {
+            flex: 1;
+        }
+
+        .cm-feature-content h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--brand-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .cm-feature-content p {
+            color: #475569;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .cm-feature-visual {
+            flex: 1.2;
+            height: 300px;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .cm-mock-ui {
+            width: 80%;
+            height: 60%;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            background: #111827;
+            padding: 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: #10b981;
+        }
+
+        .cm-color-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #dcfce7;
+            color: #059669;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .cm-footer {
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-light);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 768px) {
+
+            .cm-feature-row,
+            .cm-feature-row.reverse {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .cm-footer {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <div class="cm-header-group">
+        <h2>Recursive Generation</h2>
+        <p style="color:var(--text-muted)">Algorithmic Solvability Proof</p>
+    </div>
+
+    <div class="cm-specs-grid">
+        <div class="spec-item">
+            <h4>Algorithm</h4>
+            <p>Backtracking</p>
+        </div>
+        <div class="spec-item">
+            <h4>Rendering</h4>
+            <p>HTML5 Canvas</p>
+        </div>
+        <div class="spec-item">
+            <h4>Memory</h4>
+            <p>Stack-Optimized</p>
+        </div>
+        <div class="spec-item">
+            <h4>Type</h4>
+            <p>JetBrains Mono</p>
+        </div>
+    </div>
+
+    <div class="cm-feature-row">
+        <div class="cm-feature-content">
+            <h3>Stack Safety</h3>
+            <p>Standard recursion crashes mobile browsers on grids larger than 30x30. Our engine utilizes a custom
+                Heap-allocated stack that allows for effectively infinite maze dimensions while maintaining
+                sub-millisecond per-cell generation speeds.</p>
+            <div>
+                <span class="cm-color-tag">Data Structures</span>
+                <span class="cm-color-tag">Optimization</span>
+            </div>
+        </div>
+        <div class="cm-feature-visual">
+            <div class="cm-mock-ui">
+                <div>[0,0,1,1,0]</div>
+                <div>[1,0,0,0,1]</div>
+                <div>[0,1,1,1,0]</div>
+                <div style="margin-top:10px; opacity:0.5;">Generating...</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cm-feature-row reverse">
+        <div class="cm-feature-content">
+            <h3>Binary Tree Mapping</h3>
+            <p>The maze visualizer maps generational paths to a logical binary tree. This ensures that every maze
+                generated is mathematically proven to be solvable from any entry point to any exit point, zero orphaning
+                of paths.</p>
+            <div>
+                <span class="cm-color-tag">Binary Mapping</span>
+                <span class="cm-color-tag">Visualizer</span>
+            </div>
+        </div>
+        <div class="cm-feature-visual" style="height:350px; background:#111827; position:relative; overflow:hidden;">
+            <img src="images/project-codemaze.webp" style="width:100%; height:100%; object-fit:cover; opacity:0.8;">
+            <div
+                style="position:absolute; top:20px; left:20px; font-family:var(--font-mono); font-size:0.8rem; color:var(--brand-primary); background:rgba(0,0,0,0.6); padding:4px 10px; border:1px solid var(--brand-primary);">
+                MAZE_GEN::READY
+            </div>
+        </div>
+    </div>
+
+    <div class="cm-footer">
+        <div>
+            <h4
+                style="text-transform:uppercase; font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1rem;">
+                Typography</h4>
+            <div style="font-family:var(--font-mono); font-size:3rem; margin-bottom:0.5rem; font-weight:700;">Aa</div>
+            <p style="font-size:0.875rem; color:var(--text-muted)">JetBrains Mono & Inter</p>
+        </div>
+        <div>
+            <h4
+                style="text-transform:uppercase; font-size:0.75rem; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:1rem;">
+                Colors</h4>
+            <div style="display:flex; gap:1rem;">
+                <div style="width:40px; height:40px; border-radius:50%; background:#10b981; border:1px solid #e5e7eb;">
+                </div>
+                <div style="width:40px; height:40px; border-radius:50%; background:#111827; border:1px solid #e5e7eb;">
+                </div>
+                <div style="width:40px; height:40px; border-radius:50%; background:#f9fafb; border:1px solid #e5e7eb;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
