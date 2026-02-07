@@ -400,8 +400,10 @@ nav {
 
 .btn-search:hover {
     background-color: var(--accent-hover);
-    transform: rotate(90deg);
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(231, 111, 81, 0.4);
 }
+
 
 
 /* === SECTIONS === */
@@ -818,9 +820,18 @@ footer {
 
 /* === MOBILE === */
 @media (max-width: 900px) {
+    .nav-actions .btn-book {
+        display: none;
+    }
+
+    .nav-actions {
+        gap: 10px;
+    }
+
     .nav-links {
         display: none;
     }
+
 
     .menu-toggle {
         display: block;

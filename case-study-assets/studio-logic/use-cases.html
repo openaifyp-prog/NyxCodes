@@ -141,7 +141,7 @@
 
         .sl-font-preview {
             font-family: var(--font-code);
-            font-size: 6rem;
+            font-size: clamp(3rem, 15vw, 6rem);
             line-height: 1;
             color: #fff;
         }
@@ -150,11 +150,13 @@
             font-size: 1.5rem;
             margin-bottom: 0.2rem;
             color: var(--sl-cyan);
+            word-break: break-word;
         }
 
         .sl-font-details p {
             font-size: 0.9rem;
             color: #94a3b8;
+            word-break: break-word;
         }
 
         .sl-color-grid {
@@ -181,12 +183,49 @@
                 gap: 4rem;
             }
 
+            .sl-font-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
+
+            .sl-font-details {
+                border-left: none !important;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-left: 0 !important;
+                padding-top: 1.5rem;
+            }
+
             .sl-color-grid {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
 
             .sl-ds-container {
-                padding: 4rem 2rem;
+                padding: 4rem 1.5rem;
+                border-radius: 20px;
+                margin-top: 6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sl-feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sl-feature-card {
+                padding: 1.5rem;
+            }
+
+            .sl-ds-grid {
+                gap: 3rem;
+            }
+
+            .sl-color-box {
+                width: 60px;
+                height: 60px;
+                border-radius: 12px;
             }
         }
     </style>
