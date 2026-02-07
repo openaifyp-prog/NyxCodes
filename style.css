@@ -23,9 +23,6 @@
 
 /* Hide default cursor */
 /* REMOVED overscroll-behavior: none; as it breaks mobile scrolling feel */
-* {
-    /* overscroll-behavior: none; */
-}
 
 /* Body Transition for Theme Switch */
 body {
@@ -194,6 +191,61 @@ body {
 
 .cursor-hide {
     opacity: 0;
+}
+
+/* --- Footer Enhancements --- */
+.portfolio-footer {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-light);
+}
+
+.social-pill {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+        background-color 0.3s ease,
+        color 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    will-change: transform, box-shadow;
+}
+
+.social-pill svg {
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.social-pill:hover {
+    transform: scale(1.02);
+}
+
+.social-pill:hover svg {
+    transform: translateX(-2px) scale(1.05);
+}
+
+/* Specific Brand Glows - Smoothed */
+.social-pill[href*="linkedin"]:hover {
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2), 0 0 0 1px rgba(37, 99, 235, 0.1);
+}
+
+.social-pill[href*="github"]:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}
+
+.social-pill[href*="x.com"]:hover,
+.social-pill[href*="twitter"]:hover {
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.12), 0 0 0 1px rgba(17, 24, 39, 0.05);
+}
+
+@media (max-width: 768px) {
+    .portfolio-footer {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+        text-align: left;
+    }
+
+    .portfolio-footer .grid {
+        gap: 3.5rem;
+    }
 }
 
 /* --- 2. Preloader --- */
