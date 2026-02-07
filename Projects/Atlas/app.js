@@ -121,22 +121,36 @@ function renderGrid(data) {
         <article class="country-card" 
                  onclick="toggleCompare('${country.code}')"
                  style="animation-delay: ${index * 0.05}s">
-            <img src="${country.flag}" alt="${country.name}" class="card-flag" loading="lazy">
+            <div class="card-visual-wrapper">
+                <img src="${country.flag}" alt="${country.name}" class="card-flag" loading="lazy">
+                <div class="card-overlay"></div>
+                ${getSelectionBadge(country.code)}
+            </div>
             <div class="card-info">
                 <h3>${country.name}</h3>
                 <div class="card-meta">
-                    <span>${formatNumber(country.population)} People</span>
-                    <span>${country.capital}</span>
+                    <div class="meta-item">
+                        <i class="ph ph-users"></i>
+                        <span>${formatCompactNumber(country.population)}</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="ph ph-map-pin"></i>
+                        <span>${country.capital}</span>
+                    </div>
                 </div>
             </div>
-            ${getSelectionBadge(country.code)}
         </article>
     `).join('');
 }
 
 function getSelectionBadge(code) {
     if (comparisonList.find(c => c.code === code)) {
-        return `<div style="position:absolute; top:8px; right:8px; background:var(--accent); color:white; padding:4px 8px; border-radius:4px; font-size:10px; font-weight:bold;">SELECTED</div>`;
+        return `
+            <div class="selection-badge">
+                <i class="ph ph-check-circle-fill"></i>
+                <span>SELECTED</span>
+            </div>
+        `;
     }
     return '';
 }
@@ -260,28 +274,37 @@ compareBtn.addEventListener('click', () => {
     // Generate Comparison HTML
     modalBody.innerHTML = `
         <div class="comp-header">
-            <div style="text-align:center">
-                <img src="${c1.flag}" class="flag">
+            <div class="country-profile">
+                <div class="profile-flag-circle" style="background-image: url(${c1.flag})"></div>
                 <h3>${c1.name}</h3>
+                <span class="region-badge">${c1.region}</span>
             </div>
-            <div class="vs-badge">VS</div>
-            <div style="text-align:center">
-                <img src="${c2.flag}" class="flag">
+            <div class="comp-vs">
+                <div class="vs-line"></div>
+                <div class="vs-badge">VS</div>
+                <div class="vs-line"></div>
+            </div>
+            <div class="country-profile">
+                <div class="profile-flag-circle" style="background-image: url(${c2.flag})"></div>
                 <h3>${c2.name}</h3>
+                <span class="region-badge">${c2.region}</span>
             </div>
         </div>
         
         <div class="comparison-grid">
+            <div class="report-section-label">Demographics & Territory</div>
             ${createCompRow('Population', formatCompactNumber(c1.population), formatCompactNumber(c2.population), popWinners)}
-            ${createCompRow('Land Area', formatCompactNumber(c1.area) + ' km²', formatCompactNumber(c2.area) + ' km²', areaWinners)}
+            ${createCompRow('Area', formatCompactNumber(c1.area) + ' km²', formatCompactNumber(c2.area) + ' km²', areaWinners)}
             ${createCompRow('Density', c1.density + '/km²', c2.density + '/km²', densityWinners)}
-            ${createCompRow('Region', c1.region, c2.region, ['', ''])}
-            ${createCompRow('Currencies', c1.currencies, c2.currencies, ['', ''])}
+            
+            <div class="report-section-label" style="margin-top: 1rem;">Cultural Identity</div>
+            ${createCompRow('Currency', c1.currencies.split(',')[0], c2.currencies.split(',')[0], ['', ''])}
+            ${createCompRow('Language', c1.languages.split(',')[0], c2.languages.split(',')[0], ['', ''])}
         </div>
 
         <div class="insight-box">
-             <i class="ph ph-lightbulb"></i>
-             <span>${generateInsight(c1, c2)}</span>
+             <div class="insight-label">ANALYST INSIGHT</div>
+             <p>${generateInsight(c1, c2)}</p>
         </div>
     `;
 
