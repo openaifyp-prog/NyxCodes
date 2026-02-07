@@ -1038,5 +1038,104 @@ const PROJECTS_DETAILS = {
         ],
         gallery: [],
         liveLink: "Projects/WeatherNova/index.html"
+    },
+    "studio-logic": {
+        title: "Studio Logic | Algorithmic Suite",
+        tagline: "Worker / Visualization / Algorithmic",
+        intro: "A high-fidelity, off-main-thread algorithmic command center designed for performance and educational clarity. Features Sorting, Pathfinding, and Maze Generation visualizations powered by OffscreenCanvas and Web Workers.",
+        themeColor: "#3b82f6", // Blue 500
+        tech: ["Vanilla JS", "Web Workers", "OffscreenCanvas", "Algorithmic Design"],
+        mockup: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
+        customContent: "case-study-assets/studio-logic/use-cases.html",
+        diagram: "case-study-assets/studio-logic/architecture.png",
+
+        challenge: "Maintaining a fluid 60FPS while executing complex recursive algorithms and rendering tens of thousands of data points without blocking the UI thread.",
+
+        solution: "Implemented a heavy-duty worker architecture where all logic and rendering calculations occur in a dedicated Web Worker using OffscreenCanvas, ensuring zero main-thread UI jank.",
+        results: [
+            "Consistent 60FPS performance during high-load sorting operations.",
+            "Real-time pseudocode mapping using ES6 Async Generators.",
+            "Modular rendering system supporting both Linear and Grid-based domains."
+        ],
+        typography: {
+            primary: "Inter",
+            secondary: "JetBrains Mono"
+        },
+        colors: [
+            { name: "Accent Blue", hex: "#3b82f6" },
+            { name: "Signal Green", hex: "#10b981" },
+            { name: "Data Slate", hex: "#0f172a" },
+            { name: "Grid Border", hex: "#e2e8f0" }
+        ],
+        architecture: [
+            { stage: "Multithreaded Engine", desc: "Transferred visual control to Web Workers via OffscreenCanvas." },
+            { stage: "Logic Synchronization", desc: "Used generators to yield execution steps for real-time frontend code highlighting." },
+            { stage: "Unified Renderer", desc: "Modular class for seamless switching between grid and linear visualization modes." }
+        ],
+        personas: [
+            {
+                name: "Alex M.",
+                role: "Computer Science Student",
+                goal: "Understand how QuickSort and A* actually work under the hood through visual steps.",
+                painPoint: "Dry textbook explanations are hard to visualize in motion.",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200"
+            }
+        ],
+        userJourney: [
+            { title: "Configuration", desc: "User selects algorithm and data size via the sidebar." },
+            { title: "Execution", desc: "Visualization starts; worker calculates swaps/searches while main thread highlights code." },
+            { title: "Analysis", desc: "Operations-per-frame are tracked to compare algorithmic efficiency." }
+        ],
+        detailedUseCases: [
+            {
+                title: "Real-time Pseudocode Mapping",
+                scenario: "As the QuickSort recursive partitioning executes in the worker, the UI must highlight the exact ES6 line currently active in the pedagogical side-panel.",
+                type: 'diagram',
+                steps: [
+                    { label: "Worker Yield", icon: "fa-solid fa-microchip" },
+                    { label: "State Post", icon: "fa-solid fa-paper-plane" },
+                    { label: "UI Listen", icon: "fa-solid fa-ear-listen" },
+                    { label: "Line Highlighting", icon: "fa-solid fa-highlighter" }
+                ],
+                logic: [
+                    "ES6 Async Generator yields line number signal",
+                    "Worker serializes current array state and line ID",
+                    "Main thread receives message and updates 'active' class on pseudocode DOM",
+                    "Smooth scroll interaction ensures active line is always visible"
+                ]
+            },
+            {
+                title: "Off-Main-Thread Grid Computation",
+                scenario: "Calculating A* pathfinding on a 100x100 grid while simultaneously emitting neon particle bursts on node visits.",
+                type: 'diagram',
+                steps: [
+                    { label: "Heap Management", icon: "fa-solid fa-layer-group" },
+                    { label: "Heuristic Calc", icon: "fa-solid fa-calculator" },
+                    { label: "Offscreen Render", icon: "fa-solid fa-wind" },
+                    { label: "Bloom VFX", icon: "fa-solid fa-sparkles" }
+                ],
+                logic: [
+                    "Binary Heap used for efficient open-set management in Worker",
+                    "A* heuristic (Manhattan/Euclidean) calculated per frame",
+                    "OffscreenCanvas context handles Bloom and Particle VFX additive blending",
+                    "Main thread remains interactive for real-time obstacle placement"
+                ]
+            },
+            {
+                title: "Heuristic-Driven Maze Synthesis",
+                scenario: "Recursive Backtracking generates a maze; the system must visualize the 'stack' depth to show how the algorithm explores branches.",
+                logic: [
+                    "Stack color-mapping: darker hues represent deeper recursion",
+                    "Worker calculates visit-frequency and stack-trace",
+                    "Canvas renders visit-trails with varying opacity based on frequency",
+                    "Batch-message throttling prevents PostMessage overhead saturation"
+                ]
+            }
+        ],
+
+
+        gallery: [],
+        liveLink: "Projects/StudioLogic/index.html"
     }
 };
+

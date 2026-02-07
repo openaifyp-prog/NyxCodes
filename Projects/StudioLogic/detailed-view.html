@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encyclopedia | Studio Logic</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --accent-soft: rgba(59, 130, 246, 0.05);
+            --sidebar-w: 280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            font-size: 1.25rem;
+            color: var(--text-main);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .btn-back {
+            background: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-back:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .layout-wrapper {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        .sidebar {
+            width: var(--sidebar-w);
+            position: sticky;
+            top: 70px;
+            height: calc(100vh - 70px);
+            padding: 40px 20px;
+            border-right: 1px solid var(--border);
+            overflow-y: auto;
+        }
+
+        .sidebar-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin: 24px 0 10px 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .side-link {
+            display: block;
+            padding: 10px 15px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
+            margin-bottom: 2px;
+        }
+
+        .side-link:hover {
+            background: var(--accent-soft);
+            color: var(--primary);
+        }
+
+        .side-link.active {
+            background: var(--accent-soft);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px 60px;
+            max-width: 900px;
+        }
+
+        .algo-section {
+            padding-bottom: 80px;
+            margin-bottom: 80px;
+            border-bottom: 1px solid var(--border);
+            scroll-margin-top: 100px;
+        }
+
+        .algo-title {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .complexity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 25px 0 40px;
+        }
+
+        .complexity-item {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .complexity-item span {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .complexity-item strong {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin: 40px 0 20px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        }
+
+        .step-list {
+            list-style: none;
+            counter-reset: steps;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .step-list li::before {
+            counter-increment: steps;
+            content: counter(steps);
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 24px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 20px 0;
+            line-height: 1.7;
+        }
+
+        /* Diagram Components */
+        .diagram-outer {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 16px;
+            margin: 20px 0;
+            border: 1px solid var(--border);
+        }
+
+        .diagram-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .dg-block {
+            width: 45px;
+            height: 45px;
+            background: white;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dg-block.active {
+            background: #dcfce7;
+            border-color: #10b981;
+            color: #15803d;
+            transform: scale(1.05);
+        }
+
+        .dg-block.pivot {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .dg-block.compare {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e3a8a;
+        }
+
+        .dg-node {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--text-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 800;
+            background: white;
+        }
+
+        .dg-arrow {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .trace-grid {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .trace-label {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .use-case-item {
+            background: var(--bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .use-case-item strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .use-case-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 80px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            background: white;
+        }
+
+        /* Mobile Enhancements */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1200;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-main);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @media (max-width: 1100px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                height: 100vh;
+                z-index: 1100;
+                background: white;
+                transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 20px 0 50px rgba(0, 0, 0, 0.1);
+                width: 280px;
+                display: block !important;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .complexity-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trace-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trace-label {
+                margin-bottom: 5px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .algo-title {
+                font-size: 2.22rem;
+            }
+
+            .complexity-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar .logo {
+                font-size: 1rem;
+            }
+
+            .btn-back {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <button class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="logo">STUDIO<span>LOGIC</span>_ENCYCLOPEDIA</div>
+        <a href="index.html" class="btn-back">Back to Visualizer</a>
+    </nav>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <div class="layout-wrapper">
+        <aside class="sidebar">
+            <div class="sidebar-label">Sorting</div>
+            <a href="#quickSort" class="side-link">Quick Sort</a>
+            <a href="#mergeSort" class="side-link">Merge Sort</a>
+            <a href="#bubbleSort" class="side-link">Bubble Sort</a>
+            <a href="#insertionSort" class="side-link">Insertion Sort</a>
+
+            <div class="sidebar-label">Pathfinding</div>
+            <a href="#aStar" class="side-link">A* Search</a>
+            <a href="#dijkstra" class="side-link">Dijkstra</a>
+            <a href="#bfs" class="side-link">Breadth-First</a>
+            <a href="#mazeRecursive" class="side-link">Maze Generation</a>
+
+            <div class="sidebar-label">Trees</div>
+            <a href="#bstInsert" class="side-link">BST Insertion</a>
+            <a href="#treeTraversal" class="side-link">In-Order Traversal</a>
+        </aside>
+
+        <main class="main-content">
+            <!-- QUICK SORT -->
+            <section id="quickSort" class="algo-section">
+                <h1 class="algo-title">Quick Sort</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">An exceptionally efficient, cache-friendly
+                    partitioning algorithm that defines modern computational sorting.</p>
+
+                <div class="complexity-grid">
+                    <div class="complexity-item"><span>Average Case</span><strong>O(n log n)</strong></div>
+                    <div class="complexity-item"><span>Worst Case</span><strong>O(n²)</strong></div>
+                    <div class="complexity-item"><span>Space</span><strong>O(log n)</strong></div>
+                    <div class="complexity-item"><span>Stable</span><strong>No</strong></div>
+                </div>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>Selection-based partitioning makes QuickSort one of the fastest general-purpose sorting
+                        algorithms. It thrives on the principle of <strong>"Divide and Conquer"</strong>. By picking a
+                        <strong>Pivot</strong>, it reduces the problem into two sub-problems that are mathematically
+                        easier to solve. Once the pivot is placed, it stays in that position forever, progressively
+                        locking the array into order.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Working with Steps</h3>
+                    <ol class="step-list">
+                        <li><strong>Pick a Pivot:</strong> Choose an element from the array (commonly the last element).
+                        </li>
+                        <li><strong>The Partition:</strong> Rearrange elements so that all elements smaller than the
+                            pivot are on the left, and all larger elements are on the right.</li>
+                        <li><strong>Finalizing Pivot:</strong> Swap the pivot into its correct sorted index.</li>
+                        <li><strong>Recursion:</strong> Apply steps 1-3 to the left and right sub-arrays independently.
+                        </li>
+                        <li><strong>Base Case:</strong> Stop when sub-arrays reach 0 or 1 elements.</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>Array Trace: [23, 1, 10, 5, 2]</h3>
+                    <div class="trace-grid">
+                        <div class="trace-label">Initial</div>
+                        <div class="diagram-container">
+                            <div class="dg-block">23</div>
+                            <div class="dg-block">1</div>
+                            <div class="dg-block">10</div>
+                            <div class="dg-block">5</div>
+                            <div class="dg-block pivot">2 (P)</div>
+                        </div>
+
+                        <div class="trace-label">Partitioning</div>
+                        <div class="diagram-container">
+                            <div class="dg-block active">1</div>
+                            <div class="dg-block pivot">2</div>
+                            <div class="dg-block">10</div>
+                            <div class="dg-block">5</div>
+                            <div class="dg-block">23</div>
+                        </div>
+
+                        <div class="trace-label">Final Pass</div>
+                        <div class="diagram-container">
+                            <div class="dg-block">1</div>
+                            <div class="dg-block">2</div>
+                            <div class="dg-block">5</div>
+                            <div class="dg-block">10</div>
+                            <div class="dg-block">23</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>Implementation</h3>
+                    <div class="code-block">
+                        function quickSort(arr, low, high) {
+                        if (low < high) { // partition returns the correct index of pivot let pi=partition(arr, low,
+                            high); // Recursive calls for left and right quickSort(arr, low, pi - 1); quickSort(arr, pi
+                            + 1, high); } } </div>
+                    </div>
+
+                    <div class="use-case-grid">
+                        <div class="use-case-item">
+                            <strong>Numerical Analysis</strong>
+                            <p>Used in scientific computing where memory cache locality is critical for performance.</p>
+                        </div>
+                        <div class="use-case-item">
+                            <strong>Standard Libraries</strong>
+                            <p>Implementations like C++ 'std::sort' often use a hybrid variant of QuickSort.</p>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- MERGE SORT -->
+            <section id="mergeSort" class="algo-section">
+                <h1 class="algo-title">Merge Sort</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">The gold standard for stable sorting,
+                    providing consistent performance across any dataset.</p>
+
+                <div class="complexity-grid">
+                    <div class="complexity-item"><span>Time Complexity</span><strong>O(n log n)</strong></div>
+                    <div class="complexity-item"><span>Space Complexity</span><strong>O(n)</strong></div>
+                    <div class="complexity-item"><span>Stable</span><strong>Yes</strong></div>
+                    <div class="complexity-item"><span>Method</span><strong>Merge</strong></div>
+                </div>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>Merge Sort is based on the philosophy that "Merging two sorted lists is easy." It recursively
+                        breaks an array into halves until each sub-array contains only one element. Then, it merges
+                        those elements back together in sorted order, building the solution from the bottom up.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Working Steps</h3>
+                    <ol class="step-list">
+                        <li><strong>Base Case:</strong> If the array has 1 or 0 elements, it is already sorted.</li>
+                        <li><strong>Divide:</strong> Find the midpoint and split the array into two halves.</li>
+                        <li><strong>Conquer:</strong> Recursively call Merge Sort on both halves.</li>
+                        <li><strong>Combine (Merge):</strong> Merge the two sorted halves into a single sorted array by
+                            comparing lead elements.</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>Visual Merge Process</h3>
+                    <div class="diagram-outer">
+                        <div class="diagram-container">
+                            <div class="dg-block active">12</div>
+                            <div class="dg-block active">38</div>
+                            <div class="dg-arrow">&plus;</div>
+                            <div class="dg-block active">10</div>
+                            <div class="dg-block active">40</div>
+                        </div>
+                        <div class="diagram-container" style="margin-top:20px">
+                            <div class="dg-arrow">&darr;</div>
+                        </div>
+                        <div class="diagram-container" style="margin-top:20px">
+                            <div class="dg-block pivot">10</div>
+                            <div class="dg-block pivot">12</div>
+                            <div class="dg-block pivot">38</div>
+                            <div class="dg-block pivot">40</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3>Use Cases</h3>
+                    <div class="use-case-grid">
+                        <div class="use-case-item">
+                            <strong>External Sorting</strong>
+                            <p>Ideal for sorting files that are too large to fit into RAM, using disk space efficiently.
+                            </p>
+                        </div>
+                        <div class="use-case-item">
+                            <strong>E-Commerce</strong>
+                            <p>Maintains original order of items when sorting by multiple criteria (Stability).</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BUBBLE SORT -->
+            <section id="bubbleSort" class="algo-section">
+                <h1 class="algo-title">Bubble Sort</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">The quintessential teaching algorithm for
+                    introducing iteration and comparison.</p>
+
+                <div class="complexity-grid">
+                    <div class="complexity-item"><span>Average Case</span><strong>O(n²)</strong></div>
+                    <div class="complexity-item"><span>Best Case</span><strong>O(n)</strong></div>
+                    <div class="complexity-item"><span>Stable</span><strong>Yes</strong></div>
+                    <div class="complexity-item"><span>Type</span><strong>Comparison</strong></div>
+                </div>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>Bubble Sort works by repeatedly swapping adjacent elements if they are in the wrong order. With
+                        each pass, the largest remaining element "bubbles up" to its correct position at the end of the
+                        array, much like air bubbles rising in water.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Steps</h3>
+                    <ol class="step-list">
+                        <li><strong>Iteration:</strong> Loop through the array from left to right.</li>
+                        <li><strong>Compare:</strong> Check if current element > next element.</li>
+                        <li><strong>Swap:</strong> If true, swap them.</li>
+                        <li><strong>Repeat:</strong> Continue until no swaps are needed in a full pass.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- INSERTION SORT -->
+            <section id="insertionSort" class="algo-section">
+                <h1 class="algo-title">Insertion Sort</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">A robust, intuitive algorithm that handles
+                    small or nearly-sorted datasets with speed.</p>
+
+                <div class="complexity-grid">
+                    <div class="complexity-item"><span>Small Data</span><strong>Fast</strong></div>
+                    <div class="complexity-item"><span>Average</span><strong>O(n²)</strong></div>
+                    <div class="complexity-item"><span>Space</span><strong>O(1)</strong></div>
+                    <div class="complexity-item"><span>Online</span><strong>Yes</strong></div>
+                </div>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>Insertion Sort builds the final sorted array one item at a time. It's much like how you would
+                        sort a hand of playing cards: you take one card and "insert" it into its correct position
+                        relative to the cards you already hold.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Working Steps</h3>
+                    <ol class="step-list">
+                        <li><strong>Initiate:</strong> Start at the second element (the 'key').</li>
+                        <li><strong>Observe:</strong> Compare the key with elements to its left.</li>
+                        <li><strong>Shift:</strong> Move elements larger than the key one position to the right.</li>
+                        <li><strong>Insert:</strong> Place the key in its correct relative spot.</li>
+                        <li><strong>Progress:</strong> Move to the next element and repeat until the array is fully
+                            processed.</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>Array Example: [12, 11, 13, 5, 6]</h3>
+                    <div class="trace-grid">
+                        <div class="trace-label">Pass 1</div>
+                        <div class="diagram-container">
+                            <div class="dg-block active">11</div>
+                            <div class="dg-block pivot">12</div>
+                            <div class="dg-block">13</div>
+                            <div class="dg-block">5</div>
+                            <div class="dg-block">6</div>
+                        </div>
+
+                        <div class="trace-label">Pass 2</div>
+                        <div class="diagram-container">
+                            <div class="dg-block">11</div>
+                            <div class="dg-block">12</div>
+                            <div class="dg-block active">13</div>
+                            <div class="dg-block">5</div>
+                            <div class="dg-block">6</div>
+                        </div>
+
+                        <div class="trace-label">Final</div>
+                        <div class="diagram-container">
+                            <div class="dg-block">5</div>
+                            <div class="dg-block">6</div>
+                            <div class="dg-block">11</div>
+                            <div class="dg-block">12</div>
+                            <div class="dg-block">13</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- A* SEARCH -->
+            <section id="aStar" class="algo-section">
+                <h1 class="algo-title">A* Search</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">The industry standard for pathfinding,
+                    combining the precision of Dijkstra with the foresight of heuristics.</p>
+
+                <div class="complexity-grid">
+                    <div class="complexity-item"><span>Time Complexity</span><strong>O(E log V)</strong></div>
+                    <div class="complexity-item"><span>Accuracy</span><strong>Optimal</strong></div>
+                    <div class="complexity-item"><span>Heuristic</span><strong>Admissible</strong></div>
+                    <div class="complexity-item"><span>Memory</span><strong>High</strong></div>
+                </div>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>A* is an informed search algorithm. It essentially asks: "What is the shortest distance I've
+                        already traveled (**g**) plus the best guess of the remaining distance (**h**)?". This total
+                        cost (**f = g + h**) ensures the algorithm focuses its search towards the goal, ignoring paths
+                        that move in the wrong direction.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Working Logic</h3>
+                    <ol class="step-list">
+                        <li><strong>Open Set:</strong> Maintain a priority queue of nodes to be explored, sorted by
+                            their 'f' score.</li>
+                        <li><strong>The Heuristic:</strong> Calculate the Manhattan or Euclidean distance from the
+                            current node to the goal.</li>
+                        <li><strong>Relaxation:</strong> For each neighbor, check if moving through the current node
+                            yields a lower 'g' score than previously known.</li>
+                        <li><strong>Cycle:</strong> Extract the node with the lowest 'f' score and repeat until the goal
+                            is reached or the set is empty.</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>Mathematical Model</h3>
+                    <div class="code-block" style="text-align:center">
+                        f(n) = g(n) + h(n)
+                    </div>
+                    <p style="font-size:0.85rem; text-align:center; color:var(--text-secondary)">Where g(n) is path
+                        cost, and h(n) is heuristic estimate.</p>
+                </div>
+            </section>
+
+            <!-- DIJKSTRA -->
+            <section id="dijkstra" class="algo-section">
+                <h1 class="algo-title">Dijkstra's Algorithm</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">The foundational algorithm for shortest
+                    paths in weighted graphs, ensuring absolute optimality.</p>
+
+                <div class="complexity-grid">
+                    <div class="complexity-item"><span>Best Path</span><strong>Guaranteed</strong></div>
+                    <div class="complexity-item"><span>Weights</span><strong>Required</strong></div>
+                    <div class="complexity-item"><span>Strategy</span><strong>Greedy</strong></div>
+                </div>
+
+                <div class="info-card">
+                    <h3>The Logic</h3>
+                    <p>Dijkstra is essentially A* without the heuristic (h=0). It explores equally in all directions,
+                        guaranteeing the shortest path in any graph with non-negative weights. It is the core logic
+                        behind modern network routing protocols like OSPF.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Trace: Finding Shortest Path</h3>
+                    <div class="diagram-outer">
+                        <div class="diagram-container">
+                            <div class="dg-node">S</div>
+                            <div class="dg-arrow">──5──</div>
+                            <div class="dg-node active">A</div>
+                            <div class="dg-arrow">──2──</div>
+                            <div class="dg-node pivot">E</div>
+                        </div>
+                        <p style="text-align:center; margin-top:15px; font-size:0.85rem">Direct path S→E (10) is ignored
+                            for the shorter S→A→E (7).</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BFS -->
+            <section id="bfs" class="algo-section">
+                <h1 class="algo-title">Breadth-First Search</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">A robust, layer-by-layer exploration method
+                    for unweighted grids.</p>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>BFS treats a graph as a series of concentric waves. It visits all neighbors at distance 1, then
+                        all neighbors at distance 2, and so on. This makes it perfect for finding the "shortest path" in
+                        terms of number of steps (edges).</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Working Steps</h3>
+                    <ol class="step-list">
+                        <li><strong>Enlist:</strong> Add the starting node to a Queue.</li>
+                        <li><strong>Examine:</strong> Dequeue a node and mark it as visited.</li>
+                        <li><strong>Expand:</strong> Add all unvisited neighbors to the back of the Queue.</li>
+                        <li><strong>Repeat:</strong> Continue until the Queue is empty or the target is found.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- RECURSIVE BACKTRACKER -->
+            <section id="mazeRecursive" class="algo-section">
+                <h1 class="algo-title">Recursive Backtracker</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">A randomized depth-first search that
+                    constructs intricate, perfect mazes.</p>
+
+                <div class="info-card">
+                    <h3>The Concept</h3>
+                    <p>Commonly known as the "Depth-First Search" maze generator, this algorithm carves paths by moving
+                        to a random unvisited neighbor and pushing the current cell onto a stack. When it hits a dead
+                        end, it pops from the stack (backtracks) until it finds a cell with unvisited neighbors.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Working Steps</h3>
+                    <ol class="step-list">
+                        <li><strong>Start:</strong> Pick a random starting cell and mark it visited.</li>
+                        <li><strong>Explore:</strong> Look for unvisited neighbors.</li>
+                        <li><strong>Tunnel:</strong> If found, move to a random neighbor, remove the wall, and push the
+                            cell onto a stack.</li>
+                        <li><strong>Backtrack:</strong> If no neighbors exist, pop from the stack to find a previous
+                            cell with options.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- TREES -->
+            <section id="bstInsert" class="algo-section">
+                <h1 class="algo-title">BST Insertion</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">Dynamic data organization that balances
+                    search speed with insertion flexibility.</p>
+
+                <div class="info-card">
+                    <h3>The Principle</h3>
+                    <p>Binary Search Trees (BST) maintain a strict order: <strong>Left < Root < Right</strong>.
+                                Insertion is the process of navigating this rule recursively until a null spot is found.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Step-by-Step</h3>
+                    <ol class="step-list">
+                        <li><strong>Inquiry:</strong> Compare the new value with the current node.</li>
+                        <li><strong>Branch:</strong> If smaller, recursively visit the Left. If larger, visit the Right.
+                        </li>
+                        <li><strong>Action:</strong> If the chosen branch is empty, create the new node there.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="treeTraversal" class="algo-section">
+                <h1 class="algo-title">In-Order Traversal</h1>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">A graceful recursive walk that reveals the
+                    hidden sorted order of a BST.</p>
+
+                <div class="info-card">
+                    <h3>The Magic</h3>
+                    <p>By visiting the <strong>Left Subtree</strong>, then the <strong>Root</strong>, then the
+                        <strong>Right Subtree</strong>, an In-Order traversal extracts all elements from a BST in
+                        perfect non-decreasing order.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Recursive Order</h3>
+                    <ol class="step-list">
+                        <li><strong>Left:</strong> Recursively traverse the left subtree.</li>
+                        <li><strong>Visit:</strong> Read/Print the data in the current node.</li>
+                        <li><strong>Right:</strong> Recursively traverse the right subtree.</li>
+                    </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3>Example: Sorting via Tree</h3>
+                    <div class="diagram-outer">
+                        <div class="diagram-container">
+                            <div class="dg-node">2</div>
+                            <div class="dg-arrow">&larr;</div>
+                            <div class="dg-node active">5</div>
+                            <div class="dg-arrow">&rarr;</div>
+                            <div class="dg-node">8</div>
+                        </div>
+                        <p style="text-align:center; margin-top:20px; font-size:0.9rem">The traversal visits
+                            <strong>2</strong> &rarr; <strong>5</strong> &rarr; <strong>8</strong>.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Studio Logic | Academic Encyclopedia of Algorithms</p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.getElementById('mobileOverlay');
+
+        function toggleMenu() {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        menuToggle.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Smooth scrolling for sidebar links
+        document.querySelectorAll('.side-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const element = document.getElementById(targetId);
+
+                // Close menu on mobile after click
+                if (window.innerWidth <= 1100) toggleMenu();
+
+                window.scrollTo({
+                    top: element.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+
+                // Update active state
+                document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Initialize from URL
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const algo = params.get('algo');
+            if (algo) {
+                const target = document.getElementById(algo);
+                if (target) {
+                    window.scrollTo({ top: target.offsetTop - 100 });
+                    const link = document.querySelector(`.side-link[href="#${algo}"]`);
+                    if (link) link.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<div class="sl-theme-wrapper">
+    <!-- Fonts Validation (Scoped Import) -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@500;700&display=swap');
+
+        /* Scoped Theme Wrapper */
+        .sl-theme-wrapper {
+            --sl-blue: #3b82f6;
+            --sl-cyan: #22d3ee;
+            --sl-dark: #0f172a;
+            --sl-bg: #f8fafc;
+            --sl-white: #ffffff;
+            --font-heading: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+
+            background-color: var(--sl-bg);
+            color: var(--sl-dark);
+            font-family: var(--font-heading);
+            padding: 8rem 5% 4rem;
+            border-radius: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .sl-theme-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+        }
+
+        /* --- Section Headers --- */
+        .sl-section-title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 8vw, 2.5rem);
+            color: var(--sl-dark);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .sl-section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Feature Grid --- */
+        .sl-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto 6rem;
+        }
+
+        .sl-feature-card {
+            background: var(--sl-white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sl-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.1);
+            border-color: var(--sl-blue);
+        }
+
+        .sl-card-accent {
+            height: 4px;
+            width: 48px;
+            background: linear-gradient(90deg, var(--sl-blue), var(--sl-cyan));
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sl-feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--sl-dark);
+            font-weight: 700;
+        }
+
+        .sl-feature-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .sl-logic-tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: var(--sl-blue);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #dbeafe;
+        }
+
+        /* --- Design System (Command Center Vibe) --- */
+        .sl-ds-container {
+            margin-top: 10rem;
+            padding: 6rem 5rem;
+            background: var(--sl-dark);
+            color: #fff;
+            border-radius: 40px;
+            position: relative;
+        }
+
+        .sl-ds-tag {
+            display: block;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.25em;
+            color: var(--sl-cyan);
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .sl-ds-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 8rem;
+            align-items: center;
+        }
+
+        .sl-font-row {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .sl-font-preview {
+            font-family: var(--font-code);
+            font-size: 6rem;
+            line-height: 1;
+            color: #fff;
+        }
+
+        .sl-font-details h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+            color: var(--sl-cyan);
+        }
+
+        .sl-font-details p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .sl-color-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: flex-end;
+        }
+
+        .sl-color-item {
+            text-align: center;
+        }
+
+        .sl-color-box {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .sl-ds-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .sl-color-grid {
+                justify-content: center;
+            }
+
+            .sl-ds-container {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+
+    <!-- 1. Technical Vision -->
+    <div>
+        <h2 class="sl-section-title">Computational Mechanics</h2>
+        <p class="sl-section-subtitle">A high-performance architecture separating heavy algorithmic computation from the
+            presentation layer.</p>
+    </div>
+
+    <!-- 2. Feature Walkthrough -->
+    <div class="sl-feature-grid">
+        <div class="sl-feature-card">
+            <div class="sl-card-accent"></div>
+            <h3>Off-Main-Thread Execution</h3>
+            <p>To ensure zero UI latency during 50,000+ operations/second, the engine leverages Web Workers. All sorting
+                swaps and pathfinding neighbors are calculated in isolation.</p>
+            <div>
+                <span class="sl-logic-tag">Web Workers</span>
+                <span class="sl-logic-tag">OffscreenCanvas</span>
+            </div>
+        </div>
+
+        <div class="sl-feature-card">
+            <div class="sl-card-accent"></div>
+            <h3>Generator-Based UI Sync</h3>
+            <p>Using ES6 Async Generators allows the visualization to 'pause' and 'yield' state back to the UI, enabling
+                the precision line-highlighting featured in the pseudocode viewer.</p>
+            <div>
+                <span class="sl-logic-tag">Async Generators</span>
+                <span class="sl-logic-tag">Yield Pipeline</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Design System -->
+    <div class="sl-ds-container">
+        <div class="sl-ds-grid">
+            <div class="type-col">
+                <span class="sl-ds-tag">Typography</span>
+                <div class="sl-font-row">
+                    <div class="sl-font-preview">
+                        </>
+                    </div>
+                    <div class="sl-font-details"
+                        style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 2rem;">
+                        <h4>JetBrains Mono</h4>
+                        <p>Code Visualization Sans</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color-col">
+                <span class="sl-ds-tag">Operational Palette</span>
+                <div class="sl-color-grid">
+                    <div class="sl-color-item">
+                        <div class="sl-color-box" style="background:#3b82f6"></div>
+                        <span>#3B82F6</span>
+                    </div>
+                    <div class="sl-color-item">
+                        <div class="sl-color-box" style="background:#22d3ee"></div>
+                        <span>#22D3EE</span>
+                    </div>
+                    <div class="sl-color-item">
+                        <div class="sl-color-box" style="background:#0f172a"></div>
+                        <span>#0F172A</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

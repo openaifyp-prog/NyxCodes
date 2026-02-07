@@ -427,7 +427,18 @@ document.addEventListener('DOMContentLoaded', () => {
             link: "Projects/WeatherNova/index.html",
             hasCaseStudy: true
         },
+        {
+            id: "studio-logic",
+            title: "Studio Logic | Algorithmic Suite",
+            image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200",
+            tags: ["JS", "Worker", "Visualization", "Algorithmic"],
+            description: "A high-fidelity, off-main-thread algorithmic command center designed for performance and educational clarity. Features sorting, pathfinding, and maze generation.",
+            category: "Web",
+            link: "Projects/StudioLogic/index.html",
+            hasCaseStudy: true
+        },
     ];
+
 
     const homeProjectsGrid = document.getElementById('projects-grid');
     const allProjectsGrid = document.getElementById('all-projects-grid');

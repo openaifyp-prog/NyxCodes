@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Logic | Algorithmic Suite</title>
+    <style>
+        :root {
+            --bg-main: #ffffff;
+            --bg-sidebar: #f8fafc;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --success: #10b981;
+            --border: #e2e8f0;
+            --sidebar-width: 300px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* Sidebar (Left) */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: #ffffff;
+            border-right: 1px solid var(--border);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            overflow-y: auto;
+            box-shadow: 4px 0 24px rgba(0, 0, 0, 0.02);
+            z-index: 20;
+        }
+
+        .header {
+            margin-bottom: 0.5rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.125rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* Mobile Utility (Hidden on Desktop) */
+        #mobileLogicToggle,
+        #mobileNavbar,
+        #mobileHint,
+        .mobile-metrics,
+        .drawer-close {
+            display: none !important;
+        }
+
+        .logo::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        select,
+        input[type="range"] {
+            width: 100%;
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: white;
+            font-size: 0.875rem;
+            outline: none;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        button {
+            padding: 0.625rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.8125rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background: #f1f5f9;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Modules & Containers */
+
+        .studio-module {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .studio-module:hover {
+            border-color: #cbd5e1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .module-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-label::before {
+            content: '';
+            width: 4px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Custom Sliders */
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 3px;
+            outline: none;
+            margin: 10px 0;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: var(--accent);
+            border: 3px solid white;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.1s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-studio {
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-studio-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-studio-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-studio-danger {
+            background: #fef2f2;
+            color: #ef4444;
+            border: 1px solid #fee2e2;
+        }
+
+        .btn-studio-danger:hover:not(:disabled) {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .btn-studio-outline {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-studio-outline:hover {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }
+
+        /* Stats & Logic Sidebar (Right) */
+        .logic-sidebar {
+            width: 340px;
+            background-color: var(--bg-sidebar);
+            border-left: 1px solid var(--border);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            z-index: 10;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--accent);
+            font-variant-numeric: tabular-nums;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 4px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .pseudocode-container {
+            background: #0f172a;
+            color: #cbd5e1;
+            border-radius: 12px;
+            padding: 1.25rem;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-size: 0.75rem;
+            line-height: 1.7;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex: 1;
+            overflow-y: auto;
+            box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .code-line {
+            padding: 2px 12px;
+            opacity: 0.45;
+            white-space: pre;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 4px;
+            margin: 1px 0;
+            display: block;
+            border-left: 3px solid transparent;
+        }
+
+        .code-line:hover {
+            opacity: 0.8;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .code-line.active {
+            opacity: 1;
+            background: rgba(59, 130, 246, 0.12);
+            color: #60a5fa;
+            font-weight: 500;
+            border-left-color: var(--accent);
+            box-shadow: -10px 0 20px -10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Main Workspace */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background: var(--bg-main);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .view-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .view-title h2 {
+            font-size: 1.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .view-title p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .canvas-container {
+            flex: 1;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mode-chip {
+            background: var(--bg-sidebar);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: #f1f5f9;
+            color: var(--text-secondary);
+        }
+
+        .status-badge.active {
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+        }
+
+        .status-badge.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .btn-danger:hover {
+            background: #fef2f2;
+            border-color: #fca5a5;
+        }
+
+        .btn-brush {
+            flex: 1;
+            padding: 4px;
+            font-size: 0.7rem;
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .btn-brush.active {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .tree-node {
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+        }
+
+        /* Pedagogical Colors */
+        .color-pivot {
+            color: #f59e0b;
+        }
+
+        /* Amber Orange */
+        .color-frontier {
+            color: #10b981;
+        }
+
+        /* Emerald Green */
+
+        /* Theory Modal */
+        #theoryModal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 500px;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e2e8f0;
+        }
+
+        #theoryModal.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #modalOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        #modalOverlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .theory-btn {
+            background: none;
+            border: 1px solid #cbd5e1;
+            color: #64748b;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.1s ease;
+            margin-left: 8px;
+        }
+
+        .theory-btn:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+            background: #eff6ff;
+            transform: scale(1.1);
+        }
+
+        .btn-full-wiki {
+            display: inline-block;
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #3b82f6;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-full-wiki:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Studio Layout */
+        @media (max-width: 1024px) {
+            body {
+                height: 100vh;
+                overflow: hidden;
+                flex-direction: column;
+                display: flex;
+                background: #f1f5f9;
+                /* Soft background context */
+            }
+
+            /* Mobile Navbar Refinement */
+            #mobileNavbar {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                z-index: 1500;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                align-items: center;
+                padding: 0 1.25rem;
+                justify-content: space-between;
+                display: flex !important;
+                /* Show on Mobile */
+            }
+
+            @media (max-width: 1024px) {
+                #mobileNavbar {
+                    display: flex;
+                }
+
+                .sidebar .header {
+                    display: none !important;
+                }
+            }
+
+            .nav-trigger {
+                background: rgba(0, 0, 0, 0.03);
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                width: 38px;
+                height: 38px;
+                border-radius: 10px;
+                font-size: 20px;
+                color: var(--text-primary);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: background 0.2s;
+            }
+
+            .nav-trigger:active {
+                background: rgba(0, 0, 0, 0.08);
+            }
+
+            .nav-logo {
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 800;
+                font-size: 13px;
+                letter-spacing: 0.1em;
+                color: #1e293b;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            #navStatus {
+                padding: 4px 10px;
+                background: rgba(59, 130, 246, 0.1);
+                border: 1px solid rgba(59, 130, 246, 0.1);
+                border-radius: 20px;
+                color: var(--accent) !important;
+                font-size: 9px !important;
+                font-weight: 800;
+                letter-spacing: 0.02em;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            #navStatus::before {
+                content: '';
+                width: 5px;
+                height: 5px;
+                background: var(--accent);
+                border-radius: 50%;
+                display: inline-block;
+                box-shadow: 0 0 8px var(--accent);
+                animation: pulse-live 2s infinite;
+            }
+
+            @keyframes pulse-live {
+                0% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                50% {
+                    opacity: 0.4;
+                    transform: scale(0.8);
+                }
+
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            #mobileHint {
+                display: block !important;
+                padding: 10px 16px;
+                background: rgba(255, 255, 255, 0.6);
+                border: 1px solid rgba(0, 0, 0, 0.03);
+                border-radius: 12px;
+                margin: 0 12px 12px;
+                font-size: 11px;
+                color: #64748b;
+                font-weight: 600;
+                line-height: 1.4;
+                text-align: center;
+            }
+
+            .drawer-close {
+                position: absolute;
+                top: 1.25rem;
+                right: 1.25rem;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #f1f5f9;
+                border: none;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+                color: #64748b;
+                cursor: pointer;
+                transition: background 0.2s;
+            }
+
+            .drawer-close:active {
+                background: #e2e8f0;
+            }
+
+            .sidebar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 85vh;
+                background: white;
+                z-index: 3000;
+                border-top: 1px solid var(--border);
+                border-radius: 28px 28px 0 0;
+                padding: 2.5rem 1.5rem 1.5rem;
+                display: flex;
+                flex-direction: column;
+                transform: translateY(100%);
+                transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                box-shadow: 0 -20px 60px rgba(0, 0, 0, 0.2);
+                overflow-y: auto;
+            }
+
+            .sidebar.active {
+                transform: translateY(0);
+            }
+
+            .sidebar .header {
+                display: none;
+            }
+
+            /* Studio Top Bar (Sticky Unification) */
+            .sidebar .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                background: white;
+                z-index: 1100;
+                margin: 0;
+                padding: 0 1.25rem;
+                display: flex;
+                align-items: center;
+                gap: 0;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            }
+
+            #mobileContext {
+                display: flex !important;
+            }
+
+            .sidebar .header .tagline {
+                display: none;
+            }
+
+            .logic-sidebar {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 50vh;
+                background: rgba(255, 255, 255, 0.85);
+                /* Translucent */
+                backdrop-filter: blur(18px);
+                border-top: 1px solid var(--border);
+                border-radius: 24px 24px 0 0;
+                transform: translateY(100%);
+                transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+                box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.12);
+                z-index: 2000;
+                display: flex;
+                padding-top: 30px;
+                /* Space for handle */
+            }
+
+            .logic-sidebar::after {
+                content: '';
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 40px;
+                height: 5px;
+                background: #cbd5e1;
+                border-radius: 3px;
+            }
+
+            .logic-sidebar.active {
+                transform: translateY(0);
+            }
+
+            #closeLogicDrawer {
+                display: flex !important;
+            }
+
+            #mobileLogicToggle {
+                display: flex !important;
+                /* Ensure visible */
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: #1e293b;
+                color: white;
+                border: none;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                font-family: 'JetBrains Mono', monospace;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+                z-index: 2050;
+                transition: transform 0.2s;
+            }
+
+            #mobileLogicToggle:active {
+                transform: scale(0.9);
+            }
+
+            #mobileStudioToggle {
+                display: none !important;
+                /* Managed by Navbar */
+            }
+
+            #mobileStudioToggle:active {
+                transform: scale(0.95);
+            }
+
+            .main-content {
+                height: 65vh;
+                /* Cinematic Stage */
+                flex-shrink: 0;
+                padding: 12px;
+                background: transparent;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                padding-top: 72px;
+            }
+
+            /* Floating Metric Chips */
+            .mobile-metrics {
+                display: none;
+                /* Hide on Desktop */
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                gap: 8px;
+                z-index: 100;
+                pointer-events: none;
+            }
+
+            @media (max-width: 1024px) {
+                .mobile-metrics {
+                    display: flex;
+                }
+            }
+
+            .metric-chip {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(12px);
+                padding: 6px 14px;
+                border-radius: 14px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-width: 70px;
+            }
+
+            .metric-chip .m-label {
+                font-size: 8px;
+                color: #64748b;
+                text-transform: uppercase;
+                font-weight: 700;
+                letter-spacing: 0.05em;
+                margin-bottom: 2px;
+            }
+
+            .metric-chip .m-value {
+                font-size: 14px;
+                font-weight: 800;
+                color: #1e293b;
+                font-family: 'JetBrains Mono', monospace;
+            }
+
+            .logic-sidebar .studio-module {
+                display: none;
+                /* Hide Stats in code drawer on mobile */
+            }
+
+            /* Priority: Floating Canvas */
+            .canvas-container {
+                flex: 1;
+                border-radius: 20px;
+                border: 1px solid rgba(0, 0, 0, 0.05);
+                margin: 0;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+                background: white;
+            }
+
+            .view-header {
+                position: absolute;
+                top: 0;
+                left: 12px;
+                right: 12px;
+                padding: 8px 16px;
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(12px);
+                z-index: 60;
+                border-radius: 20px 20px 0 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                transform: translateY(72px);
+                pointer-events: none;
+            }
+
+            #viewTitle {
+                font-size: 0.85rem !important;
+                font-weight: 700;
+            }
+
+            .mode-chip {
+                font-size: 0.65rem;
+                padding: 2px 8px;
+                background: white;
+            }
+
+            .studio-module {
+                padding: 1rem;
+                border-radius: 12px;
+                margin-bottom: 0.75rem;
+            }
+
+            .view-title p {
+                display: none;
+                /* Hide description on mobile to save space */
+            }
+
+            .button-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            #btnReset {
+                grid-column: auto;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .canvas-container {
+                min-height: 300px;
+            }
+
+            .sidebar {
+                padding: 1.25rem;
+            }
+        }
+
+        /* Diagram Components */
+        .diagram-container {
+            display: flex;
+            gap: 4px;
+            margin: 15px 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .dg-block {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #475569;
+        }
+
+        .dg-block.pivot {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #b45309;
+        }
+
+        .dg-block.active {
+            background: #dcfce7;
+            border-color: #10b981;
+            color: #15803d;
+        }
+
+        .dg-block.compare {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1d4ed8;
+        }
+
+        .dg-node {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .dg-arrow {
+            color: #94a3b8;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="mobileNavbar">
+        <button class="nav-trigger" id="openSettings" title="Open Settings">≡</button>
+        <div class="nav-logo">STUDIO_LOGIC</div>
+        <div id="navStatus">READY</div>
+    </nav>
+
+    <div id="mobileHint">
+        <span>Select algorithms and adjust settings from the ≡ menu at the top-left.</span>
+    </div>
+
+    <button id="mobileLogicToggle" title="View Logic & Stats">
+        <span>&lt;/&gt;</span>
+    </button>
+
+    <aside class="sidebar">
+        <button class="drawer-close" id="closeSettings" title="Close Settings">&times;</button>
+        <header class="header">
+            <div class="logo">STUDIO_LOGIC</div>
+            <div id="mobileContext"
+                style="display:none; flex-direction:column; gap:2px; margin-left:8px; padding-left:12px; border-left:1px solid #e2e8f0;">
+                <span id="mobileAlgoName"
+                    style="font-size:10px; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em">Quick
+                    Sort</span>
+                <span id="mobileStatusText"
+                    style="font-size:9px; font-weight:700; color:var(--text-secondary);">READY</span>
+            </div>
+            <p class="tagline">ALGORITHMIC SUITE // V1.0</p>
+        </header>
+
+        <!-- Visualization Domain -->
+        <div class="studio-module">
+            <div class="module-label">Visualization Domain</div>
+            <select id="modeSelect">
+                <option value="SORT">Sorting Mode</option>
+                <option value="GRID">Grid Mode</option>
+                <option value="TREES">Tree Algorithms</option>
+            </select>
+        </div>
+
+        <!-- Active Algorithm -->
+        <div class="studio-module">
+            <div class="module-label">Active Algorithm</div>
+            <select id="algorithmSelect">
+                <!-- Populated by JS -->
+            </select>
+        </div>
+
+        <!-- Complexity Goal -->
+        <div class="studio-module">
+            <div class="module-label">Complexity Goal</div>
+            <div class="stat-row">
+                <span class="stat-label">Theoretical Big O</span>
+                <span id="statComplexity" class="stat-value">---</span>
+            </div>
+        </div>
+
+        <!-- Studio Controls -->
+        <div class="studio-module">
+            <div class="module-label">Studio Controls</div>
+
+            <div id="sortControls">
+                <label>Density: <span id="densityVal">100</span></label>
+                <input type="range" id="densitySlider" min="10" max="300" value="100">
+            </div>
+
+            <div id="gridControls" class="hidden">
+                <label>Placement Brush</label>
+                <div class="brush-selector" style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:10px">
+                    <button id="brushWall" class="btn-brush active" data-brush="wall">Wall</button>
+                    <button id="brushMud" class="btn-brush" data-brush="mud">Mud</button>
+                    <button id="brushStart" class="btn-brush" data-brush="start">Set A</button>
+                    <button id="brushEnd" class="btn-brush" data-brush="end">Set B</button>
+                </div>
+                <label>Wall Density: <span id="gridDensityVal">30</span>%</label>
+                <input type="range" id="gridDensitySlider" min="0" max="60" value="30">
+            </div>
+
+            <div id="treeControls" class="hidden">
+                <label>Custom Values (optional)</label>
+                <input type="text" id="treeInput" placeholder="e.g. 50, 20, 80"
+                    style="font-size:0.8rem; margin-top:5px; padding: 8px; border-radius:6px; border:1px solid var(--border);">
+            </div>
+
+            <label style="margin-top:5px">Delay: <span id="delayVal">20</span>ms</label>
+            <input type="range" id="delaySlider" min="1" max="250" value="20">
+        </div>
+
+        <div class="button-grid" style="grid-template-columns: 1fr 1fr; display: grid; gap: 10px;">
+            <button id="btnStart" class="btn-studio btn-studio-primary">Initiate</button>
+            <button id="btnStop" class="btn-studio btn-studio-danger" disabled>Stop</button>
+            <button id="btnReset" class="btn-studio btn-studio-outline">Reset State</button>
+            <button id="btnSnapshot" class="btn-studio btn-studio-outline" title="Export as PNG">Snapshot</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="view-header">
+            <div class="view-title">
+                <div style="display:flex; align-items:center;">
+                    <h2 id="viewTitle" style="margin:0">Quick Sort</h2>
+                    <button id="btnTheory" class="theory-btn" title="View Theory">?</button>
+                </div>
+                <p id="viewDesc">Recursive divide-and-conquer partitioning.</p>
+                <div id="statusIndicator" class="status-badge" style="display:none">STATUS: READY</div>
+            </div>
+            <div class="mode-chip" id="modeIndicator">DOMAIN: SORTING</div>
+        </header>
+
+        <div class="canvas-container">
+            <canvas id="mainCanvas"></canvas>
+            <!-- Floating Metrics (Mobile Only CSS Controlled) -->
+            <div class="mobile-metrics">
+                <div class="metric-chip">
+                    <span class="m-label">Complexity</span>
+                    <span id="mobileComplexity" class="m-value">O(1)</span>
+                </div>
+                <div class="metric-chip">
+                    <span class="m-label">Comps</span>
+                    <span id="mobileComparisons" class="m-value">0</span>
+                </div>
+                <div class="metric-chip">
+                    <span class="m-label">Access</span>
+                    <span id="mobileAccesses" class="m-value">0</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="modalOverlay"></div>
+    <div id="theoryModal">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px">
+            <h2 id="theoryTitle" style="margin:0; font-size:1.25rem; color:#1e293b">Algorithm Theory</h2>
+            <button id="btnCloseTheory"
+                style="background:none; border:none; font-size:20px; cursor:pointer; color:#64748b">&times;</button>
+        </div>
+        <div id="theoryContent" style="font-size:0.95rem; line-height:1.6; color:#475569">
+            Select an algorithm to view its theoretical background.
+        </div>
+    </div>
+
+    <aside class="logic-sidebar">
+        <button class="drawer-close" id="closeLogic" title="Close Logic">&times;</button>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div class="section-label" style="margin:0">Logic Insight</div>
+            <button id="closeLogicDrawer" class="theory-btn"
+                style="display:none; transform:scale(0.8); margin:0">&times;</button>
+        </div>
+        <div id="pseudocodeContainer" class="pseudocode-container">
+            <!-- Populated by JS -->
+        </div>
+
+        <div class="studio-module" style="margin-top: auto">
+            <div class="module-label">Performance Metrics</div>
+            <div class="stat-row">
+                <span class="stat-label">Comparisons</span>
+                <span id="statComparisons" class="stat-value">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Mem Accesses</span>
+                <span id="statAccesses" class="stat-value">0</span>
+            </div>
+        </div>
+    </aside>
+
+    <script>
+        // --- Data & State ---
+        const canvas = document.getElementById('mainCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const ui = {
+            mode: document.getElementById('modeSelect'),
+            algo: document.getElementById('algorithmSelect'),
+            btnStart: document.getElementById('btnStart'),
+            btnStop: document.getElementById('btnStop'),
+            btnReset: document.getElementById('btnReset'),
+            statComplexity: document.getElementById('statComplexity'),
+            statComparisons: document.getElementById('statComparisons'),
+            statAccesses: document.getElementById('statAccesses'),
+            density: document.getElementById('densitySlider'),
+            densityVal: document.getElementById('densityVal'),
+            delay: document.getElementById('delaySlider'),
+            delayVal: document.getElementById('delayVal'),
+            gridDensity: document.getElementById('gridDensitySlider'),
+            gridDensityVal: document.getElementById('gridDensityVal'),
+            pseudocode: document.getElementById('pseudocodeContainer'),
+            viewTitle: document.getElementById('viewTitle'),
+            viewDesc: document.getElementById('viewDesc'),
+            modeIndicator: document.getElementById('modeIndicator'),
+            status: document.getElementById('statusIndicator'),
+            sortControls: document.getElementById('sortControls'),
+            gridControls: document.getElementById('gridControls'),
+            treeControls: document.getElementById('treeControls'),
+            treeInput: document.getElementById('treeInput'),
+            btnTheory: document.getElementById('btnTheory'),
+            theoryModal: document.getElementById('theoryModal'),
+            theoryTitle: document.getElementById('theoryTitle'),
+            theoryContent: document.getElementById('theoryContent'),
+            modalOverlay: document.getElementById('modalOverlay'),
+            btnCloseTheory: document.getElementById('btnCloseTheory'),
+            btnReadMore: null,
+            btnSnapshot: document.getElementById('btnSnapshot'),
+            mobileComplexity: document.getElementById('mobileComplexity'),
+            mobileComparisons: document.getElementById('mobileComparisons'),
+            mobileAccesses: document.getElementById('mobileAccesses'),
+            sidebar: document.querySelector('.sidebar'),
+            logicSidebar: document.querySelector('.logic-sidebar'),
+            openSettings: document.getElementById('openSettings'),
+            closeSettings: document.getElementById('closeSettings'),
+            closeLogic: document.getElementById('closeLogic'),
+            navStatus: document.getElementById('navStatus'),
+            mobileHint: document.getElementById('mobileHint')
+        };
+
+        const ALGORITHMS = {
+            SORT: [
+                {
+                    id: 'quickSort', name: 'Quick Sort', o: 'O(n log n)', desc: 'Divide-and-conquer sorting using a partitioning heuristic.',
+                    code: ["function quickSort(arr, low, high):", "  if low < high:", "    pivotIndex = partition(arr, low, high)", "    yield* quickSort(arr, low, pivotIndex - 1)", "    yield* quickSort(arr, pivotIndex + 1, high)", "", "function partition(arr, low, high):", "  pivot = arr[high]", "  i = low - 1", "  for j from low to high-1:", "    if arr[j] < pivot:", "      i++, swap(arr[i], arr[j])", "  swap(arr[i+1], arr[high])", "  return i+1"],
+                    theory: "QuickSort picks a 'pivot' and partitions the array into two halves—those smaller than the pivot and those larger. It then repeats this recursively.",
+                    diagram: `
+                        <p>1. Pick a pivot (e.g., 50)</p>
+                        <div class="diagram-container">
+                            <div class="dg-block">12</div><div class="dg-block">24</div><div class="dg-block">78</div><div class="dg-block">31</div><div class="dg-block pivot">50</div>
+                        </div>
+                        <p>2. Partition around it</p>
+                        <div class="diagram-container">
+                            <div class="dg-block active">12</div><div class="dg-block active">24</div><div class="dg-block active">31</div>
+                            <div class="dg-arrow">→</div>
+                            <div class="dg-block pivot">50</div>
+                            <div class="dg-arrow">→</div>
+                            <div class="dg-block">78</div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'mergeSort', name: 'Merge Sort', o: 'O(n log n)', desc: 'Stable, comparison-based sorting using recursive mergelists.',
+                    code: ["function mergeSort(arr, low, high):", "  if low < high:", "    mid = floor((low + high) / 2)", "    yield* mergeSort(arr, low, mid)", "    yield* mergeSort(arr, mid + 1, high)", "    yield* merge(arr, low, mid, high)", "", "function merge(arr, low, mid, high):", "  partition into L and R sub-arrays", "  pick smallest from L/R to rebuild", "  copy back to original array"],
+                    theory: "Merge Sort splits the list until each sub-list has 1 element, then merges them back in sorted order.",
+                    diagram: `
+                        <p>1. Divide</p>
+                        <div class="diagram-container">
+                            <div class="dg-block">38</div><div class="dg-block">27</div>
+                            <div style="width:20px"></div>
+                            <div class="dg-block">43</div><div class="dg-block">3</div>
+                        </div>
+                        <p>2. Sort & Merge</p>
+                        <div class="diagram-container">
+                            <div class="dg-block active">27</div><div class="dg-block active">38</div>
+                            <div class="dg-arrow">+</div>
+                            <div class="dg-block active">3</div><div class="dg-block active">43</div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'bubbleSort', name: 'Bubble Sort', o: 'O(n²)', desc: 'Classic comparison sort using repeated element swapping.',
+                    code: ["for i from 0 to n-1:", "  swapped = false", "  for j from 0 to n-i-2:", "    if arr[j] > arr[j+1]:", "      swap(arr[j], arr[j+1])", "      swapped = true", "  if not swapped: break"],
+                    theory: "Bubble Sort repeatedly swaps adjacent elements if they are in the wrong order.",
+                    diagram: `
+                        <p>1. Compare adjacent</p>
+                        <div class="diagram-container">
+                            <div class="dg-block compare">23</div><div class="dg-block compare">15</div><div class="dg-block">42</div>
+                        </div>
+                        <p>2. Swap if Left > Right</p>
+                        <div class="diagram-container">
+                            <div class="dg-block active">15</div><div class="dg-block active">23</div><div class="dg-block">42</div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'insertionSort', name: 'Insertion Sort', o: 'O(n²)', desc: 'Builds sorted result one element at a time via insertion.',
+                    code: ["for i from 1 to n-1:", "  key = arr[i]", "  j = i - 1", "  while j >= 0 and arr[j] > key:", "    arr[j+1] = arr[j]", "    j--", "  arr[j+1] = key"],
+                    theory: "Insertion Sort takes one element and 'inserts' it into its correct position in the sorted part of the array.",
+                    diagram: `
+                        <p>1. Pick key (12)</p>
+                        <div class="diagram-container">
+                            <div class="dg-block">5</div><div class="dg-block">10</div><div class="dg-block pivot">12</div><div class="dg-block">7</div>
+                        </div>
+                        <p>2. Insert in sorted part</p>
+                        <div class="diagram-container">
+                            <div class="dg-block active">5</div><div class="dg-block active">7</div><div class="dg-block active">10</div><div class="dg-block active">12</div>
+                        </div>
+                    `
+                }
+            ],
+            GRID: [
+                {
+                    id: 'aStar', name: 'A* Pathfinding', o: 'O(E log V)', desc: 'Heuristic-guided shortest path search through graph nodes.',
+                    code: ["while target not reached:", "  current = openSet.pop_min_fScore()", "  if current == target: reconstruct_path()", "  for neighbor in current.adjacencies():", "    tentative_g = gScore[current] + cost", "    if tentative_g < gScore[neighbor]:", "      update scores and parents", "      openSet.push(neighbor)"],
+                    theory: "Uses f(n) = g(n) + h(n). g is actual cost, h is heuristic (estimate to target).",
+                    diagram: `
+                        <div class="diagram-container">
+                            <div class="dg-node active" style="font-size:8px">G=5<br>H=10</div>
+                            <div class="dg-arrow">f=15</div>
+                            <div class="dg-arrow">→</div>
+                            <div class="dg-node" style="border-color:#1e293b">Target</div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'dijkstra', name: "Dijkstra's Algorithm", o: 'O(E log V)', desc: 'Weighted shortest path search without heuristics.',
+                    code: ["while target not reached:", "  current = openSet.pop_min_dist()", "  if current == target: reconstruct_path()", "  for neighbor in current.adjacencies():", "    new_dist = dist[current] + weight", "    if new_dist < dist[neighbor]:", "      dist[neighbor] = new_dist", "      parent[neighbor] = current"],
+                    theory: "Explores all directions equally based on weight. Perfect for Mud tiles.",
+                    diagram: `
+                        <div class="diagram-container">
+                            <div class="dg-node active">S</div>
+                            <div class="dg-arrow">→</div>
+                            <div class="dg-block" style="background:#78350f; color:white">Mud:5</div>
+                            <div class="dg-arrow">vs</div>
+                            <div class="dg-block">1</div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'bfs', name: 'BFS (Breadth-First Search)', o: 'O(V + E)', desc: 'Layer-by-layer exploration for unweighted shortest path.',
+                    code: ["queue.push(start)", "while queue not empty:", "  current = queue.shift()", "  if current == target: reconstruct_path()", "  for neighbor in current.adjacencies():", "    if neighbor not visited:", "      visited.add(neighbor)", "      parent[neighbor] = current"],
+                    theory: "Explores neighbors level-by-level. Best for shortest path in unweighted graphs.",
+                    diagram: `
+                        <div class="diagram-container">
+                            <div class="dg-node active">R</div>
+                            <div style="flex-direction:column; display:flex; gap:5px">
+                                <div class="dg-node compare">L1</div><div class="dg-node compare">L1</div>
+                            </div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'mazeRecursive', name: 'Maze: Recursive Backtracker', o: 'O(N)', desc: 'Depth-First Search (DFS) randomized grid carving.',
+                    code: ["function carve(x, y):", "  mark current cell as visited", "  for neighbor in random_shuffle(dirs):", "    if neighbor is unvisited:", "      remove wall between current and neighbor", "      carve(neighbor)"],
+                    theory: "Creates 'perfect' mazes by deep exploration and backtracking when stuck.",
+                    diagram: `
+                        <div class="diagram-container">
+                            <div class="dg-node" style="border-color:#1e293b; color:#1e293b">V</div>
+                            <div class="dg-arrow">→</div>
+                            <div class="dg-node" style="border-color:#3b82f6; color:#3b82f6">C</div>
+                            <div class="dg-arrow">→</div>
+                            <div class="dg-node">?</div>
+                        </div>
+                        <p style="text-align:center; font-size:11px">V: Visited, C: Current, ?: Next random</p>
+                    `
+                }
+            ],
+            TREES: [
+                {
+                    id: 'bstInsert', name: 'BST: Recursive Insertion', o: 'O(log n)', desc: 'Inserting a value into a Binary Search Tree while maintaining its property.',
+                    code: ["function insert(node, val):", "  if node is null:", "    return new Node(val)", "  if val < node.val:", "    node.left = yield* insert(node.left, val)", "  else:", "    node.right = yield* insert(node.right, val)", "  return node"],
+                    theory: "BST nodes follow a rule: Left children are smaller than the parent, and Right children are larger.",
+                    diagram: `
+                        <div class="diagram-container" style="flex-direction:column; align-items:center; gap:10px">
+                             <div class="dg-node">50</div>
+                             <div style="display:flex; gap:40px">
+                                <div class="dg-node active">30</div>
+                                <div class="dg-node">70</div>
+                             </div>
+                        </div>
+                        <p style="text-align:center; font-size:11px">30 < 50 (Left), 70 > 50 (Right)</p>
+                    `
+                },
+                {
+                    id: 'treeTraversal', name: 'Tree: In-Order Traversal', o: 'O(n)', desc: 'Visit nodes in ascending order (Left, Root, Right).',
+                    code: ["function inOrder(node):", "  if node is null: return", "  yield* inOrder(node.left)", "  visit(node) // Highlight current", "  yield* inOrder(node.right)"],
+                    theory: "Visits Left subtree, then Root, then Right subtree. Guaranteed to be sorted order.",
+                    diagram: `
+                        <div class="diagram-container">
+                             <div class="dg-node">1</div>
+                             <div class="dg-arrow">→</div>
+                             <div class="dg-node active">2</div>
+                             <div class="dg-arrow">→</div>
+                             <div class="dg-node">3</div>
+                        </div>
+                    `
+                }
+            ]
+        };
+
+        let state = {
+            mode: 'SORT',
+            data: [],
+            grid: [],
+            cols: 31,
+            rows: 21,
+            highlights: new Set(),
+            visited: new Set(),
+            frontier: new Set(),
+            path: [],
+            tree: null,
+            pivotIndex: -1,
+            startPos: "0,0",
+            endPos: "20,30",
+            brush: 'wall',
+            active: false,
+            stopRequested: false,
+            stats: { comparisons: 0, accesses: 0 }
+        };
+
+        // --- Core Engine & Rendering ---
+
+        function resize() {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            ctx.scale(dpr, dpr);
+            render();
+        }
+
+        function render() {
+            const w = canvas.width / (window.devicePixelRatio || 1);
+            const h = canvas.height / (window.devicePixelRatio || 1);
+            ctx.clearRect(0, 0, w, h);
+
+            if (state.mode === 'SORT') renderSort(w, h);
+            else if (state.mode === 'GRID') renderGrid(w, h);
+            else if (state.mode === 'TREES') renderTree(w, h);
+        }
+
+        function renderSort(w, h) {
+            if (state.data.length === 0) return;
+            const barW = w / state.data.length;
+            const max = Math.max(...state.data);
+
+            state.data.forEach((v, i) => {
+                const barH = (v / max) * (h * 0.82);
+                const x = i * barW;
+                const y = h - barH;
+
+                if (i === state.pivotIndex) {
+                    ctx.fillStyle = '#f59e0b'; // Amber Pivot
+                } else if (state.highlights.has(i)) {
+                    ctx.fillStyle = '#3b82f6'; // Active comparison
+                } else if (state.visited.has(i)) {
+                    ctx.fillStyle = '#10b981'; // Sorted green
+                } else {
+                    ctx.fillStyle = '#e2e8f0';
+                }
+
+                ctx.beginPath();
+                ctx.roundRect(x + 1, y, barW - 2, barH, [4, 4, 0, 0]);
+                ctx.fill();
+            });
+        }
+
+        function renderGrid(w, h) {
+            const isMobile = window.innerWidth <= 1024;
+            const inset = isMobile ? 12 : 0; // Safe zone for rounded corners
+            const innerW = w - (inset * 2);
+            const innerH = h - (inset * 2);
+
+            const cellW = innerW / state.cols;
+            const cellH = innerH / state.rows;
+
+            for (let r = 0; r < state.rows; r++) {
+                for (let c = 0; c < state.cols; c++) {
+                    const x = inset + c * cellW;
+                    const y = inset + r * cellH;
+                    const pos = `${r},${c}`;
+                    const cell = state.grid[r][c];
+
+                    // Grid lines
+                    ctx.strokeStyle = '#f1f5f9';
+                    ctx.strokeRect(x, y, cellW, cellH);
+
+                    if (cell === 'wall') {
+                        ctx.fillStyle = '#1e293b';
+                    } else if (cell === 'mud') {
+                        ctx.fillStyle = '#78350f'; // Darker mud brown
+                    } else if (state.path.includes(pos)) {
+                        ctx.fillStyle = '#3b82f6'; // Result Path
+                    } else if (state.visited.has(pos)) {
+                        ctx.fillStyle = 'rgba(59, 130, 246, 0.2)'; // Explored (Closed)
+                    } else if (state.frontier.has(pos)) {
+                        ctx.fillStyle = 'rgba(16, 185, 129, 0.2)'; // Frontier (Open) - Emerald Tint
+                    } else {
+                        ctx.fillStyle = '#ffffff';
+                    }
+
+                    if (cell === 'wall' || cell === 'mud' || state.visited.has(pos) || state.frontier.has(pos) || state.path.includes(pos)) {
+                        ctx.fillRect(x + 0.5, y + 0.5, cellW - 1, cellH - 1);
+                    }
+
+                    // Special Markers
+                    if (pos === state.startPos || pos === state.endPos) {
+                        ctx.fillStyle = pos === state.startPos ? '#10b981' : '#ef4444'; // Start Green, End Red
+                        ctx.beginPath();
+                        ctx.arc(x + cellW / 2, y + cellH / 2, Math.min(cellW, cellH) * 0.3, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        // Label text for accessibility
+                        ctx.fillStyle = 'white';
+                        ctx.font = 'bold 8px Inter';
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText(pos === state.startPos ? 'A' : 'B', x + cellW / 2, y + cellH / 2);
+                    }
+                }
+            }
+        }
+
+        // --- Logic & Algorithms ---
+
+        function initDomain() {
+            state.mode = ui.mode.value;
+            state.active = false;
+            state.stats = { comparisons: 0, accesses: 0 };
+            state.visited.clear();
+            state.frontier.clear();
+            state.highlights.clear();
+            state.path = [];
+            state.pivotIndex = -1;
+
+            // UI Adjustments
+            ui.modeIndicator.innerText = `DOMAIN: ${state.mode === 'SORT' ? 'SORTING' : state.mode === 'GRID' ? 'GRID' : 'TREES'}`;
+            ui.sortControls.classList.toggle('hidden', state.mode !== 'SORT');
+            ui.gridControls.classList.toggle('hidden', state.mode !== 'GRID');
+            ui.treeControls.classList.toggle('hidden', state.mode !== 'TREES');
+
+            const algos = ALGORITHMS[state.mode];
+            ui.algo.innerHTML = algos.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+            updateAlgoInfo();
+
+            ui.status.style.display = 'inline-block';
+            setStatus('STATUS: READY', '');
+            if (ui.mobileHint) ui.mobileHint.style.display = 'block';
+
+            if (state.mode === 'SORT') {
+                const size = parseInt(ui.density.value);
+                state.data = Array.from({ length: size }, () => Math.floor(Math.random() * 100) + 1);
+            } else if (state.mode === 'GRID') {
+                const density = parseInt(ui.gridDensity.value) / 100;
+                state.startPos = "0,0";
+                state.endPos = `${state.rows - 1},${state.cols - 1}`;
+                state.grid = Array.from({ length: state.rows }, (_, r) =>
+                    Array.from({ length: state.cols }, (_, c) => {
+                        const pos = `${r},${c}`;
+                        if (pos === state.startPos || pos === state.endPos) return 'empty';
+                        return Math.random() < density ? 'wall' : 'empty';
+                    })
+                );
+            } else if (state.mode === 'TREES') {
+                state.tree = null;
+                state.highlights.clear();
+            }
+            render();
+            updateStats();
+        }
+
+        function updateAlgoInfo() {
+            const algoList = ALGORITHMS[state.mode];
+            const algo = algoList.find(a => a.id === ui.algo.value) || algoList[0];
+
+            ui.viewTitle.innerText = algo.name;
+            ui.viewDesc.innerText = algo.desc;
+            ui.statComplexity.innerText = algo.o;
+            if (ui.mobileComplexity) ui.mobileComplexity.innerText = algo.o;
+
+            // Sync Mobile Header
+            const mAlgo = document.getElementById('mobileAlgoName');
+            if (mAlgo) mAlgo.innerText = algo.name;
+
+            // Re-populate Pseudocode
+            ui.pseudocode.innerHTML = algo.code.map((l, i) => `<div class="code-line" id="line-${i}">${l}</div>`).join('');
+        }
+
+        function highlightCode(line) {
+            document.querySelectorAll('.code-line').forEach(el => el.classList.remove('active'));
+            const el = document.getElementById(`line-${line}`);
+            if (el) el.classList.add('active');
+        }
+
+        function setStatus(text, className) {
+            ui.status.innerText = text;
+            ui.status.className = 'status-badge ' + (className || '');
+
+            // Mirror to Navbar & Mobile Context
+            const statusTxt = text.replace('STATUS: ', '');
+            if (ui.navStatus) ui.navStatus.innerText = statusTxt;
+
+            const mStatus = document.getElementById('mobileStatusText');
+            if (mStatus) {
+                mStatus.innerText = statusTxt;
+                mStatus.style.color = className === 'success' ? '#10b981' : (className === 'active' ? 'var(--accent)' : 'var(--text-secondary)');
+            }
+        }
+
+        function updateStats() {
+            ui.statComparisons.innerText = state.stats.comparisons;
+            ui.statAccesses.innerText = state.stats.accesses;
+            if (ui.mobileComparisons) ui.mobileComparisons.innerText = state.stats.comparisons;
+            if (ui.mobileAccesses) ui.mobileAccesses.innerText = state.stats.accesses;
+        }
+
+        // --- Persistence & Export ---
+
+        function saveSettings() {
+            const settings = {
+                mode: ui.mode.value,
+                algo: ui.algo.value,
+                density: ui.density.value,
+                delay: ui.delay.value,
+                gridDensity: ui.gridDensity.value
+            };
+            localStorage.setItem('studio_logic_settings', JSON.stringify(settings));
+        }
+
+        function loadSettings() {
+            const saved = localStorage.getItem('studio_logic_settings');
+            if (saved) {
+                try {
+                    const settings = JSON.parse(saved);
+                    if (settings.mode) ui.mode.value = settings.mode;
+                    state.mode = ui.mode.value;
+
+                    // Re-populate algorithms for the loaded mode
+                    const algos = ALGORITHMS[state.mode];
+                    ui.algo.innerHTML = algos.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+
+                    if (settings.algo) ui.algo.value = settings.algo;
+                    if (settings.density) {
+                        ui.density.value = settings.density;
+                        ui.densityVal.innerText = settings.density;
+                    }
+                    if (settings.delay) {
+                        ui.delay.value = settings.delay;
+                        ui.delayVal.innerText = settings.delay;
+                    }
+                    if (settings.gridDensity) {
+                        ui.gridDensity.value = settings.gridDensity;
+                        ui.gridDensityVal.innerText = settings.gridDensity;
+                    }
+                    updateAlgoInfo();
+                } catch (e) {
+                    console.error("Failed to load settings", e);
+                }
+            }
+        }
+
+        function takeSnapshot() {
+            const link = document.createElement('a');
+            const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+            link.download = `studio-logic-${state.mode}-${ui.algo.value}-${timestamp}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // --- Sorting Algos ---
+
+        async function* quickSort(arr, left = 0, right = arr.length - 1) {
+            if (state.stopRequested) return;
+            highlightCode(0); yield;
+            if (left >= right) return;
+            highlightCode(1); yield;
+
+            highlightCode(2); yield;
+            const p = yield* partition(arr, left, right);
+            if (state.stopRequested) return;
+
+            highlightCode(3); yield;
+            yield* quickSort(arr, left, p - 1);
+            if (state.stopRequested) return;
+
+            highlightCode(4); yield;
+            yield* quickSort(arr, p + 1, right);
+        }
+
+        async function* partition(arr, low, high) {
+            const pivot = arr[high];
+            state.pivotIndex = high;
+            highlightCode(7); yield;
+            let i = low - 1;
+            highlightCode(8); yield;
+            highlightCode(9); yield;
+
+            for (let j = low; j < high; j++) {
+                if (state.stopRequested) return;
+                state.stats.comparisons++;
+                state.stats.accesses += 2;
+                state.highlights.clear();
+                state.highlights.add(j);
+                highlightCode(10); yield;
+
+                if (arr[j] < pivot) {
+                    i++;
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                    state.stats.accesses += 2;
+                    highlightCode(11); yield;
+                }
+            }
+            [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+            state.stats.accesses += 2;
+            state.pivotIndex = i + 1; // Pivot moves
+            highlightCode(12); yield;
+            state.pivotIndex = -1;
+            return i + 1;
+        }
+
+        async function* mergeSort(arr, start = 0, end = arr.length - 1) {
+            if (state.stopRequested) return;
+            highlightCode(0); yield;
+            if (start >= end) return;
+
+            highlightCode(1); yield;
+            const mid = Math.floor((start + end) / 2);
+            highlightCode(2); yield;
+
+            highlightCode(3); yield;
+            yield* mergeSort(arr, start, mid);
+            if (state.stopRequested) return;
+
+            highlightCode(4); yield;
+            yield* mergeSort(arr, mid + 1, end);
+            if (state.stopRequested) return;
+
+            highlightCode(5); yield;
+            yield* merge(arr, start, mid, end);
+        }
+
+        async function* merge(arr, start, mid, end) {
+            let L = arr.slice(start, mid + 1);
+            let R = arr.slice(mid + 1, end + 1);
+            let i = 0, j = 0, k = start;
+            highlightCode(8); yield;
+
+            while (i < L.length && j < R.length) {
+                if (state.stopRequested) return;
+                state.stats.comparisons++;
+                state.highlights.clear();
+                state.highlights.add(start + i);
+                state.highlights.add(mid + 1 + j);
+                highlightCode(9); yield;
+
+                if (L[i] <= R[j]) { arr[k] = L[i]; i++; }
+                else { arr[k] = R[j]; j++; }
+                state.stats.accesses += 2;
+                k++;
+                yield;
+            }
+            while (i < L.length) {
+                if (state.stopRequested) return;
+                highlightCode(10);
+                arr[k] = L[i]; i++; k++; yield;
+            }
+            while (j < R.length) {
+                if (state.stopRequested) return;
+                highlightCode(10);
+                arr[k] = R[j]; j++; k++; yield;
+            }
+        }
+
+        async function* bubbleSort(arr) {
+            const n = arr.length;
+            for (let i = 0; i < n; i++) {
+                highlightCode(0); yield;
+                let swapped = false;
+                highlightCode(1); yield;
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (state.stopRequested) return;
+                    highlightCode(2);
+                    state.stats.comparisons++;
+                    state.stats.accesses += 2;
+                    state.highlights.clear();
+                    state.highlights.add(j);
+                    state.highlights.add(j + 1);
+                    yield;
+
+                    highlightCode(3); yield;
+                    if (arr[j] > arr[j + 1]) {
+                        highlightCode(4);
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                        state.stats.accesses += 2;
+                        swapped = true;
+                        yield;
+                        highlightCode(5); yield;
+                    }
+                }
+                if (!swapped) {
+                    highlightCode(6); yield;
+                    break;
+                }
+            }
+        }
+
+        async function* insertionSort(arr) {
+            const n = arr.length;
+            for (let i = 1; i < n; i++) {
+                if (state.stopRequested) return;
+                highlightCode(0);
+                let key = arr[i];
+                state.stats.accesses++;
+                let j = i - 1;
+                highlightCode(1); yield;
+                highlightCode(2); yield;
+
+                while (j >= 0 && arr[j] > key) {
+                    if (state.stopRequested) return;
+                    highlightCode(3);
+                    state.stats.comparisons++;
+                    state.stats.accesses++;
+                    state.highlights.clear();
+                    state.highlights.add(j);
+                    state.highlights.add(j + 1);
+                    yield;
+
+                    highlightCode(4);
+                    arr[j + 1] = arr[j];
+                    state.stats.accesses++;
+                    j--;
+                    yield;
+                    highlightCode(5); yield;
+                }
+                highlightCode(6);
+                arr[j + 1] = key;
+                state.stats.accesses++;
+                yield;
+            }
+        }
+
+        // --- Grid Algos ---
+
+        async function* aStar() {
+            const start = state.startPos, end = state.endPos;
+            let open = [start], cameFrom = {}, g = { [start]: 0 }, f = { [start]: dist(start, end) };
+
+            while (open.length > 0) {
+                if (state.stopRequested) return;
+                highlightCode(0); yield;
+
+                open.sort((a, b) => f[a] - f[b]);
+                let curr = open.shift();
+                state.frontier = new Set(open);
+                state.visited.add(curr);
+                highlightCode(1); yield;
+
+                if (curr === end) {
+                    highlightCode(2);
+                    state.path = reconstruct(cameFrom, end);
+                    state.frontier.clear();
+                    yield; return;
+                }
+
+                const neighbors = getNeighbors(curr);
+                highlightCode(3); yield;
+                for (let next of neighbors) {
+                    if (state.stopRequested) return;
+                    highlightCode(4); yield;
+
+                    const [nr, nc] = next.split(',').map(Number);
+                    const cost = state.grid[nr][nc] === 'mud' ? 5 : 1;
+                    let tg = g[curr] + cost;
+                    highlightCode(5); yield;
+
+                    if (tg < (g[next] ?? Infinity)) {
+                        highlightCode(6); yield;
+                        cameFrom[next] = curr;
+                        g[next] = tg;
+                        f[next] = tg + dist(next, end);
+                        if (!open.includes(next)) {
+                            highlightCode(7); yield;
+                            open.push(next);
+                        }
+                        state.stats.accesses++;
+                    }
+                }
+            }
+        }
+
+        function dist(a, b) {
+            const [r1, c1] = a.split(',').map(Number);
+            const [r2, c2] = b.split(',').map(Number);
+            return Math.abs(r1 - r2) + Math.abs(c1 - c2);
+        }
+
+        function getNeighbors(pos) {
+            const [r, c] = pos.split(',').map(Number);
+            return [[0, 1], [1, 0], [0, -1], [-1, 0]]
+                .map(([dr, dc]) => `${r + dr},${c + dc}`)
+                .filter(p => {
+                    const [nr, nc] = p.split(',').map(Number);
+                    return nr >= 0 && nr < state.rows && nc >= 0 && nc < state.cols && state.grid[nr][nc] !== 'wall';
+                });
+        }
+
+        function reconstruct(cameFrom, curr) {
+            let p = [curr];
+            while (curr in cameFrom) { curr = cameFrom[curr]; p.push(curr); }
+            return p;
+        }
+
+        async function* dijkstra() {
+            const start = state.startPos, end = state.endPos;
+            let open = [start], cameFrom = {}, dists = { [start]: 0 };
+
+            while (open.length > 0) {
+                if (state.stopRequested) return;
+                highlightCode(0); yield;
+
+                open.sort((a, b) => dists[a] - dists[b]);
+                let curr = open.shift();
+                state.frontier = new Set(open);
+                state.visited.add(curr);
+                highlightCode(1); yield;
+
+                if (curr === end) {
+                    highlightCode(2);
+                    state.path = reconstruct(cameFrom, end);
+                    state.frontier.clear();
+                    yield; return;
+                }
+
+                const neighbors = getNeighbors(curr);
+                highlightCode(3); yield;
+                for (let next of neighbors) {
+                    if (state.stopRequested) return;
+                    highlightCode(4);
+                    const [nr, nc] = next.split(',').map(Number);
+                    const cost = state.grid[nr][nc] === 'mud' ? 5 : 1;
+                    let d = dists[curr] + cost;
+                    highlightCode(5); yield;
+
+                    if (d < (dists[next] ?? Infinity)) {
+                        highlightCode(6);
+                        dists[next] = d;
+                        cameFrom[next] = curr;
+                        if (!open.includes(next)) open.push(next);
+                        state.stats.accesses++;
+                        yield;
+                        highlightCode(7); yield;
+                    }
+                }
+            }
+        }
+
+        async function* bfs() {
+            const start = state.startPos, end = state.endPos;
+            let queue = [start], cameFrom = {}, visited = new Set([start]);
+
+            highlightCode(0); yield;
+            while (queue.length > 0) {
+                if (state.stopRequested) return;
+                highlightCode(1); yield;
+
+                let curr = queue.shift();
+                state.frontier = new Set(queue);
+                state.visited.add(curr);
+                highlightCode(2); yield;
+
+                if (curr === end) {
+                    highlightCode(3);
+                    state.path = reconstruct(cameFrom, end);
+                    state.frontier.clear();
+                    yield; return;
+                }
+
+                const neighbors = getNeighbors(curr);
+                highlightCode(4); yield;
+                for (let next of neighbors) {
+                    if (state.stopRequested) return;
+                    highlightCode(5);
+                    if (!visited.has(next)) {
+                        highlightCode(6);
+                        visited.add(next);
+                        cameFrom[next] = curr;
+                        queue.push(next);
+                        state.stats.accesses++;
+                        highlightCode(7); yield;
+                    }
+                }
+            }
+        }
+
+        async function* mazeRecursive() {
+            state.grid = Array.from({ length: state.rows }, () => Array(state.cols).fill('wall'));
+            const carve = async function* (r, c) {
+                if (state.stopRequested) return;
+                state.grid[r][c] = 'empty';
+                state.visited.add(`${r},${c}`);
+                const dirs = [[0, 2], [2, 0], [0, -2], [-2, 0]].sort(() => Math.random() - 0.5);
+                for (let [dr, dc] of dirs) {
+                    const nr = r + dr, nc = c + dc;
+                    if (nr >= 0 && nr < state.rows && nc >= 0 && nc < state.cols && state.grid[nr][nc] === 'wall') {
+                        state.grid[r + dr / 2][c + dc / 2] = 'empty';
+                        yield;
+                        yield* carve(nr, nc);
+                    }
+                }
+            };
+            yield* carve(0, 0);
+        }
+
+        function renderTree(w, h) {
+            if (!state.tree) return;
+            const drawNode = (node, x, y, level, parentX, parentY) => {
+                if (!node) return;
+                const offset = w / Math.pow(2, level + 2);
+
+                if (parentX !== undefined) {
+                    ctx.beginPath();
+                    ctx.moveTo(parentX, parentY + 15);
+                    ctx.lineTo(x, y - 15);
+                    ctx.strokeStyle = '#e2e8f0';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+
+                ctx.beginPath();
+                ctx.arc(x, y, 15, 0, Math.PI * 2);
+                ctx.fillStyle = (state.highlights.has(node.val)) ? '#3b82f6' : '#ffffff';
+                ctx.fill();
+                ctx.strokeStyle = '#3b82f6';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                ctx.fillStyle = (state.highlights.has(node.val)) ? '#ffffff' : '#1e293b';
+                ctx.font = 'bold 10px Inter';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(node.val, x, y);
+
+                drawNode(node.left, x - offset, y + 60, level + 1, x, y);
+                drawNode(node.right, x + offset, y + 60, level + 1, x, y);
+            };
+            drawNode(state.tree, w / 2, 60, 0);
+        }
+
+        // --- Tree Algos ---
+
+        async function* bstInsert(val) {
+            const insert = async function* (node, v) {
+                if (state.stopRequested) return null;
+                highlightCode(1); yield;
+                if (!node) {
+                    highlightCode(2); yield;
+                    return { val: v, left: null, right: null };
+                }
+                state.highlights.add(node.val); // Trace path
+                highlightCode(3); yield;
+                if (v < node.val) {
+                    highlightCode(4); yield;
+                    node.left = yield* insert(node.left, v);
+                } else {
+                    highlightCode(6); yield;
+                    node.right = yield* insert(node.right, v);
+                }
+                // We keep the trail until the end of the full operation in the caller
+                return node;
+            };
+            state.highlights.clear();
+            state.tree = yield* insert(state.tree, val);
+            yield; // Pause to show final tree state with trace
+            state.highlights.clear(); // Clear trace after insertion is fully complete
+        }
+
+        async function* treeTraversal() {
+            const inOrder = async function* (node) {
+                if (!node || state.stopRequested) {
+                    highlightCode(1); yield;
+                    return;
+                }
+                highlightCode(2); yield;
+                yield* inOrder(node.left);
+                state.highlights.add(node.val);
+                highlightCode(3); yield;
+                highlightCode(4); yield;
+                yield* inOrder(node.right);
+            };
+            yield* inOrder(state.tree);
+        }
+
+        // --- Interaction ---
+
+        canvas.addEventListener('click', (e) => {
+            if (state.mode !== 'GRID' || state.active) return;
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const isMobile = window.innerWidth <= 1024;
+            const inset = isMobile ? 12 : 0;
+            const innerW = rect.width - (inset * 2);
+            const innerH = rect.height - (inset * 2);
+
+            const c = Math.floor((x - inset) / (innerW / state.cols));
+            const r = Math.floor((y - inset) / (innerH / state.rows));
+            if (r >= 0 && r < state.rows && c >= 0 && c < state.cols) {
+                const pos = `${r},${c}`;
+                if (state.brush === 'start') {
+                    if (pos !== state.endPos) state.startPos = pos;
+                } else if (state.brush === 'end') {
+                    if (pos !== state.startPos) state.endPos = pos;
+                } else if (state.brush === 'mud') {
+                    if (pos !== state.startPos && pos !== state.endPos) {
+                        state.grid[r][c] = state.grid[r][c] === 'mud' ? 'empty' : 'mud';
+                    }
+                } else {
+                    if (pos !== state.startPos && pos !== state.endPos) {
+                        state.grid[r][c] = state.grid[r][c] === 'wall' ? 'empty' : 'wall';
+                    }
+                }
+                render();
+            }
+        });
+
+        document.querySelectorAll('.btn-brush').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.btn-brush').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                state.brush = btn.dataset.brush;
+            });
+        });
+
+        ui.btnStart.addEventListener('click', async () => {
+            if (state.active) return;
+            state.active = true;
+            state.stopRequested = false;
+            ui.btnStart.disabled = true;
+            ui.btnStop.disabled = false;
+            ui.mode.disabled = true;
+            ui.algo.disabled = true;
+            ui.btnReset.disabled = true;
+
+            // Auto-Close Settings Drawer on Mobile
+            if (window.innerWidth <= 1024) {
+                ui.sidebar.classList.remove('active');
+                if (ui.mobileHint) ui.mobileHint.style.display = 'none';
+            }
+
+            const algoId = ui.algo.value;
+            let generator;
+            if (algoId === 'quickSort') generator = quickSort(state.data);
+            else if (algoId === 'mergeSort') generator = mergeSort(state.data);
+            else if (algoId === 'bubbleSort') generator = bubbleSort(state.data);
+            else if (algoId === 'insertionSort') generator = insertionSort(state.data);
+            else if (algoId === 'aStar') generator = aStar();
+            else if (algoId === 'dijkstra') generator = dijkstra();
+            else if (algoId === 'algoBfs') generator = bfs(); // Fixed ID comparison just in case
+            else if (algoId === 'bfs') generator = bfs();
+            else if (algoId === 'mazeRecursive') generator = mazeRecursive();
+            else if (algoId === 'bstInsert') {
+                const inputVal = ui.treeInput.value.trim();
+                let vals = [];
+                if (inputVal) {
+                    vals = inputVal.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
+                } else {
+                    vals = [Math.floor(Math.random() * 100)];
+                }
+
+                setStatus('STATUS: EXECUTING...', 'active');
+
+                for (const v of vals) {
+                    if (state.stopRequested) break;
+                    let gen = bstInsert(v);
+                    while (true) {
+                        if (state.stopRequested) break;
+                        const result = await gen.next();
+                        if (result.done) break;
+                        render();
+                        updateStats();
+                        const delayValue = parseInt(ui.delay.value);
+                        if (delayValue > 0) await new Promise(r => setTimeout(r, delayValue));
+                    }
+                }
+                if (!state.stopRequested) {
+                    setStatus('STATUS: COMPLETE', 'success');
+                }
+                generator = null;
+            }
+            else if (algoId === 'treeTraversal') generator = treeTraversal();
+
+            if (generator) {
+                setStatus('STATUS: EXECUTING...', 'active');
+                while (true) {
+                    if (state.stopRequested) {
+                        setStatus('STATUS: TERMINATED', '');
+                        break;
+                    }
+                    const result = await generator.next();
+                    if (result.done) {
+                        const msg = state.mode === 'GRID' && state.path.length === 0 && algoId !== 'mazeRecursive'
+                            ? 'STATUS: NO PATH POSSIBLE'
+                            : 'STATUS: COMPLETE';
+                        setStatus(msg, 'success');
+                        break;
+                    }
+                    render();
+                    updateStats();
+                    const delayValue = parseInt(ui.delay.value);
+                    if (delayValue > 0) await new Promise(r => setTimeout(r, delayValue));
+                }
+            }
+
+            if (state.mode === 'SORT' && !state.stopRequested) {
+                state.visited = new Set(state.data.keys());
+            }
+
+            render();
+            state.active = false;
+            state.stopRequested = false;
+            ui.btnStart.disabled = false;
+            ui.btnStop.disabled = true;
+            ui.mode.disabled = false;
+            ui.algo.disabled = false;
+            ui.btnReset.disabled = false;
+        });
+
+        ui.btnStop.addEventListener('click', () => {
+            state.stopRequested = true;
+        });
+
+        ui.btnReset.addEventListener('click', initDomain);
+        ui.mode.addEventListener('change', initDomain);
+        ui.algo.addEventListener('change', updateAlgoInfo);
+        ui.btnTheory.addEventListener('click', () => {
+            const algoId = ui.algo.value;
+            const algo = ALGORITHMS[state.mode].find(a => a.id === algoId);
+            if (algo) {
+                ui.theoryTitle.innerText = `${algo.name} Theory`;
+                ui.theoryContent.innerHTML = `
+                    <div style="margin-bottom:15px">${algo.theory}</div>
+                    <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:15px">
+                        <strong style="font-size:11px; text-transform:uppercase; color:#64748b; tracking:0.05em">Visual Schema</strong>
+                        ${algo.diagram || '<p>Visualization loading...</p>'}
+                    </div>
+                    <button id="btnReadMore" class="btn-full-wiki">Read Full Encyclopedia & Examples</button>
+                `;
+
+                document.getElementById('btnReadMore').addEventListener('click', () => {
+                    window.location.href = `detailed-view.html?algo=${algoId}`;
+                });
+                ui.theoryModal.classList.add('active');
+                ui.modalOverlay.classList.add('active');
+            }
+        });
+
+        ui.btnCloseTheory.addEventListener('click', () => {
+            ui.theoryModal.classList.remove('active');
+            ui.modalOverlay.classList.remove('active');
+        });
+
+        if (ui.openSettings) {
+            ui.openSettings.addEventListener('click', () => {
+                ui.sidebar.classList.add('active');
+            });
+        }
+
+        if (ui.closeSettings) {
+            ui.closeSettings.addEventListener('click', () => {
+                ui.sidebar.classList.remove('active');
+            });
+        }
+
+        if (ui.mobileLogicToggle) {
+            ui.mobileLogicToggle.addEventListener('click', () => {
+                ui.logicSidebar.classList.add('active');
+            });
+        }
+
+        if (ui.closeLogic) {
+            ui.closeLogic.addEventListener('click', () => {
+                ui.logicSidebar.classList.remove('active');
+            });
+        }
+
+        ui.modalOverlay.addEventListener('click', () => {
+            ui.theoryModal.classList.remove('active');
+            ui.modalOverlay.classList.remove('active');
+        });
+
+        ui.density.addEventListener('input', (e) => { ui.densityVal.innerText = e.target.value; initDomain(); saveSettings(); });
+        ui.gridDensity.addEventListener('input', (e) => { ui.gridDensityVal.innerText = e.target.value; initDomain(); saveSettings(); });
+        ui.delay.addEventListener('input', (e) => { ui.delayVal.innerText = e.target.value; saveSettings(); });
+        ui.mode.addEventListener('change', () => { initDomain(); saveSettings(); });
+        ui.algo.addEventListener('change', () => { updateAlgoInfo(); saveSettings(); });
+        ui.btnSnapshot.addEventListener('click', takeSnapshot);
+
+        const logicSidebar = document.querySelector('.logic-sidebar');
+        const mobileToggle = document.getElementById('mobileLogicToggle');
+        const closeLogic = document.getElementById('closeLogicDrawer');
+
+        mobileToggle.addEventListener('click', () => {
+            logicSidebar.classList.toggle('active');
+        });
+
+        closeLogic.addEventListener('click', () => {
+            logicSidebar.classList.remove('active');
+        });
+
+        // Close on escape or outside click if mobile
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                logicSidebar.classList.remove('active');
+            }
+        });
+
+        window.addEventListener('resize', resize);
+        resize();
+        loadSettings();
+        initDomain();
+    </script>
+</body>
+
+</html>
