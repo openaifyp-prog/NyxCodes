@@ -166,7 +166,7 @@
 
         .type-huge {
             font-family: 'Playfair Display', serif;
-            font-size: 7rem;
+            font-size: clamp(4rem, 15vw, 7rem);
             color: #fff;
             line-height: 1;
             font-style: italic;
@@ -212,25 +212,27 @@
 
             .ds-vl-footer {
                 padding: 3rem 1.5rem;
+                border-radius: 0;
             }
 
             .ds-vl-grid {
                 grid-template-columns: 1fr;
-                gap: 5rem;
+                gap: 4rem;
             }
 
             .vl-colors {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
 
             .type-huge {
-                font-size: clamp(4rem, 15vw, 7rem);
                 text-align: center;
             }
 
             .type-showcase {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 1.5rem;
                 text-align: center;
             }
 
@@ -238,7 +240,7 @@
                 border-left: none !important;
                 border-top: 1px solid rgba(255, 255, 255, 0.2);
                 padding-left: 0 !important;
-                padding-top: 1rem;
+                padding-top: 1.5rem;
             }
         }
     </style>

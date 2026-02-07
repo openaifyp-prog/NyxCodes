@@ -233,33 +233,37 @@
 
         @media (max-width: 768px) {
             .ca-ds-container {
-                padding: 4rem 1.5rem;
+                padding: 3rem 1.5rem;
                 margin-top: 6rem;
+                border-radius: 20px;
             }
 
             .ca-ds-grid {
                 grid-template-columns: 1fr;
-                gap: 5rem;
+                gap: 4rem;
             }
 
             .color-grid-ca {
                 justify-content: center;
+                flex-wrap: wrap;
+                gap: 1.5rem;
             }
 
             .font-preview-ca {
-                font-size: clamp(3rem, 15vw, 6rem);
+                font-size: clamp(3rem, 15vw, 5rem);
             }
 
             .font-row-ca {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
             }
 
             .font-row-ca div:last-child {
                 border-left: none !important;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
                 padding-left: 0 !important;
-                padding-top: 1rem;
+                padding-top: 1.5rem;
             }
         }
 
