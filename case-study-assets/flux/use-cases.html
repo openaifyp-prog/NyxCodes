@@ -30,6 +30,12 @@
             padding: 8rem 5% 2rem;
         }
 
+        @media (max-width: 768px) {
+            .fx-clean-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+        }
+
         /* --- Section Headers --- */
         .fx-header-group {
             text-align: center;
@@ -38,7 +44,7 @@
 
         .fx-header-group h2 {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             color: var(--brand-dark);
             margin-bottom: 1rem;
             letter-spacing: -0.025em;
@@ -47,7 +53,7 @@
         /* --- Tech Specs --- */
         .fx-specs-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 2rem;
             margin-bottom: 6rem;
             border-bottom: 1px solid var(--border-light);
@@ -64,7 +70,7 @@
         }
 
         .spec-item-fx p {
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             color: var(--brand-dark);
             margin: 0;
             font-weight: 700;
@@ -181,6 +187,23 @@
             .fx-feature-row.reverse {
                 flex-direction: column;
                 gap: 2rem;
+                margin-bottom: 4rem;
+            }
+
+            .ds-fx-footer {
+                padding: 3rem 1.5rem;
+            }
+
+            .fx-colors {
+                justify-content: center;
+            }
+
+            .type-showcase {
+                text-align: center;
+                padding-left: 0;
+                border-left: none;
+                border-top: 4px solid var(--brand-primary);
+                padding-top: 1rem;
             }
         }
 
@@ -191,7 +214,7 @@
 
         .type-huge {
             font-family: 'Inter', sans-serif;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 12vw, 3.5rem);
             font-weight: 800;
             color: var(--brand-dark);
             line-height: 1;

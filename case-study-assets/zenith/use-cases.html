@@ -29,6 +29,12 @@
             padding: 8rem 5% 2rem;
         }
 
+        @media (max-width: 768px) {
+            .zn-clean-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+        }
+
         /* --- Section Headers --- */
         .zn-header-group {
             text-align: center;
@@ -37,7 +43,7 @@
 
         .zn-header-group h2 {
             font-family: var(--font-display);
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 10vw, 3.5rem);
             font-style: italic;
             color: var(--brand-primary);
             margin-bottom: 1rem;
@@ -47,7 +53,7 @@
         /* --- Tech Specs --- */
         .zn-specs-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 2rem;
             margin-bottom: 6rem;
             border-bottom: 1px solid #d4d4d4;
@@ -66,7 +72,7 @@
 
         .spec-item-zn p {
             font-family: var(--font-display);
-            font-size: 1.8rem;
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
             color: var(--brand-primary);
             margin: 0;
             font-style: italic;
@@ -158,11 +164,20 @@
             .zn-feature-row.reverse {
                 flex-direction: column;
                 gap: 3rem;
+                margin-bottom: 5rem;
             }
 
             .zn-feature-visual {
                 height: 300px;
                 width: 100%;
+            }
+
+            .ds-zn-footer {
+                padding: 3rem 1.5rem;
+            }
+
+            .zn-colors {
+                flex-wrap: wrap;
             }
         }
 
@@ -172,7 +187,7 @@
 
         .type-huge {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 5rem;
+            font-size: clamp(3rem, 15vw, 5rem);
             font-style: italic;
             line-height: 1;
             color: var(--brand-primary);

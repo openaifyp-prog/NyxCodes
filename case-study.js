@@ -38,8 +38,12 @@ function loadProject(id) {
     safeSetText('hero-intro', data.intro);
     safeSetText('challenge-text', data.challenge);
     safeSetText('solution-text', data.solution);
+    safeSetText('nav-project-name', data.title);
 
-    // --- C. BUTTON LINKING ---
+    // --- C. NAVIGATION LOGIC ---
+    setupNavigation(data);
+
+    // --- D. BUTTON LINKING ---
     const btnLive = document.getElementById('btn-live');
     if (btnLive) {
         btnLive.href = data.liveLink || '#';
@@ -156,6 +160,41 @@ function loadProject(id) {
             useCaseWrapper.appendChild(row);
         });
     }
+}
+
+function setupNavigation(data) {
+    const navBar = document.getElementById('main-nav');
+    const navTitle = document.getElementById('nav-title-container');
+    const progressBar = document.getElementById('nav-progress');
+    const heroSection = document.querySelector('.hero');
+
+    if (!navBar || !navTitle || !progressBar) return;
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+
+        // 1. Update Progress Bar
+        progressBar.style.width = scrollPercent + '%';
+
+        // 2. Scrolled State (Glassmorphism transition)
+        if (scrollTop > 50) {
+            navBar.classList.add('scrolled');
+        } else {
+            navBar.classList.remove('scrolled');
+        }
+
+        // 3. Show Title after Hero
+        if (heroSection) {
+            const heroBottom = heroSection.offsetTop + heroSection.offsetHeight - 100;
+            if (scrollTop > heroBottom) {
+                navTitle.classList.add('visible');
+            } else {
+                navTitle.classList.remove('visible');
+            }
+        }
+    });
 }
 
 

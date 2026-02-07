@@ -32,6 +32,12 @@
             padding: 8rem 5% 2rem;
         }
 
+        @media (max-width: 768px) {
+            .sx-clean-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+        }
+
         /* --- Section Headers --- */
         .sx-header-group {
             text-align: center;
@@ -40,7 +46,7 @@
 
         .sx-header-group h2 {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             color: var(--brand-dark);
             margin-bottom: 1rem;
             font-weight: 700;
@@ -49,7 +55,7 @@
         /* --- Tech Specs --- */
         .sx-specs-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 2rem;
             margin-bottom: 6rem;
             border-bottom: 1px solid var(--border-light);
@@ -67,7 +73,7 @@
 
         .spec-item-sx p {
             font-family: var(--font-code);
-            font-size: 1.4rem;
+            font-size: clamp(1.1rem, 4.5vw, 1.4rem);
             color: var(--brand-dark);
             margin: 0;
             font-weight: 500;
@@ -180,6 +186,19 @@
             .sx-feature-row.reverse {
                 flex-direction: column;
                 gap: 2rem;
+                margin-bottom: 4rem;
+            }
+
+            .ds-sx-footer {
+                padding: 3rem 1.5rem;
+            }
+
+            .sx-colors {
+                justify-content: center;
+            }
+
+            .type-showcase {
+                text-align: center;
             }
         }
 
@@ -192,7 +211,7 @@
 
         .type-huge {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 3rem;
+            font-size: clamp(2rem, 10vw, 3rem);
             color: var(--brand-dark);
             line-height: 1;
             margin-bottom: 0.5rem;

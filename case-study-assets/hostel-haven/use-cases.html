@@ -40,7 +40,7 @@
 
         .hh-header-group h2 {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             color: var(--brand-dark);
             margin-bottom: 1rem;
             font-weight: 700;
@@ -49,7 +49,7 @@
         /* --- Tech Specs --- */
         .hh-specs-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 2rem;
             margin-bottom: 6rem;
             border-bottom: 1px solid var(--border-light);
@@ -67,7 +67,7 @@
 
         .spec-item-hh p {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             color: var(--brand-primary);
             margin: 0;
             font-weight: 700;
@@ -87,7 +87,7 @@
 
         .hh-feature-content h3 {
             font-family: var(--font-display);
-            font-size: 2.25rem;
+            font-size: clamp(1.75rem, 6vw, 2.25rem);
             color: var(--brand-dark);
             margin-bottom: 1.5rem;
         }
@@ -110,6 +110,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            width: 100%;
         }
 
         .mock-input {
@@ -150,7 +151,7 @@
         .ds-hh-footer {
             background: #fff;
             border-radius: 16px;
-            padding: 4rem;
+            padding: 4rem 2rem;
             border: 1px solid var(--border-light);
         }
 
@@ -172,11 +173,31 @@
         }
 
         @media (max-width: 768px) {
+            .hh-clean-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+
+            .hh-header-group {
+                margin-bottom: 3rem;
+            }
 
             .hh-feature-row,
             .hh-feature-row.reverse {
                 flex-direction: column;
                 gap: 2rem;
+                margin-bottom: 5rem;
+            }
+
+            .ds-hh-footer {
+                padding: 3rem 1.5rem;
+            }
+
+            .ds-hh-grid {
+                gap: 3rem;
+            }
+
+            .hh-colors {
+                justify-content: center;
             }
         }
 
@@ -186,7 +207,7 @@
 
         .type-huge {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 12vw, 3.5rem);
             font-style: italic;
             color: var(--brand-primary);
             line-height: 1;

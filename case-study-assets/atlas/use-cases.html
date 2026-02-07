@@ -31,6 +31,12 @@
             padding: 8rem 5% 2rem;
         }
 
+        @media (max-width: 768px) {
+            .atlas-clean-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+        }
+
         /* --- Section Headers --- */
         .atlas-header-group {
             text-align: center;
@@ -39,7 +45,7 @@
 
         .atlas-header-group h2 {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
             color: var(--brand-dark);
             margin-bottom: 1rem;
         }
@@ -54,7 +60,7 @@
         /* --- Tech Specs (Clean Grid) --- */
         .atlas-specs-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 2rem;
             margin-bottom: 6rem;
             border-bottom: 1px solid var(--border-light);
@@ -73,7 +79,7 @@
         .spec-item-clean p {
             font-family: var(--font-display);
             /* Brand font for values */
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4.5vw, 1.5rem);
             color: var(--brand-dark);
             margin: 0;
             font-weight: 700;
@@ -190,7 +196,7 @@
 
         .font-big {
             font-family: 'Playfair Display', serif;
-            font-size: 6rem;
+            font-size: clamp(3rem, 15vw, 6rem);
             line-height: 1;
             color: #f4efe6;
         }

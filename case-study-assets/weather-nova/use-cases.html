@@ -32,6 +32,12 @@
             padding: 8rem 5% 2rem;
         }
 
+        @media (max-width: 768px) {
+            .wn-clean-wrapper {
+                padding: 4rem 5% 2rem;
+            }
+        }
+
         /* --- Section Headers --- */
         .wn-header-group {
             text-align: center;
@@ -40,7 +46,7 @@
 
         .wn-header-group h2 {
             font-family: var(--font-display);
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 10vw, 3.5rem);
             background: linear-gradient(135deg, #0ea5e9, #2563eb);
             -webkit-background-clip: text;
             background-clip: text;
@@ -52,7 +58,7 @@
         /* --- Tech Specs --- */
         .wn-specs-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 2rem;
             margin-bottom: 6rem;
             border-bottom: 1px solid var(--border-light);
@@ -69,7 +75,7 @@
         }
 
         .spec-item-wn p {
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             color: var(--brand-dark);
             margin: 0;
             font-weight: 700;
@@ -143,7 +149,7 @@
         /* --- Design System Footer --- */
         .ds-wn-footer {
             margin-top: 10rem;
-            padding: 5rem;
+            padding: 5rem 2rem;
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             border: 1px solid #bae6fd;
@@ -175,7 +181,7 @@
         }
 
         .type-huge {
-            font-size: 6rem;
+            font-size: clamp(3rem, 15vw, 6rem);
             font-weight: 800;
             line-height: 1;
             background: linear-gradient(135deg, #0ea5e9, #1e3a8a);
