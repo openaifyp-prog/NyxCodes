@@ -38,6 +38,7 @@ body {
     background-color: var(--bg-cream);
     line-height: 1.6;
     overflow-x: hidden;
+    width: 100%;
 }
 
 a {
