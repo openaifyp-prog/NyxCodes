@@ -1,4 +1,5 @@
 import { Pseudocode } from './utils/pseudocode.js';
+import { Theory } from './utils/theory.js';
 import { RENDER_MODE } from './engine.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -20,7 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         comparisons: document.getElementById('statComparisons'),
         steps: document.getElementById('statSwaps'),
         bigO: document.getElementById('statComplexity'),
-        currentMode: document.getElementById('currentMode')
+        currentMode: document.getElementById('currentMode'),
+        theory: document.getElementById('btnTheory'),
+        theoryModal: document.getElementById('theoryModal'),
+        theoryClose: document.getElementById('btnCloseTheory'),
+        theoryTitle: document.getElementById('theoryTitle'),
+        theoryContent: document.getElementById('theoryContent'),
+        overlay: document.getElementById('modalOverlay')
     };
 
     const algorithms = {
@@ -193,6 +200,33 @@ document.addEventListener('DOMContentLoaded', () => {
         randomize();
     });
 
+    // Theory Modal Logic
+    const toggleTheory = (show) => {
+        ui.theoryModal.classList.toggle('active', show);
+        ui.overlay.classList.toggle('active', show);
+    };
+
+    ui.theory.addEventListener('click', () => {
+        const algoId = ui.algorithm.value;
+        const data = Theory[algoId];
+        if (data) {
+            ui.theoryTitle.textContent = data.title;
+            ui.theoryContent.innerHTML = `
+                <p style="margin-bottom: 15px">${data.description}</p>
+                <div style="background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                    <strong style="display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase;">Theoretical Complexity</strong>
+                    <code style="color: #3b82f6; font-weight: bold;">${data.complexity}</code>
+                    <strong style="display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase; margin-top: 10px;">Common Use Case</strong>
+                    <span style="font-size: 0.9rem;">${data.useCase}</span>
+                </div>
+            `;
+            toggleTheory(true);
+        }
+    });
+
+    ui.theoryClose.addEventListener('click', () => toggleTheory(false));
+    ui.overlay.addEventListener('click', () => toggleTheory(false));
+
     // Final Init
     const rect = canvas.parentElement.getBoundingClientRect();
     const offscreen = canvas.transferControlToOffscreen();
@@ -208,4 +242,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }, [offscreen]);
 
     initMode('LINEAR');
+
+    // Handle Resize
+    window.addEventListener('resize', () => {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        worker.postMessage({
+            type: 'RESIZE',
+            payload: {
+                width: rect.width,
+                height: rect.height
+            }
+        });
+    });
 });
+

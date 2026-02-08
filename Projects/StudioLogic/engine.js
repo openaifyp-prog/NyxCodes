@@ -208,9 +208,19 @@ export class UnifiedRenderer {
     renderGrid(ctx, width, height) {
         if (!this.data || !this.data.grid) return;
 
-        const { grid, cols, rows } = this.data;
-        const cellW = width / cols;
-        const cellH = height / rows;
+        const { grid, cols, rows, start, end } = this.data;
+
+        // Mobile Adaptive Padding (Safe Zone)
+        const isMobile = width < 768;
+        const padding = isMobile ? 24 : 0;
+        const availableW = width - (padding * 2);
+        const availableH = height - (padding * 2);
+
+        const cellW = availableW / cols;
+        const cellH = availableH / rows;
+
+        ctx.save();
+        ctx.translate(padding, padding);
 
         for (let r = 0; r < rows; r++) {
             for (let c = 0; c < cols; c++) {
@@ -227,6 +237,28 @@ export class UnifiedRenderer {
                 }
             }
         }
+
+        // Render Start (A) and End (B) Markers
+        const drawMarker = (posStr, label, color) => {
+            if (!posStr) return;
+            const [r, c] = posStr.split(',').map(Number);
+            const x = c * cellW + cellW / 2;
+            const y = r * cellH + cellH / 2;
+
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, Math.min(cellW, cellH) * 0.4, 0, Math.PI * 2);
+            ctx.fill();
+
+            ctx.fillStyle = '#ffffff';
+            ctx.font = `bold ${Math.min(cellW, cellH) * 0.5}px Inter`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(label, x, y);
+        };
+
+        drawMarker(start, 'A', '#3b82f6');
+        drawMarker(end, 'B', '#10b981');
 
         if (this.path.length > 0) {
             ctx.beginPath();
@@ -245,6 +277,8 @@ export class UnifiedRenderer {
             ctx.stroke();
             ctx.shadowBlur = 0;
         }
+
+        ctx.restore();
     }
 }
 

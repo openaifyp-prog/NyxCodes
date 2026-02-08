@@ -23,10 +23,30 @@
                     <li><a href="index.html#vibe">The Vibe</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
-                <a href="#book" class="btn-book">Book a Stay</a>
+                <div class="nav-actions">
+                    <a href="rooms.html" class="btn-book">Book a Stay</a>
+                    <button class="menu-toggle" aria-label="Toggle Menu">
+                        <span class="hamburger"></span>
+                    </button>
+                </div>
             </nav>
+
+            <!-- Mobile Menu Overlay -->
+            <div class="mobile-menu-overlay">
+                <div class="mobile-menu">
+                    <button class="menu-close">&times;</button>
+                    <ul class="mobile-nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rooms.html" class="active">Bunks & Rooms</a></li>
+                        <li><a href="index.html#vibe">The Vibe</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <a href="rooms.html" class="btn-book">Book a Stay</a>
+                </div>
+            </div>
         </div>
     </header>
+
 
     <section class="hero" style="min-height: 400px; padding-top: 120px; align-items: flex-start;">
         <div class="container" style="display: block; text-align: center;">

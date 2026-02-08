@@ -840,8 +840,8 @@
             }
 
             .main-content {
-                height: 65vh;
-                /* Cinematic Stage */
+                height: calc(100vh - 80px);
+                /* Fill screen, minus header space */
                 flex-shrink: 0;
                 padding: 12px;
                 background: transparent;
@@ -912,6 +912,8 @@
                 margin: 0;
                 box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
                 background: white;
+                min-height: 200px;
+                /* Reduced to fit small screens */
             }
 
             .view-header {
@@ -931,6 +933,12 @@
                 transform: translateY(72px);
                 pointer-events: none;
             }
+
+            .view-header * {
+                pointer-events: auto;
+                /* Allow buttons/chips to be clickable */
+            }
+
 
             #viewTitle {
                 font-size: 0.85rem !important;
@@ -973,7 +981,6 @@
             }
         }
 
-        /* Diagram Components */
         .diagram-container {
             display: flex;
             gap: 4px;
