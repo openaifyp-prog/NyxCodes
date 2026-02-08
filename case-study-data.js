@@ -1141,7 +1141,7 @@ const PROJECTS_DETAILS = {
         intro: "A high-performance, browser-based operating system featuring a custom windowing engine, terminal, and integrated application suite. Built to push the boundaries of Vanilla JavaScript performance and UI design.",
         themeColor: "#6366f1", // Indigo 500
         tech: ["Vanilla JS", "HTML5/CSS3", "Windowing Engine", "Glassmorphism", "Terminal Emulator"],
-        mockup: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1200", // Futuristic OS Mockup
+        mockup: "assets/images/nebula-showcase.png", // Bespoke Mockup
         customContent: "case-study-assets/nebula-os/use-cases.html", // NEW: Bespoke Layout
         diagram: "case-study-assets/nebula-os/architecture.png",
         challenge: "Building a robust, state-managed windowing system and multi-level application environment without external frameworks, while maintaining high visual fidelity (glassmorphism/blur) and real-time responsiveness.",

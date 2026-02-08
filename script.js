@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: "nebula-os",
             title: "Nebula OS",
-            image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1200", // Futuristic Desktop
+            image: "assets/images/nebula-showcase.png",
             tags: ["OS", "Architecture", "Glassmorphism", "JS"],
             description: "A high-performance virtual operating system built with vanilla JavaScript. Features a windowing engine, terminal, and project system. The masterpiece of this portfolio.",
             category: "Web",
