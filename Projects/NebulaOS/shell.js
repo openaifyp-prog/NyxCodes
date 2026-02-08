@@ -323,59 +323,59 @@ class NebulaShell {
         const cursorDot = document.getElementById('cursor-dot');
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-        if (isTouch) {
-            cursor.style.display = 'none';
-            cursorDot.style.display = 'none';
-            return;
-        }
+        if (!isTouch) {
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+            let dotX = 0, dotY = 0;
 
-        let mouseX = 0, mouseY = 0;
-        let cursorX = 0, cursorY = 0;
-        let dotX = 0, dotY = 0;
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
 
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            // Update Window Shine (Directly for responsiveness)
-            document.querySelectorAll('.window').forEach(win => {
-                const rect = win.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                win.style.setProperty('--mouse-x', `${x}px`);
-                win.style.setProperty('--mouse-y', `${y}px`);
-                const shine = (x / rect.width) * 50 - 25;
-                win.style.setProperty('--shine-pos', `${shine}%`);
+                // Update Window Shine (Directly for responsiveness)
+                document.querySelectorAll('.window').forEach(win => {
+                    const rect = win.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    win.style.setProperty('--mouse-x', `${x}px`);
+                    win.style.setProperty('--mouse-y', `${y}px`);
+                    const shine = (x / rect.width) * 50 - 25;
+                    win.style.setProperty('--shine-pos', `${shine}%`);
+                });
             });
-        });
 
-        // Animation Loop for Smooth Cursor
-        const animateCursor = () => {
-            // Lerp (Linear Interpolation) for outer ring
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
+            // Animation Loop for Smooth Cursor
+            const animateCursor = () => {
+                // Lerp (Linear Interpolation) for outer ring
+                cursorX += (mouseX - cursorX) * 0.15;
+                cursorY += (mouseY - cursorY) * 0.15;
 
-            // Fast follow for inner dot
-            dotX += (mouseX - dotX) * 0.45;
-            dotY += (mouseY - dotY) * 0.45;
+                // Fast follow for inner dot
+                dotX += (mouseX - dotX) * 0.45;
+                dotY += (mouseY - dotY) * 0.45;
 
-            cursor.style.left = `${cursorX - 20}px`;
-            cursor.style.top = `${cursorY - 20}px`;
+                cursor.style.left = `${cursorX - 20}px`;
+                cursor.style.top = `${cursorY - 20}px`;
 
-            cursorDot.style.left = `${dotX - 3}px`;
-            cursorDot.style.top = `${dotY - 3}px`;
+                cursorDot.style.left = `${dotX - 3}px`;
+                cursorDot.style.top = `${dotY - 3}px`;
 
-            requestAnimationFrame(animateCursor);
-        };
-        animateCursor();
+                requestAnimationFrame(animateCursor);
+            };
+            animateCursor();
 
-        document.addEventListener('mousedown', () => document.body.classList.add('cursor-active'));
-        document.addEventListener('mouseup', () => document.body.classList.remove('cursor-active'));
+            document.addEventListener('mousedown', () => document.body.classList.add('cursor-active'));
+            document.addEventListener('mouseup', () => document.body.classList.remove('cursor-active'));
 
-        document.querySelectorAll('button, .icon, .project-item, .control-btn, #login-btn').forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-        });
+            document.querySelectorAll('button, .icon, .project-item, .control-btn, #login-btn').forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+            });
+        } else {
+            if (cursor) cursor.style.display = 'none';
+            if (cursorDot) cursorDot.style.display = 'none';
+            document.body.style.cursor = 'default';
+        }
 
         this.startBtn.addEventListener('click', (e) => {
             e.stopPropagation();
