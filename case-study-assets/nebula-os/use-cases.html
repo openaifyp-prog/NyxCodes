@@ -1,0 +1,161 @@
+<div class="neb-theme-wrapper">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Inter:wght@400;600&display=swap');
+
+        .neb-theme-wrapper {
+            --neb-primary: #6366f1;
+            --neb-accent: #06b6d4;
+            --neb-bg: #0b0e14;
+            --neb-card: rgba(255, 255, 255, 0.03);
+            --neb-border: rgba(255, 255, 255, 0.1);
+            --font-main: 'Inter', sans-serif;
+            --font-os: 'Orbitron', sans-serif;
+
+            background: var(--neb-bg);
+            color: #fff;
+            font-family: var(--font-main);
+            padding: 80px 5% 40px;
+            border-radius: 24px;
+            margin-top: 40px;
+        }
+
+        .neb-section-title {
+            font-family: var(--font-os);
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            text-align: center;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, var(--neb-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        .neb-section-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .neb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .neb-card {
+            background: var(--neb-card);
+            border: 1px solid var(--neb-border);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .neb-card:hover {
+            border-color: var(--neb-primary);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .neb-card h3 {
+            font-family: var(--font-os);
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--neb-accent);
+        }
+
+        .neb-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .neb-tag-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .neb-tag {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--neb-primary);
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* Architectural Diagram Placeholder */
+        .neb-diag {
+            margin-top: 80px;
+            padding: 60px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--neb-border);
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .neb-theme-wrapper {
+                padding: 40px 20px;
+            }
+
+            .neb-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .neb-diag {
+                padding: 30px;
+            }
+        }
+    </style>
+
+    <h2 class="neb-section-title">SYSTEM ARCHITECTURE</h2>
+    <p class="neb-section-subtitle">A modular, high-fidelity environment built on top of a bespoke windowing engine.</p>
+
+    <div class="neb-grid">
+        <div class="neb-card">
+            <h3>Custom Windowing Engine</h3>
+            <p>Built from the ground up to handle complex window life-cycles, including real-time resizing, boundary
+                clamping, and z-index management. It mimics a native OS experience with zero external dependencies.</p>
+            <div class="neb-tag-container">
+                <span class="neb-tag">DOM Lifecycle</span>
+                <span class="neb-tag">Z-Index Orchestrator</span>
+            </div>
+        </div>
+
+        <div class="neb-card">
+            <h3>Integrated Sandbox Apps</h3>
+            <p>Nebula OS supports a growing ecosystem of tools, from a fully functional Terminal with its own VFS to a
+                Game Center featuring AI-driven logic and multi-level difficulty scaling.</p>
+            <div class="neb-tag-container">
+                <span class="neb-tag">Terminal Emulator</span>
+                <span class="neb-tag">Stateful Gaming</span>
+            </div>
+        </div>
+
+        <div class="neb-card">
+            <h3>Aero-Neon Aesthetic</h3>
+            <p>The UI leverages modern CSS techniques like backdrop-filtering and custom-property animation to achieve a
+                premium 'Glassmorphic' feel that remains performant across all devices.</p>
+            <div class="neb-tag-container">
+                <span class="neb-tag">Glassmorphism</span>
+                <span class="neb-tag">AERO Design</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="neb-diag">
+        <h4 style="color: var(--neb-primary); font-family: var(--font-os); margin-bottom: 20px;">The Masterpiece
+            Pipeline</h4>
+        <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem;">From Shell initialization to dynamic application
+            sandboxing, Nebula OS represents a peak in browser-based system simulation.</p>
+    </div>
+</div>

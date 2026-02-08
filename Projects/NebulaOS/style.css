@@ -522,6 +522,53 @@ html {
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* --- Mobile Optimizations --- */
+@media (max-width: 600px) {
+    #system-menu {
+        width: calc(100% - 20px) !important;
+        left: 10px !important;
+        bottom: 60px !important;
+        padding: 15px !important;
+    }
+
+    #desktop-icons {
+        top: 20px !important;
+        left: 20px !important;
+        grid-template-columns: repeat(1, 100px) !important;
+        gap: 15px !important;
+    }
+
+    .icon-img {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 24px !important;
+    }
+
+    #desktop-hud {
+        top: 15px !important;
+        right: 15px !important;
+        transform: scale(0.8) !important;
+        transform-origin: top right !important;
+    }
+
+    .window {
+        border-radius: 8px !important;
+    }
+
+    .window-header {
+        height: 36px !important;
+        padding: 0 10px !important;
+    }
+
+    .window-title {
+        font-size: 11px !important;
+    }
+
+    .window-content {
+        padding: 15px !important;
+    }
+}
+
 #login-screen.hidden {
     opacity: 0;
     pointer-events: none;

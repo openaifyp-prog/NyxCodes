@@ -379,7 +379,12 @@ class NebulaShell {
 
         this.startBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            this.systemMenu.classList.toggle('hidden');
+            const isHidden = this.systemMenu.classList.contains('hidden');
+            if (isHidden) {
+                this.systemMenu.classList.remove('hidden');
+            } else {
+                this.systemMenu.classList.add('hidden');
+            }
         });
 
         // System Menu Links
@@ -398,12 +403,18 @@ class NebulaShell {
             item.innerHTML = `<span>${link.icon}</span><span style="font-size: 14px;">${link.label}</span>`;
             item.addEventListener('mouseenter', () => item.style.background = 'rgba(255,255,255,0.05)');
             item.addEventListener('mouseleave', () => item.style.background = 'transparent');
-            item.addEventListener('click', link.action);
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                link.action();
+                this.systemMenu.classList.add('hidden');
+            });
             menuLinks.appendChild(item);
         });
 
-        document.addEventListener('click', () => {
-            this.systemMenu.classList.add('hidden');
+        document.addEventListener('click', (e) => {
+            if (!this.systemMenu.contains(e.target) && e.target !== this.startBtn && !this.startBtn.contains(e.target)) {
+                this.systemMenu.classList.add('hidden');
+            }
         });
 
         this.systemMenu.addEventListener('click', (e) => {
