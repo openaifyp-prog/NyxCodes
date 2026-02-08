@@ -1118,7 +1118,7 @@ const PROJECTS_DETAILS = {
                     "Binary Heap used for efficient open-set management in Worker",
                     "A* heuristic (Manhattan/Euclidean) calculated per frame",
                     "OffscreenCanvas context handles Bloom and Particle VFX additive blending",
-                    "Main thread remains interactive for real-time obstacle placement"
+                    "Main thread interactive for real-time obstacle placement"
                 ]
             },
             {
@@ -1132,10 +1132,79 @@ const PROJECTS_DETAILS = {
                 ]
             }
         ],
-
-
         gallery: [],
         liveLink: "Projects/StudioLogic/index.html"
+    },
+    "nebula-os": {
+        title: "Nebula OS",
+        tagline: "Virtual Operating System / Vanilla JS / Glassmorphism",
+        intro: "A high-performance, browser-based operating system featuring a custom windowing engine, terminal, and integrated application suite. Built to push the boundaries of Vanilla JavaScript performance and UI design.",
+        themeColor: "#6366f1", // Indigo 500
+        tech: ["Vanilla JS", "HTML5/CSS3", "Windowing Engine", "Glassmorphism", "Terminal Emulator"],
+        mockup: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1200", // Futuristic OS Mockup
+        customContent: "case-study-assets/nebula-os/use-cases.html", // NEW: Bespoke Layout
+        diagram: "case-study-assets/nebula-os/architecture.png",
+        challenge: "Building a robust, state-managed windowing system and multi-level application environment without external frameworks, while maintaining high visual fidelity (glassmorphism/blur) and real-time responsiveness.",
+        solution: "Engineered a central `WindowManager` class that handles DOM-based window life-cycles. Implemented a decoupled App Architect where games and tools communicate via a shell interface, optimized for mobile with touch-friendly interactions.",
+        results: [
+            "Fluid 60FPS windowing engine with drag/resize/minimize/maximize.",
+            "Integrated App Ecosystem (Terminal, Games, Settings).",
+            "Full Mobile Responsiveness with touch-optimized controls.",
+            "Zero-dependency high-fidelity Aero-Neon aesthetic."
+        ],
+        typography: {
+            primary: "Inter",
+            secondary: "Orbitron"
+        },
+        colors: [
+            { name: "Nebula Indigo", hex: "#6366f1" },
+            { name: "Glass Base", hex: "rgba(255,255,255,0.05)" },
+            { name: "Neon Cyan", hex: "#06b6d4" },
+            { name: "Terminal Green", hex: "#10b981" }
+        ],
+        architecture: [
+            { stage: "Shell Integration", desc: "Core system loop managing desktop icons, taskbar state, and application initialization." },
+            { stage: "Window Orchestration", desc: "Class-based management of z-index, boundaries, and interactive window controls." },
+            { stage: "App Sandbox", desc: "Decoupled application logic (Games/Tools) that plugs into the system via standardized APIs." }
+        ],
+        personas: [
+            {
+                name: "Jordan T.",
+                role: "Tech Enthusiast / Recruiter",
+                goal: "Quickly assess the developer's raw JavaScript skills and design sensibility through a complex, interactive project.",
+                painPoint: "Generic portfolios are often static and don't demonstrate system-level architectural thinking.",
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200"
+            }
+        ],
+        userJourney: [
+            { title: "Authentication", desc: "User lands on a premium glassmorphic login screen with atmospheric animations." },
+            { title: "System Exploration", desc: "User interacts with the desktop, launches multiple apps, and tests window tiling logic." },
+            { title: "Arcade Experience", desc: "User plays integrated mini-games with varying difficulty levels and touch support." }
+        ],
+        detailedUseCases: [
+            {
+                title: "Windowing Engine Life-cycle",
+                scenario: "A user launches the 'Terminal'. The system must create a unique DOM node, calculate initial placement, handle z-index focusing, and manage smooth transitions for minimize/maximize states.",
+                logic: [
+                    "Shell triggers `WindowManager.createWindow(config)`",
+                    "Z-index increments globally to focus the new active window",
+                    "GSAP-like CSS transitions handle scale and opacity morphs",
+                    "Event listeners attached for boundary-clamped dragging"
+                ]
+            },
+            {
+                title: "Arcade Mobile Optimization",
+                scenario: "In Minesweeper, right-clicking (flagging) is impossible on mobile. The system detects touch support and enables a 'Long Press' gesture (500ms) to toggle flags.",
+                logic: [
+                    "Feature detection checks for 'ontouchstart' in window",
+                    "TouchStart timer initiated; cleared if touch ends prematurely",
+                    "Vibration API feedback (50ms) confirms successful flag placement",
+                    "UI adjusts grid columns dynamically for vertical screen orientations"
+                ]
+            }
+        ],
+        gallery: [],
+        liveLink: "Projects/NebulaOS/index.html"
     }
 };
 

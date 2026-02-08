@@ -268,6 +268,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 6. Projects Data & Rendering ---
     const projectsData = [
         {
+            id: "nebula-os",
+            title: "Nebula OS",
+            image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=1200", // Futuristic Desktop
+            tags: ["OS", "Architecture", "Glassmorphism", "JS"],
+            description: "A high-performance virtual operating system built with vanilla JavaScript. Features a windowing engine, terminal, and project system. The masterpiece of this portfolio.",
+            category: "Web",
+            link: "Projects/NebulaOS/index.html",
+            hasCaseStudy: true
+        },
+
+        {
             id: "clean-africa",
             title: "Clean Africa NGO",
             image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=1200", // Clean Africa NGO

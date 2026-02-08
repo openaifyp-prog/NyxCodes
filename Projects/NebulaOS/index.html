@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula OS | Personal Desktop</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-dot"></div>
+
+    <!-- Boot Loader -->
+    <div id="boot-loader"
+        style="position: fixed; inset: 0; background: #000; z-index: 10000; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; color: #6366f1;">
+        <div style="font-size: 24px; margin-bottom: 10px;">NEBULA<span style="color: white; opacity: 0.5;">_OS</span>
+        </div>
+        <div id="boot-status"
+            style="font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.2em;">
+            Initializing Kernel...</div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen">
+        <div class="login-box">
+            <div class="login-avatar">AT</div>
+            <h2 class="login-user">Awais Tariq</h2>
+            <p class="login-status">System Administrator</p>
+            <button id="login-btn">
+                <span>Unlock System</span>
+                <div class="btn-shine"></div>
+            </button>
+            <div class="login-footer">Nebula OS v1.0.4</div>
+        </div>
+    </div>
+
+    <div id="desktop" class="system-locked">
+
+
+
+        <!-- Dynamic Background -->
+        <div id="nebula-bg"></div>
+        <div id="grid-overlay"></div>
+
+        <!-- Desktop Content -->
+        <!-- Desktop HUD -->
+        <div id="desktop-hud">
+            <div class="hud-item">
+                <div class="hud-label">Memory</div>
+                <div class="hud-value" id="hud-mem">42%</div>
+            </div>
+            <div class="hud-item">
+                <div class="hud-label">Neural Link</div>
+                <div class="hud-value" id="hud-link">Secure</div>
+            </div>
+            <div class="hud-item" style="opacity: 0.3;">
+                <div class="hud-label">Nebula OS</div>
+                <div class="hud-value" style="font-size: 12px;">v1.0.42</div>
+            </div>
+        </div>
+
+        <div id="desktop-icons">
+            <!-- Icons will be injected here -->
+        </div>
+
+        <div id="window-layer">
+            <!-- Windows will be injected here -->
+        </div>
+
+        <!-- Taskbar -->
+        <div id="taskbar">
+            <button id="start-btn" title="System Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" x="4" width="7" height="7" rx="1" fill="currentColor" />
+                    <rect x="13" x="4" width="7" height="7" rx="1" fill="currentColor" opacity="0.8" />
+                    <rect x="4" x="13" width="7" height="7" rx="1" fill="currentColor" opacity="0.6" />
+                    <rect x="13" x="13" width="7" height="7" rx="1" fill="currentColor" opacity="0.4" />
+                </svg>
+            </button>
+            <div id="taskbar-apps">
+                <!-- App shortcuts -->
+            </div>
+            <div id="taskbar-system">
+                <div id="system-time">00:00</div>
+            </div>
+        </div>
+
+        <!-- System Menu -->
+        <div id="system-menu" class="hidden">
+            <div class="user-profile">
+                <div class="user-avatar">AT</div>
+                <div class="user-info">
+                    <div class="user-name">Awais Tariq</div>
+                    <div class="user-status">System Administrator</div>
+                </div>
+            </div>
+            <div class="system-menu-links">
+                <!-- Links will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="shell.js" type="module"></script>
+</body>
+
+</html>
